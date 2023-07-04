@@ -28,11 +28,11 @@ const SignForm = () => {
   };
 
   return (
-    <main className="w-full p-4 flex flex-col items-center justify-center sm:px-4">
-      <div className="w-full space-y-6 text-gray-600 sm:max-w-md">
+    <main className="w-full h-screen bg-hk p-4 flex flex-col items-center justify-center sm:px-4">
+      <div className="w-full space-y-6 text-white sm:max-w-md">
         <div className="p-4 py-6 space-y-8 sm:p-6 sm:rounded-lg">
           <a href="/login">
-            <Image src="/utils/back.svg" width={20} height={20} />
+            <Image src="/utils/back.svg" width={20} height={20} alt="" />
           </a>
           <h1 className="text-4xl">Sign Up</h1>
           <form onSubmit={handleSubmit} className="space-y-5">
@@ -83,21 +83,21 @@ const SignForm = () => {
             <div>
               <p className="text-gray-400">
                 By signing up you agree to our{" "}
-                <a href="/terms_conditins" className="text-hk">
+                <a href="/terms_conditins" className="text-white hover:underline">
                   Terms & Condition and Privacy Policy.
                 </a>
               </p>
             </div>
-            <button className="w-full px-4 py-2 text-white font-medium bg-hk hover:bg-hkligth active:bg-indigo-600 rounded-lg duration-150">
+            <button className="w-full px-4 py-2 text-hk font-medium bg-white hover:bg-gray-300 active:bg-indigo-600 rounded-lg duration-150">
               Continue
             </button>
           </form>
         </div>
         <div className="text-center">
           <div className="mt-5 space-y-2">
-            <p className="">
+            <p>
               Already signed up?{" "}
-              <a href="/login" className="font-medium text-hk hover:text-hkligth">
+              <a href="/login" className="font-medium text-white hover:underline">
                 Log In
               </a>
             </p>

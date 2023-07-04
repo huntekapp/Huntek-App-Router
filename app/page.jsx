@@ -9,20 +9,22 @@ export default function Landing() {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      router.push("/login");
       setActivatePing(true);
+      setTimeout(() => {
+        router.push("/login");
+      }, 500);
     }, 3000);
     return () => clearTimeout(timeout);
   }, []);
 
   return (
-    <div className="h-screen grid place-content-center">
+    <div className="h-screen bg-hk grid place-content-center">
       <Image
         src="/huntek.svg"
         width={240}
         height={266}
         quality={100}
-        className={`animate-pulse transition-all duration-500 ${activatePing ? "animate-ping" : ""}`}
+        className={` transition-all duration-500 ${activatePing ? "animate-ping" : "animate-pulse"}`}
         alt=""
       />
     </div>
