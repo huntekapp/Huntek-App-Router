@@ -1,6 +1,32 @@
+"use client";
 import Image from "next/image";
+import {useState} from "react";
 
 const SignForm = () => {
+  const [input, setInput] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
+  const handleChange = (event) => {
+    event.preventDefault();
+    setInput({
+      ...input,
+      [event.target.name]: event.target.value,
+    });
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    //dispatch(postRegister(input))
+    setInput({
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+    });
+  };
+
   return (
     <main className="w-full p-4 flex flex-col items-center justify-center sm:px-4">
       <div className="w-full space-y-6 text-gray-600 sm:max-w-md">
@@ -9,13 +35,15 @@ const SignForm = () => {
             <Image src="/utils/back.svg" width={20} height={20} />
           </a>
           <h1 className="text-4xl">Sign Up</h1>
-          <form className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label className="font-medium">First Name</label>
               <input
                 type="text"
                 placeholder="Your First Name"
-                required
+                value={input.firstName}
+                name="firstName"
+                onChange={handleChange}
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent border-b"
               />
             </div>
@@ -24,7 +52,9 @@ const SignForm = () => {
               <input
                 type="text"
                 placeholder="Your Last Name"
-                required
+                value={input.lastName}
+                name="lastName"
+                onChange={handleChange}
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border-b"
               />
             </div>
@@ -33,7 +63,9 @@ const SignForm = () => {
               <input
                 type="email"
                 placeholder="✉️ Your Email"
-                required
+                value={input.email}
+                name="email"
+                onChange={handleChange}
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border-b "
               />
             </div>
@@ -42,7 +74,9 @@ const SignForm = () => {
               <input
                 type="password"
                 placeholder="🔒 Your Password"
-                required
+                value={input.password}
+                name="password"
+                onChange={handleChange}
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border-b"
               />
             </div>

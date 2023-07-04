@@ -1,16 +1,48 @@
+"use client";
 import Image from "next/image";
+import {useState} from "react";
 
 const LogForm = () => {
+  const [input, setInput] = useState({
+    email: "",
+    password: "",
+    rememberMe: false,
+  });
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    //dispatch(postLogin(input))
+    setInput({
+      email: "",
+      password: "",
+      rememberMe: false,
+    });
+  };
+  const handleChange = (event) => {
+    event.preventDefault();
+    setInput({
+      ...input,
+      [event.target.name]: event.target.value,
+    });
+  };
+  const handleCheck = (event) => {
+    setInput({
+      ...input,
+      [event.target.name]: event.target.checked,
+    });
+  };
   return (
     <main className="w-full px-4 mb-2 flex flex-col items-center justify-center sm:px-4">
       <div className="w-full space-y-6 text-gray-600 sm:max-w-md">
         <div className="p-4 py-6 space-y-9 sm:p-6 sm:rounded-lg">
-          <form className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label className="font-medium">E-mail</label>
               <input
                 type="email"
                 placeholder="✉️ Your Email"
+                value={input.email}
+                onChange={handleChange}
+                name="email"
                 required
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border-b "
               />
@@ -20,13 +52,22 @@ const LogForm = () => {
               <input
                 type="password"
                 placeholder="🔒 Your Password"
+                onChange={handleChange}
+                value={input.password}
+                name="password"
                 required
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border-b"
               />
             </div>
             <div className="flex flex-row justify-between">
               <label htmlFor="remember">
-                <input type="checkbox" name="rember" className="mr-2" />
+                <input
+                  type="checkbox"
+                  name="rememberMe"
+                  onChange={handleCheck}
+                  checked={input.rememberMe}
+                  className="mr-2"
+                />
                 Remember Me
               </label>
               <a href="javascript:void(0)" className="hover:text-indigo-600">
