@@ -1,11 +1,11 @@
-import SignForm from "../components/singup";
+import SignForm from "../components/signup";
 
 const Signup = () => {
-	return (
-		<div>
-			<SignForm />
-		</div>
-	);
+  return (
+    <div>
+      <SignForm />
+    </div>
+  );
 };
 
 export default Signup;
