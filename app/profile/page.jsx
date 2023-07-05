@@ -1,12 +1,11 @@
 import Profile from "../components/profile";
 
 const ProfilePage = () => {
-  return (
-    <div>
-      <Profile/>
-    </div>
-  )
-
-}
+	return (
+		<div className="bg-sec">
+			<Profile />
+		</div>
+	);
+};
 
 export default ProfilePage;
