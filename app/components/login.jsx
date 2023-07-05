@@ -8,6 +8,7 @@ const LogForm = () => {
 		password: "",
 		rememberMe: false,
 	});
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		//dispatch(postLogin(input))
@@ -17,6 +18,7 @@ const LogForm = () => {
 			rememberMe: false,
 		});
 	};
+
 	const handleChange = (event) => {
 		event.preventDefault();
 		setInput({
@@ -24,15 +26,17 @@ const LogForm = () => {
 			[event.target.name]: event.target.value,
 		});
 	};
+
 	const handleCheck = (event) => {
 		setInput({
 			...input,
 			[event.target.name]: event.target.checked,
 		});
 	};
+
 	return (
 		<main className="w-full px-4 mb-2 flex flex-col items-center justify-center sm:px-4">
-			<div className="w-full space-y-6 text-white sm:max-w-md">
+			<div className="w-full space-y-6 text-sec sm:max-w-md">
 				<div className="p-4 py-6 space-y-9 sm:p-6 sm:rounded-lg">
 					<form onSubmit={handleSubmit} className="space-y-5">
 						<div>
@@ -74,25 +78,25 @@ const LogForm = () => {
 								Forgot password?
 							</a>
 						</div>
-						<button className="w-full px-4 py-2 text-hk font-medium bg-white hover:bg-gray-300 active:bg-indigo-600 rounded-lg duration-150">
+						<button className="w-full px-4 py-2 text-pri font-medium bg-sec hover:bg-gray-300 active:bg-lig rounded-lg duration-150">
 							Log In
 						</button>
 					</form>
 					<div className="relative">
 						<span className="block w-full h-px bg-gray-300">
-							<p className="inline-block w-fit text-sm bg-hk  px-2 absolute text-white -top-2 inset-x-0 mx-auto">
+							<p className="inline-block w-fit text-sm bg-pri  px-2 absolute text-sec -top-2 inset-x-0 mx-auto">
 								Or continue with
 							</p>
 						</span>
 					</div>
 					<div className="grid grid-cols-3 gap-x-3">
-						<button className="flex items-center justify-center bg-white py-2.5 border rounded-lg hover:bg-gray-300 duration-150 active:bg-gray-100">
+						<button className="flex items-center justify-center bg-sec py-2.5 border rounded-lg hover:bg-gray-300 duration-150 active:bg-lig">
 							<Image src="/social/google.svg" width={25} height={25} alt="google" />
 						</button>
-						<button className="flex items-center justify-center bg-white py-2.5 border rounded-lg hover:bg-gray-300 duration-150 active:bg-gray-100">
+						<button className="flex items-center justify-center bg-sec py-2.5 border rounded-lg hover:bg-gray-300 duration-150 active:bg-lig">
 							<Image src="/social/facebook.svg" width={25} height={25} alt="facebook" />
 						</button>
-						<button className="flex items-center justify-center bg-white py-2.5 border rounded-lg hover:bg-gray-300 duration-150 active:bg-gray-100">
+						<button className="flex items-center justify-center bg-sec py-2.5 border rounded-lg hover:bg-gray-300 duration-150 active:bg-lig">
 							<Image src="/social/linkedin.svg" width={25} height={25} alt="linkedin" />
 						</button>
 					</div>
@@ -101,7 +105,7 @@ const LogForm = () => {
 					<div className="mt-5 space-y-2">
 						<p className="">
 							Don't have an account?{" "}
-							<a href="/signup" className="font-medium text-white hover:underline">
+							<a href="/signup" className="font-medium text-sec hover:underline">
 								Sign up
 							</a>
 						</p>
