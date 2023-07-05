@@ -11,6 +11,7 @@ const Profile = () => {
             <div className=" rounded-lg w-full mb-6  justify-start gap-7 mt-4 flex-wrap flex items-center text-pri flex-row">
               <div className="w-16 h-16 ml-10 avatar ">
                 <Image
+                  alt="avatar"
                   width={100}
                   height={100}
                   quality={100}
@@ -23,6 +24,7 @@ const Profile = () => {
                 <p className="text-lg font-light ">nombreape@email.com</p>
               </div>
               <Image
+                alt="pencil"
                 width={25}
                 height={25}
                 src="/utils/pencil_huntek.svg"
@@ -34,25 +36,25 @@ const Profile = () => {
                 <div>
                   <a className="text-md font-normal">Recompensas</a>
                 </div>
-                <Image width={16} height={16} src="/utils/goto_huntek.svg" className="" />
+                <Image alt="arrow right" width={16} height={16} src="/utils/goto_huntek.svg" className="" />
               </div>
               <div className="flex flex-row flex-grow justify-between mx-8 my-6 hover:opacity-50 cursor-pointer ">
                 <div>
                   <a className="text-md font-normal">Conversaciones</a>
                 </div>
-                <Image width={16} height={16} src="/utils/goto_huntek.svg" className="" />
+                <Image alt="arrow right" width={16} height={16} src="/utils/goto_huntek.svg" className="" />
               </div>
               <div className="flex flex-row flex-grow justify-between mx-8 my-6 hover:opacity-50 cursor-pointer ">
                 <div>
                   <a className="text-md font-normal">Notificaciones</a>
                 </div>
-                <Image width={16} height={16} src="/utils/goto_huntek.svg" className="" />
+                <Image alt="arrow right" width={16} height={16} src="/utils/goto_huntek.svg" className="" />
               </div>
               <div className="flex flex-row flex-grow justify-between mx-8 my-6 hover:opacity-50 cursor-pointer ">
                 <div>
                   <a className="text-md font-normal">Términos & Condiciones</a>
                 </div>
-                <Image width={16} height={16} src="/utils/goto_huntek.svg" className="" />
+                <Image alt="arrow right" width={16} height={16} src="/utils/goto_huntek.svg" className="" />
               </div>
               <div className="flex flex-row flex-grow justify-between mx-8 my-6">
                 <div>

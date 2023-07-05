@@ -1,0 +1,1 @@
+<svg className={`w-4 h-4 ml-2 mr-2 transition-transform ${isOpen ? 'transform rotate-180' : ''}`} fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd"d="M10 14l6-6H4l6 6z"/></svg>
