@@ -15,6 +15,7 @@ const NavBar = () => {
           <label htmlFor="my-drawer-2" className=" drawer-button  avatar">
             <div className="w-10 rounded-full">
               <Image
+                alt="avatar"
                 src="/images/pexels-monstera-5384445.jpg"
                 width={100}
                 height={100}
