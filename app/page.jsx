@@ -13,14 +13,14 @@ export default function Landing() {
 			setTimeout(() => {
 				router.push("/login");
 			}, 500);
-		}, 3000);
+		}, 2400);
 		return () => clearTimeout(timeout);
 	}, []);
 
 	return (
 		<div className="h-screen bg-pri grid place-content-center">
 			<Image
-				src="/huntek/logo/W.svg"
+				src="/huntek/huntek.gif"
 				width={400}
 				height={400}
 				className={`${activatePing ? "animate-ping" : "animate-pulse"} transition-all duration-500`}

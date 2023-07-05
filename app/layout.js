@@ -1,11 +1,18 @@
 import "./globals.css";
-import { Poppins } from "next/font/google";
+import { Poppins, Dosis } from "next/font/google";
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
   display: "swap",
 });
+
+const dosis = Dosis({
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  display: "swap",
+});
+
 
 export const metadata = {
   title: "Huntek App",
