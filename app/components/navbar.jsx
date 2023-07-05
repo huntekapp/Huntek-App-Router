@@ -8,7 +8,7 @@ const NavBar = () => {
     setClose(!close);
   };
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-sec">
       <div className="navbar-start">
         <div className="drawer">
           <input type="checkbox" id="my-drawer-2" className="drawer-toggle" onClick={handleClick} />
@@ -26,7 +26,7 @@ const NavBar = () => {
           </label>
           <div className="drawer-side z-40">
             <label htmlFor="my-drawer-2" className=" z-40"></label>
-            <ul className=" z-40  w-full h-screen bg-base-200 ">
+            <ul className=" z-40  w-full h-screen bg-sec ">
               <li>
                 <Profile />
               </li>
@@ -35,7 +35,7 @@ const NavBar = () => {
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn  btn-ghost text-[#046266] z-50 normal-case text-3xl">Huntek</a>
+        <h1 className="font-medium text-pri z-50 normal-case text-3xl">Huntek</h1>
       </div>
       <div className="navbar-end">
         {close ? (
@@ -50,7 +50,7 @@ const NavBar = () => {
               className="h-6 z-50 w-6"
               fill="none"
               viewBox="0 0 24 24"
-              stroke="#064266">
+              stroke="#046255">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -62,7 +62,7 @@ const NavBar = () => {
                 className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="#046266">
+                stroke="#046255">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"

@@ -2,13 +2,13 @@ import Image from "next/image";
 
 const Profile = () => {
   return (
-    <div className="z-40 p-0 text-hk">
+    <div className="z-40 p-0 bg-sec text-pri">
       <div className="min-w-full h-1/2">
         <div className="flex justify-start mt-24 h-full gap-10 w-[100vw]  items-start flex-col flex-wrap ">
           <div className="flex-grow w-full">
             <h2 className="ml-10 text-4xl font-bold mb-12 ">Mi perfil</h2>
 
-            <div className=" rounded-lg w-full mb-6  justify-start gap-7 mt-4 flex-wrap flex items-center text-hk flex-row">
+            <div className=" rounded-lg w-full mb-6  justify-start gap-7 mt-4 flex-wrap flex items-center text-pri flex-row">
               <div className="w-16 h-16 ml-10 avatar ">
                 <Image
                   alt="avatar"
@@ -28,7 +28,7 @@ const Profile = () => {
                 width={25}
                 height={25}
                 src="/utils/pencil_huntek.svg"
-                className="mx-auto	text-hk hover:opacity-70 mr-8"
+                className="mx-auto	text-pri hover:opacity-70 mr-8"
               />
             </div>
             <div className="flex-col  flex-wrap w-full ml-1 flex sm:rounded-lg">
