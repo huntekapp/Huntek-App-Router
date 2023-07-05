@@ -18,11 +18,11 @@ export default function Landing() {
 	}, []);
 
 	return (
-		<div className="h-screen bg-hk grid place-content-center">
+		<div className="h-screen bg-pri grid place-content-center">
 			<Image
-				src="/huntek.svg"
-				width={240}
-				height={266}
+				src="/huntek/logo/W.svg"
+				width={400}
+				height={400}
 				className={`${activatePing ? "animate-ping" : "animate-pulse"} transition-all duration-500`}
 				alt="Huntek"
 			/>
