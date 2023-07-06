@@ -2,12 +2,12 @@ import LogForm from "../components/login";
 import Logo from "../components/logo";
 
 const Login = () => {
-  return (
-    <div className="min-h-screen bg-pri flex flex-col justify-evenly items-center">
-      <Logo />
-      <LogForm />
-    </div>
-  );
+	return (
+		<section className="min-h-screen bg-pri flex flex-col lg:flex-row justify-evenly items-center">
+			<Logo />
+			<LogForm />
+		</section>
+	);
 };
 
 export default Login;

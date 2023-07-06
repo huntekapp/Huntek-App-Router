@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import {useRouter} from "next/navigation";
 import {useEffect, useState} from "react";
 
@@ -7,25 +6,23 @@ export default function Landing() {
 	const router = useRouter();
 	const [activatePing, setActivatePing] = useState(false);
 
-	useEffect(() => {
+	const animate = () => {
 		const timeout = setTimeout(() => {
 			setActivatePing(true);
 			setTimeout(() => {
 				router.push("/login");
-			}, 500);
-		}, 2400);
+			}, 200);
+		}, 4600);
 		return () => clearTimeout(timeout);
+	};
+
+	useEffect(() => {
+		animate();
 	}, []);
 
 	return (
-		<div className="h-screen bg-pri grid place-content-center">
-			<Image
-				src="/huntek/huntek.gif"
-				width={400}
-				height={400}
-				className={`${activatePing ? "animate-ping" : "animate-pulse"} transition-all duration-500`}
-				alt="Huntek"
-			/>
-		</div>
+		<section className="h-screen bg-pri grid place-content-center">
+			<article className={`w-64 h-64 bg-HKanimate ${activatePing && "animate-ping duration-200"}`}></article>
+		</section>
 	);
 }
