@@ -18,7 +18,7 @@ const ProfileExt = () => {
 	};
 
 	return (
-		<div className="min-w-screen min-h-screen">
+		<div className="min-w-screen text-pri min-h-screen">
 			<div className="navbar shadow-xl bg-pri">
 				<Link href="/home">
 					<button className="btn btn-ghost z-0 btn-circle absolute left-2">
@@ -71,7 +71,7 @@ const ProfileExt = () => {
 						name="sexo"
 						value={userData.sexo}
 						onChange={(event) => handleChange(event)}
-						className="text-gray-400 w-full px-1 border-gray-200 border-2 rounded-md mb-5 h-9 focus:outline-none">
+						className="bg-transparent text-gray-400 w-full px-1 border-gray-200 border-2 rounded-md mb-5 h-9 focus:outline-none">
 						<option key="0" hidden value="">
 							Respuesta
 						</option>
@@ -94,7 +94,7 @@ const ProfileExt = () => {
 						name="situacion"
 						value={userData.situacion}
 						onChange={(event) => handleChange(event)}
-						className="text-gray-400 w-full px-1 border-gray-200 border-2 rounded-md mb-5 h-9 focus:outline-none">
+						className="bg-transparent text-gray-400 w-full px-1 border-gray-200 border-2 rounded-md mb-5 h-9 focus:outline-none">
 						<option key="0" hidden value="">
 							Respuesta
 						</option>
@@ -117,7 +117,7 @@ const ProfileExt = () => {
 						name="situacion"
 						value={1}
 						// onChange={(event) => handleChange(event)}
-						className="text-gray-400 w-full px-1 border-gray-200 border-2 rounded-md mb-5 h-9 focus:outline-none">
+						className="bg-transparent text-gray-400 w-full px-1 border-gray-200 border-2 rounded-md mb-5 h-9 focus:outline-none">
 						<option key="0" hidden value="">
 							Respuesta
 						</option>
@@ -140,7 +140,7 @@ const ProfileExt = () => {
 						name="situacion"
 						value={2}
 						// onChange={(event) => handleChange(event)}
-						className="text-gray-400 w-full px-1 border-gray-200 border-2 rounded-md mb-5 h-9 focus:outline-none">
+						className="bg-transparent text-gray-400 w-full px-1 border-gray-200 border-2 rounded-md mb-5 h-9 focus:outline-none">
 						<option key="0" hidden value="">
 							Respuesta
 						</option>
@@ -163,7 +163,7 @@ const ProfileExt = () => {
 						name="situacion"
 						value={3}
 						// onChange={(event) => handleChange(event)}
-						className="text-gray-400 w-full px-1 border-gray-200 border-2 rounded-md mb-5 h-9 focus:outline-none">
+						className="bg-transparent text-gray-400 w-full px-1 border-gray-200 border-2 rounded-md mb-5 h-9 focus:outline-none">
 						<option key="0" hidden value="">
 							Respuesta
 						</option>
