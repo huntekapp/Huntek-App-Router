@@ -1,10 +1,6 @@
 <svg width="500" height="500" xmlns="http://www.w3.org/2000/svg">
-	<g>
-		<title>
-			HKW
-		</title>
-		<rect fill="#ffffff" x="298" y="62.5" width="105" height="375" id="svg_1" stroke="#ffffff" stroke-width="0" rx="3" />
-		<rect fill="#ffffff" stroke="#ffffff" x="98" y="62.5" width="105" height="375" id="svg_2" stroke-width="0" rx="3" />
-		<rect rx="3" fill="#ffffff" stroke="#ffffff" x="212.5" y="197.5" width="75" height="105" id="svg_4" stroke-width="0" />
-	</g>
+	<rect fill="#ffffff" x="298" y="62.5" width="105" height="375" id="svg_1" stroke="#ffffff" stroke-width="0" rx="3" />
+	<rect fill="#ffffff" stroke="#ffffff" x="98" y="62.5" width="105" height="375" id="svg_2" stroke-width="0" rx="3" />
+	<rect rx="3" fill="#ffffff" stroke="#ffffff" x="212.5" y="197.5" width="75" height="105" id="svg_4"
+		stroke-width="0" />
 </svg>

@@ -1,0 +1,69 @@
+<svg id="etHL7IWpMZq1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	viewBox="0 0 300 300" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
+	<text dx="-10" dy="0" font-family="&quot;Oduda&quot;" font-size="85" font-weight="400"
+		transform="translate(22.798706 269.431156)" fill="transparent" stroke="#FFFFFF" stroke-width="1">
+		<tspan opacity="0" stroke-dasharray="800">
+			<animate attributeName="stroke-dashoffset" from="1000" to="0" dur="2s" />
+			<animate attributeName="opacity" dur="1s" from="0" to="1" fill="freeze" />
+			<set attributeName="stroke-width" from="1" to="0" begin="3.4s" />
+			<set attributeName="fill" from="transparent" to="#FFFFFF" begin="3.4s" />
+			H
+		</tspan>
+		<tspan dx="-20" opacity="0" stroke-dasharray="800">
+			<animate attributeName="opacity" dur="1s" from="0" to="1" begin=".8s" fill="freeze" />
+			<animate attributeName="stroke-dashoffset" from="1000" to="0" begin=".8s" dur="2s" />
+			<set attributeName="stroke-width" from="1" to="0" begin="3.4s" />
+			<set attributeName="fill" from="transparent" to="#FFFFFF" begin="3.4s" />
+			u
+		</tspan>
+		<tspan dx="-20" opacity="0" stroke-dasharray="800">
+			<animate attributeName="opacity" dur="1s" from="0" to="1" begin="1.2s" fill="freeze" />
+			<animate attributeName="stroke-dashoffset" from="1000" to="0" begin="1.2s" dur="2s" />
+			<set attributeName="stroke-width" from="1" to="0" begin="3.4s" />
+			<set attributeName="fill" from="transparent" to="#FFFFFF" begin="3.4s" />
+			n
+		</tspan>
+		<tspan dx="-20" opacity="0" stroke-dasharray="800">
+			<animate attributeName="opacity" dur="1s" from="0" to="1" begin="1.6s" fill="freeze" />
+			<animate attributeName="stroke-dashoffset" from="1000" to="0" begin="1.6s" dur="2s" />
+			<set attributeName="stroke-width" from="1" to="0" begin="3.4s" />
+			<set attributeName="fill" from="transparent" to="#FFFFFF" begin="3.4s" />
+			t
+		</tspan>
+		<tspan dx="-20" opacity="0" stroke-dasharray="800">
+			<animate attributeName="opacity" dur="1s" from="0" to="1" begin="2.0s" fill="freeze" />
+			<animate attributeName="stroke-dashoffset" from="1000" to="0" begin="2.0s" dur="2s" />
+			<set attributeName="stroke-width" from="1" to="0" begin="3.4s" />
+			<set attributeName="fill" from="transparent" to="#FFFFFF" begin="3.4s" />
+			e
+		</tspan>
+		<tspan dx="-20" opacity="0" stroke-dasharray="800">
+			<animate attributeName="opacity" dur="1s" from="0" to="1" begin="2.4s" fill="freeze" />
+			<animate attributeName="stroke-dashoffset" from="1000" to="0" begin="2.4s" dur="2s" />
+			<set attributeName="stroke-width" from="1" to="0" begin="3.4s" />
+			<set attributeName="fill" from="transparent" to="#FFFFFF" begin="3.4s" />
+			k
+		</tspan>
+	</text>
+	<rect width="40" height="150" rx="0" ry="0" transform="translate(90 33.838383)" fill="transparent" stroke="#FFFFFF"
+		stroke-width="2" stroke-dasharray="800" opacity="0">
+		<animate attributeName="stroke-dashoffset" from="1000" to="0" dur="3s" />
+		<animate attributeName="opacity" dur="1s" from="0" to="1" fill="freeze" />
+		<set attributeName="stroke-width" from="2" to="0" begin="3.4s" />
+		<set attributeName="fill" from="transparent" to="#FFFFFF" begin="3.4s" />
+	</rect>
+	<rect width="40" height="150" rx="0" ry="0" transform="translate(170 33.838383)" fill="transparent" stroke="#FFFFFF"
+		stroke-width="2" stroke-dasharray="800" opacity="0">
+		<animate attributeName="stroke-dashoffset" from="1000" to="0" begin="1.4s" dur="3s" />
+		<animate attributeName="opacity" dur="1s" from="0" to="1" begin="1.4s" fill="freeze" />
+		<set attributeName="stroke-width" from="2" to="0" begin="3.4s" />
+		<set attributeName="fill" from="transparent" to="#FFFFFF" begin="3.4s" />
+	</rect>
+	<rect width="30" height="45" rx="0" ry="0" transform="translate(135 88.956672)" fill="transparent" stroke="#FFFFFF"
+		stroke-width="2" stroke-dasharray="800" opacity="0">
+		<animate attributeName="stroke-dashoffset" from="1000" to="0" begin="0.8s" dur="3s" />
+		<animate attributeName="opacity" dur="1s" from="0" to="1" begin="0.8s" fill="freeze" />
+		<set attributeName="stroke-width" from="2" to="0" begin="3.4s" />
+		<set attributeName="fill" from="transparent" to="#FFFFFF" begin="3.4s" />
+	</rect>
+</svg>

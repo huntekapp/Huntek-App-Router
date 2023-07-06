@@ -1,10 +1,13 @@
-<svg id="eYtMNQmLcVl1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
-	<text dx="0" dy="0" font-family="&quot;Oduda&quot;" font-size="85" font-weight="200" transform="translate(22.798706 269.431156)" fill="#fff" stroke-width="0">
-		<tspan y="0" font-weight="200" stroke-width="0">
-			<![CDATA[ Huntek ]]>
-		</tspan>
+<svg id="etjUIHfseBl1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	viewBox="0 0 300 300" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
+	<text dx="-10" dy="0" font-family="&quot;oduda&quot;" font-size="85" font-weight="400"
+		transform="translate(32.912178 260.39341)" fill="#FFFFFF" stroke-width="0">
+		<tspan>Huntek</tspan>
 	</text>
-	<rect width="40" height="150" rx="0" ry="0" transform="translate(90 33.838383)" fill="#fff" stroke-width="0" />
-	<rect width="40" height="150" rx="0" ry="0" transform="translate(170 33.838383)" fill="#fff" stroke-width="0" />
-	<rect width="30" height="45" rx="0" ry="0" transform="translate(135 88.956672)" fill="#fff" stroke-width="0" />
+	<rect width="40" height="150" rx="0" ry="0" transform="translate(90 33.838383)" fill="#FFFFFF" stroke-width="0">
+	</rect>
+	<rect width="40" height="150" rx="0" ry="0" transform="translate(170 33.838383)" fill="#FFFFFF" stroke-width="1">
+	</rect>
+	<rect width="30" height="45" rx="0" ry="0" transform="translate(135 88.956672)" fill="#FFFFFF" stroke-width="1">
+	</rect>
 </svg>
