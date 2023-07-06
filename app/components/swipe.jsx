@@ -1,8 +1,21 @@
+"use client";
 import Image from "next/image";
+import TinderCard from "react-tinder-card";
 const Swipe = () => {
+  const onSwipe = (direction) => {
+    console.log("You swiped: " + direction);
+  };
+
+  const onCardLeftScreen = (myIdentifier) => {
+    console.log(myIdentifier + " left the screen");
+  };
   return (
     <div className="w-96 h-full">
-      <article className="relative h-[35rem] overflow-hidden rounded-lg shadow transition hover:shadow-lg">
+      <TinderCard
+        onSwipe={onSwipe}
+        onCardLeftScreen={() => onCardLeftScreen("fooBar")}
+        preventSwipe={["right", "left"]}
+        className="relative h-[35rem] overflow-hidden rounded-lg shadow transition hover:shadow-lg">
         <Image
           width={500}
           height={100}
@@ -26,7 +39,7 @@ const Swipe = () => {
             </p>
           </div>
         </div>
-      </article>
+      </TinderCard>
     </div>
   );
 };
