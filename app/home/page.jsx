@@ -1,14 +1,15 @@
 import NavBar from "../components/navbar";
-import Footbar from "../components/footbar";
 import Home from "../components/home";
+import Footbar from "../components/footbar";
 
 const HomePage = () => {
 	return (
-		<div className="min-h-screen bg-sec">
+		<section className="min-h-screen bg-sec flex flex-col justify-start">
 			<NavBar />
 			<Home />
 			<Footbar />
-		</div>
+		</section>
 	);
 };
+
 export default HomePage;

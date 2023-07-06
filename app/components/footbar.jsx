@@ -1,16 +1,31 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const Footbar = () => {
-  return (
-    <footer className="p-5 mt-3 bg-pri shadow-[0px_-10px_12px_0px_#00000024] fixed bottom-0 w-full">
-      <div className="w-full border-3 ">
-        <div className="flex justify-center ">
-          <button className="border-2  bg-pri flex justify-center items-center absolute top-0 mt-[-28px] rounded-full w-14 h-14 hover:scale-105 shadow-xl#00000024">
-            <Image src="/huntek/logo/W.svg" width={44} height={10} className="h-auto" />
-          </button>
-        </div>
-      </div>
-    </footer>
-  );
+	return (
+		<footer className="w-full h-12 bg-pri shadow-[0px_-8px_12px_0px_#0004] flex flex-row justify-center fixed bottom-0">
+			<article className="absolute bottom-4">
+				<Link href="/swipe">
+					<button className="w-16 h-16 bg-sec rounded-full border-2 border-pri grid place-content-center hover:scale-105 duration-150">
+						<Image src="/huntek/logo/G.svg" width={50} height={50} />
+					</button>
+				</Link>
+			</article>
+			<article className="absolute bottom-4">
+				<Link href="/swipe">
+					<button className="w-16 h-16 bg-sec rounded-full border-2 border-pri grid place-content-center hover:scale-105 duration-150">
+						<Image src="/huntek/logo/G.svg" width={50} height={50} />
+					</button>
+				</Link>
+			</article>
+			<article className="absolute bottom-4">
+				<Link href="/swipe">
+					<button className="w-16 h-16 bg-sec rounded-full border-2 border-pri grid place-content-center hover:scale-105 duration-150">
+						<Image src="/huntek/logo/G.svg" width={50} height={50} />
+					</button>
+				</Link>
+			</article>
+		</footer>
+	);
 };
 export default Footbar;
