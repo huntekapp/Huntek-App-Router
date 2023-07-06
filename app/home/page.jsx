@@ -1,14 +1,23 @@
 import Image from "next/image";
 import NavBar from "../components/navbar";
-import Footer from "../components/footer";
+import Footbar from "../components/footbar";
+
+
 const HomePage = () => {
   return (
-    <>
+    <div className="bg-pri">
       <NavBar />
+
       <div className=" bg-sec p-6 w-full min-h-screen ">
         <p className="text-xl text-black">¡Hola!</p>
         <h1 className="font-medium  text-3xl text-pri">Luis Sanchez</h1>
         <p className="mt-10 mb-6 text-black  w-full flex justify-start">
+
+      <div className=" bg-pri p-8 w-full min-h-screen ">
+        <p className="text-xl text-sec">¡Hola!</p>
+        <h1 className="font-medium  text-3xl text-sec">Luis Sanchez</h1>
+        <p className="mt-10 mb-5 text-sec  w-full flex justify-start">
+
           Mis postulaciones <span className="text-pri ml-auto mr-5">ver todas</span>
         </p>
 
@@ -90,7 +99,8 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-    </>
+      <Footbar/>
+    </div>
   );
 };
 export default HomePage;
