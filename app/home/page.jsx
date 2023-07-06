@@ -1,10 +1,12 @@
 import Image from "next/image";
 import NavBar from "../components/navbar";
+import Footbar from "../components/footbar";
+
 const HomePage = () => {
   return (
-    <>
+    <div className="bg-pri">
       <NavBar />
-      <div className=" bg-pri p-8 w-full h-screen ">
+      <div className=" bg-pri p-8 w-full min-h-screen ">
         <p className="text-xl text-sec">¡Hola!</p>
         <h1 className="font-medium  text-3xl text-sec">Luis Sanchez</h1>
         <p className="mt-10 mb-5 text-sec  w-full flex justify-start">
@@ -90,7 +92,7 @@ const HomePage = () => {
                   quality={100}
                   className="rounded-full h-9  mr-4"
                 />
-                Nico Font - Coca Cola <span className="font-bold ml-auto  cursor-pointer ">Nuevo mensaje</span>
+                Nico Front - Coca Cola <span className="font-bold ml-auto  cursor-pointer ">Nuevo mensaje</span>
               </li>
               <li className="h-14 flex  text-black truncate items-center ">
                 <Image
@@ -117,7 +119,8 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-    </>
+      <Footbar/>
+    </div>
   );
 };
 export default HomePage;
