@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 export const Slice = createSlice({
   name: "valores",
@@ -12,4 +12,4 @@ export const Slice = createSlice({
   },
 });
 
-export const {guardarnombre} = Slice.actions;
+export const { guardarnombre } = Slice.actions;
