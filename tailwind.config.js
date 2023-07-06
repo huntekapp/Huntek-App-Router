@@ -4,14 +4,18 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./public/**/*.{svg}",
   ],
   theme: {
     extend: {
       colors: {
         pri: "#046255",
         sec: "#ffffff",
-        lig: "#063532",
+        lig: "#ffffff20",
+      },
+      backgroundImage: {
+        HKanimate: "url('/huntek/logo-text-animate/W(D).svg')",
+        HKtext: "url('/huntek/logo-text/W(D).svg')",
+        HKlogo: "url('/huntek/logo/W.svg')",
       },
     },
   },
