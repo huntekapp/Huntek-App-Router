@@ -8,7 +8,7 @@ const NavBar = () => {
     setClose(!close);
   };
   return (
-    <div className="navbar bg-sec">
+    <div className="navbar shadow-xl  bg-pri">
       <div className="navbar-start">
         <div className="drawer">
           <input type="checkbox" id="my-drawer-2" className="drawer-toggle" onClick={handleClick} />
@@ -35,7 +35,7 @@ const NavBar = () => {
         </div>
       </div>
       <div className="navbar-center">
-        <h1 className="font-medium text-pri z-50 normal-case text-3xl">Huntek</h1>
+        <h1 className="font-medium text-sec z-50 normal-case text-3xl">Huntek</h1>
       </div>
       <div className="navbar-end">
         {close ? (
@@ -62,7 +62,7 @@ const NavBar = () => {
                 className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="#046255">
+                stroke="#ffffff">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
