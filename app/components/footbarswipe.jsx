@@ -1,25 +1,41 @@
-import Image from "next/image";
+"use client";
+import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
+import {IconButton} from "@mui/material";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import ThumbDownIcon from "@mui/icons-material/ThumbDown";
+import ReplayIcon from "@mui/icons-material/Replay";
 
 const FootbarSwipe = () => {
-	return (
-		<footer className="w-full p-7 mt-3 bg-sec shadow-[0px_-10px_12px_0px_#00000024] ">
-			<div className="w-full border-3 ">
-				<div className="flex justify-center gap-16">
-					<button className="border-2  bg-pri flex justify-center items-center   mt-[-52px] rounded-full w-14 h-14 hover:scale-105 shadow-xl#00000024">
-						<Image src="/utils/briefcase.svg" width={40} height={10} className="h-auto" />
-					</button>
+  return (
+    <footer className="w-full p-7 mt-3 bg-base-300 shadow-[0px_-10px_12px_0px_#00000024] ">
+      <div className="w-full border-3 ">
+        <div className="flex justify-center gap-9">
+          <button className="border-2  bg-red-600 flex justify-center items-center    mt-[-60px] rounded-full w-16 h-16 shadow-[0px_2px_3px_0px_#000] ">
+            <IconButton>
+              <ThumbDownIcon style={{fontSize: "2rem", color: "white"}} />
+            </IconButton>
+          </button>
+          <button className="border-2  bg-fuchsia-950 flex justify-center items-center  mt-[-60px] rounded-full w-16 h-16 shadow-[0px_2px_3px_0px_#000]  ">
+            <IconButton>
+              <ReplayIcon style={{fontSize: "2rem", color: "white"}} />
+            </IconButton>
+          </button>
 
-					<button className="border-2  bg-pri flex justify-center items-center  mt-[-52px] rounded-full w-14 h-14 hover:scale-105 shadow-xl#00000024">
-						<Image src="/huntek/logo/W.svg" width={44} height={10} className="h-auto" />
-					</button>
+          <button className="border-2  bg-amber-500 flex justify-center items-center  mt-[-60px] rounded-full w-16 h-16 shadow-[0px_2px_3px_0px_#000]  ">
+            <IconButton>
+              <WorkOutlineIcon style={{fontSize: "2rem", color: "white"}} />
+            </IconButton>
+          </button>
 
-					<button className="border-2  bg-pri flex justify-center  items-center mt-[-52px] rounded-full w-14 h-14 hover:scale-105 shadow-xl#00000024">
-						<Image src="/huntek/logo/W.svg" width={44} height={10} className="h-auto" />
-					</button>
-				</div>
-			</div>
-		</footer>
-	);
+          <button className="border-2  bg-blue-600 flex justify-center  items-center mt-[-60px] rounded-full w-16 h-16 shadow-[0px_2px_3px_0px_#000] ">
+            <IconButton>
+              <ThumbUpIcon style={{fontSize: "2rem", color: "white"}} />
+            </IconButton>
+          </button>
+        </div>
+      </div>
+    </footer>
+  );
 };
 
 export default FootbarSwipe;
