@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: "400px",
+      },
       colors: {
         pri: "#046255",
         sec: "#ffffff",
@@ -18,7 +21,7 @@ module.exports = {
         "pri-400": "#8fb9b3",
         "pri-300": "#abcbc6",
         "pri-200": "#c7dcd9",
-        "pri-100": "#e3eeec"
+        "pri-100": "#e3eeec",
       },
       backgroundImage: {
         HKanimate: "url('/huntek/logo-text-animate/W(D).svg')",
