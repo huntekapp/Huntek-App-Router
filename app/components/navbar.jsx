@@ -57,7 +57,9 @@ const NavBar = () => {
           </button>
         ) : (
           <button className="btn btn-ghost z-0 btn-circle">
-            <div className="indicator">
+              <a
+                href="/notification"
+                className="indicator">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -72,7 +74,7 @@ const NavBar = () => {
                 />
               </svg>
               {/* <span className="badge badge-xs badge-primary indicator-item"></span> */}
-            </div>
+            </a>
           </button>
         )}
       </div>
