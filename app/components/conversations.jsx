@@ -14,6 +14,7 @@ const Conversations = () => {
 				<ul className="flex px-6 py-4 space-y-5 shadow-md  bg-sec border rounded-xl flex-col">
 					<li className="h-14 flex text-sm   truncate text-pri items-center ">
 						<Image
+							alt="profile"
 							src="/images/pexels-monstera-5384445.jpg"
 							height={100}
 							width={36}
@@ -24,6 +25,7 @@ const Conversations = () => {
 					</li>
 					<li className="h-14 flex text-sm text-pri truncate items-center ">
 						<Image
+							alt="profile-2"
 							src="/images/pexels-monstera-5384445.jpg"
 							height={100}
 							width={36}
