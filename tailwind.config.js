@@ -11,6 +11,14 @@ module.exports = {
         pri: "#046255",
         sec: "#ffffff",
         lig: "#ffffff20",
+        "pri-800": "#207368",
+        "pri-700": "#3c857b",
+        "pri-600": "#58968e",
+        "pri-500": "#74a8a1",
+        "pri-400": "#8fb9b3",
+        "pri-300": "#abcbc6",
+        "pri-200": "#c7dcd9",
+        "pri-100": "#e3eeec"
       },
       backgroundImage: {
         HKanimate: "url('/huntek/logo-text-animate/W(D).svg')",
