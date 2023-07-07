@@ -43,10 +43,10 @@ const Postulations = () => {
 				</Link>
 			</div>
 			<section className="carousel carousel-center  w-full p-2  space-x-6 rounded-box">
-				{postulaciones.map((post) => (
-					<article key={post.id} className="carousel-item avatar">
-						<div className="w-16 rounded-full ring ring-pri ring-offset-base-100 ring-offset-2">
-							<Image src={post.image} width={60} height={100} quality={100} />
+				{postulaciones.map((post, index) => (
+          <article key={index} className="carousel-item avatar">
+            <div className="w-16 rounded-full ring ring-pri ring-offset-base-100 ring-offset-2">
+              <Image key={post.id} alt={post.id} src={post.image} width={60} height={100} quality={100} />
 						</div>
 					</article>
 				))}
