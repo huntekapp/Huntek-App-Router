@@ -2,10 +2,10 @@ import Link from "next/link";
 
 const Interviews = () => {
 	return (
-		<section className="w-full h-36 my-6 flex flex-col justify-around">
+		<section className="w-full h-36 my-6 flex flex-col justify-around mb-16">
 			<article className="flex flex-row justify-between">
 				<p>Mis entrevistas</p>
-				<Link href="" className="font-medium">
+				<Link href="/interviews" className="font-medium">
 					Ver todas
 				</Link>
 			</article>
