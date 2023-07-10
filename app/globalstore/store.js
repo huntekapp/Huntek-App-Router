@@ -1,14 +1,20 @@
 import {configureStore, getDefaultMiddleware} from "@reduxjs/toolkit";
-import {Slice} from "./features/slice";
-import {userDb} from "./services/userDb";
+import emailReducer from "./features/emailSlice";
+import {registerDB} from "./services/useRegister";
 import {setupListeners} from "@reduxjs/toolkit/dist/query";
+import {verifBD} from "./services/useVerifCode";
+import {loginDB} from "./services/useLogin";
 
 export const store = configureStore({
   reducer: {
-    Slice,
-    [userDb.reducerPath]: userDb.reducer,
+    email: emailReducer,
+    [registerDB.reducerPath]: registerDB.reducer,
+    [verifBD.reducerPath]: verifBD.reducer,
+    [loginDB.reducerPath]: loginDB.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([userDb.middleware]),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([registerDB.middleware]),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([verifBD.middleware]),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([loginDB.middleware]),
 });
 
 setupListeners(store.dispatch);

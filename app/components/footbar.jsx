@@ -7,7 +7,7 @@ const Footbar = () => {
       <article className="absolute bottom-4">
         <Link href="/swipe">
           <button className="w-16 h-16 bg-sec rounded-full border-2 border-pri grid place-content-center hover:scale-105 duration-150">
-            <Image alt="G"src="/huntek/logo/G.svg" width={50} height={50} />
+            <Image alt="G" src="/huntek/logo/G.svg" width={50} height={50} />
           </button>
         </Link>
       </article>
