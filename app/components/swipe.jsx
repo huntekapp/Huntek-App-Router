@@ -14,6 +14,7 @@ const Swipe = () => {
   ]);
   const [currentIndex, setCurrentIndex] = useState(empresa.length - 1);
   const [lastDirection, setLastDirection] = useState();
+  const [hasSwipedBack, setHasSwipedBack] = useState(false);
   const currentIndexRef = useRef(currentIndex);
 
   const childRefs = useMemo(
@@ -36,6 +37,9 @@ const Swipe = () => {
   const swiped = (direction, nameToDelete, index) => {
     setLastDirection(direction);
     updateCurrentIndex(index - 1);
+    if (direction === "left") {
+      setHasSwipedBack(true);
+    }
   };
 
   const outOfFrame = (nombre, idx) => {
@@ -50,10 +54,11 @@ const Swipe = () => {
   };
 
   const goBack = async () => {
-    if (!canGoBack) return;
+    if (!canGoBack || !hasSwipedBack) return;
     const newIndex = currentIndex + 1;
     updateCurrentIndex(newIndex);
     await childRefs[newIndex].current.restoreCard();
+    setHasSwipedBack(false);
   };
 
   return (
@@ -85,7 +90,13 @@ const Swipe = () => {
       ))}
 
       <div className="fixed bottom-0 w-full">
-        <FootbarSwipe canGoBack={canGoBack} canSwipe={canSwipe} swipe={swipe} goBack={goBack} />
+        <FootbarSwipe
+          hasSwipedBack={hasSwipedBack}
+          canGoBack={canGoBack}
+          canSwipe={canSwipe}
+          swipe={swipe}
+          goBack={goBack}
+        />
       </div>
     </section>
   );

@@ -5,7 +5,7 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ReplayIcon from "@mui/icons-material/Replay";
 
-const FootbarSwipe = ({canGoBack, canSwipe, swipe, goBack}) => {
+const FootbarSwipe = ({canGoBack, hasSwipedBack, canSwipe, swipe, goBack}) => {
   return (
     <footer className="w-full p-7 mt-3 bg-base-300 shadow-[0px_-10px_12px_0px_#00000024] ">
       <div className="w-full border-3 ">
@@ -19,7 +19,7 @@ const FootbarSwipe = ({canGoBack, canSwipe, swipe, goBack}) => {
             </IconButton>
           </button>
           <button
-            style={{backgroundColor: !canGoBack && "#c3c4d3"}}
+            style={{backgroundColor: !hasSwipedBack && "#c3c4d3"}}
             onClick={() => goBack()}
             className="border-2  bg-fuchsia-950 flex justify-center items-center  mt-[-60px] rounded-full h-12 w-12 xs:w-16 xs:h-16 shadow-[0px_2px_3px_0px_#000]  ">
             <IconButton>
