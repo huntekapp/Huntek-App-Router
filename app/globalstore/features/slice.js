@@ -1,9 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 
 export const Slice = createSlice({
   name: "valores",
   initialState: {
     nombre: "JAB",
+  },
+  name: "valores",
+  initialState: {
+    counter: 0,
   },
   reducers: {
     guardarnombre: (state, action) => {
@@ -11,5 +15,6 @@ export const Slice = createSlice({
     },
   },
 });
+export const {guardarnombre} = Slice.actions;
 
-export const { guardarnombre } = Slice.actions;
+export default Slice.reducer;
