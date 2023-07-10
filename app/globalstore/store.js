@@ -12,9 +12,8 @@ export const store = configureStore({
     [verifBD.reducerPath]: verifBD.reducer,
     [loginDB.reducerPath]: loginDB.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([registerDB.middleware]),
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([verifBD.middleware]),
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([loginDB.middleware]),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat([registerDB.middleware, verifBD.middleware, loginDB.middleware]),
 });
 
 setupListeners(store.dispatch);

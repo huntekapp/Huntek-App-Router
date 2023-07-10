@@ -8,6 +8,7 @@ import {useSelector} from "react-redux";
 
 const VerifyMail = () => {
   const email = useSelector((state) => state.email);
+  console.log(email);
   const router = useRouter();
   const [postVerif, {isLoading}] = usePostVerifMutation();
   const inputRefs = useRef([]);
@@ -18,12 +19,18 @@ const VerifyMail = () => {
       if (event.keyCode != 8) {
         setUserCode({
           ...userCode,
-          [index]: event.target.value,
+          code: {
+            ...userCode.code,
+            [index]: event.target.value,
+          },
         });
       } else if (event.keyCode === 8 && input.value === "") {
         setUserCode({
           ...userCode,
-          [index]: "",
+          code: {
+            ...userCode.code,
+            [index]: "",
+          },
         });
       }
     } else {
