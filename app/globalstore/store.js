@@ -1,8 +1,14 @@
-import {configureStore} from "@reduxjs/toolkit";
-import {Slice} from "./slice";
+import {configureStore, getDefaultMiddleware} from "@reduxjs/toolkit";
+import {Slice} from "./features/slice";
+import {userDb} from "./services/userDb";
+import {setupListeners} from "@reduxjs/toolkit/dist/query";
 
-export default configureStore({
+export const store = configureStore({
   reducer: {
-    valores: Slice.reducer,
+    Slice,
+    [userDb.reducerPath]: userDb.reducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([userDb.middleware]),
 });
+
+setupListeners(store.dispatch);
