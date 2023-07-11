@@ -87,7 +87,7 @@ const NavBar = () => {
 							""
 						)}
 						<button className="btn btn-ghost z-0 btn-circle">
-							<a href="/notification" className="indicator">
+							<a href="/notifications" className="indicator">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									className="h-6 w-6"
