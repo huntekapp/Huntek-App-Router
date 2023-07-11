@@ -103,9 +103,9 @@ const LogForm = () => {
           <div className="m-2 flex flex-row justify-between">
             <div className="flex flex-row">
               {check ? (
-                <Image src={"/utils/checked.svg"} width={15} height={15} className="me-2" onClick={handleCheck} />
+                <Image src={"/utils/checked.svg"} width={15} height={15} className="me-2" alt="checked" onClick={handleCheck} />
               ) : (
-                <Image src={"/utils/unchecked.svg"} width={15} height={15} className="me-2" onClick={handleCheck} />
+                <Image src={"/utils/unchecked.svg"} width={15} height={15} className="me-2" alt="unchecked" onClick={handleCheck} />
               )}
               Remember Me
             </div>
