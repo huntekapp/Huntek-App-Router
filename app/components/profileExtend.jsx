@@ -1,6 +1,5 @@
 "use client";
 import {useState} from "react";
-import Image from "next/image";
 import Script from "next/script";
 
 const ProfileExt = () => {
@@ -25,8 +24,8 @@ const ProfileExt = () => {
 			</article>
 			<Script src="https://tally.so/widgets/embed.js"></Script>
 			<article className="w-11/12 h-2/3 flex flex-col justify-evenly items-center">
-				<div className="max-w-md grid grid-cols-2 gap-14">
-					<div className="w-fit h-full p-4 text-pri bg-pri-100 rounded-lg">
+				<div className="max-w-md grid grid-cols-2 place-items-center">
+					<div className="w-11/12 h-full p-6 text-pri bg-pri-100 rounded-lg">
 						<p className="m-2">Candidato en busca de trabajo</p>
 						<button
 							data-tally-open="wb9kro"
@@ -36,7 +35,7 @@ const ProfileExt = () => {
 							Candidato
 						</button>
 					</div>
-					<div className="w-fit h-full p-4 text-pri-100 bg-pri rounded-lg">
+					<div className="w-11/12 h-full p-6 text-pri-100 bg-pri rounded-lg">
 						<p className="m-2">Empresa en busca de talento</p>
 						<button
 							data-tally-open="mOlPY8"
