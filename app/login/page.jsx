@@ -1,10 +1,9 @@
 import LogForm from "../components/login";
-import Logo from "../components/logo";
 
 const Login = () => {
 	return (
-		<section className="min-h-screen bg-pri flex flex-col lg:flex-row justify-evenly items-center">
-			<Logo />
+		<section className="h-screen bg-pri flex flex-col lg:flex-row justify-evenly items-center">
+			<article className="w-1/2 h-1/4 lg:w-[450px] lg:h-[450px] bg-HKtext bg-contain bg-center bg-no-repeat"></article>
 			<LogForm />
 		</section>
 	);
