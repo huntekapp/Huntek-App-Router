@@ -123,7 +123,7 @@ const LogForm = () => {
 							)}
 							Remember Me
 						</div>
-						<Link href="/verifymail" className="hover:underline">
+						<Link href="/recoverypassword" className="hover:underline">
 							Forgot password?
 						</Link>
 					</div>
