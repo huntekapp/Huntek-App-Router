@@ -28,6 +28,7 @@ module.exports = {
         HKtext: "url('/huntek/logo-text/W(D).svg')",
         HKlogo: "url('/huntek/logo/W.svg')",
         HKGlogo: "url('/huntek/logo/G.svg')",
+        Huntek: "url('/huntek/text/W(D).svg')",
       },
     },
   },

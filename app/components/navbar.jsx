@@ -6,21 +6,21 @@ import {useEffect, useState} from "react";
 import ForumIcon from "@mui/icons-material/Forum";
 
 const NavBar = () => {
-  const [close, setClose] = useState(false);
-  const [currentPath, setCurrentPath] = useState("");
-  const backArrowPaths = ["interviews", "profileExtend", "swipe", "conversations"];
-  const conversationButtonPaths = ["swipe"];
-  const handleClick = () => {
-    setClose(!close);
-  };
+	const [close, setClose] = useState(false);
+	const [currentPath, setCurrentPath] = useState("");
+	const backArrowPaths = ["interviews", "profileExtend", "swipe", "conversations"];
+	const conversationButtonPaths = ["swipe"];
+	const handleClick = () => {
+		setClose(!close);
+	};
 
-  useEffect(() => {
-    setCurrentPath(window.location.href.slice(22, window.location.href.length));
-  });
+	useEffect(() => {
+		setCurrentPath(window.location.href.slice(22, window.location.href.length));
+	});
 
 	return (
-		<div className="navbar shadow-xl bg-pri">
-			<div className="navbar-start">
+		<nav className="navbar shadow-xl bg-pri">
+			<article className="navbar-start">
 				{!backArrowPaths.includes(currentPath) ? (
 					<div className="drawer">
 						<input type="checkbox" id="my-drawer-2" className="drawer-toggle" onClick={handleClick} />
@@ -54,11 +54,11 @@ const NavBar = () => {
 						</button>
 					</Link>
 				)}
-			</div>
-			<div className="navbar-center">
-				<h1 className="font-medium text-sec z-50 normal-case text-3xl">Huntek</h1>
-			</div>
-			<div className="navbar-end">
+			</article>
+			<article className="w-1/4 h-8 bg-Huntek bg-contain bg-no-repeat bg-center navbar-center">
+				<Link href={"/home"} className="w-full h-full"></Link>
+			</article>
+			<article className="navbar-end">
 				{close ? (
 					<button
 						onClick={() => {
@@ -87,7 +87,7 @@ const NavBar = () => {
 							""
 						)}
 						<button className="btn btn-ghost z-0 btn-circle">
-							<a href="/notifications" className="indicator">
+							<Link href="/notification" className="indicator">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									className="h-6 w-6"
@@ -101,12 +101,13 @@ const NavBar = () => {
 										d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
 									/>
 								</svg>
-							</a>
+							</Link>
 						</button>
 					</>
 				)}
-			</div>
-		</div>
+			</article>
+		</nav>
 	);
 };
+
 export default NavBar;
