@@ -1,11 +1,20 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image"
 import {useState} from "react";
+import {usePostUsersMutation} from "../globalstore/services/useRegister";
+import {useRouter} from "next/navigation";
+import {setEmail} from "../globalstore/features/emailSlice";
+import {useDispatch} from "react-redux";
 
 const SignForm = () => {
+	const [showPassword, setShowPassword] = useState(false);
+	const dispatch = useDispatch();
+	const router = useRouter();
+	const [postUsers, {isLoading}] = usePostUsersMutation();
 	const [input, setInput] = useState({
-		firstName: "",
-		lastName: "",
+		first_name: "",
+		last_name: "",
 		email: "",
 		password: "",
 	});
@@ -18,31 +27,41 @@ const SignForm = () => {
 		});
 	};
 
-	const handleSubmit = (event) => {
+	const handleShowPassword = (e) => {
+		e.preventDefault();
+		setShowPassword(!showPassword);
+	};
+
+
+	const handleSubmit = async (event) => {
 		event.preventDefault();
-		//dispatch(postRegister(input))
+		try {
+			await postUsers(input).unwrap();
+			dispatch(setEmail(input.email));
+			
+		} catch (error) {
+			console.log(error);
+		}
 		setInput({
-			firstName: "",
-			lastName: "",
+			first_name: "",
+			last_name: "",
 			email: "",
 			password: "",
 		});
+		router.push("/verifymail");
 	};
 
+	console.log(input);
 	return (
-		<section className="w-11/12 max-w-md h-screen font-medium text-sec flex flex-col items-center justify-evenly">
-			<article className="flex flex-col justify-center items-center">
-				<div className="w-40 h-40 bg-HKlogo bg-cover"></div>
-				<p className="text-3xl">Sign Up</p>
-			</article>
-			<form onSubmit={handleSubmit} className="w-full h-[500px] flex flex-col justify-evenly">
+		<section className="w-11/12 max-w-md h-3/4 lg:h-2/5 font-medium text-sec flex flex-col justify-evenly items-center">
+			<form onSubmit={handleSubmit} className="w-full h-3/4 lg:h-full flex flex-col justify-evenly">
 				<label htmlFor="firstName">
 					First Name
 					<input
 						type="text"
-						name="firstName"
-						value={input.firstName}
-						className="w-full px-3 py-2 bg-transparent outline-none border-b"
+						name="first_name"
+						value={input.first_name}
+						className="w-full px-3 pb-2 bg-transparent outline-none border-b"
 						placeholder="Your First Name"
 						onChange={handleChange}
 					/>
@@ -51,9 +70,9 @@ const SignForm = () => {
 					Last Name
 					<input
 						type="text"
-						name="lastName"
-						value={input.lastName}
-						className="w-full px-3 py-2 bg-transparent outline-none border-b"
+						name="last_name"
+						value={input.last_name}
+						className="w-full px-3 pb-2 bg-transparent outline-none border-b"
 						placeholder="Your Last Name"
 						onChange={handleChange}
 					/>
@@ -64,23 +83,45 @@ const SignForm = () => {
 						type="email"
 						name="email"
 						value={input.email}
-						className="w-full px-3 py-2 bg-transparent outline-none border-b"
-						placeholder="Your Email ✉️"
+						className="w-full px-3 pb-2 bg-transparent outline-none border-b"
+						placeholder="Your Email"
 						onChange={handleChange}
 					/>
 				</label>
 				<label htmlFor="password">
 					Password
-					<input
-						type="password"
-						name="password"
-						value={input.password}
-						className="w-full px-3 py-2 bg-transparent outline-none border-b"
-						placeholder="Your Password 🔒"
-						onChange={handleChange}
-					/>
+					<div className="relative">
+							{showPassword ? (
+								<input
+									type="text"
+									name="password"
+									value={input.password}
+									className="w-full px-3 pb-2 bg-transparent outline-none border-b"
+									placeholder="Your Password"
+									onChange={handleChange}
+									required
+								/>
+							) : (
+								<input
+									type="password"
+									name="password"
+									value={input.password}
+									className="w-full px-3 pb-2 bg-transparent outline-none border-b"
+									placeholder="Your Password"
+									onChange={handleChange}
+									required
+								/>
+							)}
+							<button onClick={handleShowPassword} className="absolute inset-y-0 end-0 grid place-content-center px-4">
+								{showPassword ? (
+									<Image src={"/utils/blink.svg"} width={20} height={20} alt="blink" unoptimized={true} />
+								) : (
+									<Image src={"/utils/notblink.svg"} width={20} height={20} alt="notblink" />
+								)}
+							</button>
+						</div>
 				</label>
-				<p className="text-gray-400">
+				<p className="text-sm text-gray-400">
 					By signing up you agree to our{" "}
 					<Link href="/ter_cond" className="text-sec hover:underline">
 						Terms & Condition and Privacy Policy.

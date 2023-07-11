@@ -6,17 +6,17 @@ import {useEffect, useState} from "react";
 import ForumIcon from "@mui/icons-material/Forum";
 
 const NavBar = () => {
-	const [close, setClose] = useState(false);
-	const [currentPath, setCurrentPath] = useState("");
-	const backArrowPaths = ["interviews", "profileExtend", "swipe"]; // Add paths that can't access to Profile view.
-	const conversationButtonPaths = ["swipe"];
-	const handleClick = () => {
-		setClose(!close);
-	};
+  const [close, setClose] = useState(false);
+  const [currentPath, setCurrentPath] = useState("");
+  const backArrowPaths = ["interviews", "profileExtend", "swipe", "conversations"];
+  const conversationButtonPaths = ["swipe"];
+  const handleClick = () => {
+    setClose(!close);
+  };
 
-	useEffect(() => {
-		setCurrentPath(window.location.href.slice(22, window.location.href.length));
-	});
+  useEffect(() => {
+    setCurrentPath(window.location.href.slice(22, window.location.href.length));
+  });
 
 	return (
 		<div className="navbar shadow-xl bg-pri">
