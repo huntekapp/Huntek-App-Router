@@ -1,7 +1,7 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 
-export const verifBD = createApi({
-  reducerPath: "verifBD",
+export const verifDB = createApi({
+  reducerPath: "verifDB",
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:8000/api/v1/users/account-activation",
   }),
@@ -15,4 +15,4 @@ export const verifBD = createApi({
   }),
 });
 
-export const {usePostVerifMutation} = verifBD;
+export const {usePostVerifMutation} = verifDB;

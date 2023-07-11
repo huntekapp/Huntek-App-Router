@@ -8,7 +8,6 @@ import {useSelector} from "react-redux";
 
 const VerifyMail = () => {
   const email = useSelector((state) => state.email);
-  console.log(email);
   const router = useRouter();
   const [postVerif, {isLoading}] = usePostVerifMutation();
   const inputRefs = useRef([]);
@@ -42,9 +41,7 @@ const VerifyMail = () => {
     const input = inputRefs.current[index];
 
     if (event.keyCode === 8 && input.value === "") {
-      // Checks backspace
       if (index > 0) {
-        // Not apply in the first input
         inputRefs.current[index - 1].focus();
       }
     } else if (input.value.length === input.maxLength) {
@@ -59,7 +56,6 @@ const VerifyMail = () => {
     try {
       let userNumber = Object.values(userCode.code).join("");
       const response = await postVerif({email: userCode.email, code: userNumber}).unwrap();
-      console.log(response);
     } catch (error) {
       console.log(error);
     }
