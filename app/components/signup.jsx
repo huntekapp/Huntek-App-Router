@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image"
 import {useState} from "react";
 import {usePostUsersMutation} from "../globalstore/services/useRegister";
 import {useRouter} from "next/navigation";
@@ -7,6 +8,7 @@ import {setEmail} from "../globalstore/features/emailSlice";
 import {useDispatch} from "react-redux";
 
 const SignForm = () => {
+	const [showPassword, setShowPassword] = useState(false);
 	const dispatch = useDispatch();
 	const router = useRouter();
 	const [postUsers, {isLoading}] = usePostUsersMutation();
@@ -25,11 +27,18 @@ const SignForm = () => {
 		});
 	};
 
+	const handleShowPassword = (e) => {
+		e.preventDefault();
+		setShowPassword(!showPassword);
+	};
+
+
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		try {
 			await postUsers(input).unwrap();
 			dispatch(setEmail(input.email));
+			
 		} catch (error) {
 			console.log(error);
 		}
@@ -81,14 +90,36 @@ const SignForm = () => {
 				</label>
 				<label htmlFor="password">
 					Password
-					<input
-						type="password"
-						name="password"
-						value={input.password}
-						className="w-full px-3 pb-2 bg-transparent outline-none border-b"
-						placeholder="Your Password"
-						onChange={handleChange}
-					/>
+					<div className="relative">
+							{showPassword ? (
+								<input
+									type="text"
+									name="password"
+									value={input.password}
+									className="w-full px-3 pb-2 bg-transparent outline-none border-b"
+									placeholder="Your Password"
+									onChange={handleChange}
+									required
+								/>
+							) : (
+								<input
+									type="password"
+									name="password"
+									value={input.password}
+									className="w-full px-3 pb-2 bg-transparent outline-none border-b"
+									placeholder="Your Password"
+									onChange={handleChange}
+									required
+								/>
+							)}
+							<button onClick={handleShowPassword} className="absolute inset-y-0 end-0 grid place-content-center px-4">
+								{showPassword ? (
+									<Image src={"/utils/blink.svg"} width={20} height={20} alt="blink" unoptimized={true} />
+								) : (
+									<Image src={"/utils/notblink.svg"} width={20} height={20} alt="notblink" />
+								)}
+							</button>
+						</div>
 				</label>
 				<p className="text-sm text-gray-400">
 					By signing up you agree to our{" "}
