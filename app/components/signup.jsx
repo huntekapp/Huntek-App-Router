@@ -27,8 +27,8 @@ const SignForm = () => {
 		});
 	};
 
-	const handleShowPassword = (e) => {
-		e.preventDefault();
+	const handleShowPassword = (event) => {
+		event.preventDefault();
 		setShowPassword(!showPassword);
 	};
 
@@ -38,7 +38,6 @@ const SignForm = () => {
 		try {
 			await postUsers(input).unwrap();
 			dispatch(setEmail(input.email));
-			
 		} catch (error) {
 			console.log(error);
 		}
@@ -51,7 +50,6 @@ const SignForm = () => {
 		router.push("/verifymail");
 	};
 
-	console.log(input);
 	return (
 		<section className="w-11/12 max-w-md h-3/4 lg:h-2/5 font-medium text-sec flex flex-col justify-evenly items-center">
 			<form onSubmit={handleSubmit} className="w-full h-3/4 lg:h-full flex flex-col justify-evenly">
