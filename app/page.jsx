@@ -1,24 +1,29 @@
 "use client";
 import {useRouter} from "next/navigation";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
 export default function Landing() {
 	const router = useRouter();
-
-	const animate = () => {
-		const timeout = setTimeout(() => {
-			router.push("/login");
-		}, 4000);
-		return () => clearTimeout(timeout);
-	};
+	const [ping, setPing] = useState(false);
 
 	useEffect(() => {
-		animate();
+		const handleAnimationEnd = () => {
+			router.push("/login");
+		};
+		const animate = setTimeout(() => {
+			setTimeout(() => {
+				setPing(true);
+				handleAnimationEnd();
+			}, 200);
+		}, 5000);
+		return () => {
+			clearTimeout(animate);
+		};
 	}, []);
 
 	return (
-		<section className="h-screen bg-pri grid place-content-center">
-			<article className="w-64 h-64 bg-HKanimate"></article>
+		<section className="w-screen h-screen bg-pri grid place-content-center border-2 border-black">
+			<div className={`w-[250px] h-[250px] bg-HKanimate ${ping && "animate-ping"}`}></div>
 		</section>
 	);
 }
