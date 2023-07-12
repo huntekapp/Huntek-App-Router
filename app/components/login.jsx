@@ -6,6 +6,7 @@ import {usePostLoginMutation} from "../globalstore/services/useLogin";
 import {useRouter} from "next/navigation";
 
 const LogForm = () => {
+	const windowsStore = window.localStorage;
 	const router = useRouter();
 	const [showPassword, setShowPassword] = useState(false);
 	const [check, setCheck] = useState(false);
@@ -14,21 +15,6 @@ const LogForm = () => {
 		email: "",
 		password: "",
 	});
-
-	const handleSubmit = async (event) => {
-		event.preventDefault();
-		try {
-			await postLogin(input).unwrap();
-			alert("success");
-		} catch (error) {
-			alert(error);
-		}
-		setInput({
-			email: "",
-			password: "",
-		});
-		router.push("/profileExtend");
-	};
 
 	const handleChange = (event) => {
 		event.preventDefault();
@@ -50,6 +36,24 @@ const LogForm = () => {
 		e.preventDefault();
 		setShowPassword(!showPassword);
 	};
+
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+		try {
+			const response = await postLogin(input).unwrap();
+			const {access_token, refresh_token} = response;
+			windowsStore.setItem("token", access_token);
+			router.push("/profileExtend");
+		} catch (error) {
+			alert(error);
+		}
+		setInput({
+			email: "",
+			password: "",
+		});
+	};
+
+	console.log(windowsStore);
 
 	return (
 		<section className="w-11/12 max-w-md h-3/5 lg:h-1/2 max-h-[450px] font-medium text-sec flex flex-col justify-around items-center">
