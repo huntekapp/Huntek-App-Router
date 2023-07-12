@@ -3,20 +3,23 @@ import {useState} from "react";
 import {useGetRecoveryMutation} from "../globalstore/services/useRecoverPw";
 import Image from "next/image";
 import Link from "next/link";
+import {AlertSuccess, AlertError} from "./alertsforrequest";
 
 const RecoverPW = () => {
-	const [input, setInput] = useState({
-		email: "",
-	});
-	const [getRecovery, { isLoading }] = useGetRecoveryMutation();
-	
+	const [input, setInput] = useState({email: ""});
+	const [errorCatched, setErrorCatched] = useState(null);
+	const [successReq, setSuccessReq] = useState(null)
+	const [getRecovery, {isLoading}] = useGetRecoveryMutation();
+
 	const handleSubmit = async (event) => {
+		setSuccessReq(null);
+		setErrorCatched(null);
 		event.preventDefault();
 		try {
-			const result = await getRecovery(input.email).unwrap()
-			console.log(result)
+			const result = await getRecovery(input.email).unwrap();
+			setSuccessReq(result.msg);
 		} catch (error) {
-			console.log(error);
+			setErrorCatched(error.data.detail);
 		}
 		setInput({
 			email: "",
@@ -30,6 +33,13 @@ const RecoverPW = () => {
 			[event.target.name]: event.target.value,
 		});
 	};
+
+	const validateMail = (email) => {
+		const regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+		return regex.test(email);
+	};
+	let emailValid = validateMail(input.email);
+
 	return (
 		<main className="bg-pri min-h-screen w-full flex justify-center items-center">
 			<Link href="/login">
@@ -62,9 +72,15 @@ const RecoverPW = () => {
 							autoFocus
 							className="w-full px-3 pb-2 bg-transparent outline-none border-b border-pri text-center text-black"
 						/>
-						<button disabled={false} className="w-14 py-1 text-pri bg-sec hover:bg-gray-300 active:bg-lig rounded-lg duration-150">
+						<button
+							disabled={!emailValid}
+							className="w-16 py-1 mt-1 text-pri bg-gray-300 hover:bg-gray-100 rounded-lg duration-150 disabled:opacity-40 disabled:hover:bg-gray-300">
 							Enviar
 						</button>
+						{errorCatched && (
+							<AlertError alertTitle={"Error!"} alertBody={errorCatched} setErrorCatched={setErrorCatched} />
+						)}
+						{successReq && (<AlertSuccess alertTitle={"Success!"} alertBody={successReq} setSuccessReq={setSuccessReq} />)}
 					</div>
 				</form>
 			</section>
