@@ -2,21 +2,19 @@
 import Link from "next/link";
 import Image from "next/image";
 import Profile from "./profile";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import ForumIcon from "@mui/icons-material/Forum";
+import {usePathname} from "next/navigation"
 
 const NavBar = () => {
+	let currentPath = usePathname()
 	const [close, setClose] = useState(false);
-	const [currentPath, setCurrentPath] = useState("");
-	const backArrowPaths = ["interviews", "profileExtend", "swipe", "conversations"];
-	const conversationButtonPaths = ["swipe"];
+	const backArrowPaths = ["/interviews", "/profileExtend", "/swipe", "/conversations"];
+	const conversationButtonPaths = ["/swipe"];
+	
 	const handleClick = () => {
 		setClose(!close);
 	};
-
-	useEffect(() => {
-		setCurrentPath(window.location.href.slice(22, window.location.href.length));
-	});
 
 	return (
 		<nav className="navbar shadow-xl bg-pri">
