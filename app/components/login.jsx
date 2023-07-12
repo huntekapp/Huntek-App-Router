@@ -123,7 +123,7 @@ const LogForm = () => {
 									onClick={handleCheck}
 								/>
 							)}
-							Recuerdame
+							Recuérdame
 						</div>
 						<Link href="/recoverpassword" className="hover:underline text-sm">
 							Olvidé mi contraseña
@@ -134,9 +134,9 @@ const LogForm = () => {
 					Entrar
 				</button>
 			</form>
-			<article class="w-full grid place-content-center relative">
-				<p className="px-2 bg-pri z-10">o continua con</p>
-				<div class="border-b border-sec absolute inset-x-0 bottom-1/2"></div>
+			<article className="w-full grid place-content-center relative">
+				<p className="px-2 bg-pri z-10">o continúa con</p>
+				<div className="border-b border-sec absolute inset-x-0 bottom-1/2"></div>
 			</article>
 			<article className="w-full grid grid-cols-3 gap-x-3">
 				<button className="flex items-center justify-center bg-sec py-2.5 border rounded-lg hover:bg-gray-300 duration-150 active:bg-lig">
@@ -151,9 +151,9 @@ const LogForm = () => {
 			</article>
 			<article className="text-center my-5">
 				<p className="">
-					No tienes cuenta?{" "}
+					¿Primera vez aquí?{" "}
 					<Link href="/signup" className="hover:underline">
-						Registrarme
+						Regístrate
 					</Link>
 				</p>
 			</article>
