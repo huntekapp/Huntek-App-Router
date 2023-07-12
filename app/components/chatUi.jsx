@@ -14,7 +14,7 @@ const ChatUi = ({pan, selectedChat}) => {
             document.getElementById("my-drawer-2").click();
             setClose(!close);
           }}>
-          <CloseIcon style={{fontSize: "0.9rem"}} />
+          <CloseIcon style={{fontSize: "1.2rem", color: "black"}} />
         </IconButton>
       </nav>
       <section className="flex flex-col p-1  border h-[90vh] h-max-[90vh] bg-sec shadow-lg rounded-2xl ">
