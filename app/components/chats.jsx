@@ -39,11 +39,7 @@ const Chat = () => {
     event.stopPropagation();
     setSelectedChat(index);
   };
-  const handleClick = (nombre, event) => {
-    event.stopPropagation();
-    let filteredChat = chat.filter((chat) => chat.name !== nombre);
-    setChats([...filteredChat]);
-  };
+
   return (
     <main>
       <section className=" bg-sec w-full min-h-screen">
@@ -77,11 +73,6 @@ const Chat = () => {
                     <div className="flex flex-col text-start w-full">
                       <h2 className="text-pri px-4 text-lg pt-2 flex justify-between  items-center font-bold">
                         {`${chat.name}`}
-                        <button
-                          onClick={() => handleClick(chat.name)}
-                          className="h-4 flex  w-4 hover:scale-125 duration-300 z-0">
-                          <Image alt="x" width={24} height={24} src="utils/x_huntek.svg" />
-                        </button>
                       </h2>
                       <p className="px-4 pb-2 h-12 max-h-12 line-clamp-2 ">{`${chat.value}`}</p>
                     </div>

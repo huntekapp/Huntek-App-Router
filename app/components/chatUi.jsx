@@ -5,11 +5,10 @@ import {IconButton} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 const ChatUi = ({pan, selectedChat}) => {
   const [close, setClose] = useState(false);
-  console.log(selectedChat);
   return (
     <main className="flex flex-col flex-auto bg-pri-200 p-4 justify-around min-h-screen ">
       <nav className="flex ml-2  justify-between items-center  ">
-        <h1 className="font-medium">{pan[selectedChat].name} </h1>
+        <h1 className="font-medium text-3xl">{pan[selectedChat].name} </h1>
         <IconButton
           onClick={() => {
             document.getElementById("my-drawer-2").click();
