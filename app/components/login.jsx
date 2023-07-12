@@ -4,10 +4,12 @@ import Link from "next/link";
 import {useState} from "react";
 import {usePostLoginMutation} from "../globalstore/services/useLogin";
 import {useRouter} from "next/navigation";
+import {AlertError} from "./alertsforrequest";
 
 const LogForm = () => {
 	const windowsStore = window.localStorage;
 	const router = useRouter();
+	const [errorCatched, setErrorCatched] = useState(null);
 	const [showPassword, setShowPassword] = useState(false);
 	const [check, setCheck] = useState(false);
 	const [postLogin, {isLoading}] = usePostLoginMutation();
@@ -32,28 +34,27 @@ const LogForm = () => {
 		});
 	};
 
-	const handleShowPassword = (e) => {
-		e.preventDefault();
+	const handleShowPassword = (event) => {
+		event.preventDefault();
 		setShowPassword(!showPassword);
 	};
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
+		setErrorCatched(null);
 		try {
 			const response = await postLogin(input).unwrap();
 			const {access_token, refresh_token} = response;
 			windowsStore.setItem("token", access_token);
 			router.push("/profileExtend");
+			setInput({
+				email: "",
+				password: "",
+			});
 		} catch (error) {
-			alert(error);
+			setErrorCatched(error.data.detail);
 		}
-		setInput({
-			email: "",
-			password: "",
-		});
 	};
-
-	console.log(windowsStore);
 
 	return (
 		<section className="w-11/12 max-w-md h-3/5 lg:h-1/2 max-h-[450px] font-medium text-sec flex flex-col justify-around items-center">
@@ -61,38 +62,35 @@ const LogForm = () => {
 				<label htmlFor="email">
 					E-mail
 					<input
-						type="email"
+						type="text"
 						name="email"
 						value={input.email}
-						className="w-full px-3 pb-2 bg-transparent outline-none border-b"
-						placeholder="Your Email"
+						className="w-full px-3 bg-transparent outline-none border-b"
+						placeholder="Tu email"
 						onChange={handleChange}
-						required
 					/>
 				</label>
 				<article>
-					<label htmlFor="password">
-						Password
+					<label className="" htmlFor="password">
+						Contraseña
 						<div className="relative">
 							{showPassword ? (
 								<input
 									type="text"
 									name="password"
 									value={input.password}
-									className="w-full px-3 pb-2 bg-transparent outline-none border-b"
-									placeholder="Your Password"
+									className="w-full px-3 bg-transparent outline-none border-b"
+									placeholder="Tu contraseña"
 									onChange={handleChange}
-									required
 								/>
 							) : (
 								<input
 									type="password"
 									name="password"
 									value={input.password}
-									className="w-full px-3 pb-2 bg-transparent outline-none border-b"
-									placeholder="Your Password"
+									className="w-full px-3 bg-transparent outline-none border-b"
+									placeholder="Tu contraseña"
 									onChange={handleChange}
-									required
 								/>
 							)}
 							<button onClick={handleShowPassword} className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -105,7 +103,7 @@ const LogForm = () => {
 						</div>
 					</label>
 					<div className="m-2 flex flex-row justify-between">
-						<div className="flex flex-row">
+						<div className="flex flex-row text-sm">
 							{check ? (
 								<Image
 									src={"/utils/checked.svg"}
@@ -125,19 +123,19 @@ const LogForm = () => {
 									onClick={handleCheck}
 								/>
 							)}
-							Remember Me
+							Recuerdame
 						</div>
-						<Link href="/recoverpassword" className="hover:underline">
-							Forgot password?
+						<Link href="/recoverpassword" className="hover:underline text-sm">
+							Olvidé mi contraseña
 						</Link>
 					</div>
 				</article>
-				<button className="w-full py-2 text-pri bg-sec hover:bg-gray-300 active:bg-lig rounded-lg duration-150">
-					Log In
+				<button className="w-full py-2 text-pri bg-sec hover:bg-gray-300 active:bg-lig rounded-lg duration-150 disabled:opacity-40 disabled:hover:bg-sec" disabled={!input.email.length}>
+					Entrar
 				</button>
 			</form>
 			<article class="w-full grid place-content-center relative">
-				<p className="px-2 bg-pri z-10">or continue with</p>
+				<p className="px-2 bg-pri z-10">o continua con</p>
 				<div class="border-b border-sec absolute inset-x-0 bottom-1/2"></div>
 			</article>
 			<article className="w-full grid grid-cols-3 gap-x-3">
@@ -153,12 +151,13 @@ const LogForm = () => {
 			</article>
 			<article className="text-center my-5">
 				<p className="">
-					Don't have an account?{" "}
+					No tienes cuenta?{" "}
 					<Link href="/signup" className="hover:underline">
-						Sign up
+						Registrarme
 					</Link>
 				</p>
 			</article>
+			{errorCatched && <AlertError alertTitle={"Error!"} alertBody={errorCatched} setErrorCatched={setErrorCatched} />}
 		</section>
 	);
 };
