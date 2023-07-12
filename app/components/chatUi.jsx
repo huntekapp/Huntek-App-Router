@@ -3,6 +3,7 @@ import {useState} from "react";
 import SendIcon from "@mui/icons-material/Send";
 import {IconButton} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import Image from "next/image";
 const ChatUi = ({pan, selectedChat}) => {
   const [close, setClose] = useState(false);
   return (
@@ -24,17 +25,27 @@ const ChatUi = ({pan, selectedChat}) => {
             <ul className="grid grid-cols-12 gap-y-1">
               <li className="col-start-1 col-end-8 p-3 rounded-lg">
                 <div className="flex flex-row items-center">
-                  <div className="flex items-center justify-center h-10 w-10 rounded-full bg-pri  flex-shrink-0">A</div>
+                  <Image
+                    src="/images/pexels-monstera-5384445.jpg"
+                    width={40}
+                    height={1}
+                    quality={100}
+                    className="flex items-center justify-center h-10 rounded-full   flex-shrink-0"
+                  />
                   <div className="relative flex  ml-3 text-sm bg-white p-3  shadow rounded-xl">
-                    <p className=" flex-grow w-auto h-auto ">quiero contratarte </p>
+                    <p className=" flex-grow w-auto h-auto "> me contratan? </p>
                   </div>
                 </div>
               </li>
               <li className="col-start-6 col-end-13 p-3 rounded-lg">
                 <div className="flex items-center justify-start flex-row-reverse">
-                  <div className="flex items-center justify-center h-10 w-10 rounded-full bg-gray-200 flex-shrink-0">
-                    A
-                  </div>
+                  <Image
+                    src="/huntek/logo/G.svg"
+                    width={40}
+                    height={1}
+                    quality={100}
+                    className="flex items-center justify-center h-10 rounded-full   flex-shrink-0"
+                  />
                   <div className="relative flex mr-3 text-sm bg-indigo-100 p-3  shadow rounded-xl">
                     <p className=" flex-grow w-auto h-auto">orale que padre</p>
                   </div>
@@ -42,9 +53,15 @@ const ChatUi = ({pan, selectedChat}) => {
               </li>
               <li className="col-start-1 col-end-8 p-3 rounded-lg">
                 <div className="flex flex-row items-center">
-                  <div className="flex items-center justify-center h-10 w-10 rounded-full bg-pri  flex-shrink-0">A</div>
+                  <Image
+                    src="/images/pexels-monstera-5384445.jpg"
+                    width={40}
+                    height={1}
+                    quality={100}
+                    className="flex items-center justify-center h-10 rounded-full   flex-shrink-0"
+                  />
                   <div className="relative flex  ml-3 text-sm bg-white p-3  shadow rounded-xl">
-                    <p className=" flex-grow w-auto h-auto ">ME OLVIDE DE DECIRTE TE CONTRATAMOS!</p>
+                    <p className=" flex-grow w-auto h-auto ">ME OLVIDE DE DECIRTE ME Contrataron!</p>
                   </div>
                 </div>
               </li>
