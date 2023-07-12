@@ -56,15 +56,15 @@ const LogForm = () => {
 	console.log(windowsStore);
 
 	return (
-		<section className="w-11/12 max-w-md h-3/5 lg:h-1/2 max-h-[450px] font-medium text-sec flex flex-col justify-around items-center">
-			<form onSubmit={handleSubmit} className="w-full h-1/2 lg:h-1/2 flex flex-col justify-between">
+		<section className="w-11/12 max-w-md h-3/5 max-h-[400px] font-medium text-sec flex flex-col justify-around items-center">
+			<form onSubmit={handleSubmit} className="w-full h-1/2 lg:h-3/5 flex flex-col justify-between">
 				<label htmlFor="email">
 					E-mail
 					<input
 						type="email"
 						name="email"
 						value={input.email}
-						className="w-full px-3 pb-2 bg-transparent outline-none border-b"
+						className="w-full px-3 py-1 bg-transparent outline-none border-b"
 						placeholder="Your Email"
 						onChange={handleChange}
 						required
@@ -79,7 +79,7 @@ const LogForm = () => {
 									type="text"
 									name="password"
 									value={input.password}
-									className="w-full px-3 pb-2 bg-transparent outline-none border-b"
+									className="w-full px-3 py-1 bg-transparent outline-none border-b"
 									placeholder="Your Password"
 									onChange={handleChange}
 									required
@@ -89,7 +89,7 @@ const LogForm = () => {
 									type="password"
 									name="password"
 									value={input.password}
-									className="w-full px-3 pb-2 bg-transparent outline-none border-b"
+									className="w-full px-3 py-1 bg-transparent outline-none border-b"
 									placeholder="Your Password"
 									onChange={handleChange}
 									required
