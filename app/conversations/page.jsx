@@ -2,7 +2,7 @@ import Chats from "../components/chats";
 
 const Conversations = () => {
   return (
-    <section>
+    <section className="bg-sec">
       <Chats />
     </section>
   );
