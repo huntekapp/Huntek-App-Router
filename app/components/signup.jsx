@@ -64,39 +64,39 @@ const SignForm = () => {
 	};
 
 	return (
-		<section className="w-11/12 max-w-md h-3/4 max-h-[375px] font-medium text-sec flex flex-col justify-evenly items-center">
-			<form onSubmit={handleSubmit} className="w-full h-3/4 lg:h-full flex flex-col justify-evenly gap-2">
-				<label htmlFor="firstName">
+		<section className="w-11/12 max-w-md h-5/6 lg:max-h-[375px] font-medium text-sec flex flex-col justify-evenly items-center">
+			<form onSubmit={handleSubmit} className="w-full lg:h-full flex flex-col justify-evenly gap-2">
+				<label className="mb-2" htmlFor="firstName">
 					Nombre
 					<input
 						type="text"
 						name="first_name"
 						value={input.first_name}
-						className="w-full px-3 pb-2 bg-transparent outline-none border-b"
+						className="w-full px-3 bg-transparent outline-none border-b"
 						placeholder="Tu nombre"
 						onChange={handleChange}
 						autocomplete="off"
 					/>
 				</label>
-				<label htmlFor="lastName">
+				<label className="mb-2" htmlFor="lastName">
 					Apellido
 					<input
 						type="text"
 						name="last_name"
 						value={input.last_name}
-						className="w-full px-3 pb-2 bg-transparent outline-none border-b"
+						className="w-full px-3 bg-transparent outline-none border-b"
 						placeholder="Tu apellido"
 						onChange={handleChange}
 						autocomplete="off"
 					/>
 				</label>
-				<label htmlFor="email">
+				<label className="mb-2" htmlFor="email">
 					E-mail
 					<input
 						type="text"
 						name="email"
 						value={input.email}
-						className="w-full px-3 pb-2 bg-transparent outline-none border-b"
+						className="w-full px-3 bg-transparent outline-none border-b"
 						placeholder="Tu email"
 						onChange={handleChange}
 						autocomplete="off"
@@ -110,7 +110,7 @@ const SignForm = () => {
 								type="text"
 								name="password"
 								value={input.password}
-								className="w-full px-3 pb-2 bg-transparent outline-none border-b"
+								className="w-full px-3 bg-transparent outline-none border-b"
 								placeholder="Tu contraseña"
 								onChange={handleChange}
 							/>
@@ -119,7 +119,7 @@ const SignForm = () => {
 								type="password"
 								name="password"
 								value={input.password}
-								className="w-full px-3 pb-2 bg-transparent outline-none border-b"
+								className="w-full px-3 bg-transparent outline-none border-b"
 								placeholder="Tu contraseña"
 								onChange={handleChange}
 							/>
@@ -133,7 +133,7 @@ const SignForm = () => {
 						</button>
 					</div>
 				</label>
-				<p className="text-xs text-gray-400 py-4">
+				<p className="text-xs text-gray-400 py-2 cursor-default">
 					Registrándote aceptas nuestros{" "}
 					<Link href="/ter_cond" className="text-sec hover:underline">
 						Términos, Condiciones y Políticas de Privacidad.
@@ -146,7 +146,7 @@ const SignForm = () => {
 				</button>
 			</form>
 			<article>
-				<p className="pt-12">
+				<p className="cursor-default lg:mt-4">
 					Ya tienes cuenta?{" "}
 					<Link href="/login" className="hover:underline">
 						Iniciar sesión
