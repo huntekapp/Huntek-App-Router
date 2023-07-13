@@ -65,7 +65,7 @@ const SignForm = () => {
 
 	return (
 		<section className="w-11/12 max-w-md h-3/4 max-h-[375px] font-medium text-sec flex flex-col justify-evenly items-center">
-			<form onSubmit={handleSubmit} className="w-full h-3/4 lg:h-full flex flex-col justify-evenly">
+			<form onSubmit={handleSubmit} className="w-full h-3/4 lg:h-full flex flex-col justify-evenly gap-2">
 				<label htmlFor="firstName">
 					Nombre
 					<input
@@ -133,7 +133,7 @@ const SignForm = () => {
 						</button>
 					</div>
 				</label>
-				<p className="text-sm text-gray-400">
+				<p className="text-xs text-gray-400 py-4">
 					Registrándote aceptas nuestros{" "}
 					<Link href="/ter_cond" className="text-sec hover:underline">
 						Términos, Condiciones y Políticas de Privacidad.
@@ -141,12 +141,12 @@ const SignForm = () => {
 				</p>
 				<button
 					className="w-full py-2 text-pri bg-sec hover:bg-gray-300 active:bg-lig rounded-lg duration-150 disabled:opacity-40 disabled:hover:bg-sec"
-					onClick={() => setErrorCatched(null)}>
+					onClick={() => setErrorCatched(null)} disabled={!input.email.length}>
 					Continuar
 				</button>
 			</form>
 			<article>
-				<p>
+				<p className="pt-12">
 					Ya tienes cuenta?{" "}
 					<Link href="/login" className="hover:underline">
 						Iniciar sesión
