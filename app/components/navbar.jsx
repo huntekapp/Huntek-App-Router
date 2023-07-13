@@ -17,7 +17,7 @@ const NavBar = () => {
 	};
 
 	return (
-		<nav className="navbar h-[10%] shadow-xl bg-pri">
+		<nav className="navbar h-[10%] max-h-20 shadow-xl bg-pri">
 			<article className="navbar-start">
 				{!backArrowPaths.includes(currentPath) ? (
 					<div className="drawer">
@@ -45,7 +45,7 @@ const NavBar = () => {
 					</div>
 				) : (
 					<Link href="/home">
-						<button className="btn btn-ghost z-0 btn-circle absolute left-2 top-2">
+						<button className="btn btn-ghost z-0 btn-circle">
 							<div className="indicator">
 								<Image src="/utils/back.svg" alt="backArrow" width={25} height={25} />
 							</div>
