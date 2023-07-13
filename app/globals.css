@@ -29,6 +29,25 @@
     animation: movein 0.5s ease forwards, moveout 0.5s 10s ease forwards;
 }
 
+
+/* Change Autocomplete styles in Chrome*/
+/* Works correctly on signup and login, maybe in other fields will cause problems */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border-bottom: 1px solid transparent;
+  -webkit-text-fill-color: white;
+  box-shadow: 0 0 0px 1000px #046255 inset;
+  color: white;
+}
+
+
 @keyframes opacity {
     0%, 50% { opacity: 0; }
     100% { opacity: 100; }
