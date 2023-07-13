@@ -1,50 +1,49 @@
 "use client";
-import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import {IconButton} from "@mui/material";
-import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ReplayIcon from "@mui/icons-material/Replay";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 
-const FootbarSwipe = ({canGoBack, hasSwipedBack, canSwipe, swipe, goBack}) => {
-  return (
-    <footer className="w-full p-7 mt-3 bg-base-300 shadow-[0px_-10px_12px_0px_#00000024] ">
-      <div className="w-full border-3 ">
-        <div className="flex justify-center gap-9">
-          <button
-            style={{backgroundColor: !canSwipe && "#c3c4d3"}}
-            onClick={() => swipe("left")}
-            className="border-2  bg-red-600 flex justify-center items-center    mt-[-60px] rounded-full h-12 w-12 xs:w-16 xs:h-16 shadow-[0px_2px_3px_0px_#000] ">
-            <IconButton>
-              <ThumbDownIcon style={{fontSize: "2rem", color: "white"}} />
-            </IconButton>
-          </button>
-          <button
-            style={{backgroundColor: !hasSwipedBack && "#c3c4d3"}}
-            onClick={() => goBack()}
-            className="border-2  bg-fuchsia-950 flex justify-center items-center  mt-[-60px] rounded-full h-12 w-12 xs:w-16 xs:h-16 shadow-[0px_2px_3px_0px_#000]  ">
-            <IconButton>
-              <ReplayIcon style={{fontSize: "2rem", color: "white"}} />
-            </IconButton>
-          </button>
-
-          <button className="border-2  bg-amber-500 flex justify-center items-center  mt-[-60px] rounded-full h-12 w-12 xs:w-16 xs:h-16 shadow-[0px_2px_3px_0px_#000]  ">
-            <IconButton>
-              <WorkOutlineIcon style={{fontSize: "2rem", color: "white"}} />
-            </IconButton>
-          </button>
-
-          <button
-            style={{backgroundColor: !canSwipe && "#c3c4d3"}}
-            onClick={() => swipe("right")}
-            className="border-2  bg-blue-600 flex justify-center  items-center mt-[-60px] rounded-full h-12 w-12 xs:w-16 xs:h-16 shadow-[0px_2px_3px_0px_#000] ">
-            <IconButton>
-              <ThumbUpIcon style={{fontSize: "2rem", color: "white"}} />
-            </IconButton>
-          </button>
-        </div>
-      </div>
-    </footer>
-  );
+const FootbarSwipe = ({hasSwipedBack, canSwipe, swipe, goBack, showInfo}) => {
+	return (
+		<footer className="w-full h-full shadow-[0px_-10px_12px_0px_#00000024] flex flex-row justify-evenly items-center relative">
+			<section className="w-full max-w-sm flex flex-row justify-evenly items-start absolute -top-8">
+				<div
+					style={{backgroundColor: !canSwipe && "#c3c4d3"}}
+					className="h-14 w-14 bg-red-600 border-2 rounded-full shadow-[0px_2px_3px_0px_#000] grid place-content-center">
+					<IconButton onClick={() => swipe("left")}>
+						<ThumbDownIcon style={{fontSize: "2rem", color: "white"}} />
+					</IconButton>
+				</div>
+				<div
+					style={{backgroundColor: !hasSwipedBack && "#c3c4d3"}}
+					className="h-14 w-14 bg-fuchsia-950 border-2 rounded-full shadow-[0px_2px_3px_0px_#000] grid place-content-center">
+					<IconButton onClick={() => goBack()}>
+						<ReplayIcon style={{fontSize: "2rem", color: "white"}} />
+					</IconButton>
+				</div>
+				<div className="h-14 w-14 bg-orange-500 border-2 rounded-full shadow-[0px_2px_3px_0px_#000] grid place-content-center">
+					<IconButton onClick={() => showInfo()}>
+						<InfoOutlinedIcon style={{fontSize: "2rem", color: "white"}} />
+					</IconButton>
+				</div>
+				<div className="h-14 w-14 bg-amber-500 border-2 rounded-full shadow-[0px_2px_3px_0px_#000] grid place-content-center">
+					<IconButton>
+						<WorkOutlineIcon style={{fontSize: "2rem", color: "white"}} />
+					</IconButton>
+				</div>
+				<div
+					style={{backgroundColor: !canSwipe && "#c3c4d3"}}
+					className="h-14 w-14 bg-blue-600 border-2 rounded-full shadow-[0px_2px_3px_0px_#000] grid place-content-center">
+					<IconButton onClick={() => swipe("right")}>
+						<ThumbUpIcon style={{fontSize: "2rem", color: "white"}} />
+					</IconButton>
+				</div>
+			</section>
+		</footer>
+	);
 };
 
 export default FootbarSwipe;
