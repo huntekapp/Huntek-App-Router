@@ -12,9 +12,10 @@ import {AlertError} from "./alertsforrequest";
 const SignForm = () => {
 	const [showPassword, setShowPassword] = useState(false);
 	const [errorCatched, setErrorCatched] = useState(null);
+	const [check, setCheck] = useState(false);
+	const [postUsers, {isLoading}] = usePostUsersMutation();
 	const dispatch = useDispatch();
 	const router = useRouter();
-	const [postUsers, {isLoading}] = usePostUsersMutation();
 	const [input, setInput] = useState({
 		first_name: "",
 		last_name: "",
@@ -27,6 +28,14 @@ const SignForm = () => {
 		setInput({
 			...input,
 			[event.target.name]: event.target.value,
+		});
+	};
+
+	const handleCheck = (event) => {
+		setCheck(!check);
+		setInput({
+			...input,
+			[event.target.name]: event.target.checked,
 		});
 	};
 
@@ -55,7 +64,7 @@ const SignForm = () => {
 	};
 
 	return (
-		<section className="w-11/12 max-w-md h-3/4 lg:h-2/5 font-medium text-sec flex flex-col justify-evenly items-center">
+		<section className="w-11/12 max-w-md h-3/4 max-h-[375px] font-medium text-sec flex flex-col justify-evenly items-center">
 			<form onSubmit={handleSubmit} className="w-full h-3/4 lg:h-full flex flex-col justify-evenly">
 				<label htmlFor="firstName">
 					Nombre

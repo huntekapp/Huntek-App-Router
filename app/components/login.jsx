@@ -57,8 +57,8 @@ const LogForm = () => {
 	};
 
 	return (
-		<section className="w-11/12 max-w-md h-3/5 lg:h-1/2 max-h-[450px] font-medium text-sec flex flex-col justify-around items-center">
-			<form onSubmit={handleSubmit} className="w-full h-1/2 lg:h-1/2 flex flex-col justify-between">
+		<section className="w-11/12 max-w-md h-3/5 max-h-[400px] font-medium text-sec flex flex-col justify-around items-center">
+			<form onSubmit={handleSubmit} className="w-full h-1/2 lg:h-3/5 flex flex-col justify-between">
 				<label htmlFor="email">
 					E-mail
 					<input
