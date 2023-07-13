@@ -3,13 +3,11 @@ import NavBar from "../components/navbar";
 import Swipe from "../components/swipe";
 
 const SwipePage = () => {
-  return (
-    <main className="bg-black">
-      <section className="min-h-screen bg-pri/70 flex flex-col justify-start items-center">
-        <NavBar />
-        <Swipe />
-      </section>
-    </main>
-  );
+	return (
+		<main className="h-screen bg-black flex flex-col justify-between items-center">
+			<NavBar />
+			<Swipe />
+		</main>
+	);
 };
 export default SwipePage;
