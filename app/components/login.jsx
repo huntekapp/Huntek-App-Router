@@ -117,7 +117,7 @@ const LogForm = () => {
               )}
               Recuérdame
             </div>
-            <Link href="/recoverpassword" as="style" className="hover:underline text-sm">
+            <Link href="/recoverpassword" as="recoverpassword" className="hover:underline text-sm">
               Olvidé mi contraseña
             </Link>
           </div>
@@ -146,7 +146,7 @@ const LogForm = () => {
       <article className="text-center my-5">
         <p className="">
           ¿Primera vez aquí?{" "}
-          <Link href="/signup" as="style" className="hover:underline">
+          <Link href="/signup" as="signup" className="hover:underline">
             Regístrate
           </Link>
         </p>
