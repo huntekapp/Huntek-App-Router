@@ -4,7 +4,9 @@ import Link from "next/link";
 import {useState} from "react";
 import {usePostLoginMutation} from "../globalstore/services/useLogin";
 import {useRouter} from "next/navigation";
-import {AlertError} from "./alertsforrequest";
+import { AlertError } from "./alertsforrequest";
+import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlineBlankOutlined';
+import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 
 const LogForm = () => {
   const router = useRouter();
@@ -103,27 +105,19 @@ const LogForm = () => {
           <div className="m-2 flex flex-row justify-between">
             <div className="flex flex-row text-sm">
               {check ? (
-                <Image
-                  src={"/utils/checked.svg"}
-                  width={15}
-                  height={15}
-                  className="me-2"
-                  alt="checked"
+                <CheckBoxOutlinedIcon
+                  className="w-4 h-4 me-2"
                   onClick={handleCheck}
                 />
               ) : (
-                <Image
-                  src={"/utils/unchecked.svg"}
-                  width={15}
-                  height={15}
-                  className="me-2"
-                  alt="unchecked"
+                <CheckBoxOutlineBlankOutlinedIcon
+                  className="w-4 h-4 me-2"
                   onClick={handleCheck}
                 />
               )}
               Recuérdame
             </div>
-            <Link href="/recoverpassword" className="hover:underline text-sm">
+            <Link href="/recoverpassword" as="recoverpassword" className="hover:underline text-sm">
               Olvidé mi contraseña
             </Link>
           </div>
@@ -152,7 +146,7 @@ const LogForm = () => {
       <article className="text-center my-5">
         <p className="">
           ¿Primera vez aquí?{" "}
-          <Link href="/signup" className="hover:underline">
+          <Link href="/signup" as="signup" className="hover:underline">
             Regístrate
           </Link>
         </p>

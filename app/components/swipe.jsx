@@ -34,6 +34,7 @@ const Swipe = () => {
 
   const canSwipe = currentIndex >= 0;
 
+
   const swiped = (direction, nameToDelete, index) => {
     setLastDirection(direction);
     updateCurrentIndex(index - 1);
@@ -45,6 +46,7 @@ const Swipe = () => {
     }
     setLastSwipeDirection(direction);
   };
+
 
   const outOfFrame = (nombre, idx) => {
     console.log(`${nombre} (${idx}) left the screen!`, currentIndexRef.current);
@@ -69,7 +71,7 @@ const Swipe = () => {
   const showInfo = () => {
     setInfo(!info);
   };
-
+  
   return (
     <main className="w-full h-[90%]">
       <section className="w-full h-[93%] bg-pri/70 flex flex-col justify-center items-center relative overflow-hidden">
@@ -141,4 +143,5 @@ const Swipe = () => {
     </main>
   );
 };
+
 export default Swipe;

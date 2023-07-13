@@ -11,11 +11,10 @@ const NavBar = () => {
   const [close, setClose] = useState(false);
   const backArrowPaths = ["/interviews", "/profileExtend", "/swipe", "/conversations"];
   const conversationButtonPaths = ["/swipe"];
-
   const handleClick = () => {
     setClose(!close);
   };
-
+  
   return (
     <nav className="navbar h-[10%] shadow-xl bg-pri">
       <article className="navbar-start">

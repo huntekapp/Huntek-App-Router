@@ -1,6 +1,8 @@
-<svg width="500" height="500" xmlns="http://www.w3.org/2000/svg">
-	<rect fill="#046255" x="298" y="62.5" width="105" height="375" id="svg_1" stroke="#046255" stroke-width="0" rx="3" />
-	<rect fill="#046255" stroke="#046255" x="98" y="62.5" width="105" height="375" id="svg_2" stroke-width="0" rx="3" />
-	<rect rx="3" fill="#046255" stroke="#046255" x="212.5" y="197.5" width="75" height="105" id="svg_4"
-		stroke-width="0" />
+<svg id="e8VfmcHCe941" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  viewBox="0 0 150 175" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
+  <g transform="matrix(1.25 0 0 1.172695-112.5-40.586417)">
+    <rect width="30" height="45" rx="0" ry="0" transform="translate(135 88.9567)" fill="#046255" stroke-width="0" />
+    <rect width="40" height="150" rx="0" ry="0" transform="translate(170 33.8384)" fill="#046255" stroke-width="0" />
+    <rect width="40" height="150" rx="0" ry="0" transform="translate(90 33.8384)" fill="#046255" stroke-width="0" />
+  </g>
 </svg>

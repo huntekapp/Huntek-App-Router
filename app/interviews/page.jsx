@@ -38,8 +38,8 @@ const InterviewsPage = () => {
 			<NavBar/>
 			<section className="min-h-screen bg-sec flex flex-col text-left">
 				<h1 className="font-semibold text-2xl mt-4 ml-6">Entrevistas confirmadas</h1>
-				{interviewInfo.map((interview) => {
-					return <InterviewDetail interviewInfo={interview} />;
+				{interviewInfo.map((interview, index) => {
+					return <InterviewDetail interviewInfo={interview} key={index}/>;
 				})}
 			</section>
 		</main>
