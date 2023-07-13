@@ -3,6 +3,7 @@ import Image from "next/image";
 import TinderCard from "react-tinder-card";
 import React, {useState, useMemo, useRef} from "react";
 import FootbarSwipe from "./footbarswipe";
+
 const Swipe = () => {
 	const [info, setInfo] = useState(false);
 	const [empresa, setEmpresa] = useState([
@@ -31,7 +32,7 @@ const Swipe = () => {
 
 	const canSwipe = currentIndex >= 0;
 
-	const swiped = (direction, nameToDelete, index) => {
+	const swiped = async (direction, index) => {
 		setLastDirection(direction);
 		updateCurrentIndex(index - 1);
 		if (direction === "left") {
@@ -64,7 +65,7 @@ const Swipe = () => {
 
 	return (
 		<main className="w-full h-[90%]">
-			<section className="w-full h-[94%] bg-pri/70 flex justify-center items-start relative overflow-hidden">
+			<section className="w-full h-[93%] bg-pri/70 flex justify-center items-start relative overflow-hidden">
 				{empresa.map((emp, index) => (
 					<TinderCard
 						ref={childRefs[index]}
@@ -73,14 +74,16 @@ const Swipe = () => {
 						swipeRequirementType="position"
 						swipeThreshold={150}
 						key={emp.nombre}
-						preventSwipe={["down"]}
-						className={`no-drag w-11/12 max-w-sm  ${
-							info ? "h-[85.8%] mt-10" : "h-[90%] mt-4"
-						} bg-sec rounded-xl shadow-lg flex flex-col justify-center items-center absolute duration-100`}>
+						preventSwipe={["down", "up"]}
+						className={`no-drag pressable w-11/12 max-w-sm  ${
+							info ? "h-[84.2%] mt-12" : "h-[90%] mt-4"
+						} bg-sec rounded-xl shadow-lg flex flex-col justify-center items-center absolute`}>
 						{info ? (
-							<article className="w-11/12 h-full flex flex-col justify-center items-center -translate-y-60 duration-500">
+							<article className="w-11/12 h-full flex flex-col justify-center items-center -translate-y-[50%] duration-500">
 								<div className="w-4/5 p-2 bg-sec border-4 border-pri rounded-xl shadow-lg flex flex-row justify-evenly items-center absolute">
-									<Image src={emp.image} width={50} height={50} alt="Tinder" className="no-drag object-cover" />
+									<button onDoubleClick={showInfo} onTouchStart={showInfo}>
+										<Image src={emp.image} width={50} height={50} alt="Tinder" className="no-drag object-cover" />
+									</button>
 									<div className="w-fit flex flex-col justify-center items-center">
 										<p className="text-lg text-black">{emp.nombre}</p>
 										<p className="line-clamp-3 text-sm/relaxed text-black/95">FullStack Dev</p>
@@ -101,31 +104,20 @@ const Swipe = () => {
 								</div>
 							</article>
 						) : (
-							<article className="w-full h-full p-4 appearedContent grid place-content-center duration-500">
-								<button>
+							<article className="w-full h-full p-4 appearedContent flex flex-col justify-around items-center duration-500">
+								<button onDoubleClick={showInfo} onTouchMove={showInfo}>
 									<Image src={emp.image} width={320} height={320} alt="Tinder" className="no-drag object-cover" />
 								</button>
-								<div className="w-full p-4 flex flex-col justify-start">
-									<time dateTime="2022-10-10" className="block text-xs text-black/90">
-										10th Oct 2022
-									</time>
-									<a href="/informacion">
-										<h3 className="mt-0.5 text-lg text-black">{emp.nombre}</h3>
-									</a>
-									<a
-										href={`${emp.parrafo}`}
-										target="_blank"
-										className="mt-2 line-clamp-3 text-sm/relaxed text-indigo-500">
-										{emp.parrafo}
-									</a>
-									<p className="mt-2 line-clamp-3 text-sm/relaxed text-black/95">Easter egg numero 3 no se </p>
+								<div className="w-full flex flex-col justify-center items-center">
+									<p className="text-3xl font-bold text-black">{emp.nombre}</p>
+									<p className="text-lg text-black">Easter egg numero 3 no se </p>
 								</div>
 							</article>
 						)}
 					</TinderCard>
 				))}
 			</section>
-			<footer className="w-full h-[6%] bg-sec">
+			<footer className="w-full h-[7%] bg-sec">
 				<FootbarSwipe
 					hasSwipedBack={hasSwipedBack}
 					canGoBack={canGoBack}
