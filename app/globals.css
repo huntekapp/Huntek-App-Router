@@ -5,7 +5,6 @@
 * {
     margin: 0;
     padding: 0;
-
 }
 
 .no-drag {
@@ -18,14 +17,27 @@
 
 @keyframes movein {
     from { top: -200px; }
-    to   { top: 7px; }
+    to { top: 7px; }
 }
 
 @keyframes moveout {
     from { top: 7px; }
-    to   { top: -200px; }
+    to { top: -200px; }
 }
 
 .expandable {
     animation: movein 0.5s ease forwards, moveout 0.5s 10s ease forwards;
+}
+
+@keyframes opacity {
+    0%, 50% { opacity: 0; }
+    100% { opacity: 100; }
+}
+
+.appearedInfo {
+    animation: opacity 1s;
+}
+
+.appearedContent {
+    animation: opacity 0.5s;
 }
