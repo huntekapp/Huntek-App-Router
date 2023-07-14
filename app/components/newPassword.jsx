@@ -54,7 +54,6 @@ const NewPassword = () => {
 			password: "",
 		});
 	};
- console.log(input, repeated);
 	return (
 		<section className="w-full h-full text-pri flex flex-col items-center justify-center">
 			<article className="w-11/12 h-3/4 max-h-[450px] bg-sec rounded-lg shadow-2xl flex flex-col justify-center items-center">
