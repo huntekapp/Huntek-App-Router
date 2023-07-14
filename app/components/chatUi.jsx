@@ -32,9 +32,8 @@ const ChatUi = ({pan, selectedChat}) => {
                     alt="profileImg"
                     width={40}
                     height={1}
-                    style={{height: "auto"}}
                     quality={100}
-                    className="flex items-center justify-center h-10 rounded-full   flex-shrink-0"
+                    className="flex items-center justify-center h-10  rounded-full   flex-shrink-0"
                   />
                   <div className=" flex  ml-3 text-sm bg-white p-2  shadow rounded-xl">
                     <p className="break-words w-full"> me han contratado? </p>
@@ -48,7 +47,6 @@ const ChatUi = ({pan, selectedChat}) => {
                     alt="profileImg"
                     width={20}
                     height={20}
-                    style={{height: "auto"}}
                     quality={100}
                     className="flex items-center justify-center h-10 rounded-full   flex-shrink-0"
                   />
@@ -64,7 +62,6 @@ const ChatUi = ({pan, selectedChat}) => {
                     alt="profileImg"
                     width={40}
                     height={1}
-                    style={{height: "auto"}}
                     quality={100}
                     className="flex items-center justify-center h-10 rounded-full   flex-shrink-0"
                   />
