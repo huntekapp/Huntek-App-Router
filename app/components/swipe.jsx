@@ -127,8 +127,7 @@ const Swipe = () => {
                     src={emp.image}
                     alt="Tinder"
                     fill="true"
-                    objectFit="cover"
-                    objectPosition="center"
+                    style={{ objectFit: "cover", height: "auto" }}
                     className="no-drag"
                   />
                 </div>

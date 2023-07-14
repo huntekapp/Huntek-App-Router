@@ -29,8 +29,10 @@ const ChatUi = ({pan, selectedChat}) => {
                 <div className="flex flex-row items-center">
                   <Image
                     src="/images/pexels-monstera-5384445.jpg"
+                    alt="profileImg"
                     width={40}
                     height={1}
+                    style={{height: "auto"}}
                     quality={100}
                     className="flex items-center justify-center h-10 rounded-full   flex-shrink-0"
                   />
@@ -43,8 +45,10 @@ const ChatUi = ({pan, selectedChat}) => {
                 <div className="flex items-center justify-start flex-row-reverse">
                   <Image
                     src="/huntek/logo/G.svg"
+                    alt="profileImg"
                     width={20}
                     height={20}
+                    style={{height: "auto"}}
                     quality={100}
                     className="flex items-center justify-center h-10 rounded-full   flex-shrink-0"
                   />
@@ -57,8 +61,10 @@ const ChatUi = ({pan, selectedChat}) => {
                 <div className="flex flex-row items-center">
                   <Image
                     src="/images/pexels-monstera-5384445.jpg"
+                    alt="profileImg"
                     width={40}
                     height={1}
+                    style={{height: "auto"}}
                     quality={100}
                     className="flex items-center justify-center h-10 rounded-full   flex-shrink-0"
                   />
