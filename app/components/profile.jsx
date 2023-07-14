@@ -9,9 +9,9 @@ const Profile = () => {
           <div className="flex-grow w-full">
             <h2 className="ml-10 text-4xl font-bold mb-12 cursor-default">Mi perfil</h2>
 
-            <div className="rounded-lg w-full mb-6 justify-start gap-7 mt-4 relative flex items-center text-pri flex-row">
+            <div className="rounded-lg  w-full mb-6 justify-start gap-4 mt-4 relative flex items-center text-pri flex-row">
               <Link href="/profileExtend">
-                <div className="w-16 h-16 ml-10 avatar ">
+                <div className="w-16 h-16 ml-5  avatar ">
                   <Image
                     alt="avatar"
                     width={100}
@@ -32,7 +32,7 @@ const Profile = () => {
                   width={25}
                   height={25}
                   src="/utils/pencil_huntek.svg"
-                  className="absolute right-0 top-5	text-pri hover:opacity-70 mr-6 cursor-pointer "
+                  className="absolute right-0 top-5	text-pri hover:opacity-70 mr-4 cursor-pointer "
                 />
               </Link>
             </div>
