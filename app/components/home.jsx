@@ -4,7 +4,7 @@ import Interviews from "./interviews";
 
 const Home = () => {
   return (
-    <section className="w-full p-6 text-pri flex flex-col justify-evenly items-left">
+    <section className="w-full p-4 text-pri flex flex-col justify-evenly items-left">
       <p className="text-xl">¡Hola!</p>
       <p className="font-medium  text-3xl">Luis Sanchez</p>
       <Postulations />
