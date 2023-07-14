@@ -67,6 +67,7 @@ const RecoverPW = () => {
 							onChange={handleChange}
 							value={input.email}
 							autoFocus
+							autoComplete="off"
 							className="w-full px-3 pb-2 bg-transparent outline-none border-b border-pri text-center text-black"
 						/>
 						<button
