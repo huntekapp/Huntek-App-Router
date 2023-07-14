@@ -29,10 +29,10 @@ const Postulations = () => {
 			id: "Windows",
 			image: "/images/windows-gc6d7a955d_1920.png",
 		},
-    {
-      id: "apple",
-      image: "/images/apple-g44d4327db_1920.png"
-    },
+		{
+			id: "apple",
+			image: "/images/apple-g44d4327db_1920.png",
+		},
 	]);
 	return (
 		<main className="w-full h-40 my-6 flex flex-col justify-around">
@@ -44,9 +44,9 @@ const Postulations = () => {
 			</div>
 			<section className="carousel carousel-center  w-full p-2  space-x-6 rounded-box">
 				{postulaciones.map((post, index) => (
-          <article key={index} className="carousel-item avatar">
-            <div className="w-16 rounded-full ring ring-pri ring-offset-base-100 ring-offset-2">
-              <Image key={post.id} alt={post.id} src={post.image} width={60} height={100} quality={100} />
+					<article key={index} className="carousel-item avatar">
+						<div className="w-16 rounded-full ring ring-pri ring-offset-sec ring-offset-2">
+							<Image key={post.id} alt={post.id} src={post.image} width={60} height={60} quality={100} />
 						</div>
 					</article>
 				))}

@@ -8,7 +8,7 @@ import {AlertSuccess, AlertError} from "./alertsforrequest";
 const RecoverPW = () => {
 	const [input, setInput] = useState({email: ""});
 	const [errorCatched, setErrorCatched] = useState(null);
-	const [successReq, setSuccessReq] = useState(null)
+	const [successReq, setSuccessReq] = useState(null);
 	const [getRecovery, {isLoading}] = useGetRecoveryMutation();
 
 	const handleSubmit = async (event) => {
@@ -50,13 +50,9 @@ const RecoverPW = () => {
 				</button>
 			</Link>
 			<section className="bg-sec text-pri h-[400px] w-10/12 flex flex-col items-center rounded-lg opacity-90 shadow-2xl">
-				<Image
-					src={"/huntek/logo/G.svg"}
-					width={90}
-					height={90}
-					alt="logo"
-					className=" rounded-full border-4 shadow-lg p-1 mt-7"
-				/>
+				<div className="p-4 rounded-full border-4 shadow-lg mt-7">
+					<Image src={"/huntek/logo/G.svg"} width={40} height={40} alt="logo" />
+				</div>
 				<form onSubmit={handleSubmit} className="h-full w-full flex flex-col items-center mt-6">
 					<p className="text-xl mb-4 opacity-100">¿Ovidaste tu contraseña?</p>
 					<p className="text-sm opacity-100">No hay de que preocuparse,</p>
@@ -80,7 +76,9 @@ const RecoverPW = () => {
 						{errorCatched && (
 							<AlertError alertTitle={"Error!"} alertBody={errorCatched} setErrorCatched={setErrorCatched} />
 						)}
-						{successReq && (<AlertSuccess alertTitle={"Success!"} alertBody={successReq} setSuccessReq={setSuccessReq} />)}
+						{successReq && (
+							<AlertSuccess alertTitle={"Success!"} alertBody={successReq} setSuccessReq={setSuccessReq} />
+						)}
 					</div>
 				</form>
 			</section>
