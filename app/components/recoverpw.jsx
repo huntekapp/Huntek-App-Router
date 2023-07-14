@@ -19,7 +19,8 @@ const RecoverPW = () => {
 			const result = await getRecovery(input.email).unwrap();
 			setSuccessReq(result.msg);
 		} catch (error) {
-			setErrorCatched(error.data.detail);
+			if(error.status === "FETCH_ERROR") return setErrorCatched("No se ha podido establecer conexión con el servidor.")
+			setErrorCatched(error.data?.detail);
 		}
 		setInput({
 			email: "",

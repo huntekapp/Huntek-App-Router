@@ -68,9 +68,9 @@ const VerifyMail = () => {
 			const response = await postVerif({ email: userCode.email, code: userNumber }).unwrap();
 			router.push("/login");
 		} catch (error) {
+			if(error.status === "FETCH_ERROR") return setErrorCatched("No se ha podido establecer conexión con el servidor.")
 			if (error.data?.detail[0].msg) return setErrorCatched(error.data.detail[0].msg)
 			setErrorCatched(error.data?.detail)
-			console.log(error)
 		}
 		setUserCode({
 			code: {0: "", 1: "", 2: "", 3: "", 4: "", 5: ""},

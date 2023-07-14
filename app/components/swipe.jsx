@@ -47,7 +47,7 @@ const Swipe = () => {
 	};
 
 	const outOfFrame = (nombre, idx) => {
-		console.log(`${nombre} (${idx}) left the screen!`, currentIndexRef.current);
+		// console.log(`${nombre} (${idx}) left the screen!`, currentIndexRef.current);
 		currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
 	};
 
