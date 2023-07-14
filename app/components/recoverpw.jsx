@@ -19,7 +19,8 @@ const RecoverPW = () => {
 			const result = await getRecovery(input.email).unwrap();
 			setSuccessReq(result.msg);
 		} catch (error) {
-			if(error.status === "FETCH_ERROR") return setErrorCatched("No se ha podido establecer conexión con el servidor.")
+			if (error.status === "FETCH_ERROR")
+				return setErrorCatched("No se ha podido establecer conexión con el servidor.");
 			setErrorCatched(error.data?.detail);
 		}
 		setInput({
@@ -42,7 +43,7 @@ const RecoverPW = () => {
 	let emailValid = validateMail(input.email);
 
 	return (
-		<main className="bg-pri min-h-screen w-full flex justify-center items-center">
+		<section className="w-full h-full text-pri flex flex-col items-center justify-center">
 			<Link href="/login">
 				<button className="btn btn-ghost z-0 btn-circle absolute left-2 top-2">
 					<div className="indicator">
@@ -50,29 +51,31 @@ const RecoverPW = () => {
 					</div>
 				</button>
 			</Link>
-			<section className="bg-sec text-pri h-[400px] w-10/12 flex flex-col items-center rounded-lg opacity-90 shadow-2xl">
-				<div className="p-4 rounded-full border-4 shadow-lg mt-7">
-					<Image src={"/huntek/logo/G.svg"} width={40} height={40} alt="logo" />
+			<article className="w-11/12 h-3/4 max-h-[450px] bg-sec rounded-lg shadow-2xl flex flex-col justify-center items-center">
+				<div className="w-20 h-20 p-4 border-4 rounded-full shadow-lg grid place-content-center">
+					<Image src={"/huntek/logo/G.svg"} alt="logo" width={35} height={35} />
 				</div>
-				<form onSubmit={handleSubmit} className="h-full w-full flex flex-col items-center mt-6">
-					<p className="text-xl mb-4 opacity-100">¿Ovidaste tu contraseña?</p>
-					<p className="text-sm opacity-100">No hay de que preocuparse,</p>
-					<p className="text-sm opacity-100">escribe tu email debajo</p>
-					<p className="text-sm opacity-100 ">y te enviaremos las instrucciones</p>
-					<p className="text-sm opacity-100">para recuperarla.</p>
-					<div className="flex flex-col items-center justify-center gap-2 mt-8 w-96">
+				<form onSubmit={handleSubmit} className="w-full h-3/5 flex flex-col justify-evenly items-center">
+					<p className="text-xl opacity-100">¿Ovidaste tu contraseña?</p>
+					<div className="text-center">
+						<p className="text-sm opacity-100">No hay de que preocuparse,</p>
+						<p className="text-sm opacity-100">escribe tu email debajo</p>
+						<p className="text-sm opacity-100 ">y te enviaremos las instrucciones</p>
+						<p className="text-sm opacity-100">para recuperarla.</p>
+					</div>
+					<div className="w-full max-w-xs flex flex-col items-center justify-center">
 						<input
 							type="email"
 							name="email"
-							onChange={handleChange}
 							value={input.email}
+							onChange={handleChange}
 							autoFocus
 							autoComplete="off"
 							className="w-full px-3 pb-2 bg-transparent outline-none border-b border-pri text-center text-black"
 						/>
 						<button
 							disabled={!emailValid}
-							className="w-16 py-1 mt-1 text-pri bg-gray-300 hover:bg-gray-100 rounded-lg duration-150 disabled:opacity-40 disabled:hover:bg-gray-300">
+							className="w-fit px-2 py-1 mt-2 text-pri bg-gray-300 rounded-lg hover:bg-gray-100 disabled:opacity-40 disabled:hover:bg-gray-300 duration-150">
 							Enviar
 						</button>
 						{errorCatched && (
@@ -83,8 +86,8 @@ const RecoverPW = () => {
 						)}
 					</div>
 				</form>
-			</section>
-		</main>
+			</article>
+		</section>
 	);
 };
 export default RecoverPW;

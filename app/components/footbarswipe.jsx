@@ -29,14 +29,14 @@ const FootbarSwipe = ({hasSwipedBack, canSwipe, swipe, goBack, showInfo}) => {
             <WorkOutlineIcon style={{fontSize: "2rem", color: "white"}} />
           </IconButton>
         </div>
-        <div className="h-14 w-14 bg-green-500 border-2 rounded-full shadow-[0px_2px_3px_0px_#000] grid place-content-center">
+        <div className="h-14 w-14 bg-blue-600 border-2 rounded-full shadow-[0px_2px_3px_0px_#000] grid place-content-center">
           <IconButton onClick={() => showInfo()}>
             <InfoOutlinedIcon style={{fontSize: "2.5rem", color: "white"}} />
           </IconButton>
         </div>
         <div
           style={{backgroundColor: !canSwipe && "#c3c4d3"}}
-          className="h-14 w-14 bg-blue-600 border-2 rounded-full shadow-[0px_2px_3px_0px_#000] grid place-content-center">
+          className="h-14 w-14 bg-green-500 border-2 rounded-full shadow-[0px_2px_3px_0px_#000] grid place-content-center">
           <IconButton onClick={() => swipe("right")}>
             <ThumbUpIcon style={{fontSize: "2rem", color: "white"}} />
           </IconButton>
