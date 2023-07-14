@@ -4,9 +4,9 @@ import Link from "next/link";
 import {useState} from "react";
 import {usePostLoginMutation} from "../globalstore/services/useLogin";
 import {useRouter} from "next/navigation";
-import { AlertError } from "./alertsforrequest";
-import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlineBlankOutlined';
-import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
+import {AlertError} from "./alertsforrequest";
+import CheckBoxOutlineBlankOutlinedIcon from "@mui/icons-material/CheckBoxOutlineBlankOutlined";
+import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 
 const LogForm = () => {
   const router = useRouter();
@@ -46,7 +46,9 @@ const LogForm = () => {
     try {
       const response = await postLogin(input).unwrap();
       const {access_token, refresh_token} = response;
-      document.cookie = `token=${access_token}`;
+      const date = new Date();
+      date.setDate(date.getDate() + 7);
+      document.cookie = `token=${access_token}; expires=${date.toUTCString()}`;
       router.push("/profileExtend");
       setInput({
         email: "",
@@ -105,15 +107,9 @@ const LogForm = () => {
           <div className="m-2 flex flex-row justify-between">
             <div className="flex flex-row text-sm">
               {check ? (
-                <CheckBoxOutlinedIcon
-                  className="w-4 h-4 me-2"
-                  onClick={handleCheck}
-                />
+                <CheckBoxOutlinedIcon className="w-4 h-4 me-2" onClick={handleCheck} />
               ) : (
-                <CheckBoxOutlineBlankOutlinedIcon
-                  className="w-4 h-4 me-2"
-                  onClick={handleCheck}
-                />
+                <CheckBoxOutlineBlankOutlinedIcon className="w-4 h-4 me-2" onClick={handleCheck} />
               )}
               Recuérdame
             </div>
