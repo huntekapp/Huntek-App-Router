@@ -13,7 +13,6 @@ const ProfileExt = () => {
 			...userData,
 			[event.target.name]: event.target.value,
 		});
-		console.log(userData);
 	};
 
 	return (
