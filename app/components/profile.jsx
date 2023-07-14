@@ -8,7 +8,6 @@ const Profile = () => {
 				<div className="flex justify-start mt-10 h-full gap-10 w-[100vw]  items-start flex-col flex-wrap ">
 					<div className="flex-grow w-full">
 						<h2 className="ml-10 text-4xl font-bold mb-12 cursor-default">Mi perfil</h2>
-
 						<div className="rounded-lg  w-full mb-6 justify-start gap-4 mt-4 relative flex items-center text-pri flex-row">
 							<Link href="/profileExtend">
 								<div className="w-16 h-16 ml-8 avatar">

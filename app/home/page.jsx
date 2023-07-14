@@ -4,11 +4,11 @@ import Footbar from "../components/footbar";
 
 const HomePage = () => {
 	return (
-		<section className="min-h-screen bg-sec flex flex-col justify-start">
+		<main className="min-h-screen bg-sec flex flex-col justify-start">
 			<NavBar />
 			<Home />
 			<Footbar />
-		</section>
+		</main>
 	);
 };
 

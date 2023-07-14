@@ -7,8 +7,18 @@ import FootbarSwipe from "./footbarswipe";
 const Swipe = () => {
   const [info, setInfo] = useState(false);
   const [empresa, setEmpresa] = useState([
-    {nombre: "Google", image: "/social/google.svg", parrafo: "htpps://huntek.com"},
-    {nombre: "Huntek", image: "/huntek/logo/G.svg", parrafo: "https://www.google.com/"},
+    {
+      nombre: "Google",
+      image: "/social/google.svg",
+      parrafo: "htpps://huntek.com",
+      info: "Se necesita desarrollador Front End especializado en React, Next.js, Node.js, PostgreSQL, Sequelize y Python. Jornada laboral de 40 horas semanales, fin de semanas libres. Dos semanas de vacaciones al año. Trabajo remoto. Objetivos salariales.",
+    },
+    {
+      nombre: "Huntek",
+      image: "/huntek/logo/G.svg",
+      parrafo: "https://www.google.com/",
+      info: "Se necesita desarrollador Front End especializado en React, Next.js, Node.js, PostgreSQL, Sequelize y Python. Jornada laboral de 40 horas semanales, fin de semanas libres. Dos semanas de vacaciones al año. Trabajo remoto. Objetivos salariales",
+    },
   ]);
   const [currentIndex, setCurrentIndex] = useState(empresa.length - 1);
   const [lastDirection, setLastDirection] = useState();
@@ -98,30 +108,22 @@ const Swipe = () => {
                   </div>
                 </div>
                 <div className="w-full text-black flex flex-col justify-evenly items-center appearedInfo translate-y-52 duration-1000">
-                  <p className="text-xl font-bold">¡Te estamos buscando!</p>
-                  <p className="">¡Te estamos buscando!</p>
-                  <p className="">¡Te estamos buscando!</p>
-                  <p className="">¡Te estamos buscando!</p>
-                  <p className="">¡Te estamos buscando!</p>
-                  <p className="">¡Te estamos buscando!</p>
-                  <p className="">¡Te estamos buscando!</p>
-                  <p className="">¡Te estamos buscando!</p>
-                  <p className="">¡Te estamos buscando!</p>
-                  <p className="">¡Te estamos buscando!</p>
-                  <p className="">¡Te estamos buscando!</p>
+                  <p className="text-xl mt-32 font-bold">¡Te estamos buscando!</p>
+                  <p className="text-center">{emp.info}</p>
+                  <iframe
+                    width="360"
+                    height="200"
+                    src="https://www.youtube.com/embed/O8RTHwOEqJA"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    className="rounded-xl mt-6"
+                    allowFullScreen></iframe>
                 </div>
               </article>
             ) : (
               <article className="w-full h-full p-8 appearedContent flex flex-col justify-between items-center duration-500">
                 <div className="w-full h-3/4 grid place-content-center relative">
-                  <Image
-                    src={emp.image}
-                    alt="Tinder"
-                    fill="true"
-                    objectFit="cover"
-                    objectPosition="center"
-                    className="no-drag"
-                  />
+                  <Image src={emp.image} alt="Tinder" fill="true" className="no-drag" />
                 </div>
                 <div className="w-full flex flex-col justify-center items-center">
                   <p
