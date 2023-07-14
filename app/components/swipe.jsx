@@ -84,7 +84,7 @@ const Swipe = () => {
             preventSwipe={["down"]}
             className={`no-drag w-11/12 max-w-sm ${
               info ? "h-[83%] mt-12" : "h-[90%] mt-4"
-            } max-h-[500px] mb-10 bg-sec rounded-3xl shadow-lg flex flex-col justify-center items-center absolute duration-100`}>
+            } max-h-[500px] mb-10 bg-sec rounded-3xl shadow-lg flex flex-col justify-center items-center absolute duration-150`}>
             {info ? (
               <article className="w-11/12 h-full flex flex-col justify-center items-center -translate-y-[50%] duration-500">
                 <div

@@ -21,8 +21,8 @@ const ChatUi = ({pan, selectedChat}) => {
           <CloseIcon style={{fontSize: "1.2rem", color: "black"}} />
         </IconButton>
       </nav>
-      <section className="p-4">
-        <article className="flex flex-col p-1  border h-[86vh] h-max-[86vh] bg-sec shadow-lg rounded-2xl ">
+      <section className="px-2 py-3">
+        <article className="flex flex-col p-1  border h-[87vh] h-max-[88vh] bg-sec shadow-lg rounded-2xl ">
           <div className="flex flex-col h-full overflow-x-auto mb-4">
             <ul className="grid grid-cols-12 gap-y-1">
               <li className="col-start-1 col-end-8 p-3 rounded-lg">
