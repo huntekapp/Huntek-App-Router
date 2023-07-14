@@ -4,7 +4,7 @@ import Footbar from "../components/footbar";
 
 const HomePage = () => {
 	return (
-		<main className="min-h-screen bg-sec flex flex-col justify-start">
+		<main className="h-screen bg-sec flex flex-col justify-start">
 			<NavBar />
 			<Home />
 			<Footbar />

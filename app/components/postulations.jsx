@@ -15,14 +15,14 @@ const Postulations = () => {
 	]);
 
 	return (
-		<article className="w-full h-32 flex flex-col justify-around">
+		<article className="w-full h-1/5 flex flex-col justify-around">
 			<div className="px-4 flex flex-row justify-between">
 				<p>Mis postulaciones</p>
 				<Link href="" className="font-medium">
 					Ver todas
 				</Link>
 			</div>
-			<div className="w-full h-auto p-2 carousel carousel-center pwd space-x-5">
+			<div className="w-full h-auto p-2 carousel carousel-center space-x-5">
 				{postulaciones.map((post, index) => (
 					<div key={index} className="carousel-item avatar">
 						<div className="w-[70px] border-4 border-pri rounded-full shadow-md relative">
