@@ -17,17 +17,18 @@
 
 @keyframes movein {
     from { top: -200px; }
-    to   { top: 7px; }
+    to { top: 7px; }
 }
 
 @keyframes moveout {
     from { top: 7px; }
-    to   { top: -200px; }
+    to { top: -200px; }
 }
 
 .expandable {
     animation: movein 0.5s ease forwards, moveout 0.5s 10s ease forwards;
 }
+
 
 /* Change Autocomplete styles in Chrome*/
 /* Works correctly on signup and login, maybe in other fields will cause problems */
@@ -44,4 +45,18 @@ select:-webkit-autofill:focus {
   -webkit-text-fill-color: white;
   box-shadow: 0 0 0px 1000px #046255 inset;
   color: white;
+}
+
+
+@keyframes opacity {
+    0%, 50% { opacity: 0; }
+    100% { opacity: 100; }
+}
+
+.appearedInfo {
+    animation: opacity 1s;
+}
+
+.appearedContent {
+    animation: opacity 0.5s;
 }

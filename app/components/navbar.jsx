@@ -4,20 +4,20 @@ import Image from "next/image";
 import Profile from "./profile";
 import {useState} from "react";
 import ForumIcon from "@mui/icons-material/Forum";
-import {usePathname} from "next/navigation"
+import {usePathname} from "next/navigation";
 
 const NavBar = () => {
-	let currentPath = usePathname()
+	let currentPath = usePathname();
 	const [close, setClose] = useState(false);
 	const backArrowPaths = ["/interviews", "/profileExtend", "/swipe", "/conversations"];
 	const conversationButtonPaths = ["/swipe"];
-	
+
 	const handleClick = () => {
 		setClose(!close);
 	};
 
 	return (
-		<nav className="navbar shadow-xl bg-pri">
+		<nav className="navbar h-[10%] shadow-xl bg-pri">
 			<article className="navbar-start">
 				{!backArrowPaths.includes(currentPath) ? (
 					<div className="drawer">
