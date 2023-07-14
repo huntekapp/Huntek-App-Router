@@ -59,35 +59,39 @@ const SignForm = () => {
 			});
 			router.push("/verifymail");
 		} catch (error) {
-			setErrorCatched(error.data.detail);
+			if (error.status === "FETCH_ERROR")
+				return setErrorCatched("No se ha podido establecer conexión con el servidor.");
+			setErrorCatched(error.data?.detail);
 		}
 	};
 
 	return (
 		<section className="w-11/12 max-w-md h-5/6 lg:max-h-[375px] font-medium text-sec flex flex-col justify-evenly items-center">
 			<form onSubmit={handleSubmit} className="w-full lg:h-full flex flex-col justify-evenly gap-2">
-				<label className="mb-2" htmlFor="firstName">
+				<label className="mb-2" htmlFor="first_name">
 					Nombre
 					<input
 						type="text"
 						name="first_name"
+						id="first_name"
 						value={input.first_name}
 						className="w-full px-3 bg-transparent outline-none border-b"
 						placeholder="Tu nombre"
 						onChange={handleChange}
-						autocomplete="off"
+						autoComplete="off"
 					/>
 				</label>
-				<label className="mb-2" htmlFor="lastName">
+				<label className="mb-2" htmlFor="last_name">
 					Apellido
 					<input
 						type="text"
 						name="last_name"
+						id="last_name"
 						value={input.last_name}
 						className="w-full px-3 bg-transparent outline-none border-b"
 						placeholder="Tu apellido"
 						onChange={handleChange}
-						autocomplete="off"
+						autoComplete="off"
 					/>
 				</label>
 				<label className="mb-2" htmlFor="email">
@@ -95,11 +99,12 @@ const SignForm = () => {
 					<input
 						type="text"
 						name="email"
+						id="email"
 						value={input.email}
 						className="w-full px-3 bg-transparent outline-none border-b"
 						placeholder="Tu email"
 						onChange={handleChange}
-						autocomplete="off"
+						autoComplete="off"
 					/>
 				</label>
 				<label htmlFor="password">
@@ -109,6 +114,7 @@ const SignForm = () => {
 							<input
 								type="text"
 								name="password"
+								id="password"
 								value={input.password}
 								className="w-full px-3 bg-transparent outline-none border-b"
 								placeholder="Tu contraseña"
@@ -118,6 +124,7 @@ const SignForm = () => {
 							<input
 								type="password"
 								name="password"
+								id="password"
 								value={input.password}
 								className="w-full px-3 bg-transparent outline-none border-b"
 								placeholder="Tu contraseña"
@@ -141,7 +148,8 @@ const SignForm = () => {
 				</p>
 				<button
 					className="w-full py-2 text-pri bg-sec hover:bg-gray-300 active:bg-lig rounded-lg duration-150 disabled:opacity-40 disabled:hover:bg-sec"
-					onClick={() => setErrorCatched(null)} disabled={!input.email.length}>
+					onClick={() => setErrorCatched(null)}
+					disabled={!input.email.length}>
 					Continuar
 				</button>
 			</form>

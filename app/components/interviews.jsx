@@ -2,24 +2,22 @@ import Link from "next/link";
 
 const Interviews = () => {
 	return (
-		<section className="w-full h-36 my-6 flex flex-col justify-around mb-16">
-			<article className="flex flex-row justify-between">
+		<article className="w-full h-32 mb-24 px-4 flex flex-col justify-around">
+			<div className="flex flex-row justify-between">
 				<p>Mis entrevistas</p>
 				<Link href="/interviews" className="font-medium">
 					Ver todas
 				</Link>
-			</article>
-			<article className="w-full shadow-lg">
-				<div className="h-20 p-3 flex items-center just shadow-lg bg-sec border rounded-xl">
-					<span className=" w-20 flex font-bold mr-8 text-sm items-center justify-center border-pri text-pri border-2 h-[3.9rem] rounded-full">
-						18 SEP
-					</span>
-					<p className="text-xl flex w-full font-medium text-black">
-						15:30HS | <span className="font-medium ml-2 text-pri"> Coca-Cola</span>
-					</p>
-				</div>
-			</article>
-		</section>
+			</div>
+			<div className="w-full h-3/5 px-4 text-xs xs:text-sm text-pri border rounded-xl shadow-md flex flex-row justify-around items-center">
+				<span className="w-14 h-14 font-bold text-sm border-2 border-pri rounded-full grid place-content-center">
+					18 SEP
+				</span>
+				<p className="text-xl font-medium text-black">
+					15:30HS | <span className="font-medium text-pri">Coca-Cola</span>
+				</p>
+			</div>
+		</article>
 	);
 };
 

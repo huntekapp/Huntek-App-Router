@@ -9,7 +9,7 @@ import {usePathname} from "next/navigation";
 const NavBar = () => {
   let currentPath = usePathname();
   const [close, setClose] = useState(false);
-  const backArrowPaths = ["/interviews", "/profileExtend", "/swipe", "/conversations"];
+  const backArrowPaths = ["/interviews", "/profileExtend", "/swipe", "/conversations", "/postulations"];
   const conversationButtonPaths = ["/swipe"];
   const handleClick = () => {
     setClose(!close);
@@ -52,8 +52,8 @@ const NavBar = () => {
           </Link>
         )}
       </article>
-      <article className="w-1/4 h-8 bg-Huntek bg-contain bg-no-repeat bg-center navbar-center">
-        <Link href={"/home"} className="w-full h-full"></Link>
+      <article className="w-1/4 h-8 bg-Huntek bg-contain bg-no-repeat bg-center flex flex-row justify-center navbar-center">
+        <Link href={"/home"} className="w-full max-w-[120px] h-full"></Link>
       </article>
       <article className="navbar-end">
         {close ? (

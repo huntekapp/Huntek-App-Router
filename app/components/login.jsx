@@ -4,9 +4,9 @@ import Link from "next/link";
 import {useState} from "react";
 import {usePostLoginMutation} from "../globalstore/services/useLogin";
 import {useRouter} from "next/navigation";
-import { AlertError } from "./alertsforrequest";
-import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlineBlankOutlined';
-import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
+import {AlertError} from "./alertsforrequest";
+import CheckBoxOutlineBlankOutlinedIcon from "@mui/icons-material/CheckBoxOutlineBlankOutlined";
+import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 
 const LogForm = () => {
   const router = useRouter();
@@ -46,28 +46,33 @@ const LogForm = () => {
     try {
       const response = await postLogin(input).unwrap();
       const {access_token, refresh_token} = response;
-      document.cookie = `token=${access_token}`;
+      const date = new Date();
+      date.setDate(date.getDate() + 7);
+      document.cookie = `token=${access_token}; expires=${date.toUTCString()}`;
       router.push("/profileExtend");
       setInput({
         email: "",
         password: "",
       });
     } catch (error) {
-      setErrorCatched(error.data.detail);
+      if(error.status === "FETCH_ERROR") return setErrorCatched("No se ha podido establecer conexión con el servidor.")
+      setErrorCatched(error.data?.detail);
     }
   };
   return (
     <section className="w-11/12 max-w-md h-3/5 max-h-[400px] font-medium text-sec flex flex-col justify-around items-center">
-      <form onSubmit={handleSubmit} className="w-full h-1/2 lg:h-3/5 flex flex-col justify-between">
+      <form onSubmit={handleSubmit} className="w-full h-1/2 lg:h-3/5 flex flex-col justify-between" autoComplete="off">
         <label htmlFor="email">
           E-mail
           <input
             type="text"
             name="email"
+            id="email"
             value={input.email}
             className="w-full px-3 bg-transparent outline-none border-b"
             placeholder="Tu email"
             onChange={handleChange}
+            autoComplete="off"
           />
         </label>
         <article>
@@ -78,19 +83,23 @@ const LogForm = () => {
                 <input
                   type="text"
                   name="password"
+                  id="password"
                   value={input.password}
                   className="w-full px-3 bg-transparent outline-none border-b"
                   placeholder="Tu contraseña"
                   onChange={handleChange}
+                  autoComplete="off"
                 />
               ) : (
                 <input
                   type="password"
-                  name="password"
+                    name="password"
+                    id="password"
                   value={input.password}
                   className="w-full px-3 bg-transparent outline-none border-b"
                   placeholder="Tu contraseña"
-                  onChange={handleChange}
+                    onChange={handleChange}
+                    autoComplete="off"
                 />
               )}
               <button onClick={handleShowPassword} className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -105,15 +114,9 @@ const LogForm = () => {
           <div className="m-2 flex flex-row justify-between">
             <div className="flex flex-row text-sm">
               {check ? (
-                <CheckBoxOutlinedIcon
-                  className="w-4 h-4 me-2"
-                  onClick={handleCheck}
-                />
+                <CheckBoxOutlinedIcon className="w-4 h-4 me-2" onClick={handleCheck} />
               ) : (
-                <CheckBoxOutlineBlankOutlinedIcon
-                  className="w-4 h-4 me-2"
-                  onClick={handleCheck}
-                />
+                <CheckBoxOutlineBlankOutlinedIcon className="w-4 h-4 me-2" onClick={handleCheck} />
               )}
               Recuérdame
             </div>
