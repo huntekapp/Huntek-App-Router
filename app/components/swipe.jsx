@@ -123,13 +123,7 @@ const Swipe = () => {
             ) : (
               <article className="w-full h-full p-8 appearedContent flex flex-col justify-between items-center duration-500">
                 <div className="w-full h-3/4 grid place-content-center relative">
-                  <Image
-                    src={emp.image}
-                    alt="Tinder"
-                    fill="true"
-                    style={{ objectFit: "cover", height: "auto" }}
-                    className="no-drag"
-                  />
+                  <Image src={emp.image} alt="Tinder" fill="true" className="no-drag" />
                 </div>
                 <div className="w-full flex flex-col justify-center items-center">
                   <p
