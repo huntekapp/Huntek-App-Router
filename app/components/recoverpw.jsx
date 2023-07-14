@@ -68,9 +68,10 @@ const RecoverPW = () => {
 							type="email"
 							name="email"
 							value={input.email}
-							className="w-full px-3 pb-1 bg-transparent outline-none border-b border-pri text-center text-black"
 							onChange={handleChange}
 							autoFocus
+							autoComplete="off"
+							className="w-full px-3 pb-2 bg-transparent outline-none border-b border-pri text-center text-black"
 						/>
 						<button
 							disabled={!emailValid}
