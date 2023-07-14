@@ -9,7 +9,7 @@ const ChatUi = ({pan, selectedChat}) => {
   const [close, setClose] = useState(false);
 
   return (
-    <main className="flex flex-col flex-auto bg-pri-200 w-full justify-start min-h-screen ">
+    <main className="flex flex-col flex-auto bg-pri-200 w-full justify-start h-screen ">
       <nav className="flex bg-sec shadow-lg pl-6  justify-between h-16  items-center border ">
         <h1 className="font-medium text-3xl">{pan[selectedChat].name} </h1>
         <IconButton
@@ -21,9 +21,9 @@ const ChatUi = ({pan, selectedChat}) => {
           <CloseIcon style={{fontSize: "1.2rem", color: "black"}} />
         </IconButton>
       </nav>
-      <section className="px-2 py-3">
-        <article className="flex flex-col p-1  border h-[87vh] h-max-[88vh] bg-sec shadow-lg rounded-2xl ">
-          <div className="flex flex-col h-full overflow-x-auto mb-4">
+      <section className="py-2 px-3 ">
+        <article className="flex flex-col mt-3 border h-[85vh] h-max-[85vh] bg-sec shadow-lg rounded-2xl ">
+          <div className="flex flex-col h-full overflow-x-auto ">
             <ul className="grid grid-cols-12 gap-y-1">
               <li className="col-start-1 col-end-8 p-3 rounded-lg">
                 <div className="flex flex-row items-center">

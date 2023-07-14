@@ -24,7 +24,7 @@ const Profile = () => {
               </Link>
               <div>
                 <h3 className=" text-xl font-medium cursor-default">Nombre Apellido</h3>
-                <p className="text-lg font-light cursor-default">nombreape@email.com</p>
+                <p className="text-md font-light cursor-default">nombreape@email.com</p>
               </div>
               <Link href="/profileExtend">
                 <Image
@@ -32,7 +32,7 @@ const Profile = () => {
                   width={25}
                   height={25}
                   src="/utils/pencil_huntek.svg"
-                  className="absolute right-0 top-5	text-pri hover:opacity-70 mr-4 cursor-pointer "
+                  className="absolute right-0 top-5	text-pri hover:opacity-70 mr-5 cursor-pointer "
                 />
               </Link>
             </div>
