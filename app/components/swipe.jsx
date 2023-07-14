@@ -108,15 +108,15 @@ const Swipe = () => {
                   </div>
                 </div>
                 <div className="w-full text-black flex flex-col justify-evenly items-center appearedInfo translate-y-52 duration-1000">
-                  <p className="text-xl mt-32 font-bold">¡Te estamos buscando!</p>
+                  <p className="text-xl mt-28 font-bold">¡Te estamos buscando!</p>
                   <p className="text-center">{emp.info}</p>
                   <iframe
-                    width="360"
-                    height="200"
+                    width="350"
+                    height="195"
                     src="https://www.youtube.com/embed/O8RTHwOEqJA"
                     title="YouTube video player"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    className="rounded-xl mt-6"
+                    className="rounded-3xl p-4 sm:p-0 w-[11/12] h-[11/12] mt-3"
                     allowFullScreen></iframe>
                 </div>
               </article>
