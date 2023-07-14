@@ -54,7 +54,7 @@ const NewPassword = () => {
 			password: "",
 		});
 	};
-
+ console.log(input, repeated);
 	return (
 		<section className="w-full h-full text-pri flex flex-col items-center justify-center">
 			<article className="w-11/12 h-3/4 max-h-[450px] bg-sec rounded-lg shadow-2xl flex flex-col justify-center items-center">
@@ -88,8 +88,8 @@ const NewPassword = () => {
 						<div className="w-10/12 flex flex-row justify-around border-b border-pri">
 							<input
 								type={showPassword ? "text" : "password"}
-								name="password"
-								value={input.password}
+								name="repeatedPassword"
+								value={input.repeatedPassword}
 								placeholder="Confirmar Contraseña"
 								className="w-11/12 pb-2 bg-transparent outline-none"
 								onChange={handleChange}
@@ -104,7 +104,7 @@ const NewPassword = () => {
 							</button>
 						</div>
 						<button
-							disabled={!input.password !== repeated.repeatedPassword}
+							disabled={input.password !== repeated.repeatedPassword}
 							className="w-fit px-2 py-1 mt-2 text-pri bg-gray-300 rounded-lg hover:bg-gray-100 disabled:opacity-40 disabled:hover:bg-gray-300 duration-150">
 							Restaurar
 						</button>
