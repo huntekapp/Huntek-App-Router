@@ -11,8 +11,15 @@ const NavBar = () => {
   let currentPath = usePathname();
   const [close, setClose] = useState(false);
   const [closeNotif, setCloseNotif] = useState(false);
-  const backArrowPaths = ["/interviews", "/profileExtend", "/swipe", "/conversations", "/postulations"];
-  const conversationButtonPaths = ["/swipe", "/home"];
+  const backArrowPaths = [
+    "/interviews",
+    "/profileExtend",
+    "/swipe",
+    "/conversations",
+    "/postulations",
+    /postulations\/.*/,
+  ];
+  const conversationButtonPaths = ["/swipe", "/home", "/postulations", /postulations\/.*/];
   const handleClick = () => {
     setClose(!close);
   };
@@ -20,7 +27,7 @@ const NavBar = () => {
   return (
     <nav className="navbar h-[10%] shadow-xl bg-pri">
       <article className="navbar-start">
-        {!backArrowPaths.includes(currentPath) ? (
+        {!backArrowPaths.some((path) => (path instanceof RegExp ? path.test(currentPath) : path === currentPath)) ? (
           <div className="drawer">
             <input type="checkbox" id="my-drawer-2" className="drawer-toggle" onClick={handleClick} />
             <label htmlFor="my-drawer-2" className=" drawer-button  avatar">
@@ -76,7 +83,9 @@ const NavBar = () => {
           </button>
         ) : (
           <div className="flex justify-end items-center">
-            {conversationButtonPaths.includes(currentPath) ? (
+            {conversationButtonPaths.some((path) =>
+              path instanceof RegExp ? path.test(currentPath) : path === currentPath
+            ) ? (
               <button className="btn btn-ghost z-0 btn-circle">
                 <a href="/conversations">
                   <ForumIcon style={{fontSize: "24px", color: "white"}} />

@@ -23,7 +23,7 @@ const Profile = () => {
               </Link>
               <div>
                 <h3 className=" text-xl font-medium cursor-default">Luis Sanchez</h3>
-                <p className="text-sm font-light cursor-default">louissaintchess@gmail.com</p>
+                <p className="text-xs sm:text-lg font-light cursor-default">louissaintchess@gmail.com</p>
               </div>
               <Link href="/profileExtend">
                 <Image
