@@ -13,7 +13,7 @@ const Postulations = () => {
     {id: "Windows", image: "/images/windows-gc6d7a955d_1920.png"},
     {id: "apple", image: "/images/apple-g44d4327db_1920.png"},
   ]);
-
+  
   return (
     <article className="w-full h-1/5 flex flex-col justify-around">
       <div className="px-4 flex flex-row justify-between">
