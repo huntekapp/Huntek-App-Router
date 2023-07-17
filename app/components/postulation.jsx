@@ -12,9 +12,9 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 const Postulation = () => {
   const id = useParams();
   const [expanded, setExpanded] = useState(false);
-  
-const [iframeLoaded, setIframeLoaded] = useState(false);
-console.log(iframeLoaded)
+
+  const [iframeLoaded, setIframeLoaded] = useState(false);
+  console.log(iframeLoaded);
   const empresa = id.postulation;
   const data = [
     {
@@ -147,7 +147,7 @@ console.log(iframeLoaded)
       {search ? (
         <article className="flex flex-col bg-sec w-[21.1rem] border border-sec shadow-2xl rounded-2xl h-full m-4 ">
           <div className="h-[17rem] border-b w-full  center">
-            <Image src={search.image} height={100} width={200} className="mb-2" alt="hola"/>
+            <Image src={search.image} height={100} width={200} className="mb-2" alt="hola" />
           </div>
           <div>
             <Accordion expanded={expanded === "panel1"} onChange={handleChange("panel1")}>
@@ -198,18 +198,17 @@ console.log(iframeLoaded)
           </div>
 
           <div className="h-52  px-4 w-full relative center">
-  {!iframeLoaded && <span className=" text-pri absolute h-full loading loading-spinner loading-lg"></span>}
-  <iframe
-    width="330"
-    height="170"
-    src="https://www.youtube.com/embed/O8RTHwOEqJA"
-    title="YouTube video player"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowFullScreen
-    className="rounded-lg shadow-md"
-    onLoad={() => setIframeLoaded(true)}
-  ></iframe>
-</div>
+            {!iframeLoaded && <span className=" text-pri absolute h-full loading loading-spinner loading-lg"></span>}
+            <iframe
+              width="330"
+              height="170"
+              src="https://www.youtube.com/embed/O8RTHwOEqJA"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="rounded-lg shadow-md"
+              onLoad={() => setIframeLoaded(true)}></iframe>
+          </div>
         </article>
       ) : (
         <p className="text-white h-[90%]">... Loading</p>
