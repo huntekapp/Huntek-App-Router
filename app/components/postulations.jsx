@@ -18,7 +18,7 @@ const Postulations = () => {
 		<article className="w-full h-32 flex flex-col justify-around">
 			<div className="px-4 flex flex-row justify-between">
 				<p>Mis postulaciones</p>
-				<Link href="" className="font-medium">
+				<Link href="/postulations" className="font-medium">
 					Ver todas
 				</Link>
 			</div>
