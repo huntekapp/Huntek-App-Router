@@ -55,7 +55,7 @@ const Notification = ({setCloseNotif, closeNotif}) => {
               setCloseNotif(!closeNotif);
             }}
             className="h-12 w-12  flex items-center justify-center rounded-full ml-2 hover:bg-pri-100">
-            <Image alt="back" width={32} height={32} src="/utils/back_huntek.svg" />
+            <Image loading={"eager"} alt="back" width={32} height={32} src="/utils/back_huntek.svg" />
           </button>
           <h2 className="text-4xl font-bold mt-1 ml-2 text-pri cursor-default">Notificaciones</h2>
         </section>
@@ -71,7 +71,7 @@ const Notification = ({setCloseNotif, closeNotif}) => {
                 <h2 className="text-pri px-4 text-lg pt-2 flex justify-between items-center font-bold">
                   {`${noti.name}`}
                   <button onClick={() => handleClick(noti.name)} className="h-4 z-50 w-4 hover:scale-125 duration-300">
-                    <Image alt="x" width={24} height={24} src="/utils/x_huntek.svg" />
+                    <Image loading={"eager"} alt="x" width={24} height={24} src="/utils/x_huntek.svg" />
                   </button>
                 </h2>
                 <p className="px-4 pb-2 h-12 max-h-12 line-clamp-2">{`${noti.value}`}</p>

@@ -26,7 +26,7 @@ const Conversations = () => {
               <div className="w-full h-16 carousel-item flex flex-row justify-between">
                 <div className="w-[70%] flex flex-row justify-start items-center">
                   <div className="w-8 h-8 mr-4 rounded-full truncate relative">
-                    <Image
+                    <Image loading={"eager"}
                       alt="profile"
                       src="/images/pexels-monstera-5384445.jpg"
                       fill={true}

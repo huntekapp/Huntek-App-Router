@@ -101,7 +101,7 @@ const Swipe = () => {
                   onDoubleClick={showInfo}
                   onTouchStart={showInfo}
                   className="w-4/5 p-2 bg-sec border-4 border-pri rounded-xl shadow-lg flex flex-row justify-evenly items-center absolute cursor-pointer">
-                  <Image src={emp.image} width={50} height={50} alt="Tinder" className="no-drag object-cover" />
+                  <Image loading={"eager"} src={emp.image} width={50} height={50} alt="Tinder" className="no-drag object-cover" />
                   <div className="w-fit flex flex-col justify-center items-center">
                     <p className="text-lg text-black">{emp.nombre}</p>
                     <p className="line-clamp-3 text-sm/relaxed text-black/95">FullStack Dev</p>
@@ -123,7 +123,7 @@ const Swipe = () => {
             ) : (
               <article className="w-full h-full p-8 appearedContent flex flex-col justify-between items-center duration-500">
                 <div className="w-full h-3/4 grid place-content-center relative">
-                  <Image src={emp.image} alt="Tinder" fill="true" className="no-drag" />
+                  <Image loading={"eager"} src={emp.image} alt="Tinder" fill="true" className="no-drag" />
                 </div>
                 <div className="w-full flex flex-col justify-center items-center">
                   <p

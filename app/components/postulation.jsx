@@ -147,7 +147,7 @@ const Postulation = () => {
       {search ? (
         <article className="flex flex-col bg-sec w-[21.1rem] border border-sec shadow-2xl rounded-2xl h-full m-4 ">
           <div className="h-[17rem] border-b w-full  center">
-            <Image src={search.image} height={100} width={200} className="mb-2" alt="hola" />
+            <Image loading={"eager"} src={search.image} height={100} width={200} className="mb-2" alt="hola" />
           </div>
           <div>
             <Accordion expanded={expanded === "panel1"} onChange={handleChange("panel1")}>

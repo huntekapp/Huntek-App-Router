@@ -5,7 +5,7 @@ const PostulationDetail = ({postulationInfo}) => {
 		<main className="w-full p-5">
 			<section className="flex flex-row sm:items-center  bg-gray-200 border-lig border-2 w-full p-2 rounded-3xl shadow-xl">
 				<div className=" w-16 sm:w-auto mr-5 ">
-					<Image alt="logo"  src={postulationInfo.enterpriseLogo} width={100} height={100} className=" rounded-full " />
+					<Image loading={"eager"} alt="logo"  src={postulationInfo.enterpriseLogo} width={100} height={100} className=" rounded-full " />
 				</div>
 				<div className="w-full flex justify-start  ">
 					<div className="flex flex-col  ">

@@ -6,7 +6,7 @@ const NotificationDetail = ({currentNotification, setShowMore}) => {
 			<section className="flex flex-row justify-between">
 				<p className="p-4 pb-0">{currentNotification.name}</p>
 				<button className="h-4 w-4 pt-5 mr-5" onClick={() => setShowMore(false)}>
-					<Image alt="x" width={24} height={24} src="utils/x_huntek.svg" />
+					<Image loading={"eager"} alt="x" width={24} height={24} src="utils/x_huntek.svg" />
 				</button>
 			</section>
 			<section>

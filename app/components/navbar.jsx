@@ -32,7 +32,7 @@ const NavBar = () => {
             <input type="checkbox" id="my-drawer-2" className="drawer-toggle" onClick={handleClick} />
             <label htmlFor="my-drawer-2" className=" drawer-button  avatar">
               <div className="w-10 rounded-full  shadow-xl ">
-                <Image
+                <Image loading={"eager"}
                   alt="avatar"
                   src="/images/pexels-monstera-5384445.jpg"
                   width={100}
@@ -55,7 +55,7 @@ const NavBar = () => {
           <Link href="/home">
             <button className="btn btn-ghost z-0 btn-circle">
               <div className="indicator">
-                <Image src="/utils/back.svg" alt="backArrow" width={25} height={25} />
+                <Image loading={"eager"} src="/utils/back.svg" alt="backArrow" width={25} height={25} />
               </div>
             </button>
           </Link>
