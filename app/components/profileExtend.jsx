@@ -1,6 +1,5 @@
 "use client";
 import {useState} from "react";
-import Script from "next/script";
 import FormQuestions from "./profileQuestions";
 
 const ProfileExt = () => {
@@ -26,15 +25,17 @@ const ProfileExt = () => {
 				<div className="max-w-md grid grid-cols-2 place-items-center">
 					<div className="w-11/12 h-full p-6 text-pri bg-pri-100 rounded-lg">
 						<p className="m-2">Candidato en busca de trabajo</p>
-						<button className="mx-auto my-4 px-2 py-1 bg-pri text-sec rounded-lg" onClick={() => window.my_modal_3.showModal()}>
-            Candidato
-						</button>
-						<dialog id="my_modal_3" className="modal">
-							<section method="dialog" className="modal-box">
-								<button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-								<FormQuestions/>
-							</section>
-						</dialog>
+						<a href="#my_modal_8" className="mx-auto my-4 px-2 py-1 bg-pri text-sec rounded-lg">
+							Candidato
+						</a>
+						<div className="modal" id="my_modal_8">
+							<div className="modal-box bg-sec scrollnice">
+								<a href="#" className="w-fit px-2 bg-pri-100 rounded-lg absolute top-[36px] right-[36px]">
+									X
+								</a>
+								<FormQuestions />
+							</div>
+						</div>
 					</div>
 					<div className="w-11/12 h-full p-6 text-pri-100 bg-pri rounded-lg">
 						<p className="m-2">Empresa en busca de talento</p>
@@ -52,19 +53,6 @@ const ProfileExt = () => {
 					Configura tu perfil ahora y descubre cómo podemos ayudarte a alcanzar tus objetivos
 				</p>
 			</article>
-			{/* <article className="flex flex-col justify-center items-center">
-				<h2 className="my-4 text-center text-xl font-bold">Mi perfil</h2>
-				<div className="w-20 h-20 avatar">
-					<Image loading={"eager"}
-						src="/images/defaultPhoto.png"
-						width={100}
-						height={100}
-						quality={100}
-						className="bg-pri-100 rounded-full"
-						alt="avatar"
-					/>
-				</div>
-			</article> */}
 		</section>
 	);
 };
