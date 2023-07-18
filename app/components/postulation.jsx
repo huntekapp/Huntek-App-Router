@@ -2,7 +2,6 @@
 import {useState} from "react";
 import {useParams} from "next/navigation";
 import Image from "next/image";
-import NavBar from "@/app/components/navbar";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -145,7 +144,7 @@ const Postulation = () => {
   return (
     <section className="min-h-screen bg-pri/70 flex justify-center w-full items-center flex-col">
       {search ? (
-        <article className="flex flex-col bg-sec w-[21.1rem] border border-sec shadow-2xl rounded-2xl h-full m-4 ">
+        <article className="flex flex-col bg-sec w-[21.1rem] border border-black shadow-2xl rounded-2xl h-full m-4 ">
           <div className="h-[17rem] border-b w-full  center">
             <Image loading={"eager"} src={search.image} height={100} width={200} className="mb-2" alt="hola" />
           </div>
