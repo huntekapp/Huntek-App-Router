@@ -7,6 +7,10 @@
     padding: 0;
 }
 
+.h-screen {
+    height: 100svh;
+}
+
 .no-drag {
     user-select: none;
     -moz-user-select: none;
