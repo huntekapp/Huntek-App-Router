@@ -47,11 +47,11 @@ const Chat = () => {
           <a href="/home" className="h-12 w-12 flex justify-center rounded-full ml-2 hover:bg-pri-100">
             <Image loading={"eager"} alt="back" width={32} height={32} style={{height: "auto"}} src="utils/back_huntek.svg" />
           </a>
-          <h2 className="text-4xl font-bold mt-1 ml-2 text-pri cursor-default">Mensajes</h2>
+          <h1 className="text-4xl font-bold mt-1 ml-2 text-pri cursor-default">Mensajes</h1>
         </section>
         <section className="border-pri " style={chat.length && {borderBottom: "1px solid"}}>
           {!chat.length && (
-            <h2 className="text-xl flex justify-between items-center font-bold ml-5 mt-4">No hay notificaciones...</h2>
+            <p className="text-xl flex justify-between items-center font-bold ml-5 mt-4">No hay notificaciones...</p>
           )}
           {chat.map((chat, index) => {
             return (

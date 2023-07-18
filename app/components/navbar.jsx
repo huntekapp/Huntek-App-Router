@@ -32,7 +32,8 @@ const NavBar = () => {
             <input type="checkbox" id="my-drawer-2" className="drawer-toggle" onClick={handleClick} />
             <label htmlFor="my-drawer-2" className=" drawer-button  avatar">
               <div className="w-10 rounded-full  shadow-xl ">
-                <Image loading={"eager"}
+                <Image
+                  loading={"eager"}
                   alt="avatar"
                   src="/images/pexels-monstera-5384445.jpg"
                   width={100}
@@ -61,9 +62,11 @@ const NavBar = () => {
           </Link>
         )}
       </article>
-      <article className="w-1/4 h-8 bg-Huntek bg-contain bg-no-repeat bg-center flex flex-row justify-center navbar-center">
-        <Link href={"/home"} className="w-full max-w-[120px] h-full"></Link>
-      </article>
+      <Link
+        href={"/home"}
+        className="w-1/4 h-8 bg-Huntek bg-contain bg-no-repeat bg-center flex flex-row justify-center navbar-center">
+        <span className="sr-only">home</span>
+      </Link>
       <article className="navbar-end">
         {close ? (
           <button
