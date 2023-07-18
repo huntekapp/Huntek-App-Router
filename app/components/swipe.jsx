@@ -200,11 +200,11 @@ const Swipe = () => {
 
 	return (
 		<main className="w-full h-[90%]">
-			<section className="w-full h-[93%] bg-pri/70 flex flex-col justify-center items-center relative overflow-hidden">
+			<section className="w-full h-[93%] pb-10 bg-pri/70 flex flex-col justify-end items-center relative overflow-hidden">
 				{nextCard && (
 					<article
 						key={nextCard.nombre}
-						className={`no-drag w-1/2 max-w-sm h-[50%] mt-5 max-h-[450px] mb-10 bg-sec rounded-3xl shadow-lg blur-xl flex flex-col justify-center items-center absolute duration-500`}>
+						className={`no-drag w-1/2 max-w-xs h-[50%] mb-10 bg-sec rounded-3xl shadow-lg blur-xl flex flex-col justify-center items-center absolute duration-500`}>
 						<div className={`w-full h-full p-8 flex flex-col justify-between items-center`}>
 							<div className="w-full h-3/4 grid place-content-center relative">
 								<Image src={nextCard.image} alt="Tinder" fill="true" className="no-drag object-contain w-auto h-auto" />
@@ -225,8 +225,8 @@ const Swipe = () => {
 					<article
 						key={currentCard.nombre}
 						className={`no-drag w-11/12 max-w-sm ${
-							!info ? "h-[80%] mt-12" : "h-[90%] mt-4"
-						} max-h-[450px] mb-10 bg-sec rounded-3xl shadow-lg flex flex-col justify-center items-center duration-500 border-2 border-red-600`}
+							!info ? "h-[96%]" : "h-[90%]"
+						} bg-sec rounded-3xl shadow-lg flex flex-col justify-center items-center duration-500`}
 						style={{transform: `translateX(${offsetX}px) rotate(${offsetX / 10}deg)`}}
 						onTouchStart={handleTouchStart}
 						onTouchMove={handleTouchMove}
