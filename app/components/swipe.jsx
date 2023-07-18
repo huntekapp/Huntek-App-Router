@@ -176,10 +176,10 @@ const Swipe = () => {
 
 	const handleTouchMove = (e) => {
 		if (startX === null) return;
+		if (info) return;
 
 		setCurrentX(e.touches ? e.touches[0].clientX : e.clientX);
-		if (!info) setOffsetX(currentX - startX);
-		setPrevOffsetX(offsetX);
+		setOffsetX(currentX - startX);
 	};
 
 	const handleTouchEnd = () => {
@@ -204,7 +204,7 @@ const Swipe = () => {
 				{nextCard && (
 					<article
 						key={nextCard.nombre}
-						className={`no-drag w-11/12 max-w-sm h-[80%] mt-5 max-h-[450px] mb-10 bg-sec rounded-3xl shadow-lg flex flex-col justify-center items-center absolute`}>
+						className={`no-drag w-1/2 max-w-sm h-[50%] mt-5 max-h-[450px] mb-10 bg-sec rounded-3xl shadow-lg blur-xl flex flex-col justify-center items-center absolute duration-500`}>
 						<div className={`w-full h-full p-8 flex flex-col justify-between items-center`}>
 							<div className="w-full h-3/4 grid place-content-center relative">
 								<Image src={nextCard.image} alt="Tinder" fill="true" className="no-drag object-contain w-auto h-auto" />
@@ -225,9 +225,9 @@ const Swipe = () => {
 					<article
 						key={currentCard.nombre}
 						className={`no-drag w-11/12 max-w-sm ${
-							!info ? "h-[83%] mt-12" : "h-[90%] mt-4"
-						} max-h-[450px] mb-10 bg-sec rounded-3xl shadow-lg flex flex-col justify-center items-center duration-150`}
-						style={{transform: `translateX(${offsetX}px) rotate(${offsetX / 10}deg)`, transition: `0.1s`}}
+							!info ? "h-[80%] mt-12" : "h-[90%] mt-4"
+						} max-h-[450px] mb-10 bg-sec rounded-3xl shadow-lg flex flex-col justify-center items-center duration-500 border-2 border-red-600`}
+						style={{transform: `translateX(${offsetX}px) rotate(${offsetX / 10}deg)`}}
 						onTouchStart={handleTouchStart}
 						onTouchMove={handleTouchMove}
 						onTouchEnd={handleTouchEnd}>
@@ -259,7 +259,12 @@ const Swipe = () => {
 										onTouchStart={showInfo}
 										className="w-3/4 h-20 p-2 bg-sec border-4 border-pri rounded-xl shadow-lg flex flex-row justify-evenly items-center -translate-y-[25%] absolute cursor-pointer">
 										<div className="w-10 h-10 relative">
-											<Image src={currentCard.image} fill={true} alt="Tinder" className="no-drag" />
+											<Image
+												src={currentCard.image}
+												alt="Tinder"
+												fill="true"
+												className="no-drag object-contain w-auto h-auto"
+											/>
 										</div>
 										<div className="w-fit flex flex-col justify-center items-center">
 											<p className="text-lg text-black">{currentCard.nombre}</p>
@@ -288,9 +293,7 @@ const Swipe = () => {
 										<p className="text-lg text-center font-bold">¿Por qué nosotros?</p>
 										<ul className="text-sm list-disc list-inside">
 											{currentCard.why.map((point, index) => (
-												<li key={index} className="">
-													{point}
-												</li>
+												<li key={index}>{point}</li>
 											))}
 										</ul>
 									</div>
@@ -313,7 +316,7 @@ const Swipe = () => {
 					<article
 						key={prevCard.nombre}
 						className={`no-drag w-11/12 max-w-sm h-[83%] mt-12 max-h-[450px] mb-10 bg-sec rounded-3xl shadow-lg flex flex-col justify-center items-center absolute`}
-						style={{transform: `translateX(${prevOffsetX}px) rotate(${prevOffsetX / 10}deg)`, transition: `2s`}}>
+						style={{transform: `translateX(${prevOffsetX}px) rotate(${prevOffsetX / 10}deg)`, transition: `1s`}}>
 						<div className={`w-full h-full p-8 flex flex-col justify-between items-center`}>
 							<div className="w-full h-3/4 grid place-content-center relative">
 								<Image src={prevCard.image} alt="Tinder" fill="true" className="no-drag object-contain w-auto h-auto" />
