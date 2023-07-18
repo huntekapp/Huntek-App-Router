@@ -93,7 +93,7 @@ const VerifyMail = () => {
 			<Link href="/signup">
 				<button className="btn btn-ghost z-0 btn-circle absolute left-0 top-2">
 					<div className="indicator">
-						<Image src="/utils/back.svg" alt="backArrow" width={25} height={25} />
+						<Image loading={"eager"} src="/utils/back.svg" alt="backArrow" width={25} height={25} />
 					</div>
 				</button>
 			</Link>

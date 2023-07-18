@@ -11,8 +11,15 @@ const NavBar = () => {
   let currentPath = usePathname();
   const [close, setClose] = useState(false);
   const [closeNotif, setCloseNotif] = useState(false);
-  const backArrowPaths = ["/interviews", "/profileExtend", "/swipe", "/conversations", "/postulations"];
-  const conversationButtonPaths = ["/swipe", "/home"];
+  const backArrowPaths = [
+    "/interviews",
+    "/profileExtend",
+    "/swipe",
+    "/conversations",
+    "/postulations",
+    /postulations\/.*/,
+  ];
+  const conversationButtonPaths = ["/swipe", "/home", "/postulations", /postulations\/.*/];
   const handleClick = () => {
     setClose(!close);
   };
@@ -20,12 +27,13 @@ const NavBar = () => {
   return (
     <nav className="navbar h-[10%] shadow-xl bg-pri">
       <article className="navbar-start">
-        {!backArrowPaths.includes(currentPath) ? (
+        {!backArrowPaths.some((path) => (path instanceof RegExp ? path.test(currentPath) : path === currentPath)) ? (
           <div className="drawer">
             <input type="checkbox" id="my-drawer-2" className="drawer-toggle" onClick={handleClick} />
             <label htmlFor="my-drawer-2" className=" drawer-button  avatar">
               <div className="w-10 rounded-full  shadow-xl ">
                 <Image
+                  loading={"eager"}
                   alt="avatar"
                   src="/images/pexels-monstera-5384445.jpg"
                   width={100}
@@ -48,15 +56,17 @@ const NavBar = () => {
           <Link href="/home">
             <button className="btn btn-ghost z-0 btn-circle">
               <div className="indicator">
-                <Image src="/utils/back.svg" alt="backArrow" width={25} height={25} />
+                <Image loading={"eager"} src="/utils/back.svg" alt="backArrow" width={25} height={25} />
               </div>
             </button>
           </Link>
         )}
       </article>
-      <article className="w-1/4 h-8 bg-Huntek bg-contain bg-no-repeat bg-center flex flex-row justify-center navbar-center">
-        <Link href={"/home"} className="w-full max-w-[120px] h-full"></Link>
-      </article>
+      <Link
+        href={"/home"}
+        className="w-1/4 h-8 bg-Huntek bg-contain bg-no-repeat bg-center flex flex-row justify-center navbar-center">
+        <span className="sr-only">home</span>
+      </Link>
       <article className="navbar-end">
         {close ? (
           <button
@@ -76,7 +86,9 @@ const NavBar = () => {
           </button>
         ) : (
           <div className="flex justify-end items-center">
-            {conversationButtonPaths.includes(currentPath) ? (
+            {conversationButtonPaths.some((path) =>
+              path instanceof RegExp ? path.test(currentPath) : path === currentPath
+            ) ? (
               <button className="btn btn-ghost z-0 btn-circle">
                 <a href="/conversations">
                   <ForumIcon style={{fontSize: "24px", color: "white"}} />

@@ -133,9 +133,9 @@ const SignForm = () => {
 						)}
 						<button onClick={handleShowPassword} className="absolute inset-y-0 end-0 grid place-content-center px-4">
 							{showPassword ? (
-								<Image src={"/utils/blink.svg"} width={20} height={20} alt="blink" unoptimized={true} />
+								<Image loading={"eager"} src={"/utils/blink.svg"} width={20} height={20} alt="blink" unoptimized={true} />
 							) : (
-								<Image src={"/utils/notblink.svg"} width={20} height={20} alt="notblink" />
+								<Image loading={"eager"} src={"/utils/notblink.svg"} width={20} height={20} alt="notblink" />
 							)}
 						</button>
 					</div>

@@ -36,7 +36,7 @@ const PostulationsExtend = () => {
 		<main>
 			<NavBar />
 			<section className="h-full bg-sec flex flex-col text-left">
-				<b className="font-semibold text-3xl mt-4 ml-5 cursor-default">Mis postulaciones</b>
+				<h1 className="font-semibold text-3xl mt-4 ml-5 cursor-default">Mis postulaciones</h1>
         {userPostulations.map((postulation, index) => {
           return <PostulationDetail postulationInfo={postulation} key={index}/>;
         })}
