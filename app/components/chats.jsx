@@ -1,6 +1,6 @@
 "use client";
-import Image from "next/image";
 import {useState} from "react";
+import Image from "next/image";
 import ChatUi from "./chatUi";
 
 const Chat = () => {
@@ -45,13 +45,13 @@ const Chat = () => {
       <section className=" bg-sec w-full min-h-screen">
         <section className="flex flex-row justify-start h-full w-full items-start my-2">
           <a href="/home" className="h-12 w-12 flex justify-center rounded-full ml-2 hover:bg-pri-100">
-            <Image alt="back" width={32} height={32} style={{height: "auto"}} src="utils/back_huntek.svg" />
+            <Image loading={"eager"} alt="back" width={32} height={32} style={{height: "auto"}} src="utils/back_huntek.svg" />
           </a>
-          <h2 className="text-4xl font-bold mt-1 ml-2 text-pri cursor-default">Mensajes</h2>
+          <h1 className="text-4xl font-bold mt-1 ml-2 text-pri cursor-default">Mensajes</h1>
         </section>
         <section className="border-pri " style={chat.length && {borderBottom: "1px solid"}}>
           {!chat.length && (
-            <h2 className="text-xl flex justify-between items-center font-bold ml-5 mt-4">No hay notificaciones...</h2>
+            <p className="text-xl flex justify-between items-center font-bold ml-5 mt-4">No hay notificaciones...</p>
           )}
           {chat.map((chat, index) => {
             return (
@@ -68,7 +68,7 @@ const Chat = () => {
                 <label htmlFor="my-drawer-2" className=" drawer-button">
                   <div className="flex ml-3 justify-start items-center">
                     <div className="w-14 h-12 xs:w-14 rounded-full border-2 border-pri grid place-content-center">
-                      <Image width={30} height={25} style={{height: "auto"}} quality={100} src={chat.image} alt="image" className="h-7" />
+                      <Image loading={"eager"} width={30} height={25} style={{height: "auto"}} quality={100} src={chat.image} alt="image" className="h-7" />
                     </div>
                     <div className="flex flex-col text-start w-full">
                       <h2 className="text-pri px-4 text-lg pt-2 flex justify-between  items-center font-medium">

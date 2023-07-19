@@ -1,8 +1,8 @@
 "use client";
 import {useState} from "react";
-import {useGetRecoveryMutation} from "../globalstore/services/useRecoverPw";
 import Image from "next/image";
 import Link from "next/link";
+import {useGetRecoveryMutation} from "../globalstore/services/useRecoverPw";
 import {AlertSuccess, AlertError} from "./alertsforrequest";
 
 const RecoverPW = () => {
@@ -47,13 +47,13 @@ const RecoverPW = () => {
 			<Link href="/login">
 				<button className="btn btn-ghost z-0 btn-circle absolute left-2 top-2">
 					<div className="indicator">
-						<Image src="/utils/back.svg" alt="backArrow" width={25} height={25} />
+						<Image loading={"eager"} src="/utils/back.svg" alt="backArrow" width={25} height={25} />
 					</div>
 				</button>
 			</Link>
 			<article className="w-11/12 h-3/4 max-h-[450px] bg-sec rounded-lg shadow-2xl flex flex-col justify-center items-center">
 				<div className="w-20 h-20 p-4 border-4 rounded-full shadow-lg grid place-content-center">
-					<Image src={"/huntek/logo/G.svg"} alt="logo" width={35} height={35} />
+					<Image loading={"eager"} src={"/huntek/logo/G.svg"} alt="logo" width={35} height={35} />
 				</div>
 				<form onSubmit={handleSubmit} className="w-full h-3/5 flex flex-col justify-evenly items-center">
 					<p className="text-xl opacity-100">¿Ovidaste tu contraseña?</p>
