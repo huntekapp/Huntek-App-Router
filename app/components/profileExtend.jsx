@@ -45,7 +45,7 @@ const ProfileExt = () => {
 					</div>
 					<div id="empreProf" className="modal">
 						<div className="modal-box bg-sec relative scrollnice">
-							<a href="#" className="w-fit px-2 bg-pri-100 rounded-lg absolute absolute top-2 left-2">
+							<a href="#" className="w-fit px-2 bg-pri-100 rounded-lg  absolute top-2 left-2">
 								X
 							</a>
 							<FormQuestions />
