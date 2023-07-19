@@ -1,8 +1,8 @@
 "use client";
-import Image from "next/image";
-import {usePostNewPasswordMutation} from "../globalstore/services/useNewPassword";
-import {usePathname, useRouter} from "next/navigation";
 import {useState} from "react";
+import Image from "next/image";
+import {usePathname, useRouter} from "next/navigation";
+import {usePostNewPasswordMutation} from "../globalstore/services/useNewPassword";
 
 const NewPassword = () => {
 	const router = useRouter();

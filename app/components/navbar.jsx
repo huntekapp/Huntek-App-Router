@@ -1,10 +1,10 @@
 "use client";
+import {useState} from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Profile from "./profile";
-import {useState} from "react";
-import ForumIcon from "@mui/icons-material/Forum";
 import {usePathname} from "next/navigation";
+import ForumIcon from "@mui/icons-material/Forum";
+import Profile from "./profile";
 import Notification from "./notification";
 
 const NavBar = () => {

@@ -1,8 +1,8 @@
 "use client";
 import {useState} from "react";
-import {useGetRecoveryMutation} from "../globalstore/services/useRecoverPw";
 import Image from "next/image";
 import Link from "next/link";
+import {useGetRecoveryMutation} from "../globalstore/services/useRecoverPw";
 import {AlertSuccess, AlertError} from "./alertsforrequest";
 
 const RecoverPW = () => {

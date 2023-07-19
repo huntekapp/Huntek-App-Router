@@ -1,5 +1,5 @@
-import {NextResponse} from "next/server";
-import {jwtVerify} from "jose";
+import { NextResponse } from "next/server";
+import { jwtVerify } from "jose";
 
 export async function middleware(request) {
   const jwt = request.cookies.get("token");
@@ -9,7 +9,7 @@ export async function middleware(request) {
   }
 
   try {
-    const {payload} = await jwtVerify(jwt?.value, new TextEncoder().encode("dasdasd"));
+    const { payload } = await jwtVerify(jwt?.value, new TextEncoder().encode("dasdasd"));
     return NextResponse.next();
   } catch (error) {
     return NextResponse.redirect(new URL("login", request.url));

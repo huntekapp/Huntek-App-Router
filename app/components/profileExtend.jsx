@@ -3,10 +3,10 @@ import {useState} from "react";
 import FormQuestions from "./profileQuestions";
 
 const ProfileExt = () => {
-	const [userData, setUserData] = useState({
-		sexo: "",
-		situacion: "",
-	});
+  const [userData, setUserData] = useState({
+    sexo: "",
+    situacion: "",
+  });
 
 	const handleChange = (event) => {
 		setUserData({
@@ -44,8 +44,8 @@ const ProfileExt = () => {
 						</button>
 					</div>
 					<div id="empreProf" className="modal">
-						<div className="modal-box bg-sec scrollnice">
-							<a href="#" className="w-fit px-2 bg-pri-100 rounded-lg absolute top-[36px] right-[36px]">
+						<div className="modal-box bg-sec relative scrollnice">
+							<a href="#" className="w-fit px-2 bg-pri-100 rounded-lg absolute absolute top-2 left-2">
 								X
 							</a>
 							<FormQuestions />
@@ -60,4 +60,5 @@ const ProfileExt = () => {
 		</section>
 	);
 };
+
 export default ProfileExt;
