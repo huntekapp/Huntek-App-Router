@@ -18,8 +18,8 @@ const ProfileExt = () => {
 						</button>
 					</div>
 					<div id="candiProf" className="modal">
-						<div className="modal-box bg-sec scrollnice">
-							<a href="#" className="w-fit px-2 bg-pri-100 rounded-lg absolute top-[36px] right-[36px]">
+						<div className="modal-box relative bg-sec overflow-x-hidden scrollnice">
+							<a href="#" className="w-fit px-2 bg-pri-100 rounded-lg absolute top-2 left-2">
 								X
 							</a>
 							<FormQuestions />
@@ -32,8 +32,8 @@ const ProfileExt = () => {
 						</button>
 					</div>
 					<div id="empreProf" className="modal">
-						<div className="modal-box bg-sec scrollnice">
-							<a href="#" className="w-fit px-2 bg-pri-100 rounded-lg absolute top-[36px] right-[36px]">
+						<div className="modal-box relative bg-sec overflow-x-hidden scrollnice">
+							<a href="#" className="w-fit px-2 bg-pri-100 rounded-lg absolute top-2 left-2">
 								X
 							</a>
 							<CompanyQuestions />
