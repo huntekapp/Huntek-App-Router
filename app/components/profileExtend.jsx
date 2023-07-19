@@ -2,17 +2,6 @@ import FormQuestions from "./profileQuestions";
 import CompanyQuestions from "./companyQuestions";
 
 const ProfileExt = () => {
-  const [userData, setUserData] = useState({
-    sexo: "",
-    situacion: "",
-  });
-
-	const handleChange = (event) => {
-		setUserData({
-			...userData,
-			[event.target.name]: event.target.value,
-		});
-	};
 
 	return (
 		<section className="w-full max-w-md h-full text-pri text-center flex flex-col justify-evenly items-center">
