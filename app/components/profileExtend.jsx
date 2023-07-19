@@ -1,6 +1,7 @@
 "use client";
 import {useState} from "react";
 import FormQuestions from "./profileQuestions";
+import CompanyQuestions from "./companyQuestions";
 
 const ProfileExt = () => {
   const [userData, setUserData] = useState({
@@ -48,7 +49,7 @@ const ProfileExt = () => {
 							<a href="#" className="w-fit px-2 bg-pri-100 rounded-lg absolute top-[36px] right-[36px]">
 								X
 							</a>
-							<FormQuestions />
+							<CompanyQuestions />
 						</div>
 					</div>
 				</div>
