@@ -1,5 +1,3 @@
-"use client";
-import {useState} from "react";
 import FormQuestions from "./profileQuestions";
 import CompanyQuestions from "./companyQuestions";
 
@@ -61,4 +59,5 @@ const ProfileExt = () => {
     </section>
   );
 };
+
 export default ProfileExt;
