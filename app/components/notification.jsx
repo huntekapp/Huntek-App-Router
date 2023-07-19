@@ -45,7 +45,7 @@ const Notification = ({ setCloseNotif, closeNotif }) => {
 
 	return (
 		<section className="min-w-full flex flex-col">
-			<section className="flex flex-row justify-start w-full h-full items-start py-2">
+			<section className="flex flex-row justify-start w-full h-full items-start py-2 border-gray-200 border-y border-t-0">
 				<button
 					onClick={() => {
 						document.getElementById("my-drawer-4").click();
@@ -65,7 +65,7 @@ const Notification = ({ setCloseNotif, closeNotif }) => {
 					return (
 						<article
 							key={index}
-							className="bg-none border-gray-200 border-y border-b-0 cursor-default h-[120px] max-h-[120px] flex flex-row carousel-item">
+							className="bg-none border-gray-200 border-y border-t-0 cursor-default h-[120px] max-h-[120px] flex flex-row carousel-item">
 							<section className="flex justify-center items-center mx-4 text-pri text-2xl">●</section>
 							<section className="flex flex-col w-full">
 								<h2 className="text-pri-800 pr-4 text-lg pt-2 flex flex-row justify-between items-center font-medium">
