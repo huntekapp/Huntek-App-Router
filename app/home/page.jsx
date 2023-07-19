@@ -1,13 +1,11 @@
 import NavBar from "../components/navbar";
 import Home from "../components/home";
-import Footbar from "../components/footbar";
 
 const HomePage = () => {
 	return (
-		<main className="h-screen bg-sec flex flex-col justify-start">
+		<main className="h-screen bg-sec flex flex-col justify-between">
 			<NavBar />
 			<Home />
-			<Footbar />
 		</main>
 	);
 };
