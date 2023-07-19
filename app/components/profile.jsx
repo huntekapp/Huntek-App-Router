@@ -11,7 +11,7 @@ const Profile = () => {
             <div className="rounded-lg  w-full mb-6 justify-start gap-4 mt-4 relative flex items-center text-pri flex-row">
               <Link href="/profileExtend">
                 <div className="w-16 h-16 ml-8 avatar">
-                  <Image
+                  <Image loading={"eager"}
                     alt="avatar"
                     width={100}
                     height={100}
@@ -26,7 +26,7 @@ const Profile = () => {
                 <p className="text-xs sm:text-lg font-light cursor-default">louissaintchess@gmail.com</p>
               </div>
               <Link href="/profileExtend">
-                <Image
+                <Image loading={"eager"}
                   alt="pencil"
                   width={25}
                   height={25}
@@ -39,25 +39,25 @@ const Profile = () => {
               <Link href="/postulations">
                 <div className="flex flex-grow justify-between mx-8 my-6 hover:opacity-50 cursor-pointer ">
                   <p className="text-md font-normal">Postulaciones</p>
-                  <Image alt="arrow right" width={16} height={16} src="/utils/goto_huntek.svg" />
+                  <Image loading={"eager"} alt="arrow right" width={16} height={16} src="/utils/goto_huntek.svg" />
                 </div>
               </Link>
               <Link href="/conversations">
                 <div className="flex flex-row flex-grow justify-between mx-8 my-6 hover:opacity-50 cursor-pointer ">
                   <p className="text-md font-normal">Conversaciones</p>
-                  <Image alt="arrow right" width={16} height={16} src="/utils/goto_huntek.svg" />
+                  <Image loading={"eager"} alt="arrow right" width={16} height={16} src="/utils/goto_huntek.svg" />
                 </div>
               </Link>
               <Link href="/notifications">
                 <div className="flex flex-row flex-grow justify-between mx-8 my-6 hover:opacity-50 cursor-pointer ">
                   <p className="text-md font-normal">Notificaciones</p>
-                  <Image alt="arrow right" width={16} height={16} src="/utils/goto_huntek.svg" />
+                  <Image loading={"eager"} alt="arrow right" width={16} height={16} src="/utils/goto_huntek.svg" />
                 </div>
               </Link>
               <Link href="/home">
                 <div className="flex flex-row flex-grow justify-between mx-8 my-6 hover:opacity-50 cursor-pointer ">
                   <p className="text-md font-normal">Términos & Condiciones</p>
-                  <Image alt="arrow right" width={16} height={16} src="/utils/goto_huntek.svg" />
+                  <Image loading={"eager"} alt="arrow right" width={16} height={16} src="/utils/goto_huntek.svg" />
                 </div>
               </Link>
               <div className="flex flex-row flex-grow justify-between mx-8 my-6">

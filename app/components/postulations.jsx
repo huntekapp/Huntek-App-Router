@@ -27,7 +27,7 @@ const Postulations = () => {
           <div key={index} className="carousel-item avatar">
             <div className="w-[70px] border-4 border-pri rounded-full shadow-md relative">
               <Link href={`/postulations/${post.id}`}>
-                <Image
+                <Image loading={"eager"}
                   key={post.id}
                   alt={post.id}
                   src={post.image}

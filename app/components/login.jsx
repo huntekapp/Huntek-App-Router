@@ -104,9 +104,9 @@ const LogForm = () => {
               )}
               <button onClick={handleShowPassword} className="absolute inset-y-0 end-0 grid place-content-center px-4">
                 {showPassword ? (
-                  <Image src={"/utils/blink.svg"} width={20} height={20} alt="blink" unoptimized={true} />
+                  <Image loading={"eager"} src={"/utils/blink.svg"} width={20} height={20} alt="blink" unoptimized={true} />
                 ) : (
-                  <Image src={"/utils/notblink.svg"} width={20} height={20} alt="notblink" />
+                  <Image loading={"eager"} src={"/utils/notblink.svg"} width={20} height={20} alt="notblink" />
                 )}
               </button>
             </div>
@@ -137,13 +137,13 @@ const LogForm = () => {
       </article>
       <article className="w-full grid grid-cols-3 gap-x-3">
         <button className="flex items-center justify-center bg-sec py-2.5 border rounded-lg hover:bg-gray-300 duration-150 active:bg-lig">
-          <Image src="/social/google.svg" width={25} height={25} alt="google" />
+          <Image loading={"eager"} src="/social/google.svg" width={25} height={25} alt="google" />
         </button>
         <button className="flex items-center justify-center bg-sec py-2.5 border rounded-lg hover:bg-gray-300 duration-150 active:bg-lig">
-          <Image src="/social/facebook.svg" width={25} height={25} alt="facebook" />
+          <Image loading={"eager"} src="/social/facebook.svg" width={25} height={25} alt="facebook" />
         </button>
         <button className="flex items-center justify-center bg-sec py-2.5 border rounded-lg hover:bg-gray-300 duration-150 active:bg-lig">
-          <Image src="/social/linkedin.svg" width={25} height={25} alt="linkedin" />
+          <Image loading={"eager"} src="/social/linkedin.svg" width={25} height={25} alt="linkedin" />
         </button>
       </article>
       <article className="text-center my-5">

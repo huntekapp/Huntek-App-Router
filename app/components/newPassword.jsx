@@ -1,8 +1,8 @@
 "use client";
-import Image from "next/image";
-import {usePostNewPasswordMutation} from "../globalstore/services/useNewPassword";
-import {usePathname, useRouter} from "next/navigation";
 import {useState} from "react";
+import Image from "next/image";
+import {usePathname, useRouter} from "next/navigation";
+import {usePostNewPasswordMutation} from "../globalstore/services/useNewPassword";
 
 const NewPassword = () => {
 	const router = useRouter();
@@ -58,7 +58,7 @@ const NewPassword = () => {
 		<section className="w-full h-full text-pri flex flex-col items-center justify-center">
 			<article className="w-11/12 h-3/4 max-h-[450px] bg-sec rounded-lg shadow-2xl flex flex-col justify-center items-center">
 				<div className="w-20 h-20 p-4 border-4 rounded-full shadow-lg grid place-content-center">
-					<Image src={"/huntek/logo/G.svg"} alt="logo" width={35} height={35} />
+					<Image loading={"eager"} src={"/huntek/logo/G.svg"} alt="logo" width={35} height={35} />
 				</div>
 				<form onSubmit={handleSubmit} className="w-full h-3/5 flex flex-col justify-evenly items-center">
 					<p className="text-xl">Cambiar contraseña</p>
@@ -74,7 +74,7 @@ const NewPassword = () => {
 								autoFocus
 							/>
 							<button onClick={handleShowPassword} className="inset-y-0 end-0 place-content-center">
-								<Image
+								<Image loading={"eager"}
 									src={showPassword ? "/utils/blink_huntek.svg" : "/utils/notblink_huntek.svg"}
 									width={20}
 									height={20}
@@ -94,7 +94,7 @@ const NewPassword = () => {
 								onChange={handleChange}
 							/>
 							<button onClick={handleShowPassword} className="inset-y-0 end-0 place-content-center">
-								<Image
+								<Image loading={"eager"}
 									src={showPassword ? "/utils/blink_huntek.svg" : "/utils/notblink_huntek.svg"}
 									width={20}
 									height={20}

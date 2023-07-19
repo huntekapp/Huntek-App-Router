@@ -1,10 +1,10 @@
 "use client";
+import {useState} from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Profile from "./profile";
-import {useState} from "react";
-import ForumIcon from "@mui/icons-material/Forum";
 import {usePathname} from "next/navigation";
+import ForumIcon from "@mui/icons-material/Forum";
+import Profile from "./profile";
 import Notification from "./notification";
 
 const NavBar = () => {
@@ -33,6 +33,7 @@ const NavBar = () => {
             <label htmlFor="my-drawer-2" className=" drawer-button  avatar">
               <div className="w-10 rounded-full  shadow-xl ">
                 <Image
+                  loading={"eager"}
                   alt="avatar"
                   src="/images/pexels-monstera-5384445.jpg"
                   width={100}
@@ -55,15 +56,17 @@ const NavBar = () => {
           <Link href="/home">
             <button className="btn btn-ghost z-0 btn-circle">
               <div className="indicator">
-                <Image src="/utils/back.svg" alt="backArrow" width={25} height={25} />
+                <Image loading={"eager"} src="/utils/back.svg" alt="backArrow" width={25} height={25} />
               </div>
             </button>
           </Link>
         )}
       </article>
-      <article className="w-1/4 h-8 bg-Huntek bg-contain bg-no-repeat bg-center flex flex-row justify-center navbar-center">
-        <Link href={"/home"} className="w-full max-w-[120px] h-full"></Link>
-      </article>
+      <Link
+        href={"/home"}
+        className="w-1/4 h-8 bg-Huntek bg-contain bg-no-repeat bg-center flex flex-row justify-center navbar-center">
+        <span className="sr-only">home</span>
+      </Link>
       <article className="navbar-end">
         {close ? (
           <button

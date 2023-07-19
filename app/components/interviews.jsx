@@ -11,7 +11,7 @@ const Interviews = () => {
           Ver todas
         </Link>
       </div>
-      <div className="w-full h-[80%] px-4 py-1  text-xs xs:text-sm text-pri border rounded-xl shadow-md flex  justify-start items-center">
+      <div className="w-full h-3/5 px-4 text-xs xs:text-sm text-pri border rounded-xl shadow-md flex flex-row justify-start items-center">
         <span className="w-14 h-[3.5rem] flex-shrink-0 font-bold text-sm border-2 border-pri rounded-full center">18 SEP</span>
         <p className="text-[0.800rem] ml-6 sm:text-lg btn-ghost hover:bg-pri/70 bg-pri btn flex-shrink text-sec font-semibold ">
           15:30HS &nbsp;|<span className="font-medium text-sec">Coca-Cola</span>
