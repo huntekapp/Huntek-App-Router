@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Postulations = () => {
-
   const [postulaciones, setPostulaciones] = useState([
     {id: "Huntek", image: "/huntek/logo/G.svg"},
     {id: "Youtube", image: "/images/youtube-g6a795f8e6_1920.png"},

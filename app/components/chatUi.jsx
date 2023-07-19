@@ -1,9 +1,9 @@
 "use client";
 import {useState} from "react";
 import Image from "next/image";
-import {IconButton} from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import CloseIcon from "@mui/icons-material/Close";
+import {IconButton} from "@mui/material";
 
 const ChatUi = ({pan, selectedChat}) => {
   const [close, setClose] = useState(false);
@@ -27,7 +27,7 @@ const ChatUi = ({pan, selectedChat}) => {
             <ul className="grid grid-cols-12 gap-y-1">
               <li className="col-start-1 col-end-8 p-3 rounded-lg">
                 <div className="flex flex-row items-center">
-                  <Image loading={"eager"}
+                    <Image loading={"eager"}
                     src="/images/pexels-monstera-5384445.jpg"
                     alt="profileImg"
                     width={40}

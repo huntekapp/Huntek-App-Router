@@ -1,13 +1,12 @@
 "use client";
 import {useState} from "react";
-import Script from "next/script";
 import FormQuestions from "./profileQuestions";
 
 const ProfileExt = () => {
-	const [userData, setUserData] = useState({
-		sexo: "",
-		situacion: "",
-	});
+  const [userData, setUserData] = useState({
+    sexo: "",
+    situacion: "",
+  });
 
 	const handleChange = (event) => {
 		setUserData({
@@ -58,20 +57,7 @@ const ProfileExt = () => {
 					Configura tu perfil ahora y descubre cómo podemos ayudarte a alcanzar tus objetivos
 				</p>
 			</article>
-			{/* <article className="flex flex-col justify-center items-center">
-				<h2 className="my-4 text-center text-xl font-bold">Mi perfil</h2>
-				<div className="w-20 h-20 avatar">
-					<Image loading={"eager"}
-						src="/images/defaultPhoto.png"
-						width={100}
-						height={100}
-						quality={100}
-						className="bg-pri-100 rounded-full"
-						alt="avatar"
-					/>
-				</div>
-			</article> */}
-		</section>
-	);
+    </section>
+  );
 };
 export default ProfileExt;

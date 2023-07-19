@@ -1,10 +1,10 @@
 "use client";
+import {useRef, useState} from "react";
+import {useSelector} from "react-redux";
 import Image from "next/image";
 import Link from "next/link";
-import {useRef, useState} from "react";
-import {usePostVerifMutation} from "../globalstore/services/useVerifCode";
 import {useRouter} from "next/navigation";
-import {useSelector} from "react-redux";
+import {usePostVerifMutation} from "../globalstore/services/useVerifCode";
 import {usePutResendCodeMutation} from "../globalstore/services/useResendCode";
 import {AlertSuccess, AlertError} from "./alertsforrequest";
 
@@ -141,4 +141,5 @@ const VerifyMail = () => {
 		</section>
 	);
 };
+
 export default VerifyMail;
