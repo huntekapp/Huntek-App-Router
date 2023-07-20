@@ -204,10 +204,12 @@ const Swipe = () => {
     event.preventDefault();
   }
 
-  useEffect(() => {
+	useEffect(() => {
     const containerElement = containerRef.current;
-    if (containerElement) {
+    if (containerElement && !info) {
       containerElement.addEventListener('touchmove', handleTouchMoveX, { passive: false });
+    } else if (containerElement && info) {
+      containerElement.removeEventListener('touchmove', handleTouchMoveX, { passive: false });
     }
 
     return () => {
@@ -215,7 +217,8 @@ const Swipe = () => {
         containerElement.removeEventListener('touchmove', handleTouchMoveX, { passive: false });
       }
     }
-  }, []);
+  }, [info]);
+
 
 	return (
 		<main className="w-full h-[90%]" ref={containerRef}>
