@@ -101,6 +101,11 @@ const FormQuestions = () => {
     });
   };
 
+  const handleSumbit = (event) => {
+		event.preventDefault();
+		console.log("submitting form data");
+	};
+
   return (
     <section className="w-full min-h-screen bg-sec grid grid-cols-1 gap-4 p-2 place-content-center text-start rounded-md ">
       <h1 className="text-2xl text-center font-bold">Registro Candidato</h1>
@@ -112,7 +117,10 @@ const FormQuestions = () => {
       <Studies userData={userData} handleChange={handleChange} />
       <Carreer userData={userData} handleChange={handleChange} />
       <Hobbies userData={userData} handleHobbies={handleHobbies} handleDeleteHobbies={handleDeleteHobbies} />
-      <LastQuestions userData={userData} handleChange={handleChange}/>
+      <LastQuestions userData={userData} handleChange={handleChange} />
+      <button className="mx-auto my-4 px-2 py-1 bg-pri text-pri-100 rounded-lg items-center" onClick={handleSumbit}>
+				Enviar <EastIcon />
+			</button>
     </section>
   );
 };
