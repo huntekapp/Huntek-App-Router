@@ -1,5 +1,5 @@
 "use client";
-import {useState, useEffect, useRef} from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import FootbarSwipe from "./footbarswipe";
 
@@ -169,8 +169,10 @@ const Swipe = () => {
 	const [currentX, setCurrentX] = useState(0);
 	const [offsetX, setOffsetX] = useState(0);
 	const [prevOffsetX, setPrevOffsetX] = useState(0);
+	const [isInteracting, setIsInteracting] = useState(false);
 
 	const handleTouchStart = (e) => {
+		setIsInteracting(true);
 		setStartX(e.touches ? e.touches[0].clientX : e.clientX);
 	};
 
@@ -183,6 +185,7 @@ const Swipe = () => {
 	};
 
 	const handleTouchEnd = () => {
+		setIsInteracting(false);
 		if (offsetX >= 150) {
 			swipe("right");
 		} else if (offsetX <= -150) {
@@ -197,28 +200,27 @@ const Swipe = () => {
 	const showInfo = () => {
 		setInfo(!info);
 	};
-	
+
 	const containerRef = useRef();
 
-  const handleTouchMoveX= (event) => {
-    event.preventDefault();
-  }
+	const handleTouchMoveX = (event) => {
+		event.preventDefault();
+	};
 
 	useEffect(() => {
-    const containerElement = containerRef.current;
-    if (containerElement && !info) {
-      containerElement.addEventListener('touchmove', handleTouchMoveX, { passive: false });
-    } else if (containerElement && info) {
-      containerElement.removeEventListener('touchmove', handleTouchMoveX, { passive: false });
-    }
+		const containerElement = containerRef.current;
+		if (containerElement && !info) {
+			containerElement.addEventListener("touchmove", handleTouchMoveX, { passive: false });
+		} else if (containerElement && info) {
+			containerElement.removeEventListener("touchmove", handleTouchMoveX, { passive: false });
+		}
 
-    return () => {
-      if (containerElement) {
-        containerElement.removeEventListener('touchmove', handleTouchMoveX, { passive: false });
-      }
-    }
-  }, [info]);
-
+		return () => {
+			if (containerElement) {
+				containerElement.removeEventListener("touchmove", handleTouchMoveX, { passive: false });
+			}
+		};
+	}, [info]);
 
 	return (
 		<main className="w-full h-[90%]" ref={containerRef}>
@@ -226,7 +228,7 @@ const Swipe = () => {
 				{nextCard && (
 					<article
 						key={nextCard.nombre}
-						className={`no-drag w-1/2 max-w-xs h-[50%] mb-10 bg-sec rounded-3xl shadow-lg blur-xl flex flex-col justify-center items-center absolute duration-500`}>
+						className={`no-drag w-1/2 max-w-xs h-[50%] mb-10 bg-sec rounded-3xl shadow-lg blur-xl flex flex-col justify-center items-center absolute duration-300`}>
 						<div className={`w-full h-full p-8 flex flex-col justify-between items-center`}>
 							<div className="w-full h-3/4 grid place-content-center relative">
 								<Image src={nextCard.image} alt="Tinder" fill="true" className="no-drag object-contain w-auto h-auto" />
@@ -248,13 +250,16 @@ const Swipe = () => {
 						key={currentCard.nombre}
 						className={`no-drag w-11/12 max-w-sm ${
 							!info ? "h-[96%]" : "h-[90%]"
-						} bg-sec rounded-3xl shadow-lg flex flex-col justify-center items-center duration-500`}
-						style={{transform: `translateX(${offsetX}px) rotate(${offsetX / 10}deg)`}}
+						} bg-sec rounded-3xl shadow-lg flex flex-col justify-center items-center`}
+						style={{
+							transform: `translateX(${offsetX}px) rotate(${offsetX / 10}deg)`,
+							transition: isInteracting ? "none" : "transform 0.5s",
+						}}
 						onTouchStart={handleTouchStart}
 						onTouchMove={handleTouchMove}
 						onTouchEnd={handleTouchEnd}>
 						{!info ? (
-							<div className={`w-full h-full p-8 flex flex-col justify-between items-center duration-500`}>
+							<div className={`w-full h-full p-8 flex flex-col justify-between items-center duration-300`}>
 								<div className="w-full h-3/4 grid place-content-center relative">
 									<Image
 										src={currentCard.image}
@@ -270,12 +275,13 @@ const Swipe = () => {
 										className="w-fit text-3xl font-bold text-black cursor-pointer">
 										{currentCard.nombre}
 									</p>
+
 									<p className="mt-1 text-lg text-black">{currentCard.puesto}</p>
 								</div>
 							</div>
 						) : (
 							<div className="w-full h-full p-2 flex flex-col justify-center items-center">
-								<div className="w-full h-[5%] flex flex-row justify-center items-center relative duration-500">
+								<div className="w-full h-[5%] flex flex-row justify-center items-center relative duration-1000">
 									<div
 										onDoubleClick={showInfo}
 										onTouchStart={showInfo}
@@ -294,8 +300,8 @@ const Swipe = () => {
 										</div>
 									</div>
 								</div>
-								<div className="w-full h-[95%] text-black carousel carousel-vertical appearedInfo duration-1000">
-									<div className="w-full h-96 p-4">
+								<div className="w-full h-[95%] mt-4 text-black carousel carousel-vertical appearedInfo">
+									<div className="w-full h-96 p-4 pt-0">
 										<p className="text-xl text-center font-bold">¡Te estamos buscando!</p>
 										<ul className="text-sm list-disc list-inside">
 											{currentCard.info.map((point, index) => (
@@ -337,8 +343,10 @@ const Swipe = () => {
 				{prevCard && (
 					<article
 						key={prevCard.nombre}
-						className={`no-drag w-11/12 max-w-sm h-[83%] mt-12 max-h-[450px] mb-10 bg-sec rounded-3xl shadow-lg flex flex-col justify-center items-center absolute`}
-						style={{transform: `translateX(${prevOffsetX}px) rotate(${prevOffsetX / 10}deg)`, transition: `1s`}}>
+						className={`no-drag w-11/12 max-w-sm h-[83%] mt-12 max-h-[450px] mb-10 bg-sec rounded-3xl shadow-lg flex flex-col justify-center items-center absolute duration-500`}
+						style={{
+							transform: `translateX(${prevOffsetX}px) rotate(${prevOffsetX / 10}deg)`,
+						}}>
 						<div className={`w-full h-full p-8 flex flex-col justify-between items-center`}>
 							<div className="w-full h-3/4 grid place-content-center relative">
 								<Image src={prevCard.image} alt="Tinder" fill="true" className="no-drag object-contain w-auto h-auto" />
