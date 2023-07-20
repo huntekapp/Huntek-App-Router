@@ -4,21 +4,22 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 const Interviews = () => {
 	return (
-		<article className="w-full h-1/4 px-4 flex flex-col justify-around">
-			<div className="flex flex-row my-2 justify-between">
+		<article className="w-full h-28 px-4 flex flex-col justify-around">
+			<div className="mt-2 mb-1 flex flex-row justify-between">
 				<p>Mis entrevistas</p>
 				<Link href="/interviews" className="font-medium">
 					Ver todas
 				</Link>
 			</div>
-			<div className="w-full h-3/4 px-4 text-xs xs:text-sm text-pri border rounded-xl shadow-md flex flex-row justify-start items-center">
-				<span className="w-14 h-14 text-sm font-semibold border-pri border-2 rounded-full grid place-content-center">
+			<div className="w-full h-20 px-4 bg-sec text-xs xs:text-sm text-pri border rounded-xl shadow-md flex flex-row justify-start items-center">
+				<span className="w-14 h-14 mr-6 text-sm font-semibold border-pri border-2 rounded-full grid place-content-center">
 					18 SEP
 				</span>
-				<p className="ml-6 text-sm sm:text-base hover:bg-pri/70 bg-pri btn flex-shrink text-sec font-semibold ">
-					15:30HS | <span className="font-medium text-sec">Coca-Cola</span>
-					<LocationOnIcon style={{fontSize: "0.9rem"}} />
-				</p>
+				<span className="btn bg-pri text-sm sm:text-base text-sec border-none">
+					15:30hs<span>|</span>
+					<span className="">Huntek</span>
+					<LocationOnIcon className="text-sm" />
+				</span>
 			</div>
 		</article>
 	);

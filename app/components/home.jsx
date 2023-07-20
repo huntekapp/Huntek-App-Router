@@ -6,8 +6,8 @@ import Footbar from "./footbar";
 const Home = () => {
 	return (
 		<main className="h-[90%]">
-			<section className="w-full h-[90%] text-pri flex flex-col justify-around items-left">
-				<article className="h-1/6 px-4 flex flex-col justify-center">
+			<section className="w-full h-home text-pri flex flex-col justify-around items-left">
+				<article className="h-20 px-4 flex flex-col justify-center">
 					<p className="text-xl">¡Hola!</p>
 					<p className="text-3xl font-medium">Luis Sanchez</p>
 				</article>
@@ -15,7 +15,7 @@ const Home = () => {
 				<Conversations />
 				<Interviews />
 			</section>
-			<footer className="h-[10%]">
+			<footer className="w-full h-20 fixed bottom-0">
 				<Footbar />
 			</footer>
 		</main>
