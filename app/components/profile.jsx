@@ -48,12 +48,6 @@ const Profile = () => {
                   <Image loading={"eager"} alt="arrow right" width={16} height={16} src="/utils/goto_huntek.svg" />
                 </div>
               </Link>
-              <Link href="/notifications">
-                <div className="flex flex-row flex-grow justify-between mx-8 my-6 hover:opacity-50 cursor-pointer ">
-                  <p className="text-md font-normal">Notificaciones</p>
-                  <Image loading={"eager"} alt="arrow right" width={16} height={16} src="/utils/goto_huntek.svg" />
-                </div>
-              </Link>
               <Link href="/home">
                 <div className="flex flex-row flex-grow justify-between mx-8 my-6 hover:opacity-50 cursor-pointer ">
                   <p className="text-md font-normal">Términos & Condiciones</p>
