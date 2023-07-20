@@ -1,10 +1,10 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import {useState} from "react";
-import {usePostLoginMutation} from "../globalstore/services/useLogin";
-import {useRouter} from "next/navigation";
-import {AlertError} from "./alertsforrequest";
+import { useState } from "react";
+import { usePostLoginMutation } from "../globalstore/services/useLogin";
+import { useRouter } from "next/navigation";
+import { AlertError } from "./alertsforrequest";
 import CheckBoxOutlineBlankOutlinedIcon from "@mui/icons-material/CheckBoxOutlineBlankOutlined";
 import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 
@@ -13,7 +13,7 @@ const LogForm = () => {
   const [errorCatched, setErrorCatched] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
   const [check, setCheck] = useState(false);
-  const [postLogin, {isLoading}] = usePostLoginMutation();
+  const [postLogin, { isLoading }] = usePostLoginMutation();
   const [input, setInput] = useState({
     email: "",
     password: "",
@@ -45,7 +45,7 @@ const LogForm = () => {
     setErrorCatched(null);
     try {
       const response = await postLogin(input).unwrap();
-      const {access_token, refresh_token} = response;
+      const { access_token, refresh_token } = response;
       const date = new Date();
       date.setDate(date.getDate() + 7);
       document.cookie = `token=${access_token}; expires=${date.toUTCString()}`;
@@ -55,7 +55,8 @@ const LogForm = () => {
         password: "",
       });
     } catch (error) {
-      if(error.status === "FETCH_ERROR") return setErrorCatched("No se ha podido establecer conexión con el servidor.")
+      if (error.status === "FETCH_ERROR")
+        return setErrorCatched("No se ha podido establecer conexión con el servidor.");
       setErrorCatched(error.data?.detail);
     }
   };
@@ -93,18 +94,25 @@ const LogForm = () => {
               ) : (
                 <input
                   type="password"
-                    name="password"
-                    id="password"
+                  name="password"
+                  id="password"
                   value={input.password}
                   className="w-full px-3 bg-transparent outline-none border-b"
                   placeholder="Tu contraseña"
-                    onChange={handleChange}
-                    autoComplete="off"
+                  onChange={handleChange}
+                  autoComplete="off"
                 />
               )}
               <button onClick={handleShowPassword} className="absolute inset-y-0 end-0 grid place-content-center px-4">
                 {showPassword ? (
-                  <Image loading={"eager"} src={"/utils/blink.svg"} width={20} height={20} alt="blink" unoptimized={true} />
+                  <Image
+                    loading={"eager"}
+                    src={"/utils/blink.svg"}
+                    width={20}
+                    height={20}
+                    alt="blink"
+                    unoptimized={true}
+                  />
                 ) : (
                   <Image loading={"eager"} src={"/utils/notblink.svg"} width={20} height={20} alt="notblink" />
                 )}
@@ -132,8 +140,9 @@ const LogForm = () => {
         </button>
       </form>
       <article className="w-full grid place-content-center relative">
-        <p className="px-2 bg-pri z-10">o continúa con</p>
-        <div className="border-b border-sec absolute inset-x-0 bottom-1/2"></div>
+        <div className="border-b w-3/12 xs:w-[31%] sm:w-[33%] border-grad absolute right-0 bottom-1/2"></div>
+        <p className="px-2 z-10">o continúa con</p>
+        <div className="border-b border-grad w-3/12 xs:w-[31%] sm:w-[33%] absolute inset-x-0 bottom-1/2"></div>
       </article>
       <article className="w-full grid grid-cols-3 gap-x-3">
         <button className="flex items-center justify-center bg-sec py-2.5 border rounded-lg hover:bg-gray-300 duration-150 active:bg-lig">
