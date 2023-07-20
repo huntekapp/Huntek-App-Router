@@ -104,7 +104,7 @@ const NewPassword = () => {
 						</div>
 						<button
 							disabled={input.password !== repeated.repeatedPassword}
-							className="w-fit px-2 py-1 mt-2 text-pri bg-gray-300 rounded-lg hover:bg-gray-100 disabled:opacity-40 disabled:hover:bg-gray-300 duration-150">
+							className="w-fit px-2 py-1 mt-6 text-pri bg-gray-300 rounded-lg hover:bg-gray-100 disabled:opacity-40 disabled:hover:bg-gray-300 duration-150">
 							Restaurar
 						</button>
 					</div>

@@ -24,7 +24,7 @@ const FootbarSwipe = ({canGoBack, canSwipe, swipe, goBack, showInfo}) => {
 						<ReplayIcon style={{fontSize: "2rem", color: "white"}} />
 					</IconButton>
 				</div>
-				<div className="h-14 w-14 bg-gradient-to-r from-amber-500 to-amber-200 border-2 rounded-full shadow-[0px_2px_3px_0px_#000] grid place-content-center">
+				<div className="h-14 w-14 bg-gradient-to-r from-amber-400 to-amber-200 border-2 rounded-full shadow-[0px_2px_3px_0px_#000] grid place-content-center">
 					<IconButton onClick={() => swipe("down")}>
 						<WorkOutlineIcon style={{fontSize: "2rem", color: "white"}} />
 					</IconButton>
