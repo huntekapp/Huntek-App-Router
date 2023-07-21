@@ -158,7 +158,7 @@ const LogForm = () => {
 			<article className="text-center my-5">
 				<p>
 					¿Primera vez aquí?{" "}
-					<Link href="/select" as="select" className="hover:underline">
+					<Link href="/signup" as="signup" className="hover:underline">
 						Regístrate
 					</Link>
 				</p>

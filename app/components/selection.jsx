@@ -12,13 +12,13 @@ const Selection = () => {
 					<div className="w-11/12 h-full p-6 text-pri bg-pri-100 rounded-lg">
 						<p className="m-2">Candidato en busca de trabajo</p>
 						<button className="mx-auto my-4 px-2 py-1 bg-pri text-pri-100 rounded-lg">
-							<Link href="/signup">Candidato</Link>
+							<Link href="/signup/applicant">Candidato</Link>
 						</button>
 					</div>
 					<div className="w-11/12 h-full p-6 text-pri-100 bg-pri rounded-lg">
 						<p className="m-2">Empresa en busca de talento</p>
 						<button className="mx-auto my-4 px-2 py-1 bg-pri-100 text-pri rounded-lg">
-							<a href="#empreProf">Empresa</a>
+							<Link href="/signup/company">Empresa</Link>
 						</button>
 					</div>
 				</div>

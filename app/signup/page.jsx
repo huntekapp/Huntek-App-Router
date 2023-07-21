@@ -1,15 +1,11 @@
-import SignForm from "../components/signup";
+import Selection from "../components/selection";
 
-const Signup = () => {
+const Select = () => {
 	return (
-		<section className="h-screen text-sec darkrightgrad flex flex-col lg:flex-row justify-evenly items-center">
-			<article className="w-1/2 h-1/4 lg:w-[500px] lg:h-[500px] flex flex-col justify-center items-center mt-6 lg:mt-0">
-				<div className="w-11/12 h-2/3 bg-HKlogo bg-contain bg-center bg-no-repeat"></div>
-				<h1 className="text-3xl lg:text-5xl">Registrarme</h1>
-			</article>
-			<SignForm />
+		<section className="w-full h-screen darkrightgrad flex flex-col justify-between items-center">
+			<Selection />
 		</section>
 	);
 };
 
-export default Signup;
+export default Select;
