@@ -8,10 +8,14 @@
 }
 
 .h-screen {
-  height: 99svh;
+  height: 100svh;
 }
 
 .h-home {
+  height: 99svh;
+}
+
+.h-homecontent {
   height: calc(100svh - 10% - 80px);
 }
 
