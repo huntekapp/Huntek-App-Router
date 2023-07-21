@@ -1,70 +1,71 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 
-const Profile = () => {
-  return (
-    <section className="z-40 p-0 bg-sec text-pri">
-      <div className="min-w-full h-1/2 ">
-        <div className="flex justify-start mt-10 h-full gap-10 w-[100vw]  items-start flex-col flex-wrap ">
-          <div className="flex-grow w-full">
-            <h2 className="ml-10 text-4xl font-bold mb-12 cursor-default">Mi perfil</h2>
-            <div className="rounded-lg  w-full mb-6 justify-start gap-4 mt-4 relative flex items-center text-pri flex-row">
-              <Link href="/profileExtend">
-                <div className="w-16 h-16 ml-8 avatar">
-                  <Image loading={"eager"}
-                    alt="avatar"
-                    width={100}
-                    height={100}
-                    quality={100}
-                    src="/images/pexels-monstera-5384445.jpg"
-                    className=" rounded-full cursor-pointer"
-                  />
-                </div>
-              </Link>
-              <div>
-                <h3 className=" text-xl font-medium cursor-default">Luis Sanchez</h3>
-                <p className="text-xs sm:text-lg font-light cursor-default">louissaintchess@gmail.com</p>
-              </div>
-              <Link href="/profileExtend">
-                <Image loading={"eager"}
-                  alt="pencil"
-                  width={25}
-                  height={25}
-                  src="/utils/pencil_huntek.svg"
-                  className="absolute right-0 top-5	text-pri hover:opacity-70 mr-5 cursor-pointer "
-                />
-              </Link>
-            </div>
-            <div className="flex-col  flex-wrap w-full ml-1 flex sm:rounded-lg">
-              <Link href="/postulations">
-                <div className="flex flex-grow justify-between mx-8 my-6 hover:opacity-50 cursor-pointer ">
-                  <p className="text-md font-normal">Postulaciones</p>
-                  <Image loading={"eager"} alt="arrow right" width={16} height={16} src="/utils/goto_huntek.svg" />
-                </div>
-              </Link>
-              <Link href="/conversations">
-                <div className="flex flex-row flex-grow justify-between mx-8 my-6 hover:opacity-50 cursor-pointer ">
-                  <p className="text-md font-normal">Conversaciones</p>
-                  <Image loading={"eager"} alt="arrow right" width={16} height={16} src="/utils/goto_huntek.svg" />
-                </div>
-              </Link>
-              <Link href="/home">
-                <div className="flex flex-row flex-grow justify-between mx-8 my-6 hover:opacity-50 cursor-pointer ">
-                  <p className="text-md font-normal">Términos & Condiciones</p>
-                  <Image loading={"eager"} alt="arrow right" width={16} height={16} src="/utils/goto_huntek.svg" />
-                </div>
-              </Link>
-              <div className="flex flex-row flex-grow justify-between mx-8 my-6">
-                <div>
-                  <p className="text-md font-normal  text-red-500 cursor-pointer hover:opacity-50">Cerrar sesión</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+const Profile = ({ user, closeProfile, setCloseProfile }) => {
+	return (
+		<section className="w-full h-screen text-pri flex flex-col">
+			<article className="w-full h-[10%] border-b flex flex-row justify-between items-center">
+				<h1 className="mx-2 text-3xl font-bold cursor-default">Mi Perfil</h1>
+				<button
+					onClick={() => {
+						document.getElementById("profile").click();
+						setCloseProfile(!closeProfile);
+					}}
+					className="w-6 h-6 mx-2 rounded-full flex flex-row justify-center items-center relative hover:bg-pri-100 hover:scale-125 duration-150">
+					<Image src="/utils/x_huntek.svg" alt="close" fill={true} className="absolute" />
+				</button>
+			</article>
+			<article className="w-full h-[90%] p-8 flex flex-col justify-around items-center">
+				<div className="w-full h-1/4 flex flex-col justify-around items-center">
+					<div className="w-16 h-16 relative">
+						<Image
+							src={user.image}
+							alt="avatar"
+							fill={true}
+							loading={"eager"}
+							className="object-cover rounded-full absolute"
+						/>
+					</div>
+					<div className="flex flex-row items-center">
+						<h3 className="text-2xl font-medium cursor-default">{user.name}</h3>
+						<Link href="/profileExtend" className="w-4 h-4 ml-2 relative">
+							<Image
+								src="/utils/pencil_huntek.svg"
+								alt="pencil"
+								fill={true}
+								className="absolute opacity-70 hover:opacity-100 hover:scale-125 duration-150"
+							/>
+						</Link>
+					</div>
+					<p className="text-xs font-normal cursor-default">{user.email}</p>
+				</div>
+				<div className="w-full h-3/4 text-base flex flex-col justify-around items-center">
+					<Link href="/postulations" className="w-full h-1/4 flex justify-between items-center hover:opacity-70">
+						Postulaciones
+						<div className="w-4 h-4 relative">
+							<Image src="/utils/goto_huntek.svg" alt="arrow right" fill={true} className="absolute" />
+						</div>
+					</Link>
+					<Link href="/conversations" className="w-full h-1/4 flex justify-between items-center hover:opacity-70">
+						Conversaciones
+						<div className="w-4 h-4 relative">
+							<Image src="/utils/goto_huntek.svg" alt="arrow right" fill={true} className="absolute" />
+						</div>
+					</Link>
+					<Link href="/home" className="w-full h-1/4 flex justify-between items-center hover:opacity-70">
+						Términos & Condiciones
+						<div className="w-4 h-4 relative">
+							<Image src="/utils/goto_huntek.svg" alt="arrow right" fill={true} className="absolute" />
+						</div>
+					</Link>
+					<Link href={"/login"} className="text-red-700 hover:opacity-70">
+						Cerrar sesión
+					</Link>
+				</div>
+			</article>
+		</section>
+	);
 };
 
 export default Profile;

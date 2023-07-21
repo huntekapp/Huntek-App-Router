@@ -3,40 +3,9 @@ import Image from "next/image";
 import { useState } from "react";
 import NotificationDetail from "./notificationdetail";
 
-const Notification = ({ setCloseNotif, closeNotif }) => {
+const Notification = ({ user, setCloseNotif, closeNotif }) => {
+	const notis = user.notification;
 	const [currentNotification, setCurrentNotification] = useState({});
-	const [notis, setNotis] = useState([
-		{
-			name: "Tienes una nueva cita!",
-			value:
-				"Aunque nadie lo pueda creer, tienes una nueva cita! De manera totalmente increible, una fémina le dio me gusta a tu carta e hicieron match, estamos seguros de que vas a tener que bañarte por primera vez en los ultimos seis meses.",
-		},
-		{
-			name: "Te han bloqueado.",
-			value:
-				"Lamentamos informarte que has sido bloqueado por la usuaria @dualipa_temperley debido a que has spameado su casilla de mensajes.",
-		},
-		{
-			name: "Actualizacion.",
-			value: `Hemos actualizado nuestra politica.`,
-		},
-		{
-			name: "La notificacion mas larga de la historia",
-			value: `En esta notificacion vamos a concentrarnos en explayar lo más posible este texto. Cada vez que un gato salta al techo del vecino las placas tectonicas de la zona aledaña deciden moverse en el eje y en un angulo de 45 grados. Este movimiento produce maremotos en las costas Tailandesas, haciendo que los barcos pesqueros Japoneses tomen la retirada debido a las inminentes inundaciones que se avecinan a sus vecinos alemanes.`,
-		},
-		{
-			name: "Notifid",
-			value: `Lorem ipsum dolor, etc etc. Quien escribió esto? Por que lo veo en todos lados?`,
-		},
-		{
-			name: "Marco Polo",
-			value: `Lorem ipsum dolor, etc etc. Quien escribió esto? Por que lo veo en todos lados?`,
-		},
-		{
-			name: "Usurpa Door",
-			value: `Lorem ipsum dolor, etc etc. Quien escribió esto? Por que lo veo en todos lados?`,
-		},
-	]);
 
 	const handleClick = (nombre) => {
 		let filteredNotis = notis.filter((noti) => noti.name !== nombre);
@@ -44,20 +13,19 @@ const Notification = ({ setCloseNotif, closeNotif }) => {
 	};
 
 	return (
-		<section className="min-w-full flex flex-col">
-			<section className="flex flex-row justify-start w-full h-full items-start py-2 border-gray-200 border-y border-t-0">
+		<section className="w-full h-screen text-pri bg-sec flex flex-col">
+			<article className="w-full h-[10%] border-b flex flex-row justify-start items-center">
 				<button
 					onClick={() => {
-						document.getElementById("my-drawer-4").click();
+						document.getElementById("notif").click();
 						setCloseNotif(!closeNotif);
 					}}
-					className="h-12 w-12  flex items-center justify-center rounded-full ml-2 hover:bg-pri-100">
-					<Image alt="back" width={32} height={32} src="/utils/back_huntek.svg" className="scale-x-[-1] scale-y-1" />
+					className="w-6 h-6 mx-2 rounded-full flex flex-row justify-center items-center relative hover:bg-pri-100 hover:scale-125 duration-150">
+					<Image src="/utils/x_huntek.svg" alt="close" fill={true} className="absolute" />
 				</button>
-				<h2 className="text-4xl font-bold mt-1 ml-2 text-pri cursor-default">Notificaciones</h2>
-			</section>
-			<section
-				className="border-gray-200 carousel carousel-vertical h-[90vh] min-w-full">
+				<h1 className="mx-1 text-3xl font-bold cursor-default">Notificaciones</h1>
+			</article>
+			<article className="w-full h-[90%] carousel carousel-vertical">
 				{!notis.length && (
 					<h2 className="text-xl flex justify-between items-center font-bold ml-5 mt-4">No hay notificaciones...</h2>
 				)}
@@ -66,15 +34,15 @@ const Notification = ({ setCloseNotif, closeNotif }) => {
 						<article
 							key={index}
 							className="bg-none border-gray-200 border-y border-t-0 cursor-default h-[120px] max-h-[120px] flex flex-row carousel-item">
-							<section className="flex justify-center items-center mx-4 text-pri text-2xl">●</section>
+							<section className="flex justify-center items-center mx-4 text-2xl">●</section>
 							<section className="flex flex-col w-full">
 								<h2 className="text-pri-800 pr-4 text-lg pt-2 flex flex-row justify-between items-center font-medium">
 									{`${noti.name}`}
-									<button onClick={() => handleClick(noti.name)} className="h-4 z-50 w-4 hover:scale-125 duration-300">
-										<Image alt="x" width={24} height={24} src="/utils/x_huntek.svg" />
+									<button onClick={() => handleClick(noti.name)} className="h-4 z-50 w-4 hover:scale-125 duration-150">
+										<Image src="/utils/x_huntek.svg" alt="close" width={24} height={24} />
 									</button>
 								</h2>
-								<p className="pr-5 pb-2 h-12 max-h-12 line-clamp-2 font-light text-base">{`${noti.value}`}</p>
+								<p className="pr-5 pb-2 h-12 max-h-12 text-pri-500 line-clamp-2 font-light text-base">{`${noti.value}`}</p>
 								<div className="flex justify-end">
 									{noti.value.length > 107 && (
 										<button className="mr-7 mt-1 h-fit cursor-default">
@@ -88,7 +56,7 @@ const Notification = ({ setCloseNotif, closeNotif }) => {
 												<div className="modal-box min-h-[150px] bg-gray-100 shadow-xl absolute top-[30vh]">
 													<NotificationDetail currentNotification={currentNotification} />
 													<a href="#" className="h-5 absolute top-3 right-5 text-2xl hover">
-													×
+														×
 													</a>
 												</div>
 											</div>
@@ -99,7 +67,7 @@ const Notification = ({ setCloseNotif, closeNotif }) => {
 						</article>
 					);
 				})}
-			</section>
+			</article>
 		</section>
 	);
 };
