@@ -116,11 +116,17 @@ select:-webkit-autofill:focus {
   border-radius: 0 30px 30px 0;
 }
 
-.gradient {
+.darkrightgrad {
   background-image: linear-gradient(135deg, #046255 35%, #000000 100%);
 }
-.homegrad {
+.lightcentergrad {
   background-image: linear-gradient(180deg, #ffffff 35%, #abcbc6 100%);
+}
+.lightleftgrad {
+  background-image: linear-gradient(225deg, #ffffff 35%, #abcbc6 100%);
+}
+.lightrightgrad {
+  background-image: linear-gradient(135deg, #ffffff 35%, #abcbc6 100%);
 }
 .gradient-both {
   background-image: linear-gradient(135deg, #000000 0%, #046255 35%, #000000 100%);
