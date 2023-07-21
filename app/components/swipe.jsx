@@ -12,23 +12,23 @@ const Swipe = () => {
       puesto: "Influencer",
       image: "/images/youtube-g6a795f8e6_1920.png",
       info: [
-        "Participar del ciclo completo de desarrollo de producto desde el análisis, prototipado y pruebas con usuarios hasta la mejora continua de las soluciones",
-        "Construir sistemas de frontend eficientes y reutilizables",
-        "Colaborar en la generación de nuevos productos, junto a profesionales de diseño y desarrollo de software",
-        "Identificar y comunicar las mejores prácticas para la ingeniería de frontend, formando parte del diseño y revisión del código",
+        "Desarrollo de producto",
+        "Construir sistemas eficientes",
+        "Generar nuevos productos en equipo",
+        "Identificar y comunicar las mejores prácticas para la ingeniería de frontend",
       ],
       requirements: [
-        "Ser profesional de Ingeniería en Sistemas o carreras afines",
-        "Poseer 5 años de experiencia de trabajo en frontend en ambientes de alto desempeño",
-        "Contar con experiencia de trabajo con tecnologías web abiertas como JavaScript, HTML y CSS",
-        "Tener experiencia en la utilización de NodeJS, Express, React, Sass, WPO y SEO",
-        "Residir en cualquier localidad de Argentina",
+        "Ingeriero/a en Sistemas",
+        "3 años de experiencia en el campo",
+        "Conocimiento de Next 13 y Tailwind CSS",
+        "NodeJS, Express, React, Sass, WPO y SEO",
+
       ],
       why: [
-        "Ser parte de una compañía con espíritu emprendedor en la que nos encanta pensar en grande y a largo plazo",
-        "Ser protagonista de tu desarrollo en un ambiente de oportunidades, aprendizaje, crecimiento, expansión y proyectos desafiantes",
-        "Compartir y aprender en equipo junto a grandes profesionales y especialistas",
-        "Un excelente clima de trabajo, con todo lo necesario para que vivas una gran experiencia :)",
+        "Ser parte de una compañía con espíritu emprendedor, ambiciosa y a largo plazo",
+        "Ser protagonista de tu desarrollo en un ambiente de proyectos desafiantes",
+        "Trabajar junto a excelentes profesionales y especialistas",
+        "Un gran clima de trabajo, con todo lo necesario para tener buenas experiencias :)",
       ],
     },
     {
@@ -36,23 +36,23 @@ const Swipe = () => {
       puesto: "Reclutador",
       image: "/social/linkedin.svg",
       info: [
-        "Participar del ciclo completo de desarrollo de producto desde el análisis, prototipado y pruebas con usuarios hasta la mejora continua de las soluciones",
-        "Construir sistemas de frontend eficientes y reutilizables",
-        "Colaborar en la generación de nuevos productos, junto a profesionales de diseño y desarrollo de software",
-        "Identificar y comunicar las mejores prácticas para la ingeniería de frontend, formando parte del diseño y revisión del código",
+        "Desarrollo de producto",
+        "Construir sistemas eficientes",
+        "Generar nuevos productos en equipo",
+        "Identificar y comunicar las mejores prácticas para la ingeniería de frontend",
       ],
       requirements: [
-        "Ser profesional de Ingeniería en Sistemas o carreras afines",
-        "Poseer 5 años de experiencia de trabajo en frontend en ambientes de alto desempeño",
-        "Contar con experiencia de trabajo con tecnologías web abiertas como JavaScript, HTML y CSS",
-        "Tener experiencia en la utilización de NodeJS, Express, React, Sass, WPO y SEO",
-        "Residir en cualquier localidad de Argentina",
+        "Ingeriero/a en Sistemas",
+        "3 años de experiencia en el campo",
+        "Conocimiento de Next 13 y Tailwind CSS",
+        "NodeJS, Express, React, Sass, WPO y SEO",
+
       ],
       why: [
-        "Ser parte de una compañía con espíritu emprendedor en la que nos encanta pensar en grande y a largo plazo",
-        "Ser protagonista de tu desarrollo en un ambiente de oportunidades, aprendizaje, crecimiento, expansión y proyectos desafiantes",
-        "Compartir y aprender en equipo junto a grandes profesionales y especialistas",
-        "Un excelente clima de trabajo, con todo lo necesario para que vivas una gran experiencia :)",
+        "Ser parte de una compañía con espíritu emprendedor, ambiciosa y a largo plazo",
+        "Ser protagonista de tu desarrollo en un ambiente de proyectos desafiantes",
+        "Trabajar junto a excelentes profesionales y especialistas",
+        "Un gran clima de trabajo, con todo lo necesario para tener buenas experiencias :)",
       ],
     },
     {
@@ -60,23 +60,23 @@ const Swipe = () => {
       puesto: "Metadatos",
       image: "/social/facebook.svg",
       info: [
-        "Participar del ciclo completo de desarrollo de producto desde el análisis, prototipado y pruebas con usuarios hasta la mejora continua de las soluciones",
-        "Construir sistemas de frontend eficientes y reutilizables",
-        "Colaborar en la generación de nuevos productos, junto a profesionales de diseño y desarrollo de software",
-        "Identificar y comunicar las mejores prácticas para la ingeniería de frontend, formando parte del diseño y revisión del código",
+        "Desarrollo de producto",
+        "Construir sistemas eficientes",
+        "Generar nuevos productos en equipo",
+        "Identificar y comunicar las mejores prácticas para la ingeniería de frontend",
       ],
       requirements: [
-        "Ser profesional de Ingeniería en Sistemas o carreras afines",
-        "Poseer 5 años de experiencia de trabajo en frontend en ambientes de alto desempeño",
-        "Contar con experiencia de trabajo con tecnologías web abiertas como JavaScript, HTML y CSS",
-        "Tener experiencia en la utilización de NodeJS, Express, React, Sass, WPO y SEO",
-        "Residir en cualquier localidad de Argentina",
+        "Ingeriero/a en Sistemas",
+        "3 años de experiencia en el campo",
+        "Conocimiento de Next 13 y Tailwind CSS",
+        "NodeJS, Express, React, Sass, WPO y SEO",
+
       ],
       why: [
-        "Ser parte de una compañía con espíritu emprendedor en la que nos encanta pensar en grande y a largo plazo",
-        "Ser protagonista de tu desarrollo en un ambiente de oportunidades, aprendizaje, crecimiento, expansión y proyectos desafiantes",
-        "Compartir y aprender en equipo junto a grandes profesionales y especialistas",
-        "Un excelente clima de trabajo, con todo lo necesario para que vivas una gran experiencia :)",
+        "Ser parte de una compañía con espíritu emprendedor, ambiciosa y a largo plazo",
+        "Ser protagonista de tu desarrollo en un ambiente de proyectos desafiantes",
+        "Trabajar junto a excelentes profesionales y especialistas",
+        "Un gran clima de trabajo, con todo lo necesario para tener buenas experiencias :)",
       ],
     },
     {
@@ -84,23 +84,23 @@ const Swipe = () => {
       puesto: "Buscador",
       image: "/social/google.svg",
       info: [
-        "Participar del ciclo completo de desarrollo de producto desde el análisis, prototipado y pruebas con usuarios hasta la mejora continua de las soluciones",
-        "Construir sistemas de frontend eficientes y reutilizables",
-        "Colaborar en la generación de nuevos productos, junto a profesionales de diseño y desarrollo de software",
-        "Identificar y comunicar las mejores prácticas para la ingeniería de frontend, formando parte del diseño y revisión del código",
+        "Desarrollo de producto",
+        "Construir sistemas eficientes",
+        "Generar nuevos productos en equipo",
+        "Identificar y comunicar las mejores prácticas para la ingeniería de frontend",
       ],
       requirements: [
-        "Ser profesional de Ingeniería en Sistemas o carreras afines",
-        "Poseer 5 años de experiencia de trabajo en frontend en ambientes de alto desempeño",
-        "Contar con experiencia de trabajo con tecnologías web abiertas como JavaScript, HTML y CSS",
-        "Tener experiencia en la utilización de NodeJS, Express, React, Sass, WPO y SEO",
-        "Residir en cualquier localidad de Argentina",
+        "Ingeriero/a en Sistemas",
+        "3 años de experiencia en el campo",
+        "Conocimiento de Next 13 y Tailwind CSS",
+        "NodeJS, Express, React, Sass, WPO y SEO",
+
       ],
       why: [
-        "Ser parte de una compañía con espíritu emprendedor en la que nos encanta pensar en grande y a largo plazo",
-        "Ser protagonista de tu desarrollo en un ambiente de oportunidades, aprendizaje, crecimiento, expansión y proyectos desafiantes",
-        "Compartir y aprender en equipo junto a grandes profesionales y especialistas",
-        "Un excelente clima de trabajo, con todo lo necesario para que vivas una gran experiencia :)",
+        "Ser parte de una compañía con espíritu emprendedor, ambiciosa y a largo plazo",
+        "Ser protagonista de tu desarrollo en un ambiente de proyectos desafiantes",
+        "Trabajar junto a excelentes profesionales y especialistas",
+        "Un gran clima de trabajo, con todo lo necesario para tener buenas experiencias :)",
       ],
     },
     {
@@ -108,23 +108,23 @@ const Swipe = () => {
       puesto: "Desarrollador FullStack",
       image: "/huntek/logo/G.svg",
       info: [
-        "Participar del ciclo completo de desarrollo de producto desde el análisis, prototipado y pruebas con usuarios hasta la mejora continua de las soluciones",
-        "Construir sistemas de frontend eficientes y reutilizables",
-        "Colaborar en la generación de nuevos productos, junto a profesionales de diseño y desarrollo de software",
-        "Identificar y comunicar las mejores prácticas para la ingeniería de frontend, formando parte del diseño y revisión del código",
+        "Desarrollo de producto",
+        "Construir sistemas eficientes",
+        "Generar nuevos productos en equipo",
+        "Identificar y comunicar las mejores prácticas para la ingeniería de frontend",
       ],
       requirements: [
-        "Ser profesional de Ingeniería en Sistemas o carreras afines",
-        "Poseer 5 años de experiencia de trabajo en frontend en ambientes de alto desempeño",
-        "Contar con experiencia de trabajo con tecnologías web abiertas como JavaScript, HTML y CSS",
-        "Tener experiencia en la utilización de NodeJS, Express, React, Sass, WPO y SEO",
-        "Residir en cualquier localidad de Argentina",
+        "Ingeriero/a en Sistemas",
+        "3 años de experiencia en el campo",
+        "Conocimiento de Next 13 y Tailwind CSS",
+        "NodeJS, Express, React, Sass, WPO y SEO",
+
       ],
       why: [
-        "Ser parte de una compañía con espíritu emprendedor en la que nos encanta pensar en grande y a largo plazo",
-        "Ser protagonista de tu desarrollo en un ambiente de oportunidades, aprendizaje, crecimiento, expansión y proyectos desafiantes",
-        "Compartir y aprender en equipo junto a grandes profesionales y especialistas",
-        "Un excelente clima de trabajo, con todo lo necesario para que vivas una gran experiencia :)",
+        "Ser parte de una compañía con espíritu emprendedor, ambiciosa y a largo plazo",
+        "Ser protagonista de tu desarrollo en un ambiente de proyectos desafiantes",
+        "Trabajar junto a excelentes profesionales y especialistas",
+        "Un gran clima de trabajo, con todo lo necesario para tener buenas experiencias :)",
       ],
     },
   ]);
@@ -306,26 +306,26 @@ const Swipe = () => {
                 </div>
                 <div className="w-full h-[95%] mt-4 text-black carousel carousel-vertical appearedInfo">
                   <div className="w-full h-96 p-4 pt-0">
-                    <p className="text-xl text-center font-bold">¡Te estamos buscando!</p>
+                    <p className="text-xl text-center font-bold pb-1">¡Te estamos buscando!</p>
                     <ul className="text-sm list-disc list-inside">
                       {currentCard.info.map((point, index) => (
-                        <li key={index}>{point}</li>
+                        <li className="pb-1" key={index}>{point}</li>
                       ))}
                     </ul>
                   </div>
-                  <div className="w-full h-96 p-4 bg-pri-100">
-                    <p className="text-xl text-center font-bold">Requisitos</p>
+                  <div className="w-full h-96 px-4 py-2 rounded-md bg-pri-100">
+                    <p className="text-xl text-center font-bold pb-1">Requisitos</p>
                     <ul className="text-sm list-disc list-inside">
                       {currentCard.requirements.map((point, index) => (
-                        <li key={index}>{point}</li>
+                        <li className="pb-1" key={index}>{point}</li>
                       ))}
                     </ul>
                   </div>
                   <div className="w-full h-96 p-4">
-                    <p className="text-lg text-center font-bold">¿Por qué nosotros?</p>
+                    <p className="text-lg text-center font-bold pb-1">¿Por qué nosotros?</p>
                     <ul className="text-sm list-disc list-inside">
                       {currentCard.why.map((point, index) => (
-                        <li key={index}>{point}</li>
+                        <li className="pb-1" key={index}>{point}</li>
                       ))}
                     </ul>
                   </div>

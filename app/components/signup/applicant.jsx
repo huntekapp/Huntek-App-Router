@@ -21,6 +21,7 @@ const ApplicantForm = () => {
 		last_name: "",
 		email: "",
 		password: "",
+		rol: "applicant",
 	});
 
 	const handleChange = (event) => {
@@ -56,6 +57,7 @@ const ApplicantForm = () => {
 				last_name: "",
 				email: "",
 				password: "",
+				rol: "applicant",
 			});
 			router.push("/verifymail");
 		} catch (error) {

@@ -1,26 +1,26 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
-import { usePostUsersMutation } from "../../globalstore/services/useRegister";
-import { useRouter } from "next/navigation";
-import { setEmail } from "../../globalstore/features/emailSlice";
-import { useDispatch } from "react-redux";
+import {useState} from "react";
+import {usePostUsersMutation} from "../../globalstore/services/useRegister";
+import {useRouter} from "next/navigation";
+import {setEmail} from "../../globalstore/features/emailSlice";
+import {useDispatch} from "react-redux";
 import verifySignupInputs from "../../helpers/verifySignUpInputs";
-import { AlertError } from "../alertsforrequest";
+import {AlertError} from "../alertsforrequest";
 
 const CompanyForm = () => {
 	const [showPassword, setShowPassword] = useState(false);
 	const [errorCatched, setErrorCatched] = useState(null);
 	const [check, setCheck] = useState(false);
-	const [postUsers, { isLoading }] = usePostUsersMutation();
+	const [postUsers, {isLoading}] = usePostUsersMutation();
 	const dispatch = useDispatch();
 	const router = useRouter();
 	const [input, setInput] = useState({
-		first_name: "",
-		last_name: "",
+		company_name: "",
 		email: "",
 		password: "",
+		rol: "company",
 	});
 
 	const handleChange = (event) => {
@@ -52,10 +52,10 @@ const CompanyForm = () => {
 			await postUsers(input).unwrap();
 			dispatch(setEmail(input.email));
 			setInput({
-				first_name: "",
-				last_name: "",
+				company_name: "",
 				email: "",
 				password: "",
+				rol: "company",
 			});
 			router.push("/verifymail");
 		} catch (error) {
@@ -68,28 +68,15 @@ const CompanyForm = () => {
 	return (
 		<section className="w-11/12 max-w-md h-5/6 lg:max-h-[375px] font-medium text-sec flex flex-col justify-evenly items-center">
 			<form onSubmit={handleSubmit} className="w-full lg:h-full flex flex-col justify-evenly gap-2">
-				<label className="mb-2" htmlFor="first_name">
-					Nombre
+				<label className="mb-2" htmlFor="company_name">
+					Nombre de la empresa
 					<input
 						type="text"
-						name="first_name"
-						id="first_name"
-						value={input.first_name}
+						name="company_name"
+						id="company_name"
+						value={input.company_name}
 						className="w-full px-3 bg-transparent outline-none border-b"
-						placeholder="Tu nombre"
-						onChange={handleChange}
-						autoComplete="off"
-					/>
-				</label>
-				<label className="mb-2" htmlFor="last_name">
-					Apellido
-					<input
-						type="text"
-						name="last_name"
-						id="last_name"
-						value={input.last_name}
-						className="w-full px-3 bg-transparent outline-none border-b"
-						placeholder="Tu apellido"
+						placeholder="	Mercedes-AMG PETRONAS Formula One Team"
 						onChange={handleChange}
 						autoComplete="off"
 					/>
