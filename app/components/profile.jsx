@@ -1,22 +1,22 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link";
 
 const Profile = ({ user, closeProfile, setCloseProfile }) => {
 	return (
 		<section className="w-full h-screen text-pri flex flex-col">
-			<article className="w-full h-[10%] border-b flex flex-row justify-between items-center">
-				<h1 className="mx-2 text-3xl font-bold cursor-default">Mi Perfil</h1>
+			<article className="w-full h-[10%] px-6 border-b flex flex-row justify-between items-center">
+				<div className="w-6 h-6"></div>
+				<h1 className="w-full text-center text-3xl font-bold cursor-default">Mi Perfil</h1>
 				<button
 					onClick={() => {
 						document.getElementById("profile").click();
 						setCloseProfile(!closeProfile);
 					}}
-					className="w-6 h-6 mx-2 rounded-full flex flex-row justify-center items-center relative hover:bg-pri-100 hover:scale-125 duration-150">
+					className="w-6 h-6 rounded-full flex flex-row justify-center items-center relative hover:bg-pri-100 hover:scale-125 duration-150">
 					<Image src="/utils/x_huntek.svg" alt="close" fill={true} className="absolute" />
 				</button>
 			</article>
-			<article className="w-full h-[90%] p-8 flex flex-col justify-around items-center">
+			<article className="w-full h-[60%] p-8 flex flex-col justify-evenly items-center">
 				<div className="w-full h-1/4 flex flex-col justify-around items-center">
 					<div className="w-16 h-16 relative">
 						<Image
@@ -59,10 +59,13 @@ const Profile = ({ user, closeProfile, setCloseProfile }) => {
 							<Image src="/utils/goto_huntek.svg" alt="arrow right" fill={true} className="absolute" />
 						</div>
 					</Link>
-					<Link href={"/login"} className="text-red-700 hover:opacity-70">
-						Cerrar sesión
-					</Link>
 				</div>
+			</article>
+			<article className="w-full h-[30%] p-8 text-pri-500 flex flex-col justify-evenly items-center">
+				<Link href={"/login"} className="text-red-700 hover:opacity-70">
+					Cerrar sesión
+				</Link>
+				Copyright © 2023 Huntek App
 			</article>
 		</section>
 	);

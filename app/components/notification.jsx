@@ -13,17 +13,18 @@ const Notification = ({ user, setCloseNotif, closeNotif }) => {
 	};
 
 	return (
-		<section className="w-full h-screen text-pri bg-sec flex flex-col">
-			<article className="w-full h-[10%] border-b flex flex-row justify-start items-center">
+		<section className="w-full h-screen text-pri flex flex-col">
+			<article className="w-full h-[10%] px-6 border-b flex flex-row justify-start items-center">
 				<button
 					onClick={() => {
 						document.getElementById("notif").click();
 						setCloseNotif(!closeNotif);
 					}}
-					className="w-6 h-6 mx-2 rounded-full flex flex-row justify-center items-center relative hover:bg-pri-100 hover:scale-125 duration-150">
+					className="w-6 h-6 rounded-full flex flex-row justify-center items-center relative hover:bg-pri-100 hover:scale-125 duration-150">
 					<Image src="/utils/x_huntek.svg" alt="close" fill={true} className="absolute" />
 				</button>
-				<h1 className="mx-1 text-3xl font-bold cursor-default">Notificaciones</h1>
+				<h1 className="w-full text-center text-3xl font-bold cursor-default">Notificaciones</h1>
+				<div className="w-6 h-6"></div>
 			</article>
 			<article className="w-full h-[90%] carousel carousel-vertical">
 				{!notis.length && (

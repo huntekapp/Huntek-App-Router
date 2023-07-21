@@ -59,30 +59,23 @@ const NavBar = () => {
 	const conversationButtonPaths = ["/swipe", "/home", "/postulations", /postulations\/.*/];
 
 	return (
-		<nav className="navbar h-[10%] shadow-xl bg-pri">
-			<article className="drawer navbar-start">
+		<nav className="navbar h-[10%] px-6 bg-pri shadow-xl">
+			<article className="navbar-start">
 				{!backArrowPaths.some((path) => (path instanceof RegExp ? path.test(currentPath) : path === currentPath)) ? (
 					<div className="drawer">
 						<input type="checkbox" id="profile" className="drawer-toggle" />
-						<label htmlFor="profile" className="drawer-button avatar">
-							<div className="w-10 rounded-full shadow-xl">
-								<Image
-									loading={"eager"}
-									alt="avatar"
-									src="/images/pexels-monstera-5384445.jpg"
-									width={100}
-									height={100}
-									quality={100}
-									className="w-5 h-5 cursor-pointer"
-								/>
-							</div>
+						<label htmlFor="profile" className="drawer-button w-10 h-10 shadow-xl relative cursor-pointer">
+							<Image
+								src={user.image}
+								alt="avatar"
+								fill={true}
+								loading={"eager"}
+								className="rounded-full object-cover absolute"
+							/>
 						</label>
-						<div className="drawer-side z-40">
-							<label htmlFor="profile" className=" z-40"></label>
-							<ul className="w-full h-screen bg-sec">
-								<li>
-									<Profile user={user} closeProfile={closeProfile} setCloseProfile={setCloseProfile} />
-								</li>
+						<div className="drawer-side z-10">
+							<ul className="w-full h-screen lightleftgrad">
+								<Profile user={user} closeProfile={closeProfile} setCloseProfile={setCloseProfile} />
 							</ul>
 						</div>
 					</div>
@@ -137,7 +130,7 @@ const NavBar = () => {
 						</div>
 						<div className="drawer-side z-50">
 							<label htmlFor="notif" className="z-50"></label>
-							<ul>
+							<ul className="lightrightgrad">
 								<li>
 									<Notification user={user} closeNotif={closeNotif} setCloseNotif={setCloseNotif} />
 								</li>
