@@ -59,7 +59,7 @@ const NavBar = () => {
 	const conversationButtonPaths = ["/swipe", "/home", "/postulations", /postulations\/.*/];
 
 	return (
-		<nav className="navbar h-[10%] px-6 bg-pri shadow-xl">
+		<nav className="navbar h-[10%] px-2 bg-pri shadow-xl">
 			<article className="navbar-start">
 				{!backArrowPaths.some((path) => (path instanceof RegExp ? path.test(currentPath) : path === currentPath)) ? (
 					<div className="drawer">
@@ -74,14 +74,14 @@ const NavBar = () => {
 							/>
 						</label>
 						<div className="drawer-side z-10">
-							<ul className="w-full h-screen lightleftgrad">
+							<ul className="w-full h-screen bg-sec">
 								<Profile user={user} closeProfile={closeProfile} setCloseProfile={setCloseProfile} />
 							</ul>
 						</div>
 					</div>
 				) : (
 					<Link href="/home">
-						<button className="btn btn-ghost z-0 btn-circle">
+						<button className="btn btn-ghost btn-circle">
 							<div className="indicator">
 								<Image loading={"eager"} src="/utils/back.svg" alt="backArrow" width={25} height={25} />
 							</div>
@@ -128,9 +128,8 @@ const NavBar = () => {
 								</svg>
 							</label>
 						</div>
-						<div className="drawer-side z-50">
-							<label htmlFor="notif" className="z-50"></label>
-							<ul className="lightrightgrad">
+						<div className="drawer-side z-10">
+							<ul className="w-full h-screen bg-sec">
 								<li>
 									<Notification user={user} closeNotif={closeNotif} setCloseNotif={setCloseNotif} />
 								</li>

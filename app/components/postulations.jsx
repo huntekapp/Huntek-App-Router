@@ -16,28 +16,26 @@ const Postulations = () => {
 
 	return (
 		<article className="w-full h-28 flex flex-col justify-around">
-			<div className="px-4 mt-2 mb-1 flex flex-row justify-between">
+			<div className="w-full px-4 mt-2 mb-1 flex flex-row justify-between">
 				<p>Mis postulaciones</p>
 				<Link href="/postulations" className="font-medium">
 					Ver todas
 				</Link>
 			</div>
-			<div className="w-full h-3/4 px-2 carousel carousel-center space-x-5">
+			<div className="w-full px-2 carousel carousel-center space-x-5">
 				{postulaciones.map((post, index) => (
-					<div key={index} className="w-[70px] h-[70px] carousel-item avatar">
-						<div className="border-4 border-pri rounded-full shadow-md relative">
-							<Link href={`/postulations/${post.id}`}>
-								<Image
-									loading={"eager"}
-									key={post.id}
-									alt={post.id}
-									src={post.image}
-									fill={true}
-									objectFit="cover"
-									objectPosition="center"
-								/>
-							</Link>
-						</div>
+					<div key={index} className="carousel-item avatar">
+						<Link
+							href={`/postulations/${post.id}`}
+							className="w-[70px] h-[70px] border-4 border-pri rounded-full shadow-md relative">
+							<Image
+								src={post.image}
+								alt={post.id}
+								fill={true}
+								loading={"eager"}
+								className="rounded-full object-cover absolute"
+							/>
+						</Link>
 					</div>
 				))}
 			</div>

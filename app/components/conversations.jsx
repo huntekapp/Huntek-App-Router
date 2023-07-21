@@ -45,12 +45,11 @@ const Conversations = () => {
 								<div className="w-[70%] flex flex-row justify-start items-center">
 									<div className="w-8 h-8 mr-4 rounded-full truncate relative">
 										<Image
-											loading={"eager"}
-											alt="profile"
 											src="/images/pexels-monstera-5384445.jpg"
+											alt="profile"
 											fill={true}
-											objectFit="cover"
-											className="rounded-full"
+											loading={"eager"}
+											className="object-cover rounded-full absolute"
 										/>
 									</div>
 									{`${chat.name} | ${chat.enterprise}`}
