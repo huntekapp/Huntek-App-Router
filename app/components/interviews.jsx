@@ -11,15 +11,19 @@ const Interviews = () => {
 					Ver todas
 				</Link>
 			</div>
-			<div className="w-full h-20 px-4 bg-sec text-xs xs:text-sm text-pri border rounded-xl shadow-md flex flex-row justify-start items-center">
-				<span className="w-14 h-14 mr-6 text-sm font-semibold border-pri border-2 rounded-full grid place-content-center">
-					18 SEP
-				</span>
-				<span className="btn bg-pri text-sm sm:text-base text-sec border-none">
-					15:30hs<span>|</span>
-					<span className="">Huntek</span>
-					<LocationOnIcon className="text-sm" />
-				</span>
+			<div className="w-full h-20 px-4 bg-sec text-xs xs:text-sm text-pri border rounded-xl shadow-md flex flex-row justify-between items-center">
+				<div className="w-[10%] min-w-[70px]">
+					<span className="w-14 h-14 text-sm font-semibold border-pri border-2 rounded-full grid place-content-center">
+						18 SEP
+					</span>
+				</div>
+				<div className="w-[90%]">
+					<span className="btn w-full bg-pri text-sm xs:text-xl text-sec border-none">
+						15:30hs<span>|</span>
+						<span className="">Huntek</span>
+						<LocationOnIcon className="text-sm" />
+					</span>
+				</div>
 			</div>
 		</article>
 	);
