@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import NotificationDetail from "./notificationdetail";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 
 const Notification = ({ user, setCloseNotif, closeNotif }) => {
@@ -35,30 +34,22 @@ const Notification = ({ user, setCloseNotif, closeNotif }) => {
 							<div className="w-[5%] grid px-8 place-content-center">●</div>
 							<div className="w-[95%] h-full pr-4 flex flex-col justify-center">
 								<h2 className="text-lg font-medium line-clamp-1">{noti.name}</h2>
-								<h3 className="max-h-12 text-justify text-base text-pri-500 font-light line-clamp-2">
-									{noti.value.length > 50 ? (
-										<p className="relative">
-											{noti.value}
-											<button className="bg-sec absolute right-0 bottom-0">
-												<a
-													href="#showMore"
-													className="text-sm text-pri-800 font-semibold cursor-pointer"
-													onClick={() => setCurrentNotification(noti)}>
-													Ver más
-												</a>
-												<div className="modal" id="showMore">
-													<div className="modal-box min-h-[150px] bg-gray-100 shadow-xl absolute top-[30vh]">
-														<NotificationDetail currentNotification={currentNotification} />
-														<a href="#" className="h-5 absolute top-3 right-5 text-2xl hover">
-															×
-														</a>
-													</div>
-												</div>
-											</button>
-										</p>
-									) : (
-										<p>{noti.value}</p>
-									)}
+								<h3 className="h-12 text-base text-pri-500 font-light line-clamp-2">
+									<a
+										href="#showMore"
+										className="text-sm font-semibold cursor-pointer"
+										onClick={() => setCurrentNotification(noti)}>
+										{noti.value}
+									</a>
+									<div className="modal" id="showMore">
+										<div className="modal-box bg-gray-100 text-pri-800 shadow-xl">
+											<p className="text-start text-lg font-medium">{currentNotification.name}</p>
+											<p className="text-start font-light">{currentNotification.value}</p>
+											<a href="#" className="h-5 absolute top-3 right-5 text-2xl hover">
+												×
+											</a>
+										</div>
+									</div>
 								</h3>
 							</div>
 							<div className="absolute top-3 right-3">
