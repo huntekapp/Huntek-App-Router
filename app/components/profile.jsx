@@ -21,7 +21,7 @@ const Profile = ({ user, closeProfile, setCloseProfile }) => {
 			</article>
 			<article className="w-full h-[90%] p-8 flex flex-col justify-evenly items-center">
 				<div className="w-full h-2/5 flex flex-col justify-center items-center">
-					<div className="w-16 h-16 relative">
+					<div className="w-20 h-20 mb-2 relative">
 						<Image
 							src={user.image}
 							alt="avatar"
@@ -38,13 +38,17 @@ const Profile = ({ user, closeProfile, setCloseProfile }) => {
 					</div>
 					<p className="text-xs font-normal cursor-default">{user.email}</p>
 				</div>
-				<div className="w-full h-3/5 text-base flex flex-col justify-around items-center">
+				<div className="w-full h-4/5 text-base flex flex-col justify-around items-center">
 					<Link href="/postulations" className="w-full h-1/4 flex justify-between items-center hover:opacity-70">
 						Postulaciones
 						<NavigateNextOutlinedIcon />
 					</Link>
 					<Link href="/conversations" className="w-full h-1/4 flex justify-between items-center hover:opacity-70">
 						Conversaciones
+						<NavigateNextOutlinedIcon />
+					</Link>
+					<Link href="/home" className="w-full h-1/4 flex justify-between items-center hover:opacity-70">
+						Configuración
 						<NavigateNextOutlinedIcon />
 					</Link>
 					<Link href="/home" className="w-full h-1/4 flex justify-between items-center hover:opacity-70">
