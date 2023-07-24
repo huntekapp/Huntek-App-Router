@@ -10,39 +10,124 @@ const userPostulations = [
 		enterpriseWebSite: "https://www.apple.com/",
 		enterpriseLogo: AppleLogo,
 		vacant: "Desarrollador Front End",
-		vacantInfo:
-			"Se necesita desarrollador Front End especializado en React, Next.js, Node.js, PostgreSQL, Sequelize y Python. Jornada laboral de 40 horas semanales, fin de semanas libres. Dos semanas de vacaciones al año. Trabajo remoto. Objetivos salariales.",
-		interviewDate: "28 de Febrero / 2024",
+		vacantInfo: [
+			"Participar del ciclo completo de desarrollo de producto desde el análisis, prototipado y pruebas con usuarios hasta la mejora continua de las soluciones",
+			"Construir sistemas de frontend eficientes y reutilizables",
+			"Colaborar en la generación de nuevos productos, junto a profesionales de diseño y desarrollo de software",
+			"Identificar y comunicar las mejores prácticas para la ingeniería de frontend, formando parte del diseño y revisión del código",
+		],
+		vacantRequire: [
+			"Ser profesional de Ingeniería en Sistemas o carreras afines",
+			"Poseer 5 años de experiencia de trabajo en frontend en ambientes de alto desempeño",
+			"Contar con experiencia de trabajo con tecnologías web abiertas como JavaScript, HTML y CSS",
+			"Tener experiencia en la utilización de NodeJS, Express, React, Sass, WPO y SEO",
+			"Residir en cualquier localidad de Argentina",
+		],
+		whyUs: [
+			"Ser parte de una compañía con espíritu emprendedor en la que nos encanta pensar en grande y a largo plazo",
+			"Ser protagonista de tu desarrollo en un ambiente de oportunidades, aprendizaje, crecimiento, expansión y proyectos desafiantes",
+			"Compartir y aprender en equipo junto a grandes profesionales y especialistas",
+			"Un excelente clima de trabajo, con todo lo necesario para que vivas una gran experiencia :)",
+		],
+		ubication: "Silicon Valey, California"
 	},
 	{
 		enterpriseName: "Herbalife",
 		enterpriseWebSite: "https://www.herbalife.com.mx/",
 		enterpriseLogo: EcoLogo,
 		vacant: "Desarrollador Back End",
-		vacantInfo:
-			"Estamos en busca de un web developer especializado en Back End. Actualmente la webpage de la empresa maneja MongoDB, Python, Alembic y FastAPI, por lo tanto el postulante debe saber utilizar esas herramientas. Puesto remoto y salario por objetivos. Jornada sin horarios, con objetivos a cumplir.",
-		interviewDate: "22 de Septiembre / 2024",
+		vacantInfo: ["React", "Node.js", "Next.js", "PostgreSQL", "Sequelize", "Python"],
+		vacantRequire: [
+			"Ser profesional de Ingeniería en Sistemas o carreras afines",
+			"Poseer 5 años de experiencia de trabajo en frontend en ambientes de alto desempeño",
+			"Contar con experiencia de trabajo con tecnologías web abiertas como JavaScript, HTML y CSS",
+			"Tener experiencia en la utilización de NodeJS, Express, React, Sass, WPO y SEO",
+			"Residir en cualquier localidad de Argentina",
+		],
+		whyUs: [
+			"Ser parte de una compañía con espíritu emprendedor en la que nos encanta pensar en grande y a largo plazo",
+			"Ser protagonista de tu desarrollo en un ambiente de oportunidades, aprendizaje, crecimiento, expansión y proyectos desafiantes",
+			"Compartir y aprender en equipo junto a grandes profesionales y especialistas",
+			"Un excelente clima de trabajo, con todo lo necesario para que vivas una gran experiencia :)",
+		],
+		ubication: "Wisconsin, United States"
 	},
 	{
 		enterpriseName: "LinkedIn",
 		enterpriseWebSite: "https://www.linkedin.com/",
 		enterpriseLogo: LinkedInLogo,
 		vacant: "Desarrollador Full Stack",
-		vacantInfo:
-			"Tecnologías que debe saber el postulante: PHP, JavaScript, PostgreSQL, Alembic, Sequelize, MongoDB, Webpack, Node.js, Python, Ruby, C++, Java y un postgrado en física cuántica firmado por Barack Obama impreso en Lisboa entre las 20:00 y 02:00hs. Competencias requeridas: ganas de trabajar. Jornada de 16 horas diarias en remoto. Remuneración aceptable.",
-		interviewDate: "32 de Diciembre / 2024",
+		vacantInfo: ["React", "Node.js", "Next.js", "PostgreSQL", "Sequelize", "Python"],
+		vacantRequire: [
+			"Ser profesional de Ingeniería en Sistemas o carreras afines",
+			"Poseer 5 años de experiencia de trabajo en frontend en ambientes de alto desempeño",
+			"Contar con experiencia de trabajo con tecnologías web abiertas como JavaScript, HTML y CSS",
+			"Tener experiencia en la utilización de NodeJS, Express, React, Sass, WPO y SEO",
+			"Residir en cualquier localidad de Argentina",
+		],
+		whyUs: [
+			"Ser parte de una compañía con espíritu emprendedor en la que nos encanta pensar en grande y a largo plazo",
+			"Ser protagonista de tu desarrollo en un ambiente de oportunidades, aprendizaje, crecimiento, expansión y proyectos desafiantes",
+			"Compartir y aprender en equipo junto a grandes profesionales y especialistas",
+			"Un excelente clima de trabajo, con todo lo necesario para que vivas una gran experiencia :)",
+		],
+		ubication: "London, UK"
 	},
+	{
+		enterpriseName: "Manzana",
+		enterpriseWebSite: "https://www.apple.com/",
+		enterpriseLogo: AppleLogo,
+		vacant: "Desarrollador Front End",
+		vacantInfo: ["React", "Node.js", "Next.js", "PostgreSQL", "Sequelize", "Python"],
+		vacantRequire: [
+			"Ser profesional de Ingeniería en Sistemas o carreras afines",
+			"Poseer 5 años de experiencia de trabajo en frontend en ambientes de alto desempeño",
+			"Contar con experiencia de trabajo con tecnologías web abiertas como JavaScript, HTML y CSS",
+			"Tener experiencia en la utilización de NodeJS, Express, React, Sass, WPO y SEO",
+			"Residir en cualquier localidad de Argentina",
+		],
+		whyUs: [
+			"Ser parte de una compañía con espíritu emprendedor en la que nos encanta pensar en grande y a largo plazo",
+			"Ser protagonista de tu desarrollo en un ambiente de oportunidades, aprendizaje, crecimiento, expansión y proyectos desafiantes",
+			"Compartir y aprender en equipo junto a grandes profesionales y especialistas",
+			"Un excelente clima de trabajo, con todo lo necesario para que vivas una gran experiencia :)",
+		],
+		ubication: "La Recoleta, Buenos Aires"
+	},
+	{
+		enterpriseName: "Hierbavida",
+		enterpriseWebSite: "https://www.herbalife.com.mx/",
+		enterpriseLogo: EcoLogo,
+		vacant: "Desarrollador Back End",
+		vacantInfo: ["React", "Node.js", "Next.js", "PostgreSQL", "Sequelize", "Python", "Alembic", "Carnet de Cabify"],
+		vacantRequire: [
+			"Ser profesional de Ingeniería en Sistemas o carreras afines",
+			"Poseer 5 años de experiencia de trabajo en frontend en ambientes de alto desempeño",
+			"Contar con experiencia de trabajo con tecnologías web abiertas como JavaScript, HTML y CSS",
+			"Tener experiencia en la utilización de NodeJS, Express, React, Sass, WPO y SEO",
+			"Residir en cualquier localidad de Argentina",
+		],
+		whyUs: [
+			"Ser parte de una compañía con espíritu emprendedor en la que nos encanta pensar en grande y a largo plazo",
+			"Ser protagonista de tu desarrollo en un ambiente de oportunidades, aprendizaje, crecimiento, expansión y proyectos desafiantes",
+			"Compartir y aprender en equipo junto a grandes profesionales y especialistas",
+			"Un excelente clima de trabajo, con todo lo necesario para que vivas una gran experiencia :)",
+		],
+		ubication: "Córdoba, Argentina"
+	}
 ];
 
 const PostulationsExtend = () => {
 	return (
-		<main>
+		<main className="screen conta">
 			<NavBar />
 			<section className="h-full bg-sec flex flex-col text-left">
-				<h1 className="font-semibold text-3xl mt-4 ml-5 cursor-default">Mis postulaciones</h1>
-				{userPostulations.map((postulation, index) => {
-					return <PostulationDetail postulationInfo={postulation} key={index} />;
-				})}
+				<h1 className="text-3xl font-bold p-4 cursor-default border-b-2 text-pri">Mis postulaciones</h1>
+				<div className="w-full">
+					{userPostulations.map((postulation, index) => {
+						return <PostulationDetail postulationInfo={postulation} key={index} />;
+					})}
+				</div>
 			</section>
 		</main>
 	);
