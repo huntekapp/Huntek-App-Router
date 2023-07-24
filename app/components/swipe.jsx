@@ -194,9 +194,9 @@ const Swipe = () => {
 
 	const handleTouchEnd = () => {
 		setIsInteracting(false);
-		if (offsetX >= 150) {
+		if (offsetX >= 100) {
 			swipe("right");
-		} else if (offsetX <= -150) {
+		} else if (offsetX <= -100) {
 			swipe("left");
 		} else if (offsetY <= -200) {
 			swipe("up");
@@ -247,12 +247,10 @@ const Swipe = () => {
 								<Image src={nextCard.image} alt="Tinder" fill="true" className="no-drag object-contain absolute" />
 							</div>
 							<div className="w-full flex flex-col justify-center items-left">
-								<p
-									onDoubleClick={showInfo}
-									onTouchStart={showInfo}
-									className="w-fit text-3xl font-bold text-black cursor-pointer">
+								<button className="w-fit btn text-2xl bg-pri font-bold text-sec cursor-pointer">
 									{nextCard.nombre}
-								</p>
+									<InfoOutlinedIcon style={{ fontSize: "1.5rem" }} />
+								</button>
 								<p className="mt-1 text-lg text-black">{nextCard.puesto}</p>
 							</div>
 						</div>
@@ -266,7 +264,7 @@ const Swipe = () => {
 						} bg-sec rounded-3xl shadow-lg flex flex-col justify-center items-center`}
 						style={{
 							transform: `translateX(${offsetX}px) translateY(${offsetY}px) rotate(${offsetX / 10}deg)`,
-							transition: isInteracting ? "none" : "transform 1s",
+							transition: isInteracting ? "none" : "1s",
 						}}
 						onTouchStart={handleTouchStart}
 						onTouchMove={handleTouchMove}
@@ -282,14 +280,13 @@ const Swipe = () => {
 									/>
 								</div>
 								<div className="w-full  flex flex-col justify-center items-left">
-									<p
+									<button
 										onDoubleClick={showInfo}
 										onTouchStart={showInfo}
 										className="w-fit text-3xl btn bg-pri font-bold text-sec cursor-pointer">
 										{currentCard.nombre}
 										<InfoOutlinedIcon style={{ fontSize: "1.5rem" }} />
-									</p>
-
+									</button>
 									<p className="mt-1 text-lg font-medium text-black">{currentCard.puesto}</p>
 									<p className="line-clamp-3 text-sm/relaxed text-black/60">Guadalajara, México.</p>
 								</div>
@@ -364,21 +361,23 @@ const Swipe = () => {
 				{prevCard && (
 					<article
 						key={prevCard.nombre}
-						className={`no-drag w-11/12 max-w-sm h-[80%] bg-sec rounded-3xl shadow-lg flex flex-col absolute duration-1000`}
+						className={`no-drag w-11/12 max-w-sm h-[10%] bg-sec rounded-3xl shadow-lg flex flex-col absolute duration-1000`}
 						style={{
-							transform: `translateX(${prevOffsetX}px) translateY(${prevOffsetY}px) rotate(${prevOffsetX / 10}deg)`,
+							transform: `${
+								lastDirection === "up"
+									? `translateY(${prevOffsetY}px)`
+									: `translateX(${prevOffsetX}px) rotate(${prevOffsetX / 10}deg)`
+							}`,
 						}}>
 						<div className={`w-full h-full p-8 flex flex-col justify-between items-center`}>
 							<div className="w-full h-3/4 grid place-content-center relative">
 								<Image src={prevCard.image} alt="Tinder" fill="true" className="no-drag object-contain w-auto h-auto" />
 							</div>
 							<div className="w-full flex flex-col justify-center items-left">
-								<p
-									onDoubleClick={showInfo}
-									onTouchStart={showInfo}
-									className="w-fit text-3xl font-bold text-black cursor-pointer">
+								<button className="w-fit btn bg-pri text-xl text-sec font-bold cursor-pointer">
 									{prevCard.nombre}
-								</p>
+									<InfoOutlinedIcon style={{ fontSize: "1.5rem" }} />
+								</button>
 								<p className="mt-1 text-lg text-black">{prevCard.puesto}</p>
 							</div>
 						</div>
