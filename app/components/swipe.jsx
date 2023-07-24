@@ -2,7 +2,6 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import FootbarSwipe from "./footbarswipe";
-import PermDeviceInformationIcon from "@mui/icons-material/PermDeviceInformation";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 
 const Swipe = () => {
@@ -191,7 +190,6 @@ const Swipe = () => {
 
 		setCurrentY(e.touches ? e.touches[0].clientY : e.clientY);
 		setOffsetY(currentY - startY);
-		console.log(offsetY);
 	};
 
 	const handleTouchEnd = () => {
@@ -243,10 +241,10 @@ const Swipe = () => {
 				{nextCard && (
 					<article
 						key={nextCard.nombre}
-						className={`no-drag w-1/2 max-w-xs h-[50%] mb-10 bg-sec rounded-3xl shadow-lg blur-xl flex flex-col justify-center items-center absolute duration-300`}>
+						className={`no-drag w-1/2 max-w-xs h-[50%] mb-10 bg-sec rounded-3xl shadow-lg blur-lg flex flex-col justify-center items-center absolute duration-1000`}>
 						<div className={`w-full h-full p-8 flex flex-col justify-between items-center`}>
 							<div className="w-full h-3/4 grid place-content-center relative">
-								<Image src={nextCard.image} alt="Tinder" fill="true" className="no-drag object-contain w-auto h-auto" />
+								<Image src={nextCard.image} alt="Tinder" fill="true" className="no-drag object-contain absolute" />
 							</div>
 							<div className="w-full flex flex-col justify-center items-left">
 								<p
@@ -268,14 +266,14 @@ const Swipe = () => {
 						} bg-sec rounded-3xl shadow-lg flex flex-col justify-center items-center`}
 						style={{
 							transform: `translateX(${offsetX}px) translateY(${offsetY}px) rotate(${offsetX / 10}deg)`,
-							transition: isInteracting ? "none" : "transform 0.5s",
+							transition: isInteracting ? "none" : "transform 1s",
 						}}
 						onTouchStart={handleTouchStart}
 						onTouchMove={handleTouchMove}
 						onTouchEnd={handleTouchEnd}>
 						{!info ? (
-							<div className={`w-full h-full  p-8 flex flex-col space-y-8 justify-between items-center duration-300`}>
-								<div className="w-full h-3/4  grid place-content-center relative">
+							<div className={`w-full h-full p-8 flex flex-col space-y-8 justify-between items-center duration-1000`}>
+								<div className="w-full h-3/4 grid place-content-center relative">
 									<Image
 										src={currentCard.image}
 										alt="Tinder"
@@ -366,7 +364,7 @@ const Swipe = () => {
 				{prevCard && (
 					<article
 						key={prevCard.nombre}
-						className={`no-drag w-11/12 max-w-sm h-[83%] mt-12 max-h-[450px] mb-10 bg-sec rounded-3xl shadow-lg flex flex-col justify-center items-center absolute duration-500`}
+						className={`no-drag w-11/12 max-w-sm h-[80%] bg-sec rounded-3xl shadow-lg flex flex-col absolute duration-1000`}
 						style={{
 							transform: `translateX(${prevOffsetX}px) translateY(${prevOffsetY}px) rotate(${prevOffsetX / 10}deg)`,
 						}}>
