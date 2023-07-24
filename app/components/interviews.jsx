@@ -18,10 +18,10 @@ const Interviews = () => {
 					</span>
 				</div>
 				<div className="w-[99%]">
-					<span className="btn w-full bg-pri text-sm xs:text-xl text-sec border-none">
+					<span className="btn w-full shadow-sm custom-radial-blur-22 border-none text-sm xs:text-xl text-sec">
 						15:30hs<span>|</span>
-						<span className="">Huntek</span>
-						<LocationOnIcon className="text-sm" />
+						<span className="text-pri">Huntek</span>
+						<LocationOnIcon className="text-sm text-pri" />
 					</span>
 				</div>
 			</div>
