@@ -1,3 +1,4 @@
+import Image from "next/image";
 import InterviewDetail from "../components/interviewDetail";
 import AppleLogo from "@/public/images/apple-g44d4327db_1920.png";
 import EcoLogo from "@/public/images/eco-ged3b25e46_1920.png";
@@ -35,9 +36,13 @@ const interviewInfo = [
 const InterviewsPage = () => {
 	return (
 		<main>
-			<NavBar/>
-			<section className="min-h-screen bg-sec flex flex-col text-left">
-				<h1 className="font-semibold text-2xl mt-4 ml-6">Entrevistas confirmadas</h1>
+			<section className="flex flex-row justify-start h-full w-full items-start py-2 border-y border-t-0">
+					<a href="/home" className="h-12 w-12 flex justify-center rounded-full ml-2 hover:bg-pri-100">
+						<Image loading={"eager"} alt="back" width={32} height={32} src="utils/back_huntek.svg" />
+					</a>
+					<h1 className="text-4xl font-bold mt-1 ml-2 text-pri cursor-default">Entrevistas</h1>
+				</section>
+			<section className="min-h-screen bg-sec flex flex-col lg:grid lg:grid-cols-2 lg:grid-rows-6 text-left">
 				{interviewInfo.map((interview, index) => {
 					return <InterviewDetail interviewInfo={interview} key={index}/>;
 				})}
