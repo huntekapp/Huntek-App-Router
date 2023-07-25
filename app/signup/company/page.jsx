@@ -1,6 +1,6 @@
 import CompanyForm from "@/app/components/signup/company";
 
-const Signup = () => {
+const CompanySignup = () => {
 	return (
 		<section className="h-screen text-sec darkrightgrad flex flex-col lg:flex-row justify-evenly items-center">
 			<article className="w-1/2 h-1/4 lg:w-[500px] lg:h-[500px] flex flex-col justify-center items-center mt-6 lg:mt-0">
@@ -12,4 +12,4 @@ const Signup = () => {
 	);
 };
 
-export default Signup;
+export default CompanySignup;

@@ -1,11 +1,11 @@
-import Selection from "../components/selection";
+import RoleSelection from "../components/signup/roleSelection";
 
-const Select = () => {
+const SelectRole = () => {
 	return (
 		<section className="w-full h-screen darkrightgrad flex flex-col justify-between items-center">
-			<Selection />
+			<RoleSelection />
 		</section>
 	);
 };
 
-export default Select;
+export default SelectRole;

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { IconButton } from "@mui/material";
-const Selection = () => {
+
+const RoleSelection = () => {
 	return (
 		<section className="w-full max-w-md h-full text-sec text-center flex flex-col justify-evenly items-center">
 			<article className="w-11/12">
@@ -12,13 +13,13 @@ const Selection = () => {
 					<div className="w-11/12 h-full p-6 border shadow-lg border-sec text-pri bg-pri-100 rounded-lg">
 						<p className="m-2">Candidato en busca de trabajo</p>
 						<IconButton className="mx-auto my-4 px-2 py-1 text-lg font-normal hover:bg-pri hover:scale-110 transition duration-300 bg-pri shadow-md text-sec rounded-lg">
-								<Link href="/signup/applicant">Candidato</Link>
+							<Link href="/signup/applicant">Candidato</Link>
 						</IconButton>
 					</div>
 					<div className="w-11/12 h-full p-6 border border-white shadow-lg text-pri-100 bg-trasnparent rounded-lg">
 						<p className="m-2">Empresa en busca de talento</p>
 						<IconButton className="mx-auto my-4 px-2 py-1 text-lg font-normal hover:scale-110 transition duration-300 hover:bg-pri-100  bg-pri-100 shadow-md text-pri rounded-lg">
-								<Link href="/signup/applicant">Empresa</Link>
+							<Link href="/signup/applicant">Empresa</Link>
 						</IconButton>
 					</div>
 				</div>
@@ -31,4 +32,4 @@ const Selection = () => {
 	);
 };
 
-export default Selection;
+export default RoleSelection;
