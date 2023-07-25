@@ -189,3 +189,31 @@ select:-webkit-autofill:focus {
       background-position: 100% 50%;
   }
 }
+
+@property --progress-value {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+@keyframes progress {
+ to { --progress-value: 75; }
+}
+
+.progress-bar {
+  justify-content: center;
+  align-items: center;
+
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: 
+    radial-gradient(closest-side, white 79%, transparent 80% 100%),
+    conic-gradient(#046255 calc(var(--progress-value) * 1%), #c7dcd9 0);
+  animation: progress 2s 1 forwards;
+}
+
+.progress-bar::before {
+  counter-reset: percentage var(--progress-value);
+  animation: progress 2s 1 forwards;
+}
