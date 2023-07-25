@@ -5,8 +5,25 @@ import confetti from "canvas-confetti";
 import MovingComponent from "react-moving-text";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import FootbarSwipe from "./footbarswipe";
+import getCookie from "../helpers/getCookies";
+import { useCreateChatMutation } from "../globalstore/services/useCreateChat";
 
 const Swipe = () => {
+const [createChat, {isLoading}] = useCreateChatMutation()
+	const user_id = getCookie("AiOiJKV1Q");
+	const handleMatch = async () => {
+		//if(funcion que matchea usuario con empresa)
+		try {
+			const response = await createChat(match).unwrap();
+			const success = response.data
+		} catch (error) {
+			console.log(error)
+		}
+	}
+	const [match, setMatch] = useState({
+		sender_id: user_id,
+		recipient_id: "",
+	});
 	const [empresa, setEmpresa] = useState([
 		{
 			nombre: "Youtube",
