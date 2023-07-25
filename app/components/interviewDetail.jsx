@@ -2,8 +2,8 @@ import Image from "next/image";
 
 const InterviewDetail = ({interviewInfo}) => {
 	return (
-		<main className="w-full p-5">
-			<section className="flex flex-row bg-sec border  w-full p-2 rounded-3xl shadow-lg">
+		<main className="w-full p-3 pb-0">
+			<section className="flex flex-row bg-sec border w-full p-2 rounded-lg shadow-sm">
 				<div>
 					<Image loading={"eager"} alt="logo"  src={interviewInfo.enterpriseLogo} width={90} height={100} className="p-1 rounded-full" />
 				</div>

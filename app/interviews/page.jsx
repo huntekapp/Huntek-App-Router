@@ -3,7 +3,6 @@ import InterviewDetail from "../components/interviewDetail";
 import AppleLogo from "@/public/images/apple-g44d4327db_1920.png";
 import EcoLogo from "@/public/images/eco-ged3b25e46_1920.png";
 import LinkedInLogo from "@/public/images/linkedin-gf141b6fe5_1920.png";
-import NavBar from "../components/navbar";
 
 // Hardcoded Info / enterpiseLogo must be square image
 const interviewInfo = [
