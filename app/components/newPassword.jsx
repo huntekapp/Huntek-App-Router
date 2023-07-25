@@ -44,10 +44,8 @@ const NewPassword = () => {
 		event.preventDefault();
 		try {
 			const result = await postNewPassword(input).unwrap();
-			console.log(result);
 			router.push("/login");
 		} catch (error) {
-			console.log(error);
 		}
 		setInput({
 			token,

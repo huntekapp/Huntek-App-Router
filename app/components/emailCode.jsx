@@ -9,7 +9,6 @@ import { AlertSuccess, AlertError } from "./alertsforrequest";
 
 const EmailCode = () => {
 	const email = localStorage.getItem("email");
-	console.log(localStorage)
 	const router = useRouter();
 	const [successReq, setSuccessReq] = useState(null);
 	const [errorCatched, setErrorCatched] = useState(null);
@@ -79,7 +78,6 @@ const EmailCode = () => {
 			email: userCode.email,
 		});
 	};
-console.log(resendCode)
 	const handleSubmitResend = async (event) => {
 		event.preventDefault();
 		try {
@@ -87,7 +85,6 @@ console.log(resendCode)
 			setSuccessReq(response.message);
 		} catch (error) {
 			setErrorCatched(error.data?.detail);
-			console.log(error)
 		}
 	};
 

@@ -36,7 +36,6 @@ const CompanyQuestions = () => {
 
   const handleSumbit = (event) => {
     event.preventDefault();
-    console.log("submitting form data");
   };
 
   return (
