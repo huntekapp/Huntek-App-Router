@@ -7,7 +7,7 @@ import { loginDB } from "./services/useLogin";
 import { recoverDB } from "./services/useRecoverPw";
 import { resendCodeDB } from "./services/useResendCode";
 import { newPasswordDB } from "./services/useNewPassword";
-
+import { messagesDB } from "./services/useMessages";
 
 export const store = configureStore({
   reducer: {
@@ -18,6 +18,7 @@ export const store = configureStore({
     [recoverDB.reducerPath]: recoverDB.reducer,
     [resendCodeDB.reducerPath]: resendCodeDB.reducer,
     [newPasswordDB.reducerPath]: newPasswordDB.reducer,
+    [messagesDB.reducerPath]: messagesDB.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat([
@@ -27,6 +28,7 @@ export const store = configureStore({
       recoverDB.middleware,
       resendCodeDB.middleware,
       newPasswordDB.middleware,
+      messagesDB.middleware,
     ]),
 });
 setupListeners(store.dispatch);

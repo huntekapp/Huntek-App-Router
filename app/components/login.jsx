@@ -48,7 +48,7 @@ const LogForm = () => {
 			const { access_token, refresh_token } = response;
 			const date = new Date();
 			date.setDate(date.getDate() + 7);
-			document.cookie = `token=${access_token}; expires=${date.toUTCString()}`;
+			document.cookie = `kTnKETkt=${access_token}; expires=${date.toUTCString()}`;
 			router.push("/profileExtend");
 			setInput({
 				email: "",
