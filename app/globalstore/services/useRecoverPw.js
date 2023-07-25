@@ -3,7 +3,7 @@ import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 export const recoverDB = createApi({
   reducerPath: "recoverDB",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:8000/api/v1/auth/password/recovery",
+    baseUrl: "https://dev.api.app.huntek.com/api/v1/auth/password/recovery",
   }),
   endpoints: (builder) => ({
     getRecovery: builder.mutation({

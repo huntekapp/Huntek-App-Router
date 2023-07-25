@@ -20,7 +20,7 @@ const CompanyForm = () => {
 		company_name: "",
 		email: "",
 		password: "",
-		rol: "company",
+		role_name: "company",
 	});
 
 	const handleChange = (event) => {
@@ -55,7 +55,7 @@ const CompanyForm = () => {
 				company_name: "",
 				email: "",
 				password: "",
-				rol: "company",
+				role_name: "company",
 			});
 			router.push("/verifymail");
 		} catch (error) {

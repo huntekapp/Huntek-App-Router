@@ -13,7 +13,6 @@ const Postulation = () => {
   const [expanded, setExpanded] = useState(false);
 
   const [iframeLoaded, setIframeLoaded] = useState(false);
-  console.log(iframeLoaded);
   const empresa = id.postulation;
   const data = [
     {

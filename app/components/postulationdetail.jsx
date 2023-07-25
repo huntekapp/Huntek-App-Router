@@ -17,7 +17,7 @@ const PostulationDetail = ({ postulationInfo }) => {
     <main
       className={`h-fit w-full relative flex flex-col sm:items-center rounded-md mt-5 bg-pri ${
         expanded ? "z-50" : ""
-      } shadow-lg`}>
+      } shadow-xl`}>
       {expanded && <div className="fixed inset-0 bg-black opacity-30 z-10"></div>}
       <section className="w-full flex z-30 rounded-lg rounded-b-none bg-sec flex-row p-2 px-4 border-pri border-4">
         <Image

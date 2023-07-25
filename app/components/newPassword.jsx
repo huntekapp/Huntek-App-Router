@@ -44,10 +44,8 @@ const NewPassword = () => {
 		event.preventDefault();
 		try {
 			const result = await postNewPassword(input).unwrap();
-			console.log(result);
 			router.push("/login");
 		} catch (error) {
-			console.log(error);
 		}
 		setInput({
 			token,
@@ -56,7 +54,7 @@ const NewPassword = () => {
 	};
 	return (
 		<section className="w-full h-full text-pri flex flex-col items-center justify-center">
-			<article className="w-11/12 h-3/4 max-h-[450px] bg-sec rounded-lg shadow-2xl flex flex-col justify-center items-center">
+			<article className="w-11/12 max-w-md h-3/4 max-h-[450px] bg-sec rounded-lg shadow-2xl flex flex-col justify-center items-center">
 				<div className="w-20 h-20 p-4 border-4 rounded-full shadow-lg grid place-content-center">
 					<Image loading={"eager"} src={"/huntek/logo/G.svg"} alt="logo" width={35} height={35} />
 				</div>

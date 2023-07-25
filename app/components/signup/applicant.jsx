@@ -21,7 +21,7 @@ const ApplicantForm = () => {
 		last_name: "",
 		email: "",
 		password: "",
-		rol: "applicant",
+		role_name: "applicant",
 	});
 
 	const handleChange = (event) => {
@@ -57,9 +57,10 @@ const ApplicantForm = () => {
 				last_name: "",
 				email: "",
 				password: "",
-				rol: "applicant",
+				role_name: "applicant",
 			});
-			router.push("/verifymail");
+			localStorage.setItem("email", input.email);
+			router.push("/signup/emailvalidate");
 		} catch (error) {
 			if (error.status === "FETCH_ERROR")
 				return setErrorCatched("No se ha podido establecer conexión con el servidor.");

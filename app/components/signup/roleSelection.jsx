@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { IconButton } from "@mui/material";
 
 const RoleSelection = () => {
 	return (
@@ -12,15 +11,15 @@ const RoleSelection = () => {
 				<div className="max-w-md grid grid-cols-2 place-items-center">
 					<div className="w-11/12 h-full p-6 border shadow-lg border-sec text-pri bg-pri-100 rounded-lg">
 						<p className="m-2">Candidato en busca de trabajo</p>
-						<IconButton className="mx-auto my-4 px-2 py-1 text-lg font-normal hover:bg-pri hover:scale-110 transition duration-300 bg-pri shadow-md text-sec rounded-lg">
+						<button className="mx-auto my-4 px-2 py-1 text-lg font-normal hover:bg-pri hover:scale-110 transition duration-300 bg-pri shadow-md text-sec rounded-lg">
 							<Link href="/signup/applicant">Candidato</Link>
-						</IconButton>
+						</button>
 					</div>
 					<div className="w-11/12 h-full p-6 border border-white shadow-lg text-pri-100 bg-trasnparent rounded-lg">
 						<p className="m-2">Empresa en busca de talento</p>
-						<IconButton className="mx-auto my-4 px-2 py-1 text-lg font-normal hover:scale-110 transition duration-300 hover:bg-pri-100  bg-pri-100 shadow-md text-pri rounded-lg">
+						<button className="mx-auto my-4 px-2 py-1 text-lg font-normal hover:scale-110 transition duration-300 hover:bg-pri-100  bg-pri-100 shadow-md text-pri rounded-lg">
 							<Link href="/signup/company">Empresa</Link>
-						</IconButton>
+						</button>
 					</div>
 				</div>
 				<div className="w-11/12 flex flex-row justify-between items-center"></div>
