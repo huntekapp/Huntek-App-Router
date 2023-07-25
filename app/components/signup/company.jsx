@@ -76,7 +76,7 @@ const CompanyForm = () => {
 						id="company_name"
 						value={input.company_name}
 						className="w-full px-3 bg-transparent outline-none border-b"
-						placeholder="	Mercedes-AMG PETRONAS Formula One Team"
+						placeholder="Mercedes-AMG PETRONAS Formula One Team"
 						onChange={handleChange}
 						autoComplete="off"
 					/>
