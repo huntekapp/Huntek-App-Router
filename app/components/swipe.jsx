@@ -1,8 +1,11 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import FootbarSwipe from "./footbarswipe";
+import confetti from "canvas-confetti";
+import MovingComponent from "react-moving-text";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import FootbarSwipe from "./footbarswipe";
+import Head from "next/head";
 
 const Swipe = () => {
 	const [empresa, setEmpresa] = useState([
@@ -127,10 +130,12 @@ const Swipe = () => {
 	const [lastDirection, setLastDirection] = useState(null);
 
 	const currentCard = empresa[currentIndex];
+	const alertCard = empresa[currentIndex];
 	const prevCard = empresa[lastIndex];
 	const nextCard = empresa[currentIndex - 1];
 
 	const [info, setInfo] = useState(false);
+	const [alert, setAlert] = useState(false);
 	const [acceptedCards, setAcceptedCards] = useState([]);
 	const [rejectedCards, setRejectedCards] = useState([]);
 	const [supLikeCards, setSupLikeCards] = useState([]);
@@ -139,21 +144,40 @@ const Swipe = () => {
 	const canGoBack = currentIndex < empresa.length - 1 && lastIndex !== null && lastDirection === "left";
 
 	const swipe = (dir) => {
-		if (canSwipe && currentIndex < empresa.length) {
-			if (dir === "right") {
+		if (canSwipe) {
+			if (dir === "up") {
+				setSupLikeCards([...supLikeCards, empresa[currentIndex]]);
+				confetti({
+					particleCount: 400,
+					spread: 100,
+					startVelocity: 80,
+					colors: ["#fbbf24", "#fde68a"],
+					shapes: ["square", "circle", "star"],
+					scalar: 1.2,
+					origin: { y: 1 },
+					zIndex: 100,
+					disableForReducedMotion: false,
+					useWorker: true,
+				}),
+					setPrevOffsetY(-1000),
+					setLastIndex(currentIndex),
+					setAlert(true),
+					setTimeout(() => {
+						setAlert(false);
+						setCurrentIndex(currentIndex - 1);
+					}, 2000);
+			} else if (dir === "right") {
 				setAcceptedCards([...acceptedCards, empresa[currentIndex]]);
 				setPrevOffsetX(1500);
+				setLastIndex(currentIndex);
+				setCurrentIndex(currentIndex - 1);
 			} else if (dir === "left") {
 				setRejectedCards([...rejectedCards, empresa[currentIndex]]);
 				setPrevOffsetX(-1500);
-			} else if (dir === "up") {
-				setSupLikeCards([...supLikeCards, empresa[currentIndex]]);
-				setPrevOffsetY(-1000);
+				setLastIndex(currentIndex);
+				setCurrentIndex(currentIndex - 1);
 			}
-
 			setLastDirection(dir);
-			setLastIndex(currentIndex);
-			setCurrentIndex(currentIndex - 1);
 			setInfo(false);
 		}
 	};
@@ -194,9 +218,9 @@ const Swipe = () => {
 
 	const handleTouchEnd = () => {
 		setIsInteracting(false);
-		if (offsetX >= 100) {
+		if (offsetX >= 50) {
 			swipe("right");
-		} else if (offsetX <= -100) {
+		} else if (offsetX <= -50) {
 			swipe("left");
 		} else if (offsetY <= -200) {
 			swipe("up");
@@ -241,13 +265,13 @@ const Swipe = () => {
 				{nextCard && (
 					<article
 						key={nextCard.nombre}
-						className={`no-drag w-1/2 max-w-xs h-[50%] mb-10 bg-sec rounded-3xl shadow-lg blur-lg flex flex-col justify-center items-center absolute duration-1000`}>
+						className={`no-drag w-1/2 max-w-xs h-[50%] bg-sec rounded-3xl shadow-lg blur-lg flex flex-col justify-center items-center absolute top-[22%] duration-1000`}>
 						<div className={`w-full h-full p-8 flex flex-col justify-between items-center`}>
 							<div className="w-full h-3/4 grid place-content-center relative">
 								<Image src={nextCard.image} alt="Tinder" fill="true" className="no-drag object-contain absolute" />
 							</div>
 							<div className="w-full flex flex-col justify-center items-left">
-								<button className="w-fit btn text-2xl bg-pri font-bold text-sec cursor-pointer">
+								<button className="w-fit btn text-xl bg-sec font-bold text-sec cursor-pointer">
 									{nextCard.nombre}
 									<InfoOutlinedIcon style={{ fontSize: "1.5rem" }} />
 								</button>
@@ -256,107 +280,130 @@ const Swipe = () => {
 						</div>
 					</article>
 				)}
-				{currentCard && (
-					<article
-						key={currentCard.nombre}
-						className={`no-drag w-11/12 max-w-sm ${
-							!info ? "h-[96%]" : "h-[90%]"
-						} bg-sec rounded-3xl shadow-lg flex flex-col justify-center items-center`}
-						style={{
-							transform: `translateX(${offsetX}px) translateY(${offsetY}px) rotate(${offsetX / 10}deg)`,
-							transition: isInteracting ? "none" : "1s",
-						}}
-						onTouchStart={handleTouchStart}
-						onTouchMove={handleTouchMove}
-						onTouchEnd={handleTouchEnd}>
-						{!info ? (
-							<div className={`w-full h-full p-8 flex flex-col space-y-8 justify-between items-center duration-1000`}>
-								<div className="w-full h-3/4 grid place-content-center relative">
-									<Image
-										src={currentCard.image}
-										alt="Tinder"
-										fill="true"
-										className="no-drag object-contain w-auto h-auto"
-									/>
-								</div>
-								<div className="w-full  flex flex-col justify-center items-left">
-									<button
-										onDoubleClick={showInfo}
-										onTouchStart={showInfo}
-										className="w-fit text-3xl btn bg-pri font-bold text-sec cursor-pointer">
-										{currentCard.nombre}
-										<InfoOutlinedIcon style={{ fontSize: "1.5rem" }} />
-									</button>
-									<p className="mt-1 text-lg font-medium text-black">{currentCard.puesto}</p>
-									<p className="line-clamp-3 text-sm/relaxed text-black/60">Guadalajara, México.</p>
-								</div>
+				{alert ? (
+					<article className="w-full h-full flex flex-col justify-center items-center translate-y-80 duration-500">
+						<article
+							className={`no-drag w-11/12 max-w-sm h-[50%] pt-[10%] rounded-3xl bg-sec/90 flex flex-col justify-center items-center z-10`}
+							style={{ transform: `translateY(-320px)`, transition: `1s` }}>
+							<div className="w-9/12 h-1/2 pt-[10%] grid place-content-center relative">
+								<Image src={currentCard.image} alt="Tinder" fill="true" className="no-drag object-contain absolute" />
 							</div>
-						) : (
-							<div className="w-full h-full p-2 flex flex-col justify-center items-center">
-								<div className="w-full h-[5%] flex flex-row justify-center items-center relative duration-1000">
-									<div
-										onDoubleClick={showInfo}
-										onTouchStart={showInfo}
-										className="w-3/4 h-20 p-2 bg-sec border-4 border-pri rounded-xl shadow-lg flex flex-row justify-evenly items-center -translate-y-[25%] absolute cursor-pointer">
-										<div className="w-10 h-10 relative">
-											<Image
-												src={currentCard.image}
-												alt="Tinder"
-												fill="true"
-												className="no-drag object-contain w-auto h-auto"
-											/>
-										</div>
-										<div className="w-fit flex flex-col justify-center items-center">
-											<p className="text-lg text-black">{currentCard.nombre}</p>
-											<p className="line-clamp-3 text-sm/relaxed text-black/95">{currentCard.puesto}</p>
-										</div>
-									</div>
-								</div>
-								<div className="w-full h-[95%] mt-4 text-black carousel carousel-vertical appearedInfo">
-									<div className="w-full h-96 p-4 pt-0">
-										<p className="text-xl text-center font-bold pb-1">¡Te estamos buscando!</p>
-										<ul className="text-sm list-disc list-inside">
-											{currentCard.info.map((point, index) => (
-												<li className="pb-1" key={index}>
-													{point}
-												</li>
-											))}
-										</ul>
-									</div>
-									<div className="w-full h-96 px-4 py-2 rounded-md bg-pri-100">
-										<p className="text-xl text-center font-bold pb-1">Requisitos</p>
-										<ul className="text-sm list-disc list-inside">
-											{currentCard.requirements.map((point, index) => (
-												<li className="pb-1" key={index}>
-													{point}
-												</li>
-											))}
-										</ul>
-									</div>
-									<div className="w-full h-96 p-4">
-										<p className="text-lg text-center font-bold pb-1">¿Por qué nosotros?</p>
-										<ul className="text-sm list-disc list-inside">
-											{currentCard.why.map((point, index) => (
-												<li className="pb-1" key={index}>
-													{point}
-												</li>
-											))}
-										</ul>
-									</div>
-									<div className="w-full h-96 p-2 bg-pri-100 rounded-bl-box rounded-br-box">
-										<iframe
-											width="350"
-											height="195"
-											src="https://www.youtube.com/embed/O8RTHwOEqJA"
-											title="YouTube video player"
-											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-											className="w-full h-40 rounded-bl-box rounded-br-box"
-											allowFullScreen></iframe>
-									</div>
-								</div>
-							</div>
-						)}
+							<MovingComponent
+								type="slideInFromTop"
+								duration="1000ms"
+								delay="0s"
+								direction="normal"
+								timing="ease"
+								iteration="1"
+								fillMode="none"
+								className="w-full h-1/2 grid place-content-center">
+								<p className="text-5xl text-yellow-400 text-gradient">SUPER LIKE!!</p>
+							</MovingComponent>
+						</article>
 					</article>
+				) : (
+					currentCard && (
+						<article
+							key={currentCard.nombre}
+							className={`no-drag w-11/12 max-w-sm ${
+								!info ? "h-[96%]" : "h-[90%]"
+							} bg-sec rounded-3xl shadow-lg flex flex-col justify-center items-center`}
+							style={{
+								transform: `translateX(${offsetX}px) translateY(${offsetY}px) rotate(${offsetX / 10}deg)`,
+								transition: isInteracting ? "none" : "1s",
+							}}
+							onTouchStart={handleTouchStart}
+							onTouchMove={handleTouchMove}
+							onTouchEnd={handleTouchEnd}>
+							{!info ? (
+								<div className={`w-full h-full p-8 flex flex-col space-y-8 justify-between items-center duration-1000`}>
+									<div className="w-full h-3/4 grid place-content-center relative">
+										<Image
+											src={currentCard.image}
+											alt="Tinder"
+											fill="true"
+											className="no-drag object-contain absolute"
+										/>
+									</div>
+									<div className="w-full  flex flex-col justify-center items-left">
+										<button
+											onDoubleClick={showInfo}
+											onTouchStart={showInfo}
+											className="w-fit text-2xl btn bg-pri font-bold text-sec cursor-pointer">
+											{currentCard.nombre}
+											<InfoOutlinedIcon style={{ fontSize: "1.5rem" }} />
+										</button>
+										<p className="mt-1 text-lg font-medium text-black">{currentCard.puesto}</p>
+										<p className="line-clamp-3 text-sm/relaxed text-black/60">Guadalajara, México.</p>
+									</div>
+								</div>
+							) : (
+								<div className="w-full h-full p-2 flex flex-col justify-center items-center">
+									<div className="w-full h-[5%] flex flex-row justify-center items-center relative duration-1000">
+										<div
+											onDoubleClick={showInfo}
+											onTouchStart={showInfo}
+											className="w-3/4 h-20 p-2 bg-sec border-4 border-pri rounded-xl shadow-lg flex flex-row justify-evenly items-center -translate-y-[25%] absolute cursor-pointer">
+											<div className="w-10 h-10 relative">
+												<Image
+													src={currentCard.image}
+													alt="Tinder"
+													fill="true"
+													className="no-drag object-contain absolute"
+												/>
+											</div>
+											<div className="w-fit flex flex-col justify-center items-center">
+												<p className="text-lg text-black">{currentCard.nombre}</p>
+												<p className="line-clamp-3 text-sm/relaxed text-black/95">{currentCard.puesto}</p>
+											</div>
+										</div>
+									</div>
+									<div className="w-full h-[95%] mt-4 text-black carousel carousel-vertical appearedInfo">
+										<div className="w-full h-96 p-4 pt-0">
+											<p className="text-xl text-center font-bold pb-1">¡Te estamos buscando!</p>
+											<ul className="text-sm list-disc list-inside">
+												{currentCard.info.map((point, index) => (
+													<li className="pb-1" key={index}>
+														{point}
+													</li>
+												))}
+											</ul>
+										</div>
+										<div className="w-full h-96 px-4 py-2 rounded-md bg-pri-100">
+											<p className="text-xl text-center font-bold pb-1">Requisitos</p>
+											<ul className="text-sm list-disc list-inside">
+												{currentCard.requirements.map((point, index) => (
+													<li className="pb-1" key={index}>
+														{point}
+													</li>
+												))}
+											</ul>
+										</div>
+										<div className="w-full h-96 p-4">
+											<p className="text-lg text-center font-bold pb-1">¿Por qué nosotros?</p>
+											<ul className="text-sm list-disc list-inside">
+												{currentCard.why.map((point, index) => (
+													<li className="pb-1" key={index}>
+														{point}
+													</li>
+												))}
+											</ul>
+										</div>
+										<div className="w-full h-96 p-2 bg-pri-100 rounded-bl-box rounded-br-box">
+											<iframe
+												width="350"
+												height="195"
+												src="https://www.youtube.com/embed/O8RTHwOEqJA"
+												title="YouTube video player"
+												allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+												className="w-full h-40 rounded-bl-box rounded-br-box"
+												allowFullScreen></iframe>
+										</div>
+									</div>
+								</div>
+							)}
+						</article>
+					)
 				)}
 				{prevCard && (
 					<article
