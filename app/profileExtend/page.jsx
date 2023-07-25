@@ -1,6 +1,5 @@
 import NavBar from "../components/navbar";
-
-const {default: ProfileExt} = require("../components/profileExtend");
+import ProfileExt from "../components/profileExtend";
 
 const ProfileExtPage = () => {
 	return (
