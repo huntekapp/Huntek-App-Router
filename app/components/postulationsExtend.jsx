@@ -1,7 +1,7 @@
 import AppleLogo from "@/public/images/apple-g44d4327db_1920.png";
 import EcoLogo from "@/public/images/eco-ged3b25e46_1920.png";
 import LinkedInLogo from "@/public/images/linkedin-gf141b6fe5_1920.png";
-import NavBar from "./navbar";
+import Image from "next/image";
 import PostulationDetail from "./postulationdetail";
 
 const userPostulations = [
@@ -114,20 +114,23 @@ const userPostulations = [
 			"Un excelente clima de trabajo, con todo lo necesario para que vivas una gran experiencia :)",
 		],
 		ubication: "Córdoba, Argentina"
-	}
+	},
 ];
 
 const PostulationsExtend = () => {
+	
 	return (
-		<main className="screen conta">
-			<NavBar />
-			<section className="h-full bg-sec flex flex-col text-left">
-				<h1 className="text-3xl font-bold p-4 cursor-default border-b-2 text-pri">Mis postulaciones</h1>
-				<div className="w-full">
+		<main className="bg-sec">
+				<section className="flex flex-row justify-start h-full w-full items-start py-2 border-y bg-sec border-t-0">
+					<a href="/home" className="h-12 w-12 flex justify-center rounded-full ml-2 hover:bg-pri-100">
+						<Image loading={"eager"} alt="back" width={32} height={32} src="utils/back_huntek.svg" />
+					</a>
+					<h1 className="text-4xl font-bold mt-1 ml-2 text-pri cursor-default">Postulaciones</h1>
+				</section>
+			<section className="h-full w-full bg-sec flex flex-col px-2 pb-2 md:grid md:grid-rows-2 md:grid-cols-2 md:gap-y-40 md:gap-x-6 text-left">
 					{userPostulations.map((postulation, index) => {
 						return <PostulationDetail postulationInfo={postulation} key={index} />;
 					})}
-				</div>
 			</section>
 		</main>
 	);
