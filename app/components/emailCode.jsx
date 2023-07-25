@@ -1,6 +1,5 @@
 "use client";
 import { useRef, useState } from "react";
-import { useSelector } from "react-redux";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -9,7 +8,8 @@ import { usePutResendCodeMutation } from "../globalstore/services/useResendCode"
 import { AlertSuccess, AlertError } from "./alertsforrequest";
 
 const EmailCode = () => {
-	const email = useSelector((state) => state.email);
+	const email = localStorage.getItem("email");
+	console.log(localStorage)
 	const router = useRouter();
 	const [successReq, setSuccessReq] = useState(null);
 	const [errorCatched, setErrorCatched] = useState(null);
@@ -18,7 +18,10 @@ const EmailCode = () => {
 	const [putResendCode] = usePutResendCodeMutation();
 	const inputRefs = useRef([]);
 	const [userCode, setUserCode] = useState({ code: { 0: "", 1: "", 2: "", 3: "", 4: "", 5: "" }, email: `${email}` });
-
+	const [resendCode, setResendCode] = useState({
+		email: `${email}`,
+		order: "account_activation"
+	})
 	const handleUserCode = (event, index) => {
 		if (/^[0-9]+$/.test(event.target.value) || event.keyCode == 8) {
 			if (event.keyCode != 8) {
@@ -76,14 +79,15 @@ const EmailCode = () => {
 			email: userCode.email,
 		});
 	};
-
+console.log(resendCode)
 	const handleSubmitResend = async (event) => {
 		event.preventDefault();
 		try {
-			const response = await putResendCode(email).unwrap();
+			const response = await putResendCode(resendCode).unwrap();
 			setSuccessReq(response.message);
 		} catch (error) {
-			setErrorCatched(error.data.detail);
+			setErrorCatched(error.data?.detail);
+			console.log(error)
 		}
 	};
 

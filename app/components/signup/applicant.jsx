@@ -59,6 +59,7 @@ const ApplicantForm = () => {
 				password: "",
 				role_name: "applicant",
 			});
+			localStorage.setItem("email", input.email);
 			router.push("/signup/emailvalidate");
 		} catch (error) {
 			if (error.status === "FETCH_ERROR")

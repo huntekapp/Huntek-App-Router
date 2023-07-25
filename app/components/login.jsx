@@ -45,6 +45,7 @@ const LogForm = () => {
 		setErrorCatched(null);
 		try {
 			const response = await postLogin(input).unwrap();
+			console.log(response)
 			const { access_token, refresh_token } = response;
 			const date = new Date();
 			date.setDate(date.getDate() + 7);

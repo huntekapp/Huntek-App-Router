@@ -9,7 +9,7 @@ export async function middleware(request) {
   }
 
   try {
-    const { payload } = await jwtVerify(jwt?.value, new TextEncoder().encode("dasdasd"));
+    const { payload } = await jwtVerify(jwt?.value, new TextEncoder().encode("DSxSz^r#r@6u^ZFkipmgySATzypg@&MMyuW@Kigp"));
     return NextResponse.next();
   } catch (error) {
     return NextResponse.redirect(new URL("login", request.url));
