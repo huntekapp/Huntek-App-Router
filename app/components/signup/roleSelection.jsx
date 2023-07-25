@@ -19,7 +19,7 @@ const RoleSelection = () => {
 					<div className="w-11/12 h-full p-6 border border-white shadow-lg text-pri-100 bg-trasnparent rounded-lg">
 						<p className="m-2">Empresa en busca de talento</p>
 						<IconButton className="mx-auto my-4 px-2 py-1 text-lg font-normal hover:scale-110 transition duration-300 hover:bg-pri-100  bg-pri-100 shadow-md text-pri rounded-lg">
-							<Link href="/signup/applicant">Empresa</Link>
+							<Link href="/signup/company">Empresa</Link>
 						</IconButton>
 					</div>
 				</div>
