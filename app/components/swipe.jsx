@@ -5,7 +5,6 @@ import confetti from "canvas-confetti";
 import MovingComponent from "react-moving-text";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import FootbarSwipe from "./footbarswipe";
-import Head from "next/head";
 
 const Swipe = () => {
 	const [empresa, setEmpresa] = useState([
@@ -327,7 +326,7 @@ const Swipe = () => {
 									</div>
 									<div className="w-full  flex flex-col justify-center items-left">
 										<button
-											onDoubleClick={showInfo}
+											onClick={showInfo}
 											onTouchStart={showInfo}
 											className="w-fit text-2xl btn bg-pri font-bold text-sec cursor-pointer">
 											{currentCard.nombre}

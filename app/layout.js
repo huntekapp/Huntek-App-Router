@@ -10,7 +10,7 @@ const poppins = Poppins({
 
 export const metadata = {
   title: "Huntek App",
-  description: "",
+  description: "Huntek es la perfecta combinacion entre el job hunting y la eficiencia.",
 };
 
 export default function RootLayout({ children }) {
