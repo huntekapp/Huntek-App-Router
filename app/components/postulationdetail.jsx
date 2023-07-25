@@ -15,18 +15,18 @@ const PostulationDetail = ({ postulationInfo }) => {
 
   return (
     <main
-      className={`h-fit w-full relative flex flex-col sm:items-center rounded-md border mt-4 bg-sec ${
+      className={`h-fit w-full relative flex flex-col sm:items-center rounded-md mt-5 bg-pri ${
         expanded ? "z-50" : ""
       } shadow-lg`}>
       {expanded && <div className="fixed inset-0 bg-black opacity-30 z-10"></div>}
-      <section className="w-full flex z-30 rounded border-b-0 bg-sec flex-row p-2 px-4">
+      <section className="w-full flex z-30 rounded-lg rounded-b-none bg-sec flex-row p-2 px-4 border-pri border-4">
         <Image
           loading={"eager"}
           alt="logo"
           src={postulationInfo.enterpriseLogo}
           width={85}
           height={85}
-          className="rounded-full z-30 border-2"
+          className="rounded-full z-30 border-2 border-pri"
         />
         <div className="flex flex-col z-30 justify-between px-4">
           <a
@@ -41,13 +41,13 @@ const PostulationDetail = ({ postulationInfo }) => {
           <p className={`text-xs mb-2 z-30 text-gray-500 `}>{postulationInfo.ubication}</p>
         </div>
       </section>
-      <section className={`w-[100%] flex flex-col md:absolute md:top-[5.9rem] md:left-0 bg-sec ${expanded ? "z-20 " : ""}`}>
-        <Accordion className=" border border-x-0" expanded={expanded === "panel1"} onChange={handleChange("panel1")}>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1bh-content" id="panel1bh-header">
-            <Typography className="flex-shrink-0">Información</Typography>
+      <section className={`w-[100%] flex flex-col md:absolute md:top-[5.9rem] md:left-0 bg-pri ${expanded ? "z-20 " : ""}`}>
+        <Accordion className="bg-pri" expanded={expanded === "panel1"} onChange={handleChange("panel1")}>
+          <AccordionSummary expandIcon={<ExpandMoreIcon className="mt-2 invert"/>} aria-controls="panel1bh-content" id="panel1bh-header">
+            <Typography className="flex-shrink-0 text-sec font-semibold mt-2 opacity-90">Información</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <ul>
+            <ul className="text-sec font-light text-sm">
               {postulationInfo.vacantInfo.map((item) => (
                 <li className="list-disc list-inside" key={item}>
                   {item}
@@ -56,12 +56,12 @@ const PostulationDetail = ({ postulationInfo }) => {
             </ul>
           </AccordionDetails>
         </Accordion>
-        <Accordion expanded={expanded === "panel2"} onChange={handleChange("panel2")}>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel2bh-content" id="panel2bh-header">
-            <Typography className="flex-shrink-0">Requerimientos</Typography>
+        <Accordion className="bg-pri" expanded={expanded === "panel2"} onChange={handleChange("panel2")}>
+          <AccordionSummary expandIcon={<ExpandMoreIcon className="invert"/>} aria-controls="panel2bh-content" id="panel2bh-header">
+            <Typography className="flex-shrink-0 text-sec font-semibold opacity-90">Requerimientos</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <ul>
+            <ul className="text-sec font-light text-sm">
               {postulationInfo.vacantRequire.map((item) => (
                 <li className="list-disc list-inside" key={item}>
                   {item}
@@ -70,12 +70,12 @@ const PostulationDetail = ({ postulationInfo }) => {
             </ul>
           </AccordionDetails>
         </Accordion>
-        <Accordion expanded={expanded === "panel3"} onChange={handleChange("panel3")}>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel3bh-content" id="panel3bh-header">
-            <Typography className="flex-shrink-0">¿Por qué nosotros?</Typography>
+        <Accordion className="bg-pri" expanded={expanded === "panel3"} onChange={handleChange("panel3")}>
+          <AccordionSummary expandIcon={<ExpandMoreIcon className="invert"/>} aria-controls="panel3bh-content" id="panel3bh-header">
+            <Typography className="flex-shrink-0 text-sec font-semibold opacity-90">¿Por qué nosotros?</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <ul>
+            <ul className="text-sec font-light text-sm">
               {postulationInfo.whyUs.map((item) => (
                 <li className="list-disc list-inside" key={item}>
                   {item}

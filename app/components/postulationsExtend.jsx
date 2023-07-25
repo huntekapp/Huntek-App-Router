@@ -127,7 +127,7 @@ const PostulationsExtend = () => {
 					</a>
 					<h1 className="text-4xl font-bold mt-1 ml-2 text-pri cursor-default">Postulaciones</h1>
 				</section>
-			<section className="h-full w-full bg-sec flex flex-col px-2 pb-2 md:grid md:grid-rows-2 md:grid-cols-2 md:gap-y-40 md:gap-x-6 text-left">
+			<section className="h-full w-full lightgradient-both flex flex-col px-2 md:grid md:grid-rows-2 md:grid-cols-2 md:gap-y-40 md:gap-x-6 md:pb-[165px] pb-7 text-left">
 					{userPostulations.map((postulation, index) => {
 						return <PostulationDetail postulationInfo={postulation} key={index} />;
 					})}
