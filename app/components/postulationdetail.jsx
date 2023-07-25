@@ -15,11 +15,11 @@ const PostulationDetail = ({ postulationInfo }) => {
 
   return (
     <main
-      className={`h-fit w-full relative flex flex-col sm:items-center rounded-md border mt-4 bg-sec ${
+      className={`h-fit w-full relative flex flex-col sm:items-center rounded-lg border-t-0 border  mt-4 bg-sec ${
         expanded ? "z-50" : ""
-      } shadow-lg`}>
+      } shadow-xl`}>
       {expanded && <div className="fixed inset-0 bg-black opacity-30 z-10"></div>}
-      <section className="w-full flex z-30 rounded border-b-0 bg-sec flex-row p-2 px-4">
+      <section className="w-full flex z-30 border-t rounded-t-md border-b-0 bg-sec flex-row p-2 px-4">
         <Image
           loading={"eager"}
           alt="logo"
@@ -41,7 +41,7 @@ const PostulationDetail = ({ postulationInfo }) => {
           <p className={`text-xs mb-2 z-30 text-gray-500 `}>{postulationInfo.ubication}</p>
         </div>
       </section>
-      <section className={`w-[100%] flex flex-col md:absolute md:top-[5.9rem] md:left-0 bg-sec ${expanded ? "z-20 " : ""}`}>
+      <section className={`w-[100%] rounded flex flex-col md:absolute md:top-[5.9rem] md:left-0 bg-sec ${expanded ? "z-20 " : ""}`}>
         <Accordion className=" border border-x-0" expanded={expanded === "panel1"} onChange={handleChange("panel1")}>
           <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1bh-content" id="panel1bh-header">
             <Typography className="flex-shrink-0">Información</Typography>
