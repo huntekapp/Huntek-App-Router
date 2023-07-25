@@ -25,7 +25,7 @@ const RoleSelection = () => {
 				</div>
 				<div className="w-11/12 flex flex-row justify-between items-center"></div>
 				<p className="m-2 text-center">
-					Configura tu perfil ahora y descubre cómo podemos ayudarte a alcanzar tus objetivos
+					Configura tu perfil ahora y descubre cómo podemos ayudarte a alcanzar tus objetivos.
 				</p>
 			</article>
 		</section>
