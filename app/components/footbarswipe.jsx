@@ -3,8 +3,8 @@ import { IconButton } from "@mui/material";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ReplayIcon from "@mui/icons-material/Replay";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 
 const FootbarSwipe = ({ canGoBack, canSwipe, swipe, goBack, showInfo }) => {
 	return (
@@ -29,7 +29,7 @@ const FootbarSwipe = ({ canGoBack, canSwipe, swipe, goBack, showInfo }) => {
 						!canSwipe ? "bg-[#c3c4d3]" : "bg-gradient-to-r from-amber-400 to-amber-200"
 					} border-2 rounded-full shadow-[0px_2px_3px_0px_#000] grid place-content-center`}>
 					<IconButton onClick={() => swipe("up")}>
-						<WorkOutlineIcon style={{ fontSize: "2rem", color: "white" }} />
+						<StarBorderOutlinedIcon style={{ fontSize: "2rem", color: "white" }} />
 					</IconButton>
 				</div>
 				<div
