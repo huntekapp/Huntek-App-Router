@@ -170,3 +170,22 @@ select:-webkit-autofill:focus {
 ::-webkit-scrollbar-thumb:hover {
   background: gray;
 }
+
+.text-gradient {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: transparent;
+  background-image: linear-gradient(to left, #FFD700, #f9ffa4, #9c9a00, #fcff4f, #FFD700);    
+  background-clip: text;
+  animation: color 3s linear infinite;
+  background-size: 500%;    
+}
+
+@keyframes color {
+  from {
+      background-position: 0% 50%;
+  }
+
+  to {
+      background-position: 100% 50%;
+  }
+}
