@@ -2,6 +2,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+
 const Chat = () => {
 	const data = [
 		{
@@ -53,46 +55,40 @@ const Chat = () => {
 	const [chat, setChats] = useState(data);
 
 	return (
-		<main className="">
-			<section className="w-full min-h-screen">
-				<section className="flex flex-row justify-start h-full w-full items-start py-2 border-y border-t-0">
-					<a href="/home" className="h-12 w-12 flex justify-center rounded-full ml-2 hover:bg-pri-100">
-						<Image loading={"eager"} alt="back" width={32} height={32} src="utils/back_huntek.svg" />
-					</a>
-					<h1 className="text-4xl font-bold mt-1 ml-2 text-pri cursor-default">Mensajes</h1>
-				</section>
-				<section className="carousel carousel-vertical h-[90vh] min-w-full">
-					{chat.map((chat, index) => {
-						return (
-							<Link href={`/conversations/${chat.id}`} key={index}>
-								<article className="bg-none flex flex-col justify-start border-y border-t-0 h-[100px] max-h-[100px] carousel-item">
-									<input type="checkbox" id="my-drawer-2" className="drawer-toggle" />
-									<div className="flex ml-3 justify-start items-center">
-										<div className="w-13 h-12 xs:w-14 border-2 rounded-full grid place-content-center">
-											<Image
-												loading={"eager"}
-												width={30}
-												height={30}
-												quality={100}
-												src={chat.image}
-												alt="image"
-												className=""
-											/>
-										</div>
-										<div className="flex flex-col text-start w-full">
-											<h2 className="px-4 text-lg pt-2 flex justify-between items-center font-medium">
-												{`${chat.name}`}
-											</h2>
-											<p className="px-4 pb-2 h-12 max-h-12 line-clamp-2 font-light">{`${chat.value}`}</p>
-										</div>
-									</div>
-								</article>
-							</Link>
-						);
-					})}
-				</section>
-			</section>
-		</main>
+		<section className="w-full h-screen text-pri flex flex-col">
+			<article className="w-full h-[10%] px-4 border-b flex flex-row justify-start items-center">
+				<a href="/home" className="grid place-content-center">
+					<HomeOutlinedIcon className="w-6 h-6 rounded-full hover:bg-pri-100 hover:scale-125 duration-150" />
+				</a>
+				<h1 className="w-[90%] text-3xl font-bold grid place-content-center cursor-default">Mensajes</h1>
+			</article>
+			<article className="w-full h-[90%] carousel carousel-vertical">
+				{chat.map((chat, index) => {
+					return (
+						<Link
+							href={`/conversations/${chat.id}`}
+							key={index}
+							className="w-full h-full border-b flex flex-col justify-center items-center">
+							<article className="w-11/12 h-24 carousel-item flex flex-row justify-center items-center">
+								<div className="w-16 h-16 border-2 rounded-full grid place-content-center relative">
+									<Image
+										src={chat.image}
+										alt="image"
+										fill={true}
+										loading={"eager"}
+										className="rounded-full object-contain absolute"
+									/>
+								</div>
+								<div className="w-[95%] h-full px-4 flex flex-col justify-center">
+									<h2 className="text-lg font-medium line-clamp-1">{`${chat.name}`}</h2>
+									<p className="h-12 text-base text-pri-500 font-light line-clamp-2">{`${chat.value}`}</p>
+								</div>
+							</article>
+						</Link>
+					);
+				})}
+			</article>
+		</section>
 	);
 };
 
