@@ -19,14 +19,14 @@ const PostulationDetail = ({ postulationInfo }) => {
         expanded ? "z-50" : ""
       } shadow-xl`}>
       {expanded && <div className="fixed inset-0 bg-black opacity-30 z-10"></div>}
-      <section className="w-full flex z-30 rounded-lg rounded-b-none flex-row p-2 px-4 bg-pri">
+      <section className="w-full flex z-30 rounded-lg rounded-b-none flex-row p-2 px-4 bg-pri shadow-[0px_-1px_8px_1px_#1a202c]">
         <Image
           loading={"eager"}
           alt="logo"
           src={postulationInfo.enterpriseLogo}
           width={85}
           height={85}
-          className="rounded-full z-30 shadow-lg"
+          className="rounded-full z-30 shadow-[0px_0px_6px_0px_#1a202c]"
         />
         <div className="flex flex-col z-30 justify-between px-4">
           <a

@@ -2,6 +2,7 @@ import AppleLogo from "@/public/images/apple-g44d4327db_1920.png";
 import EcoLogo from "@/public/images/eco-ged3b25e46_1920.png";
 import LinkedInLogo from "@/public/images/linkedin-gf141b6fe5_1920.png";
 import Image from "next/image";
+import Link from "next/link";
 import PostulationDetail from "./postulationdetail";
 
 const userPostulations = [
@@ -118,19 +119,31 @@ const userPostulations = [
 ];
 
 const PostulationsExtend = () => {
-	
 	return (
-		<main className="bg-sec">
-				<section className="flex flex-row justify-start h-full w-full items-start py-2 border-y bg-sec border-t-0">
-					<a href="/home" className="h-12 w-12 flex justify-center rounded-full ml-2 hover:bg-pri-100">
-						<Image loading={"eager"} alt="back" width={32} height={32} src="utils/back_huntek.svg" />
-					</a>
-					<h1 className="text-4xl font-bold mt-1 ml-2 text-pri cursor-default">Postulaciones</h1>
-				</section>
-			<section className="h-full w-full lightgradient-both flex flex-col px-3 md:px-6 md:grid md:grid-rows-2 md:grid-cols-2 md:gap-y-40 md:gap-x-7 md:pb-[180px] pb-7 text-left">
-					{userPostulations.map((postulation, index) => {
+		<main className="h-screen bg-sec">
+			<section className="flex flex-row justify-start h-[10%] w-full items-center py-2 border-y bg-sec border-t-0">
+				<a href="/home" className="h-12 w-12 flex justify-center rounded-full ml-2 hover:bg-pri-100">
+					<Image loading={"eager"} alt="back" width={32} height={32} src="utils/back_huntek.svg" />
+				</a>
+				<h1 className="text-4xl font-bold mt-1 ml-2 text-pri cursor-default">Postulaciones</h1>
+			</section>
+			<section className="min-h-[90%] w-full darkgradient-both-tb flex flex-col px-3 md:px-6 md:grid md:grid-rows-2 md:grid-cols-2 md:gap-y-40 md:gap-x-7 md:pb-[180px] pb-7 text-left">
+				{userPostulations.length ? (
+					userPostulations.map((postulation, index) => {
 						return <PostulationDetail postulationInfo={postulation} key={index} />;
-					})}
+					})
+				) : (
+					<article className="md:w-fit h-fit w-full absolute left-2/4 top-2/4 translate-x-[-50%] translate-y-[-50%] text-center flex flex-col justify-center items-center">
+						<h2 className="font-medium text-sec mt-10 mb-3 text-xl xs:text-lg">Aún no tienes postulaciones.</h2>
+						<p className="text-xs	font-semibold text-sec/60">Pero puedes empezar a buscar el trabajo de tus sueños</p>
+						<Link className="w-fit" href={"/swipe"}>
+							<button className="w-fit text-xs font-semibold rounded-lg mt-4 bg-pri text-sec p-2 border-none opacity-90">
+								LET'S HUNT
+							</button>
+						</Link>
+						<div className="bg-HKlogo bg-center bg-no-repeat bg-contain absolute w-[350px] h-[350px] translate-x-[-50%] translate-y-[-50%] left-2/4 top-2/4 opacity-10 -z-10" />
+					</article>
+				)}
 			</section>
 		</main>
 	);
