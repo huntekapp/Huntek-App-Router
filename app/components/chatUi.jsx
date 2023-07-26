@@ -6,7 +6,6 @@ import { useParams } from "next/navigation";
 import getCookie from "../helpers/getCookies";
 import { usePostMessageMutation } from "../globalstore/services/usePostMessage";
 import { useGetMessagesMutation } from "../globalstore/services/useMessages";
-import { IconButton } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import AttachFileOutlinedIcon from "@mui/icons-material/AttachFileOutlined";
@@ -81,7 +80,6 @@ const ChatUi = () => {
 	useEffect(() => {
 		getMessages(params.id).then((response) => {
 			const data = response.data;
-			console.log(data);
 		});
 	}, []);
 
