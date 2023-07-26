@@ -10,7 +10,6 @@ import Notification from "./notification";
 import Profile from "./profile";
 
 const NavBar = () => {
-	let currentPath = usePathname();
 	const [user, setUser] = useState({
 		name: "Luis Sanchez",
 		email: "louissaintchess@gmail.com",
@@ -48,15 +47,14 @@ const NavBar = () => {
 			},
 		],
 	});
+	const currentPath = usePathname();
 	const [closeProfile, setCloseProfile] = useState(false);
 	const [closeNotif, setCloseNotif] = useState(false);
-	const homePaths = ["/interviews", "/profileExtend", "/swipe", "/conversations", "/postulations", /postulations\/.*/];
-	const conversationButtonPaths = ["/swipe", "/home", "/postulations", /postulations\/.*/];
 
 	return (
 		<nav className="navbar h-[10%] px-4 bg-pri shadow-xl">
 			<article className="navbar-start">
-				{!homePaths.some((path) => (path instanceof RegExp ? path.test(currentPath) : path === currentPath)) ? (
+				{currentPath === "/home" ? (
 					<div className="drawer">
 						<input type="checkbox" id="profile" className="drawer-toggle" />
 						<label htmlFor="profile" className="drawer-button w-8 h-8 shadow-xl relative cursor-pointer">
@@ -91,15 +89,11 @@ const NavBar = () => {
 
 			<article className="navbar-end">
 				<div className="w-[75px] flex flex-row justify-between items-center">
-					{conversationButtonPaths.some((path) =>
-						path instanceof RegExp ? path.test(currentPath) : path === currentPath
-					) && (
-						<Link
-							href="/conversations"
-							className="p-1 grid place-content-center rounded-full hover:bg-pri-100 hover:scale-125 duration-200">
-							<ForumOutlinedIcon className="w-6 h-6 text-sec hover:text-pri" />
-						</Link>
-					)}
+					<Link
+						href="/conversations"
+						className="p-1 grid place-content-center rounded-full hover:bg-pri-100 hover:scale-125 duration-200">
+						<ForumOutlinedIcon className="w-6 h-6 text-sec hover:text-pri" />
+					</Link>
 					<div className="drawer drawer-end w-fit">
 						<input id="notif" type="checkbox" className="drawer-toggle" />
 						<div className="drawer-content">

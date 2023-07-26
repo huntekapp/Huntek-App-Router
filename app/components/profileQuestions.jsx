@@ -6,7 +6,7 @@ import OptionsCity from "./options/optionsCity";
 import Languages from "./options/language";
 import Profession from "./options/professions";
 import Studies from "./options/studies";
-import Carreer from "./options/carreer";
+import Carreer from "./options/career";
 import Hobbies from "./options/hobbies";
 import LastQuestions from "./options/lastquestion";
 import FirstQuestions from "./options/firstquestions";
