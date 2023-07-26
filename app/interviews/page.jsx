@@ -7,30 +7,30 @@ import Link from "next/link";
 
 // Hardcoded Info / enterpiseLogo must be square image
 const interviewInfo = [
-	// {
-	// 	enterpriseName: "Apple",
-	// 	enterpriseWebSite: "https://www.apple.com/",
-	// 	enterpriseLogo: AppleLogo,
-	// 	interviewDate: "Martes 16 de Junio | 16:00hs",
-	// 	vacant: "Desarrollador Front End",
-	// 	interviewer: "Mark Zuckerberg",
-	// },
-	// {
-	// 	enterpriseName: "Herbalife",
-	// 	enterpriseWebSite: "https://www.herbalife.com.mx/",
-	// 	enterpriseLogo: EcoLogo,
-	// 	interviewDate: "Domingo 15 de Abril | 12:00hs",
-	// 	vacant: "Gerente de ventas",
-	// 	interviewer: "Michelle Obama",
-	// },
-	// {
-	// 	enterpriseName: "LinkedIn",
-	// 	enterpriseWebSite: "https://www.linkedin.com/",
-	// 	enterpriseLogo: LinkedInLogo,
-	// 	interviewDate: "Lunes 22 de Septiembre | 8:30hs",
-	// 	vacant: "Database Mananger",
-	// 	interviewer: "Roberto G. Bolaños",
-	// }
+	{
+		enterpriseName: "Apple",
+		enterpriseWebSite: "https://www.apple.com/",
+		enterpriseLogo: AppleLogo,
+		interviewDate: "Martes 16 de Junio | 16:00hs",
+		vacant: "Desarrollador Front End",
+		interviewer: "Mark Zuckerberg",
+	},
+	{
+		enterpriseName: "Herbalife",
+		enterpriseWebSite: "https://www.herbalife.com.mx/",
+		enterpriseLogo: EcoLogo,
+		interviewDate: "Domingo 15 de Abril | 12:00hs",
+		vacant: "Gerente de ventas",
+		interviewer: "Michelle Obama",
+	},
+	{
+		enterpriseName: "LinkedIn",
+		enterpriseWebSite: "https://www.linkedin.com/",
+		enterpriseLogo: LinkedInLogo,
+		interviewDate: "Lunes 22 de Septiembre | 8:30hs",
+		vacant: "Database Mananger",
+		interviewer: "Roberto G. Bolaños",
+	}
 ];
 
 const InterviewsPage = () => {
