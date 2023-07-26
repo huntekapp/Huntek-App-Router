@@ -22,6 +22,7 @@ import Phone from "./options/phone";
 import Birthdate from "./options/birthdate";
 import Reubication from "./options/reubication";
 import Profession from "./options/professions";
+import { useGetInfoUserQuery } from "../globalstore/services/useInfoUser";
 import Experience from "./options/yearsOfExperience";
 import Income from "./options/income";
 import Availability from "./options/availability";
@@ -29,6 +30,8 @@ import FormOfWork from "./options/formOfWork";
 import PhotoUpload from "./options/photoUpload";
 
 const ProfileExt = () => {
+	const { data, isError, isLoading, error} = useGetInfoUserQuery();
+	console.log(data)
 	const [userData, setUserData] = useState({
 		mail: "",
 		phone: "",

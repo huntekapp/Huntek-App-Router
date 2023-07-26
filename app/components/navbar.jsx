@@ -57,7 +57,7 @@ const NavBar = () => {
 				{currentPath === "/home" ? (
 					<div className="drawer">
 						<input type="checkbox" id="profile" className="drawer-toggle" />
-						<label htmlFor="profile" className="drawer-button w-8 h-8 shadow-xl relative cursor-pointer">
+						<label htmlFor="profile" className="drawer-button w-10 h-10 relative cursor-pointer">
 							<Image
 								src={user.image}
 								alt="avatar"
