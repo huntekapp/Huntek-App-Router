@@ -10,23 +10,28 @@ import { AlertSuccess, AlertError } from "./alertsforrequest";
 const EmailCode = () => {
 	const router = useRouter();
 	const [email, setEmail] = useState("");
+
+	useEffect(() => {
+		setEmail(localStorage.getItem("email"));
+		setUserCode({ ...userCode, email });
+		setResendCode({ ...resendCode, email });
+	}, [email]);
+
 	const [successReq, setSuccessReq] = useState(null);
 	const [errorCatched, setErrorCatched] = useState(null);
 	const [enableButton, setEnableButton] = useState(0);
 	const [postVerif, { isLoading }] = usePostVerifMutation();
 	const [putResendCode] = usePutResendCodeMutation();
 	const inputRefs = useRef([]);
-	const [userCode, setUserCode] = useState({ code: { 0: "", 1: "", 2: "", 3: "", 4: "", 5: "" }, email: `${email}` });
+	const [userCode, setUserCode] = useState({
+		code: { 0: "", 1: "", 2: "", 3: "", 4: "", 5: "" },
+		email: `${email}`,
+	});
 	const [resendCode, setResendCode] = useState({
 		email: `${email}`,
 		order: "account_activation",
 	});
-	useEffect(() => {
-		const email2 = localStorage.getItem("email");
-		setEmail(email2);
-		setUserCode({ code: { 0: "", 1: "", 2: "", 3: "", 4: "", 5: "" }, email: email2 });
-    setResendCode({ email: email2, order: "account_activation" });
-	}, []);
+
 	const handleUserCode = (event, index) => {
 		if (/^[0-9]+$/.test(event.target.value) || event.keyCode == 8) {
 			if (event.keyCode != 8) {
