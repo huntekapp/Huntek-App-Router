@@ -301,7 +301,7 @@ const Swipe = () => {
 							<div className="w-full h-[60%] grid place-content-center relative">
 								<Image src={currentCard.image} alt="Tinder" fill="true" className="no-drag object-contain absolute" />
 							</div>
-							<p className="w-full h-[30%] font-super text-shadow text-sec text-5xl text-center z-10">SUPER LIKE!</p>
+							<p className="w-full h-[30%] font-super text-sec text-5xl text-center z-10">SUPER LIKE!</p>
 						</article>
 					</article>
 				) : (
