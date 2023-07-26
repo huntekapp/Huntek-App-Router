@@ -1,10 +1,10 @@
 import Image from "next/image";
 
-const Phone = ({userData, handleChange, inputPhone}) => {
+const Income = ({userData, handleChange, inputIncome}) => {
 	return (
 		<div className="w-full mb-2">
-			<label htmlFor="phone" className="ml-2 font-semibold">
-				¿Cuál es tu teléfono?
+			<label htmlFor="income" className="ml-2 font-semibold">
+				¿Cuál es tu sueldo anual bruto deseado?
 				<div className="group inline-block">
 					<Image
 						src="/utils/asterisk_huntek.svg"
@@ -18,12 +18,13 @@ const Phone = ({userData, handleChange, inputPhone}) => {
 					</div>
 				</div>
 			</label>
+			<p className="text-sm text-gray-500 ml-4">(Ejm 20,000 x 12 = 240,000) Sin incluir prestaciones</p>
 			<input
-				type="tel"
-				inputMode="tel"
-				name="phone"
-				disabled={!inputPhone}
-				value={userData.phone}
+				type="text"
+				inputMode="text"
+        name="income"
+        disabled={!inputIncome}
+				value={userData.income}
 				onChange={(event) => handleChange(event)}
 				className="w-full px-2 py-1 bg-pri-100 text-gray-400 rounded-md focus:outline-none"
 			/>
@@ -31,4 +32,4 @@ const Phone = ({userData, handleChange, inputPhone}) => {
 	);
 };
 
-export default Phone;
+export default Income;
