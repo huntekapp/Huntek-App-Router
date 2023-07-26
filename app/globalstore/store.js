@@ -11,6 +11,7 @@ import { chatsDB } from "./services/useChats";
 import { createChatDB } from "./services/useCreateChat";
 import { messagesDB } from "./services/useMessages";
 import { postMessagesDB } from "./services/usePostMessage";
+import { interviewsDB } from "./services/useInterviews";
 
 export const store = configureStore({
   reducer: {
@@ -25,6 +26,7 @@ export const store = configureStore({
     [createChatDB.reducerPath]: createChatDB.reducer,
     [messagesDB.reducerPath]: messagesDB.reducer,
     [postMessagesDB.reducerPath]: postMessagesDB.reducer,
+    [interviewsDB.reducerPath]: interviewsDB.reducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat([
@@ -38,6 +40,7 @@ export const store = configureStore({
       createChatDB.middleware,
       messagesDB.middleware,
       postMessagesDB.middleware,
+      interviewsDB.middleware
     ]),
 });
 setupListeners(store.dispatch);
