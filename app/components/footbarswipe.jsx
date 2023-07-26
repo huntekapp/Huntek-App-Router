@@ -8,7 +8,7 @@ import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 
 const FootbarSwipe = ({ canGoBack, canSwipe, swipe, goBack, showInfo }) => {
 	return (
-		<footer className="w-full h-full shadow-[0px_-10px_12px_0px_#00000024] flex flex-row justify-evenly items-center relative">
+		<footer className="w-full h-full shadow-[0px_-10px_12px_0px_#00000024] flex flex-row justify-evenly items-center relative z-50">
 			<section className="w-full max-w-sm flex flex-row justify-evenly items-start absolute -top-7">
 				<div
 					style={{ backgroundColor: !canSwipe && "#c3c4d3" }}

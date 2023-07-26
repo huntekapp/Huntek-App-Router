@@ -9,17 +9,17 @@ import getCookie from "../helpers/getCookies";
 import { useCreateChatMutation } from "../globalstore/services/useCreateChat";
 
 const Swipe = () => {
-const [createChat, {isLoading}] = useCreateChatMutation()
+	const [createChat, { isLoading }] = useCreateChatMutation();
 	const user_id = getCookie("AiOiJKV1Q");
 	const handleMatch = async () => {
 		//if(funcion que matchea usuario con empresa)
 		try {
 			const response = await createChat(match).unwrap();
-			const success = response.data
+			const success = response.data;
 		} catch (error) {
-			console.log(error)
+			console.log(error);
 		}
-	}
+	};
 	const [match, setMatch] = useState({
 		sender_id: user_id,
 		recipient_id: "",
@@ -146,7 +146,6 @@ const [createChat, {isLoading}] = useCreateChatMutation()
 	const [lastDirection, setLastDirection] = useState(null);
 
 	const currentCard = empresa[currentIndex];
-	const alertCard = empresa[currentIndex];
 	const prevCard = empresa[lastIndex];
 	const nextCard = empresa[currentIndex - 1];
 
@@ -170,7 +169,7 @@ const [createChat, {isLoading}] = useCreateChatMutation()
 					colors: ["#fbbf24", "#fde68a"],
 					shapes: ["square", "circle", "star"],
 					scalar: 1.2,
-					origin: { y: 1 },
+					origin: { y: 1.2 },
 					zIndex: 100,
 					disableForReducedMotion: false,
 					useWorker: true,
@@ -205,8 +204,8 @@ const [createChat, {isLoading}] = useCreateChatMutation()
 		setCurrentIndex(currentIndex + 1);
 	};
 
-	const [startX, setStartX] = useState(0);
-	const [startY, setStartY] = useState(0);
+	const [startX, setStartX] = useState(null);
+	const [startY, setStartY] = useState(null);
 	const [currentX, setCurrentX] = useState(0);
 	const [currentY, setCurrentY] = useState(0);
 	const [offsetX, setOffsetX] = useState(0);
@@ -222,14 +221,14 @@ const [createChat, {isLoading}] = useCreateChatMutation()
 	};
 
 	const handleTouchMove = (e) => {
-		if (startX === null) return;
+		if (startX === 0 && startY === 0) return;
 		if (info) return;
 
 		setCurrentX(e.touches ? e.touches[0].clientX : e.clientX);
-		setOffsetX(currentX - startX);
+		currentX && setOffsetX(currentX - startX);
 
 		setCurrentY(e.touches ? e.touches[0].clientY : e.clientY);
-		setOffsetY(currentY - startY);
+		currentY && setOffsetY(currentY - startY);
 	};
 
 	const handleTouchEnd = () => {
@@ -238,15 +237,15 @@ const [createChat, {isLoading}] = useCreateChatMutation()
 			swipe("right");
 		} else if (offsetX <= -50) {
 			swipe("left");
-		} else if (offsetY <= -200) {
+		} else if (offsetY <= -100) {
 			swipe("up");
 		}
 
 		setCurrentX(0);
-		setStartX(0);
+		setStartX(null);
 		setOffsetX(0);
 		setCurrentY(0);
-		setStartY(0);
+		setStartY(null);
 		setOffsetY(0);
 	};
 
@@ -278,11 +277,11 @@ const [createChat, {isLoading}] = useCreateChatMutation()
 	return (
 		<main className="w-full h-[90%]" ref={containerRef}>
 			<section className="w-full h-[93%] pb-10 bg-pri/70 flex flex-col justify-end items-center relative overflow-hidden">
-				{nextCard && (
+				{!alert && nextCard && (
 					<article
 						key={nextCard.nombre}
-						className={`no-drag w-1/2 max-w-xs h-[50%] bg-sec rounded-3xl shadow-lg blur-lg flex flex-col justify-center items-center absolute top-[22%] duration-1000`}>
-						<div className={`w-full h-full p-8 flex flex-col justify-between items-center`}>
+						className="no-drag w-1/2 max-w-xs h-[50%] bg-sec rounded-3xl shadow-lg blur-lg flex flex-col justify-center items-center absolute top-[22%] duration-1000">
+						<div className="w-full h-full p-8 flex flex-col justify-between items-center">
 							<div className="w-full h-3/4 grid place-content-center relative">
 								<Image src={nextCard.image} alt="Tinder" fill="true" className="no-drag object-contain absolute" />
 							</div>
@@ -297,24 +296,12 @@ const [createChat, {isLoading}] = useCreateChatMutation()
 					</article>
 				)}
 				{alert ? (
-					<article className="w-full h-full flex flex-col justify-center items-center translate-y-80 duration-500">
-						<article
-							className={`no-drag w-11/12 max-w-sm h-[50%] pt-[10%] rounded-3xl bg-sec/90 flex flex-col justify-center items-center z-10`}
-							style={{ transform: `translateY(-320px)`, transition: `1s` }}>
-							<div className="w-9/12 h-1/2 pt-[10%] grid place-content-center relative">
+					<article className="w-full h-full flex flex-col justify-center items-center appearedAlert">
+						<article className="no-drag w-full max-w-sm h-[80%] p-8 rounded-3xl flex flex-col justify-between items-center z-10">
+							<div className="w-full h-[60%] grid place-content-center relative">
 								<Image src={currentCard.image} alt="Tinder" fill="true" className="no-drag object-contain absolute" />
 							</div>
-							<MovingComponent
-								type="slideInFromTop"
-								duration="1000ms"
-								delay="0s"
-								direction="normal"
-								timing="ease"
-								iteration="1"
-								fillMode="none"
-								className="w-full h-1/2 grid place-content-center">
-								<p className="text-5xl text-yellow-400 text-gradient">SUPER LIKE!!</p>
-							</MovingComponent>
+							<p className="w-full h-[30%] font-super text-shadow text-sec text-5xl text-center z-10">SUPER LIKE!</p>
 						</article>
 					</article>
 				) : (
@@ -341,7 +328,7 @@ const [createChat, {isLoading}] = useCreateChatMutation()
 											className="no-drag object-contain absolute"
 										/>
 									</div>
-									<div className="w-full  flex flex-col justify-center items-left">
+									<div className="w-full flex flex-col justify-center items-left">
 										<button
 											onClick={showInfo}
 											onTouchStart={showInfo}
