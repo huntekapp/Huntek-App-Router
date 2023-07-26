@@ -13,7 +13,6 @@ const EmailCode = () => {
 
 	useEffect(() => {
 		setEmail(localStorage.getItem("email"));
-		console.log(email);
 	}, []);
 
 	const [successReq, setSuccessReq] = useState(null);
