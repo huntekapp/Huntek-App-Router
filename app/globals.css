@@ -124,7 +124,7 @@ select:-webkit-autofill:focus {
 .gradient-bothr {
   background-image: linear-gradient(90deg, #000000 0%, #046255 30%, #000000 100%);
 }
-.lightgradient-both {
+.darkgradient-both-tb {
   background-image: linear-gradient(180deg, #000000 0%, #046255 30%, #000000 100%);
 }
 .darkrightgrad {
