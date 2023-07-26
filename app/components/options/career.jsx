@@ -1,10 +1,10 @@
 import Image from "next/image";
 
-const Carreer = ({userData, handleChange}) => {
+const Career = ({userData, handleChange, inputCareer}) => {
 	return (
 		<div className="w-full mb-2">
 			<label htmlFor="degree" className="ml-2 font-semibold">
-				¿Qué carrera estudiaste?
+				¿Qué carrera estudias?
 				<div class="group inline-block">
 					<Image
 						src="/utils/asterisk_huntek.svg"
@@ -21,6 +21,7 @@ const Carreer = ({userData, handleChange}) => {
 			<select
 				name="degree"
 				value={userData.degree}
+				disabled={!inputCareer}
 				onChange={(event) => handleChange(event)}
 				className="w-full px-2 py-1 bg-pri-100 text-gray-400 rounded-md focus:outline-none">
 				<option value="select" hidden>
@@ -145,4 +146,4 @@ const Carreer = ({userData, handleChange}) => {
 		</div>
 	);
 };
-export default Carreer;
+export default Career;

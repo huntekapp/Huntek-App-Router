@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -8,19 +8,30 @@ import { usePutResendCodeMutation } from "../globalstore/services/useResendCode"
 import { AlertSuccess, AlertError } from "./alertsforrequest";
 
 const EmailCode = () => {
-	const email = localStorage.getItem("email");
 	const router = useRouter();
+	const [email, setEmail] = useState("");
+
+	useEffect(() => {
+		setEmail(localStorage.getItem("email"));
+		setUserCode({ ...userCode, email });
+		setResendCode({ ...resendCode, email });
+	}, [email]);
+
 	const [successReq, setSuccessReq] = useState(null);
 	const [errorCatched, setErrorCatched] = useState(null);
-	let [enableButton, setEnableButton] = useState(0);
+	const [enableButton, setEnableButton] = useState(0);
 	const [postVerif, { isLoading }] = usePostVerifMutation();
 	const [putResendCode] = usePutResendCodeMutation();
 	const inputRefs = useRef([]);
-	const [userCode, setUserCode] = useState({ code: { 0: "", 1: "", 2: "", 3: "", 4: "", 5: "" }, email: `${email}` });
+	const [userCode, setUserCode] = useState({
+		code: { 0: "", 1: "", 2: "", 3: "", 4: "", 5: "" },
+		email: `${email}`,
+	});
 	const [resendCode, setResendCode] = useState({
 		email: `${email}`,
-		order: "account_activation"
-	})
+		order: "account_activation",
+	});
+
 	const handleUserCode = (event, index) => {
 		if (/^[0-9]+$/.test(event.target.value) || event.keyCode == 8) {
 			if (event.keyCode != 8) {
@@ -31,7 +42,7 @@ const EmailCode = () => {
 						[index]: event.target.value,
 					},
 				});
-				enableButton === 6 ? "" : setEnableButton((enableButton += 1));
+				enableButton === 6 ? "" : setEnableButton(enableButton + 1);
 			} else if (event.keyCode === 8 && event.target.value === "") {
 				setUserCode({
 					...userCode,
@@ -40,7 +51,7 @@ const EmailCode = () => {
 						[index]: "",
 					},
 				});
-				enableButton === 0 ? "" : setEnableButton((enableButton -= 1));
+				enableButton === 0 ? "" : setEnableButton(enableButton - 1);
 			}
 		} else {
 			event.target.value = "";
@@ -78,6 +89,7 @@ const EmailCode = () => {
 			email: userCode.email,
 		});
 	};
+
 	const handleSubmitResend = async (event) => {
 		event.preventDefault();
 		try {
