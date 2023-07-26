@@ -22,6 +22,11 @@ import Phone from "./options/phone";
 import Birthdate from "./options/birthdate";
 import Reubication from "./options/reubication";
 import Profession from "./options/professions";
+import Experience from "./options/yearsOfExperience";
+import Income from "./options/income";
+import Availability from "./options/availability";
+import FormOfWork from "./options/formOfWork";
+import PhotoUpload from "./options/photoUpload";
 
 const ProfileExt = () => {
 	const [userData, setUserData] = useState({
@@ -43,6 +48,11 @@ const ProfileExt = () => {
 		form_of_work: "",
 		availability: "",
 	});
+
+	const [inputPhotoUpload, setInputPhotoUpload] = useState(false);
+	const handleInputPhotoUpload = () => {
+		setInputPhotoUpload(!inputPhotoUpload);
+	};
 
 	const [inputStudies, setInputStudies] = useState(false);
 	const handleInputStudies = () => {
@@ -84,6 +94,25 @@ const ProfileExt = () => {
 		setInputProf(!inputProf);
 	};
 
+	const [inputExperience, setInputExperience] = useState(false);
+	const handleInputExperience = () => {
+		setInputExperience(!inputExperience);
+	};
+
+	const [inputIncome, setInputIncome] = useState(false);
+	const handleInputIncome = () => {
+		setInputIncome(!inputIncome);
+	};
+
+	const [inputAvailability, setInputAvailability] = useState(false);
+	const handleInputAvailability = () => {
+		setInputAvailability(!inputAvailability);
+	};
+
+	const [inputFormOfWork, setInputFormOfWork] = useState(false);
+	const handleInputFormOfWork = () => {
+		setInputFormOfWork(!inputFormOfWork);
+	};
 
 	const handleLang = (event) => {
 		const add = (event) => {
@@ -103,27 +132,6 @@ const ProfileExt = () => {
 		setUserData({
 			...userData,
 			languages: userData.languages.filter((temp) => temp !== event),
-		});
-	};
-
-	const handleProf = (event) => {
-		const add = (event) => {
-			if (userData.profession.includes(event.target.value)) {
-				return [...userData.profession];
-			} else {
-				return [...userData.profession, event.target.value];
-			}
-		};
-		setUserData({
-			...userData,
-			profession: add(event),
-		});
-	};
-
-	const handleDeleteProf = (event) => {
-		setUserData({
-			...userData,
-			profession: userData.profession.filter((temp) => temp !== event),
 		});
 	};
 
@@ -155,7 +163,7 @@ const ProfileExt = () => {
 			[event.target.name]: event.target.value,
 		});
 	};
-
+	console.log(userData);
 	return (
 		<main className="w-full max-w-md lg:max-w-full h-full lg:grid lg:grid-cols-2 lg:items-center">
 			<section className=" text-pri text-center flex flex-col justify-start items-center lg:h-3/5">
@@ -169,14 +177,33 @@ const ProfileExt = () => {
 							loading={"eager"}
 							className="rounded-full aspect-square"
 						/>
-						<Image
-							src={"/utils/upload.svg"}
-							alt="upload"
-							width={35}
-							height={35}
-							loading={"eager"}
-							className="absolute right-0 bottom-1 aspect-square rounded-full bg-sec p-1 border-2 cursor-pointer"
-						/>
+
+						<div className="flex justify-between items-center">
+							<label htmlFor="modalFotoUpload" className="text-lg font-light cursor-pointer w-full relative">
+								<Image
+									src={"/utils/upload.svg"}
+									alt="upload"
+									width={35}
+									height={35}
+									loading={"eager"}
+									className="absolute right-0 bottom-1 aspect-square rounded-full bg-sec p-1 border-2 cursor-pointer"
+								/>
+							</label>
+							<input type="checkbox" id="modalFotoUpload" className="modal-toggle" />
+							<div className="modal">
+								<div className="modal-box">
+									<PhotoUpload/>
+									<div className="modal-action">
+										<button className="btn  bg-pri text-sec hover:text-pri" onClick={handleInputPhotoUpload}>
+											{inputPhotoUpload === true ? "Guardar" : "Editar"}
+										</button>
+										<label htmlFor="modalFotoUpload" className="btn">
+											Cerrar
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</article>
 				<article className="flex flex-col justify-start items-center">
@@ -358,9 +385,9 @@ const ProfileExt = () => {
 						<input type="checkbox" id="modalAreasInteres" className="modal-toggle" />
 						<div className="modal">
 							<div className="modal-box">
-								<Profession handleProf={handleProf} userData={userData} inputProf={inputProf} handleDeleteProf={handleDeleteProf} />
+								<Profession userData={userData} inputProf={inputProf} />
 								<div className="modal-action">
-								<button className="btn  bg-pri text-sec hover:text-pri" onClick={handleInputProf}>
+									<button className="btn  bg-pri text-sec hover:text-pri" onClick={handleInputProf}>
 										{inputProf === true ? "Guardar" : "Editar"}
 									</button>
 									<label htmlFor="modalAreasInteres" className="btn">
@@ -379,8 +406,11 @@ const ProfileExt = () => {
 						<input type="checkbox" id="modalExperiencia" className="modal-toggle" />
 						<div className="modal">
 							<div className="modal-box">
-								Si no tenes 5 años de experiencia no te contrato.
+								<Experience userData={userData} handleChange={handleChange} inputExperience={inputExperience} />
 								<div className="modal-action">
+									<button className="btn  bg-pri text-sec hover:text-pri" onClick={handleInputExperience}>
+										{inputExperience === true ? "Guardar" : "Editar"}
+									</button>
 									<label htmlFor="modalExperiencia" className="btn">
 										Cerrar
 									</label>
@@ -397,8 +427,11 @@ const ProfileExt = () => {
 						<input type="checkbox" id="modalSalario" className="modal-toggle" />
 						<div className="modal">
 							<div className="modal-box">
-								Cuanta money te cierra facha?
+								<Income userData={userData} handleChange={handleChange} inputIncome={inputIncome} />
 								<div className="modal-action">
+									<button className="btn  bg-pri text-sec hover:text-pri" onClick={handleInputIncome}>
+										{inputIncome === true ? "Guardar" : "Editar"}
+									</button>
 									<label htmlFor="modalSalario" className="btn">
 										Cerrar
 									</label>
@@ -415,8 +448,11 @@ const ProfileExt = () => {
 						<input type="checkbox" id="modalDisponibilidad" className="modal-toggle" />
 						<div className="modal">
 							<div className="modal-box">
-								Disponibilidad horaria
+								<Availability userData={userData} handleChange={handleChange} inputAvailability={inputAvailability} />
 								<div className="modal-action">
+									<button className="btn  bg-pri text-sec hover:text-pri" onClick={handleInputAvailability}>
+										{inputAvailability === true ? "Guardar" : "Editar"}
+									</button>
 									<label htmlFor="modalDisponibilidad" className="btn">
 										Cerrar
 									</label>
@@ -433,8 +469,11 @@ const ProfileExt = () => {
 						<input type="checkbox" id="modalFormaTrabajo" className="modal-toggle" />
 						<div className="modal">
 							<div className="modal-box">
-								Forma de trabajooooou
+								<FormOfWork userData={userData} handleChange={handleChange} inputFormOfWork={inputFormOfWork} />
 								<div className="modal-action">
+									<button className="btn  bg-pri text-sec hover:text-pri" onClick={handleInputFormOfWork}>
+										{inputFormOfWork === true ? "Guardar" : "Editar"}
+									</button>
 									<label htmlFor="modalFormaTrabajo" className="btn">
 										Cerrar
 									</label>

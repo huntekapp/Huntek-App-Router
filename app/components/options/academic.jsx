@@ -5,7 +5,7 @@ const Academic = ({ userData, handleChange, inputAcademic }) => {
 		<div className="w-full mb-2">
 			<label htmlFor="studies" className="ml-2 font-semibold">
 				¿Cuál es tu situación academica?
-				<div class="group inline-block">
+				<div className="group inline-block">
 					<Image
 						src="/utils/asterisk_huntek.svg"
 						width={16}
@@ -13,7 +13,7 @@ const Academic = ({ userData, handleChange, inputAcademic }) => {
 						alt="asterisco"
 						className="ml-2 aspect-square"
 					/>
-					<div class="opacity-0 group-hover:opacity-100 bg-pri text-sec text-center absolute p-1 rounded-md  flex justify-center items-center transition duration-300">
+					<div className="opacity-0 group-hover:opacity-100 bg-pri text-sec text-center absolute p-1 rounded-md  flex justify-center items-center transition duration-300">
 						<span>Requerido</span>
 					</div>
 				</div>

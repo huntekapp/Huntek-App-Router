@@ -5,7 +5,7 @@ const SecondData = ({companyUserData, handleChange}) => {
       <div className="w-full mb-2">
               <label htmlFor="phone" className="ml-2 font-semibold inline-flex items-center">
                 ¿Cuál es tu teléfono?
-                <div class="group inline-block">
+                <div className="group inline-block">
                   <Image
                     src="/utils/asterisk_huntek.svg"
                     width={16}
@@ -13,7 +13,7 @@ const SecondData = ({companyUserData, handleChange}) => {
                     alt="asterisco"
                     className="ml-2 aspect-square"
                   />
-                  <div class="opacity-0 group-hover:opacity-100 bg-pri text-sec text-center absolute p-1 rounded-md  flex justify-center items-center transition duration-300">
+                  <div className="opacity-0 group-hover:opacity-100 bg-pri text-sec text-center absolute p-1 rounded-md  flex justify-center items-center transition duration-300">
                     <span>Requerido</span>
                   </div>
                 </div>
@@ -31,7 +31,7 @@ const SecondData = ({companyUserData, handleChange}) => {
             <div className="w-full mb-2">
               <label htmlFor="url" className="ml-2 font-semibold inline-flex items-center">
                 ¿Cuál es la página web de la empresa?
-                <div class="group inline-block">
+                <div className="group inline-block">
                   <Image
                     src="/utils/asterisk_huntek.svg"
                     width={16}
@@ -39,7 +39,7 @@ const SecondData = ({companyUserData, handleChange}) => {
                     alt="asterisco"
                     className="ml-2 aspect-square"
                   />
-                  <div class="opacity-0 group-hover:opacity-100 bg-pri text-sec text-center absolute p-1 rounded-md  flex justify-center items-center transition duration-300">
+                  <div className="opacity-0 group-hover:opacity-100 bg-pri text-sec text-center absolute p-1 rounded-md  flex justify-center items-center transition duration-300">
                     <span>Requerido</span>
                   </div>
                 </div>
@@ -57,7 +57,7 @@ const SecondData = ({companyUserData, handleChange}) => {
             <div className="w-full mb-2">
               <label htmlFor="size" className="ml-2 font-semibold inline-flex items-center">
                 ¿De que tamaño es la empresa?
-                <div class="group inline-block">
+                <div className="group inline-block">
                   <Image
                     src="/utils/asterisk_huntek.svg"
                     width={16}
@@ -65,7 +65,7 @@ const SecondData = ({companyUserData, handleChange}) => {
                     alt="asterisco"
                     className="ml-2 aspect-square"
                   />
-                  <div class="opacity-0 group-hover:opacity-100 bg-pri text-sec text-center absolute p-1 rounded-md  flex justify-center items-center transition duration-300">
+                  <div className="opacity-0 group-hover:opacity-100 bg-pri text-sec text-center absolute p-1 rounded-md  flex justify-center items-center transition duration-300">
                     <span>Requerido</span>
                   </div>
                 </div>
@@ -82,7 +82,7 @@ const SecondData = ({companyUserData, handleChange}) => {
             </div>
             <label className="ml-2 font-semibold inline-flex items-center">
               ¿Cuál es el logotipo de la empresa?
-              <div class="group inline-block">
+              <div className="group inline-block">
                 <Image
                   src="/utils/asterisk_huntek.svg"
                   width={16}
@@ -90,7 +90,7 @@ const SecondData = ({companyUserData, handleChange}) => {
                   alt="asterisco"
                   className="ml-2 aspect-square"
                 />
-                <div class="opacity-0 group-hover:opacity-100 bg-pri text-sec text-center absolute p-1 rounded-md  flex justify-center items-center transition duration-300">
+                <div className="opacity-0 group-hover:opacity-100 bg-pri text-sec text-center absolute p-1 rounded-md  flex justify-center items-center transition duration-300">
                   <span>Requerido</span>
                 </div>
               </div>
