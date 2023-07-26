@@ -83,21 +83,21 @@ const Chat = () => {
 						<Link
 							href={`/conversations/${chat.id}`}
 							key={index}
-							className="w-full h-24 px-2 border-b flex flex-row justify-start items-center">
-							<div className="w-14 h-14 border-2 rounded-full grid place-content-center relative">
+							className="w-full h-24 px-2 border-b flex flex-row justify-between items-center">
+							<div className="min-w-[60px] h-[60px] border-2 border-pri rounded-full grid place-content-center relative">
 								<Image
 									src={chat.image}
 									alt="image"
 									fill={true}
 									loading={"eager"}
-									className="rounded-full object-contain absolute"
+									className="rounded-full object-cover absolute"
 								/>
 							</div>
-							<div className="w-[80%] h-full px-4 flex flex-col justify-center">
+							<div className="w-[95%] h-full ml-4 flex flex-col justify-center">
 								<h2 className="text-lg font-medium line-clamp-1">{`${chat.name}`}</h2>
 								<p className="text-base text-pri-500 font-light line-clamp-1">{`${chat.value}`}</p>
 							</div>
-							<div className="w-14 flex flex-col justify-evenly items-center">
+							<div className="min-w-[60px] h-[60px] flex flex-col justify-evenly items-center">
 								<p className="text-center ">{chat.time}</p>
 								<p className="w-5 h-5 grid place-content-center text-sec bg-pri rounded-full">{chat.msg}</p>
 							</div>

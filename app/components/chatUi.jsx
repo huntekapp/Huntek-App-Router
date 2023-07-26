@@ -128,8 +128,8 @@ const ChatUi = () => {
 					<h1 className="w-[85%] text-2xl font-medium line-clamp-1 cursor-default">{openChat.name}</h1>
 				</article>
 			</nav>
-			<section className="w-full h-[90%] bg-pri flex flex-col justify-center items-center">
-				<article className="w-11/12 h-[95%] border bg-sec shadow-lg rounded-2xl flex flex-col justify-between items-center">
+			<section className="w-full h-[90%] p-4 bg-pri flex flex-col justify-center items-center">
+				<article className="w-full h-full border bg-sec shadow-lg rounded-2xl flex flex-col justify-between items-center">
 					<div className="w-full h-[90%] p-2 flex flex-col overflow-x-auto">
 						<ul className="grid grid-cols-12 gap-y-1">
 							{messages.map((msg) => (
@@ -152,8 +152,8 @@ const ChatUi = () => {
 							))}
 						</ul>
 					</div>
-					<footer className="w-full h-[10%] px-2 bg-pri-100 rounded-bl-lg rounded-br-lg flex flex-row justify-around items-center">
-						<buttom className="p-2 grid place-content-center bg-pri-200 rounded-full text-pri hover:text-sec hover:bg-pri duration-150 cursor-pointer">
+					<footer className="w-full h-[10%] bg-pri-100 rounded-bl-lg rounded-br-lg flex flex-row justify-around items-center">
+						<buttom className="mx-2 p-2 grid place-content-center bg-pri-200 rounded-full text-pri hover:text-sec hover:bg-pri duration-150 cursor-pointer">
 							<AttachFileOutlinedIcon className="w-6 h-6 rotate-45" />
 						</buttom>
 						<form onSubmit={handleSubmit} className="w-[90%] flex flex-row justify-center items-center">
@@ -162,12 +162,12 @@ const ChatUi = () => {
 								name="message"
 								value={message.message}
 								onChange={handleChange}
-								className="w-[95%] px-4 py-2 text-sec bg-pri-200 rounded-lg focus:outline-none focus:bg-pri"
+								className="w-[100%] px-4 py-2 text-sec bg-pri-200 rounded-lg focus:outline-none focus:bg-pri"
 							/>
 						</form>
 						<buttom
 							onClick={handleSubmit}
-							className="p-2 grid place-content-center bg-pri-200 rounded-full text-pri hover:text-sec hover:bg-pri duration-150 cursor-pointer">
+							className="mx-2 p-2 grid place-content-center bg-pri-200 rounded-full text-pri hover:text-sec hover:bg-pri duration-150 cursor-pointer">
 							<SendIcon className="w-6 h-6" />
 						</buttom>
 					</footer>
