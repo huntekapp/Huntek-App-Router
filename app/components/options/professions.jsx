@@ -1,5 +1,23 @@
 import Image from "next/image";
-const Profession = ({userData, handleProf, handleDeleteProf}) => {
+import CustomSelect from "./customSelect";
+const Profession = ({userData, handleProf, handleDeleteProf, inputProf}) => {
+	const options = [
+		"Servicios legales",
+		"Comercial",
+		"Innovación",
+		"Servicio al cliente",
+		"Control interno",
+		"Logística",
+		"Tecnologías de la información",
+		"Ventas",
+		"Sistemas",
+		"Publicidad",
+		"Investigación & Desarrollo",
+		"Compras",
+		"Distribución",
+		"Comunicaciones",
+		"Otras"
+	];
 	return (
 		<>
 			<div>
@@ -18,10 +36,21 @@ const Profession = ({userData, handleProf, handleDeleteProf}) => {
 						</div>
 					</div>
 				</label>
-				<select
+				<CustomSelect options={options}/>
+				{/* <div className="select-multiple h-1/5">
+					{options.map((item, index) => {
+						return (
+							<div key={index} className="">
+								<p>{item}</p>
+							</div>
+						)
+					})}
+				</div> */}
+				{/* <select
 					name="profession"
 					multiple
 					value={userData.profession}
+					disabled={!inputProf}
 					onChange={(event) => handleProf(event)}
 					className="w-full px-2 py-1 bg-pri-100 text-gray-400 rounded-md focus:outline-none scrollnice">
 					<option value="select" hidden>
@@ -42,13 +71,14 @@ const Profession = ({userData, handleProf, handleDeleteProf}) => {
 					<option value={"Distribución"}>Distribución</option>
 					<option value={"Comunicaciones"}>Comunicaciones</option>
 					<option value={"Otras"}>Otras</option>
-				</select>
+				</select> */}
 				<div className="flex flex-row justify-start">
 					{userData.profession?.map((item, index) => {
 						return (
 							<div key={index} className="flex flex-row justify-start">
 								<p>{item} </p>
 								<button
+									disabled={!inputProf}
 									onClick={() => {
 										handleDeleteProf(item);
 									}}>
@@ -58,35 +88,6 @@ const Profession = ({userData, handleProf, handleDeleteProf}) => {
 						);
 					})}
 				</div>
-			</div>
-			<div className="w-full mb-2">
-				<label htmlFor="studies" className="ml-2 font-semibold">
-					¿Cuál es tu situación academica?
-					<div class="group inline-block">
-						<Image
-							src="/utils/asterisk_huntek.svg"
-							width={16}
-							height={16}
-							alt="asterisco"
-							className="ml-2 aspect-square"
-						/>
-						<div class="opacity-0 group-hover:opacity-100 bg-pri text-sec text-center absolute p-1 rounded-md  flex justify-center items-center transition duration-300">
-							<span>Requerido</span>
-						</div>
-					</div>
-				</label>
-				<select
-					name="studies"
-					value={userData.studies}
-					onChange={(event) => handleChange(event)}
-					className="w-full px-2 py-1 bg-pri-100 text-gray-400 rounded-md focus:outline-none">
-					<option value="select" hidden>
-						Selecciona una opción
-					</option>
-					<option value="Egresado">Egresado</option>
-					<option value="Estudiante">Estudiante</option>
-					<option value="Sin estudios">Sin estudios</option>
-				</select>
 			</div>
 		</>
 	);

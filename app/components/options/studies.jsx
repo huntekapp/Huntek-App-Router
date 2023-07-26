@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const Studies = ({userData, handleChange}) => {
+const Studies = ({userData, handleChange, inputStudies}) => {
 	return (
 		<div className="w-full mb-2">
 			<label htmlFor="university" className="ml-2 font-semibold">
@@ -21,6 +21,7 @@ const Studies = ({userData, handleChange}) => {
 			<select
 				name="university"
 				value={userData.university}
+				disabled={!inputStudies}
 				onChange={(event) => handleChange(event)}
 				className="w-full px-2 py-1 bg-pri-100 text-gray-400 rounded-md focus:outline-none">
 				<option value="select" hidden>
