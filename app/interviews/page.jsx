@@ -3,6 +3,7 @@ import InterviewDetail from "../components/interviewDetail";
 import AppleLogo from "@/public/images/apple-g44d4327db_1920.png";
 import EcoLogo from "@/public/images/eco-ged3b25e46_1920.png";
 import LinkedInLogo from "@/public/images/linkedin-gf141b6fe5_1920.png";
+import Link from "next/link";
 
 // Hardcoded Info / enterpiseLogo must be square image
 const interviewInfo = [
@@ -29,22 +30,33 @@ const interviewInfo = [
 		interviewDate: "Lunes 22 de Septiembre | 8:30hs",
 		vacant: "Database Mananger",
 		interviewer: "Roberto G. Bolaños",
-	},
+	}
 ];
 
 const InterviewsPage = () => {
 	return (
-		<main>
-			<section className="flex flex-row justify-start h-full w-full items-start py-2 border-y border-t-0">
-					<a href="/home" className="h-12 w-12 flex justify-center rounded-full ml-2 hover:bg-pri-100">
-						<Image loading={"eager"} alt="back" width={32} height={32} src="utils/back_huntek.svg" />
-					</a>
-					<h1 className="text-4xl font-bold mt-1 ml-2 text-pri cursor-default">Entrevistas</h1>
-				</section>
-			<section className="min-h-screen bg-sec flex flex-col lg:grid lg:grid-cols-2 lg:grid-rows-6 text-left">
-				{interviewInfo.map((interview, index) => {
-					return <InterviewDetail interviewInfo={interview} key={index}/>;
-				})}
+		<main className="h-screen">
+			<section className="h-[10%] flex flex-row justify-start w-full items-center py-2 border-y border-t-0">
+				<a href="/home" className="h-12 w-12 flex justify-center rounded-full ml-2 hover:bg-pri-100">
+					<Image loading={"eager"} alt="back" width={32} height={32} src="utils/back_huntek.svg" />
+				</a>
+				<h1 className="text-4xl font-bold mt-1 ml-2 text-pri cursor-default">Entrevistas</h1>
+			</section>
+			<section className="min-h-[90%] lightgradient-both flex flex-col md:grid md:grid-cols-2 md:grid-rows-3 md:gap-x-7 md:px-8 text-left">
+				{interviewInfo.length ? (
+					interviewInfo.map((interview, index) => {
+						return <InterviewDetail interviewInfo={interview} key={index} />;
+					})
+				) : (
+						<article className="md:w-fit h-fit w-full absolute left-2/4 top-2/4 translate-x-[-50%] translate-y-[-50%] text-center flex flex-col justify-center">
+							<h2 className="font-bold text-pri mb-2 text-xl xs:text-lg">Aún no tienes entrevistas agendadas.</h2>
+							<p className="text-xs	font-semibold">Pero puedes empezar a buscar el trabajo de tus sueños</p>
+							<Link href={"/swipe"}>
+								<p className="text-xs font-semibold underline">tocando aquí</p>
+							</Link>
+							<div className="bg-HKGlogo bg-center bg-no-repeat bg-contain absolute w-[350px] h-[350px] translate-x-[-50%] translate-y-[-50%] left-2/4 top-2/4 opacity-10 -z-10"/>
+						</article>
+				)}
 			</section>
 		</main>
 	);

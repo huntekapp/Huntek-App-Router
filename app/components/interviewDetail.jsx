@@ -2,10 +2,10 @@ import Image from "next/image";
 
 const InterviewDetail = ({interviewInfo}) => {
 	return (
-		<main className="w-full p-3 pb-0">
-			<section className="flex flex-row bg-sec border w-full p-2 rounded-lg shadow-sm">
+		<main className="w-full px-3 pb-3 pt-7">
+			<section className="flex flex-row bg-gray-50 border border-gray-400 h-36 w-full p-2 rounded-lg shadow-xl items-center">
 				<div>
-					<Image loading={"eager"} alt="logo"  src={interviewInfo.enterpriseLogo} width={90} height={100} className="p-1 rounded-full" />
+					<Image loading={"eager"} alt="logo"  src={interviewInfo.enterpriseLogo} width={90} height={100} className="mx-3 rounded-full border-2 border-pri" />
 				</div>
 				<div className="flex flex-col mx-3">
 					<a href={interviewInfo.enterpriseWebSite} target="_blank" className="text-cyan-700 text-lg">
