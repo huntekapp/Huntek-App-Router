@@ -31,7 +31,6 @@ import PhotoUpload from "./options/photoUpload";
 
 const ProfileExt = () => {
 	const { data, isError, isLoading, error} = useGetInfoUserQuery();
-	console.log(data)
 	const [userData, setUserData] = useState({
 		mail: "",
 		phone: "",
