@@ -28,13 +28,7 @@ const LogForm = () => {
 			[event.target.name]: event.target.value,
 		});
 	};
-if (isLoading || isSuccess) {
-  return (
-    <div className={`container ${isSuccess ? "success" : ""}`}>
-      <div className="loader"></div>
-    </div>
-  );
-}
+
 	const handleCheck = (event) => {
 		setCheck(!check);
 		setInput({
@@ -68,6 +62,14 @@ if (isLoading || isSuccess) {
 			setErrorCatched(error.data?.detail);
 		}
 	};
+
+	if (isLoading || isSuccess) {
+		return (
+			<div className={`container ${isSuccess ? "success" : ""}`}>
+				<div className="loader"></div>
+			</div>
+		);
+	}
 
 	return (
 		<section className="w-11/12 max-w-md h-3/5 max-h-[400px] font-medium text-sec flex flex-col justify-around items-center">
