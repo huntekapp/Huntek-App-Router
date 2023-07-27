@@ -72,7 +72,7 @@ const LogForm = () => {
 						name="email"
 						id="email"
 						value={input.email}
-						className="w-full px-3 bg-transparent outline-none border-b"
+						className="w-full px-3 bg-transparent border-0 border-b"
 						placeholder="Tu email"
 						onChange={handleChange}
 					/>
@@ -86,7 +86,7 @@ const LogForm = () => {
 								name="password"
 								id="password"
 								value={input.password}
-								className="w-full px-3 bg-transparent outline-none border-b"
+								className="w-full px-3 bg-transparent border-0 border-b"
 								placeholder="Tu contraseña"
 								onChange={handleChange}
 							/>
