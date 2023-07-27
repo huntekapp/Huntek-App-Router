@@ -15,7 +15,7 @@ const LogForm = () => {
 	const [errorCatched, setErrorCatched] = useState(null);
 	const [showPassword, setShowPassword] = useState(false);
 	const [check, setCheck] = useState(false);
-	const [postLogin, { isLoading }] = usePostLoginMutation();
+	const [postLogin, { isLoading, isSuccess }] = usePostLoginMutation();
 	const [input, setInput] = useState({
 		email: "",
 		password: "",
@@ -28,7 +28,13 @@ const LogForm = () => {
 			[event.target.name]: event.target.value,
 		});
 	};
-
+if (isLoading || isSuccess) {
+  return (
+    <div className={`container ${isSuccess ? "success" : ""}`}>
+      <div className="loader"></div>
+    </div>
+  );
+}
 	const handleCheck = (event) => {
 		setCheck(!check);
 		setInput({
