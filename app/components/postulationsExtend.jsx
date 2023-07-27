@@ -120,7 +120,7 @@ const userPostulations = [
 
 const PostulationsExtend = () => {
 	return (
-		<section className="w-full h-screen text-pri flex flex-col">
+		<section className="w-full min-h-screen text-pri flex flex-col">
 			<nav className="w-full h-[10%] px-4 border-b flex flex-row justify-start items-center">
 				<Link
 					href="/home"
