@@ -15,7 +15,7 @@ const LogForm = () => {
 	const [errorCatched, setErrorCatched] = useState(null);
 	const [showPassword, setShowPassword] = useState(false);
 	const [check, setCheck] = useState(false);
-	const [postLogin, { isLoading }] = usePostLoginMutation();
+	const [postLogin, { isLoading, isSuccess }] = usePostLoginMutation();
 	const [input, setInput] = useState({
 		email: "",
 		password: "",
@@ -51,7 +51,7 @@ const LogForm = () => {
 			const date = new Date();
 			date.setDate(date.getDate() + 7);
 			document.cookie = `kTnKETkt=${access_token}; expires=${date.toUTCString()}`;
-			router.push("/profileExtend");
+			router.push("/home");
 			setInput({
 				email: "",
 				password: "",
@@ -62,6 +62,15 @@ const LogForm = () => {
 			setErrorCatched(error.data?.detail);
 		}
 	};
+
+	if (isLoading || isSuccess) {
+		return (
+			<div className={`container ${isSuccess ? "success" : ""}`}>
+				<div className="loader"></div>
+			</div>
+		);
+	}
+
 	return (
 		<section className="w-11/12 max-w-md h-3/5 max-h-[400px] font-medium text-sec flex flex-col justify-around items-center">
 			<form onSubmit={handleSubmit} className="w-full h-1/2 lg:h-3/5 flex flex-col justify-between">
@@ -72,7 +81,7 @@ const LogForm = () => {
 						name="email"
 						id="email"
 						value={input.email}
-						className="w-full px-3 bg-transparent border-0 border-b"
+						className="w-full px-3 bg-transparent outline-none border-b"
 						placeholder="Tu email"
 						onChange={handleChange}
 					/>
@@ -86,7 +95,7 @@ const LogForm = () => {
 								name="password"
 								id="password"
 								value={input.password}
-								className="w-full px-3 bg-transparent border-0 border-b"
+								className="w-full px-3 bg-transparent outline-none border-b"
 								placeholder="Tu contraseña"
 								onChange={handleChange}
 							/>

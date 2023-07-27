@@ -54,7 +54,7 @@ const Messages = () => {
 		<article className="w-full h-2/6 px-4 flex flex-col justify-around">
 			<div className="mt-2 mb-1 flex flex-row justify-between">
 				<p>Mis conversaciones</p>
-				<Link href="/conversations" className="font-medium">
+				<Link href="/messages" className="font-medium">
 					Ver todas
 				</Link>
 			</div>
@@ -62,7 +62,7 @@ const Messages = () => {
 				{chats.map((chat, index) => {
 					return (
 						<Link
-							href={`/conversations/${chat.id}`}
+							href={`/messages/${chat.id}`}
 							key={index}
 							className="w-full carousel-item flex flex-col justify-between">
 							<div className="w-full h-16 carousel-item flex flex-row justify-between">

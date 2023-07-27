@@ -90,7 +90,7 @@ const NavBar = () => {
 			<article className="navbar-end">
 				<div className="w-[75px] flex flex-row justify-between items-center">
 					<Link
-						href="/conversations"
+						href="/messages"
 						className="p-1 grid place-content-center rounded-full hover:bg-pri-100 hover:scale-125 duration-200">
 						<ForumOutlinedIcon className="w-6 h-6 text-sec hover:text-pri" />
 					</Link>

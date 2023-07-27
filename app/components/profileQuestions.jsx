@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import EastIcon from "@mui/icons-material/East";
-import Options from "./formApplicant/optionsQ&A";
+import Options from "./formApplicant/country";
 import OptionsCity from "./formApplicant/optionsCity";
 import Languages from "./formApplicant/language";
 import Profession from "./formApplicant/professions";
