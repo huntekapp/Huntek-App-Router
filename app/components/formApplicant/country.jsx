@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const Options = ({ userData, handleChange }) => {
+const Country = ({ userData, handleChange, inputCountry }) => {
 	return (
 		<div className="w-full mb-2">
 			<label htmlFor="country" className="ml-2 font-semibold">
@@ -21,6 +21,7 @@ const Options = ({ userData, handleChange }) => {
 			<select
 				name="country"
 				value={userData.country}
+				disabled={!inputCountry}
 				onChange={(event) => handleChange(event)}
 				className="w-full px-2 py-1 bg-pri-100 text-gray-400 rounded-md focus:outline-none">
 				<option value="select" hidden>
@@ -224,4 +225,4 @@ const Options = ({ userData, handleChange }) => {
 		</div>
 	);
 };
-export default Options;
+export default Country;

@@ -28,18 +28,7 @@ const FormOfWork = ({userData, handleChange, inputFormOfWork}) => {
 					</div>
 				</div>
 			</label>
-			<select
-				name="form_of_work"
-				disabled={!inputFormOfWork}
-				onChange={(event) => handleChange(event)}
-				className="w-full px-2 py-1 bg-pri-100 text-gray-400 rounded-md focus:outline-none">
-				<option value="select" hidden>
-					Selecciona una opción
-				</option>
-				<option value="Remoto">Remoto</option>
-				<option value="Presencial">Presencial</option>
-				<option value="Híbrido">Híbrido</option>
-			</select>
+			
 			<div className="custom-select">
 				<div className="w-full h-fit options bg-pri-100 px-2 rounded-md">
 					{options.map((option) => (
@@ -53,7 +42,6 @@ const FormOfWork = ({userData, handleChange, inputFormOfWork}) => {
 							<input
 								type="radio"
 								name="form_of_work"
-								value={userData.form_of_work}
 								disabled={!inputFormOfWork}
 								checked={selectedOption === option}
 								onChange={() => handleOptionClick(option)}
