@@ -48,9 +48,10 @@ const LogForm = () => {
 		try {
 			const response = await postLogin(input).unwrap();
 			const { access_token, refresh_token } = response;
+			const token = access_token.split("'")[1]
 			const date = new Date();
 			date.setDate(date.getDate() + 7);
-			document.cookie = `kTnKETkt=${access_token}; expires=${date.toUTCString()}`;
+			document.cookie = `kTnKETkt=${token}; expires=${date.toUTCString()}`;
 			router.push("/home");
 			setInput({
 				email: "",

@@ -287,3 +287,25 @@ select:-webkit-autofill:focus {
   animation: none;
   width: 100%;
 }
+.loader2 {
+  top: 50%;
+  left: 50%;
+ transform: translate(-50%, -50%);
+  width: 60%;
+  height: 10px;
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+}
+
+.loader2::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  background-color: #046255;
+  width: 0%;
+  height: 100%;
+  border-radius: 2px;
+  animation: load 3.5s ease-in-out infinite;
+  box-shadow: #046255 0px 2px 29px 0px;
+}

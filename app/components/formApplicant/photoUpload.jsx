@@ -1,6 +1,30 @@
+"use client"
+import { useState } from "react";
+import { usePostNewFilesMutation } from "@/app/globalstore/services/user-info/useNewFiles";
+import { useGetFilesQuery } from "@/app/globalstore/services/user-info/useFiles";
 import Image from "next/image";
 
-const PhotoUpload = () => {
+const PhotoUpload = ({handleID}) => {
+	const {data, isError, isLoading, error} = useGetFilesQuery(handleID);
+	const [postNewFiles] = usePostNewFilesMutation();
+	const [imagen, subirImagen] = useState({
+		cv:"Sin título.png",
+		profile_picture:""
+	})
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		try {
+			const response = await postNewFiles({user_id: handleID, data:imagen}).unwrap();
+		} catch (error) {
+			//nada
+		}
+	}
+	const handleChange =(e) => {
+subirImagen({
+	...imagen,
+	[e.target.name]: e.target.value
+})
+	}
 	return (
 		<div>
 			<label className="ml-2 font-semibold">
@@ -28,7 +52,10 @@ const PhotoUpload = () => {
 					</p>
 					<p className="text-sm text-gray-500 dark:text-gray-400"> o arrastre y suelte.</p>
 				</div>
-				<input id="dropzone-file" type="file" className="hidden" />
+				<form onSubmit={handleSubmit}>
+					<input id="dropzone-file" name="profile_picture" type="file" onChange={handleChange} value={imagen.profile_picture} className="hidden" />
+					<button className="absolute top-1/2 left-1/2 translate-x-1/2 translate-y-1/2">Subit foto</button>
+					</form>
 			</label>
 		</div>
 	);

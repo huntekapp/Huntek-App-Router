@@ -42,6 +42,7 @@ import CarouselPlan from "./carouselSuscriptions";
 
 const ProfileExt = () => {
 	const {data, isError, isLoading, error} = useGetInfoUserQuery();
+	console.log(data)
 	const [userData, setUserData] = useState({
 		mail: "",
 		phone: "",
@@ -151,7 +152,8 @@ const ProfileExt = () => {
 	const handleSelectedPlan = (plan) => {
 		setSelectedPlan(plan);
 	};
-
+	// const fullName = data.first_name + ' ' + data.last_name;
+	
 	const handleChange = (event) => {
 		event.preventDefault();
 		setUserData({
@@ -159,9 +161,15 @@ const ProfileExt = () => {
 			[event.target.name]: event.target.value,
 		});
 	};
-	console.log(userData);
+	if (isLoading) {
+		return (
+			<div className="container">
+				<div className="loader2"></div>
+			</div>
+		);
+	}
 	return (
-		<main className="w-full px-4 lg:max-w-full h-full lg:gap-6 lg:grid lg:grid-cols-2 lg:items-center">
+		<main className="w-full px-3 bg-sec lg:max-w-full h-full lg:gap-6 lg:grid lg:grid-cols-2 lg:items-center">
 			<section className="lg:h-full text-pri text-center flex flex-col justify-start lg:justify-center items-center">
 				<article className="w-11/12 flex flex-col justify-center items-center">
 					<div className="relative border-8 border-pri rounded-full shadow-lg mt-5 lg:mt-0">
@@ -188,7 +196,7 @@ const ProfileExt = () => {
 							<input type="checkbox" id="modalFotoUpload" className="modal-toggle" />
 							<div className="modal">
 								<div className="modal-box">
-									<PhotoUpload />
+									<PhotoUpload handleID={data?.id} />
 									<div className="modal-action">
 										<button
 											className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100"
@@ -206,7 +214,7 @@ const ProfileExt = () => {
 				</article>
 				<article className="flex flex-col justify-start items-center">
 					<h2 className="text-2xl sm:text-3xl text-black line-clamp-2 font-bold my-2">
-						Benito Antonio Martinez Ocasio Del Toro Pedro
+						{data?.first_name} {data?.last_name}
 					</h2>
 					<h2 className="text-2xl w-fit px-4 py-2 rounded-md text-sec bg-pri">
 						{userData.degree ? userData.degree : "Ingresa tus datos"}
@@ -214,8 +222,8 @@ const ProfileExt = () => {
 					<p className="text-md text-gray-500 mt-2">{`${userData.mail}`}</p>
 					<p className="text-sm text-gray-500 mt-2">{`Ubicación actual ${userData.city}`}</p>
 				</article>
-				<div className="mt-8">{`Tu plan actual: ${selectedPlan ? selectedPlan : "Starter"}`}</div>
-				<article className="w-full h-1/6 mt-2 flex flex-row  items-center justify-around">
+				<div className="mt-4">{`Tu plan actual: ${selectedPlan ? selectedPlan : "Starter"}`}</div>
+				<article className="w-full h-1/6 mt-1 lg:-mt-1 flex flex-row  items-center justify-around">
 				<CarouselPlan handleSelectedPlan={handleSelectedPlan}/>
 				</article>
 			</section>
@@ -445,7 +453,7 @@ const ProfileExt = () => {
 						</div>
 					</div>
 				</article>
-				<article className="grid grid-cols-1 gap-3 pb-6 justify-start">
+				<article className="grid grid-cols-1 gap-3 pb-2 justify-start">
 					<h3 className="w-full text-2xl mt-6 text-pri text-start">Lo que importa</h3>
 
 					<div className="flex justify-between items-center">

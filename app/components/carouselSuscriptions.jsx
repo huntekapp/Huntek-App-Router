@@ -1,6 +1,6 @@
 const CarouselPlan = ({handleSelectedPlan}) => {
 	return (
-		<div className="carousel w-3/5 h-full">
+		<div className="carousel w-full max-w-xs h-4/5">
 			<div id="slide1" className="carousel-item relative w-full">
 				<div className="bg-pri w-full h-full rounded-lg focus:bg-pri-800 flex flex-col justify-center items-center">
 					<label htmlFor="modalAdvance" className="text-lg font-light cursor-pointer">
@@ -41,11 +41,11 @@ const CarouselPlan = ({handleSelectedPlan}) => {
 						</div>
 					</div>
 				</div>
-				<div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-					<a href="#slide2" className="btn btn-circle bg-transparent border-none">
+				<div className="absolute flex justify-between transform -translate-y-1/2 left-3 right-3 top-1/2">
+					<a href="#slide2" className="btn btn-circle text-white bg-transparent border-none">
 						❮
 					</a>
-					<a href="#slide2" className="btn btn-circle bg-transparent border-none">
+					<a href="#slide2" className="btn btn-circle text-white bg-transparent border-none">
 						❯
 					</a>
 				</div>
@@ -90,11 +90,11 @@ const CarouselPlan = ({handleSelectedPlan}) => {
 						</div>
 					</div>
 				</div>
-				<div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-					<a href="#slide1" className="btn btn-circle bg-transparent border-none">
+				<div className="absolute flex justify-between transform -translate-y-1/2 left-3 right-3 top-1/2">
+					<a href="#slide1" className="btn btn-circle text-white bg-transparent border-none">
 						❮
 					</a>
-					<a href="#slide1" className="btn btn-circle bg-transparent border-none">
+					<a href="#slide1" className="btn btn-circle text-white bg-transparent border-none">
 						❯
 					</a>
 				</div>
