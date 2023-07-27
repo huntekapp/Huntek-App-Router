@@ -1,6 +1,6 @@
 export const AlertSuccess = ({alertTitle, alertBody, setSuccessReq}) => {
 	return (
-		<div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded absolute top-2 w-2/4 expandable" role="alert">
+		<div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded absolute top-2 w-11/12 md:w-2/5 expandable" role="alert">
 			<strong className="font-bold">{alertTitle}</strong>
 			<span className="block sm:inline">{alertBody}</span>
 			<span className="absolute top-0 bottom-0 right-0 px-4 py-3" onClick={() => setSuccessReq(null)}>
@@ -19,7 +19,7 @@ export const AlertSuccess = ({alertTitle, alertBody, setSuccessReq}) => {
 
 export const AlertError = ({alertTitle, alertBody, setErrorCatched}) => {
 	return (
-		<div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded absolute top-2 w-2/4 expandable" role="alert">
+		<div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded absolute top-4 w-11/12 md:w-2/5 expandable" role="alert">
 			<strong className="font-bold">{alertTitle}</strong>
 			<span className="block sm:inline">{alertBody}</span>
 			<span className="absolute top-0 bottom-0 right-0 px-4 py-3" onClick={() => setErrorCatched(null)}>
