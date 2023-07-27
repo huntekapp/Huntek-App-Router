@@ -13,6 +13,7 @@ import { messagesDB } from "./services/useMessages";
 import { postMessagesDB } from "./services/usePostMessage";
 import { interviewsDB } from "./services/useInterviews";
 import { infoUserDB } from "./services/useInfoUser";
+import { newFilesDB } from "./services/useNewFiles";
 
 export const store = configureStore({
   reducer: {
@@ -29,6 +30,7 @@ export const store = configureStore({
     [postMessagesDB.reducerPath]: postMessagesDB.reducer,
     [interviewsDB.reducerPath]: interviewsDB.reducer,
     [infoUserDB.reducerPath]: infoUserDB.reducer,
+    [newFilesDB.reducerPath]: newFilesDB.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat([
@@ -44,6 +46,7 @@ export const store = configureStore({
       postMessagesDB.middleware,
       interviewsDB.middleware,
       infoUserDB.middleware,
+      newFilesDB.middleware,
     ]),
 });
 setupListeners(store.dispatch);
