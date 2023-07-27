@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { usePostUsersMutation } from "../../globalstore/services/useRegister";
+import { usePostUsersMutation } from "../../globalstore/services/log-reg-val/useRegister";
 import { useRouter } from "next/navigation";
 import { setEmail } from "../../globalstore/features/emailSlice";
 import { useDispatch } from "react-redux";

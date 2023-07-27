@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import confetti from "canvas-confetti";
 import getCookie from "../../helpers/getCookies";
-import { useCreateChatMutation } from "../../globalstore/services/useCreateChat";
+import { useCreateChatMutation } from "../../globalstore/services/chats-msg/useCreateChat";
 import SwipeCards from "./swipeCards";
 import FootbarSwipe from "../footbarswipe";
 

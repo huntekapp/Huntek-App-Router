@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { usePostNewPasswordMutation } from "../globalstore/services/useNewPassword";
+import { usePostNewPasswordMutation } from "../globalstore/services/reco-pw/useNewPassword";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 

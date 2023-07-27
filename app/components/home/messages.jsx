@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import getCookie from "../../helpers/getCookies";
-import { useGetChatsMutation } from "../../globalstore/services/useChats";
+import { useGetChatsMutation } from "../../globalstore/services/chats-msg/useChats";
 
 const Messages = () => {
 	const [chats, setChats] = useState([
