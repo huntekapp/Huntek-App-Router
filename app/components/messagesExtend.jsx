@@ -80,7 +80,7 @@ const MessagesExtend = () => {
 				{data.map((chat, index) => {
 					return (
 						<Link
-							href={`/conversations/${chat.id}`}
+							href={`/messages/${chat.id}`}
 							key={index}
 							className="w-full h-24 px-2 border-b flex flex-row justify-between items-center">
 							<div className="min-w-[60px] h-[60px] border-2 border-pri rounded-full grid place-content-center relative">
