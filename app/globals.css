@@ -65,6 +65,9 @@ select:-webkit-autofill:focus {
   box-shadow: 0 0 0px 1000px #046255 inset;
   color: white;
 }
+::-ms-reveal {
+  display: none;
+}
 
 @keyframes opacity {
   0%,

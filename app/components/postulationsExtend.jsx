@@ -1,9 +1,9 @@
 import AppleLogo from "@/public/images/apple-g44d4327db_1920.png";
 import EcoLogo from "@/public/images/eco-ged3b25e46_1920.png";
 import LinkedInLogo from "@/public/images/linkedin-gf141b6fe5_1920.png";
-import Image from "next/image";
 import Link from "next/link";
 import PostulationDetail from "./postulationdetail";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 
 const userPostulations = [
 	{
@@ -30,7 +30,7 @@ const userPostulations = [
 			"Compartir y aprender en equipo junto a grandes profesionales y especialistas",
 			"Un excelente clima de trabajo, con todo lo necesario para que vivas una gran experiencia :)",
 		],
-		ubication: "Silicon Valey, California"
+		ubication: "Silicon Valey, California",
 	},
 	{
 		enterpriseName: "Herbalife",
@@ -51,7 +51,7 @@ const userPostulations = [
 			"Compartir y aprender en equipo junto a grandes profesionales y especialistas",
 			"Un excelente clima de trabajo, con todo lo necesario para que vivas una gran experiencia :)",
 		],
-		ubication: "Wisconsin, United States"
+		ubication: "Wisconsin, United States",
 	},
 	{
 		enterpriseName: "LinkedIn",
@@ -72,7 +72,7 @@ const userPostulations = [
 			"Compartir y aprender en equipo junto a grandes profesionales y especialistas",
 			"Un excelente clima de trabajo, con todo lo necesario para que vivas una gran experiencia :)",
 		],
-		ubication: "London, UK"
+		ubication: "London, UK",
 	},
 	{
 		enterpriseName: "Manzana",
@@ -93,7 +93,7 @@ const userPostulations = [
 			"Compartir y aprender en equipo junto a grandes profesionales y especialistas",
 			"Un excelente clima de trabajo, con todo lo necesario para que vivas una gran experiencia :)",
 		],
-		ubication: "La Recoleta, Buenos Aires"
+		ubication: "La Recoleta, Buenos Aires",
 	},
 	{
 		enterpriseName: "Hierbavida",
@@ -114,20 +114,22 @@ const userPostulations = [
 			"Compartir y aprender en equipo junto a grandes profesionales y especialistas",
 			"Un excelente clima de trabajo, con todo lo necesario para que vivas una gran experiencia :)",
 		],
-		ubication: "Córdoba, Argentina"
+		ubication: "Córdoba, Argentina",
 	},
 ];
 
 const PostulationsExtend = () => {
 	return (
-		<main className="h-screen bg-sec">
-			<section className="flex flex-row justify-start h-[10%] w-full items-center py-2 border-y bg-sec border-t-0">
-				<a href="/home" className="h-12 w-12 flex justify-center rounded-full ml-2 hover:bg-pri-100">
-					<Image loading={"eager"} alt="back" width={32} height={32} src="utils/back_huntek.svg" />
-				</a>
-				<h1 className="text-4xl font-bold mt-1 ml-2 text-pri cursor-default">Postulaciones</h1>
-			</section>
-			<section className="min-h-[90%] w-full darkgradient-both-tb flex flex-col px-3 md:px-6 md:grid md:grid-rows-2 md:grid-cols-2 md:gap-y-40 md:gap-x-7 md:pb-[180px] pb-7 text-left">
+		<section className="w-full h-screen text-pri flex flex-col">
+			<nav className="w-full h-[10%] px-4 border-b flex flex-row justify-start items-center">
+				<Link
+					href="/home"
+					className="p-1 grid place-content-center rounded-full hover:bg-pri-100 hover:scale-125 duration-150">
+					<HomeOutlinedIcon className="w-6 h-6" />
+				</Link>
+				<h1 className="w-[95%] text-3xl font-bold grid place-content-center cursor-default">Postulaciones</h1>
+			</nav>
+			<article className="h-[90%] w-full darkgradient-both-tb flex flex-col px-3 md:px-6 md:grid md:grid-rows-2 md:grid-cols-2 md:gap-y-40 md:gap-x-7 md:pb-[180px] pb-7 text-left">
 				{userPostulations.length ? (
 					userPostulations.map((postulation, index) => {
 						return <PostulationDetail postulationInfo={postulation} key={index} />;
@@ -144,8 +146,8 @@ const PostulationsExtend = () => {
 						<div className="bg-HKlogo bg-center bg-no-repeat bg-contain absolute w-[350px] h-[350px] translate-x-[-50%] translate-y-[-50%] left-2/4 top-2/4 opacity-10 -z-10" />
 					</article>
 				)}
-			</section>
-		</main>
+			</article>
+		</section>
 	);
 };
 export default PostulationsExtend;

@@ -1,19 +1,19 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import {useState} from "react";
-import {usePostUsersMutation} from "../../globalstore/services/useRegister";
-import {useRouter} from "next/navigation";
-import {setEmail} from "../../globalstore/features/emailSlice";
-import {useDispatch} from "react-redux";
+import { useState } from "react";
+import { usePostUsersMutation } from "../../globalstore/services/useRegister";
+import { useRouter } from "next/navigation";
+import { setEmail } from "../../globalstore/features/emailSlice";
+import { useDispatch } from "react-redux";
 import verifySignupInputs from "../../helpers/verifySignUpInputs";
-import {AlertError} from "../alertsforrequest";
+import { AlertError } from "../alertsforrequest";
 
 const CompanyForm = () => {
 	const [showPassword, setShowPassword] = useState(false);
 	const [errorCatched, setErrorCatched] = useState(null);
 	const [check, setCheck] = useState(false);
-	const [postUsers, {isLoading}] = usePostUsersMutation();
+	const [postUsers, { isLoading }] = usePostUsersMutation();
 	const dispatch = useDispatch();
 	const router = useRouter();
 	const [input, setInput] = useState({
@@ -57,7 +57,7 @@ const CompanyForm = () => {
 				password: "",
 				role_name: "company",
 			});
-			router.push("/verifymail");
+			router.push("/emailvalidate");
 		} catch (error) {
 			if (error.status === "FETCH_ERROR")
 				return setErrorCatched("No se ha podido establecer conexión con el servidor.");

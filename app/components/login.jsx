@@ -7,6 +7,8 @@ import { useRouter } from "next/navigation";
 import { AlertError } from "./alertsforrequest";
 import CheckBoxOutlineBlankOutlinedIcon from "@mui/icons-material/CheckBoxOutlineBlankOutlined";
 import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
+import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
+import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 
 const LogForm = () => {
 	const router = useRouter();
@@ -62,7 +64,7 @@ const LogForm = () => {
 	};
 	return (
 		<section className="w-11/12 max-w-md h-3/5 max-h-[400px] font-medium text-sec flex flex-col justify-around items-center">
-			<form onSubmit={handleSubmit} className="w-full h-1/2 lg:h-3/5 flex flex-col justify-between" autoComplete="off">
+			<form onSubmit={handleSubmit} className="w-full h-1/2 lg:h-3/5 flex flex-col justify-between">
 				<label htmlFor="email">
 					E-mail
 					<input
@@ -73,48 +75,26 @@ const LogForm = () => {
 						className="w-full px-3 bg-transparent outline-none border-b"
 						placeholder="Tu email"
 						onChange={handleChange}
-						autoComplete="off"
 					/>
 				</label>
 				<article>
-					<label className="" htmlFor="password">
+					<label htmlFor="password">
 						Contraseña
 						<div className="relative">
-							{showPassword ? (
-								<input
-									type="text"
-									name="password"
-									id="password"
-									value={input.password}
-									className="w-full px-3 bg-transparent outline-none border-b"
-									placeholder="Tu contraseña"
-									onChange={handleChange}
-									autoComplete="off"
-								/>
-							) : (
-								<input
-									type="password"
-									name="password"
-									id="password"
-									value={input.password}
-									className="w-full px-3 bg-transparent outline-none border-b"
-									placeholder="Tu contraseña"
-									onChange={handleChange}
-									autoComplete="off"
-								/>
-							)}
-							<button onClick={handleShowPassword} className="absolute inset-y-0 end-0 grid place-content-center px-4">
+							<input
+								type={showPassword ? "text" : "password"}
+								name="password"
+								id="password"
+								value={input.password}
+								className="w-full px-3 bg-transparent outline-none border-b"
+								placeholder="Tu contraseña"
+								onChange={handleChange}
+							/>
+							<button onClick={handleShowPassword} className="absolute right-3">
 								{showPassword ? (
-									<Image
-										loading={"eager"}
-										src={"/utils/blink.svg"}
-										width={20}
-										height={20}
-										alt="blink"
-										unoptimized={true}
-									/>
+									<VisibilityOffOutlinedIcon className="w-5 h-5 text-gray-500" />
 								) : (
-									<Image loading={"eager"} src={"/utils/notblink.svg"} width={20} height={20} alt="notblink" />
+									<VisibilityOutlinedIcon className="w-5 h-5 text-gray-500" />
 								)}
 							</button>
 						</div>
@@ -128,7 +108,7 @@ const LogForm = () => {
 							)}
 							Recuérdame
 						</div>
-						<Link href="/recoverpassword" as="recoverpassword" className="hover:underline text-sm">
+						<Link href="/forgotpass" className="hover:underline text-sm">
 							Olvidé mi contraseña
 						</Link>
 					</div>
@@ -158,7 +138,7 @@ const LogForm = () => {
 			<article className="text-center my-5">
 				<p>
 					¿Primera vez aquí?{" "}
-					<Link href="/signup" as="signup" className="hover:underline">
+					<Link href="/signup" className="hover:underline">
 						Regístrate
 					</Link>
 				</p>

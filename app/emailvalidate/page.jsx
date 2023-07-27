@@ -1,4 +1,4 @@
-import EmailCode from "../../components/emailCode";
+import EmailCode from "../components/signup/emailCode";
 
 const EmailValidate = () => {
 	return (

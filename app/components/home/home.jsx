@@ -1,7 +1,7 @@
 import Postulations from "./postulations";
-import Conversations from "./conversations";
+import Messages from "./messages";
 import Interviews from "./interviews";
-import Footbar from "./footbar";
+import Footbar from "../footbar";
 
 const Home = () => {
 	return (
@@ -12,7 +12,7 @@ const Home = () => {
 					<p className="text-3xl font-medium">Luis Sanchez</p>
 				</article>
 				<Postulations />
-				<Conversations />
+				<Messages />
 				<Interviews />
 			</section>
 			<footer className="w-full h-20 fixed bottom-0">

@@ -1,13 +1,15 @@
 "use client";
-import {useState} from "react";
+import { useState } from "react";
 import Image from "next/image";
-import {usePathname, useRouter} from "next/navigation";
-import {usePostNewPasswordMutation} from "../globalstore/services/useNewPassword";
+import { usePathname, useRouter } from "next/navigation";
+import { usePostNewPasswordMutation } from "../globalstore/services/useNewPassword";
+import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
+import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 
-const NewPassword = () => {
+const NewPass = () => {
 	const router = useRouter();
 	const pathname = usePathname();
-	const [postNewPassword, {isLoading}] = usePostNewPasswordMutation();
+	const [postNewPassword, { isLoading }] = usePostNewPasswordMutation();
 	const [showPassword, setShowPassword] = useState(false);
 	const [showPasswordRepeat, setShowPasswordRepeat] = useState(false);
 	const token = pathname.split("'")[1];
@@ -45,8 +47,7 @@ const NewPassword = () => {
 		try {
 			const result = await postNewPassword(input).unwrap();
 			router.push("/login");
-		} catch (error) {
-		}
+		} catch (error) {}
 		setInput({
 			token,
 			password: "",
@@ -61,7 +62,7 @@ const NewPassword = () => {
 				<form onSubmit={handleSubmit} className="w-full h-3/5 flex flex-col justify-evenly items-center">
 					<p className="text-xl">Cambiar contraseña</p>
 					<div className="w-11/12 max-w-sm flex flex-col justify-center items-center">
-						<div className="w-10/12 flex flex-row justify-around border-b border-pri">
+						<div className="w-10/12 flex flex-row justify-around border-b border-pri relative">
 							<input
 								type={showPassword ? "text" : "password"}
 								name="password"
@@ -71,33 +72,31 @@ const NewPassword = () => {
 								onChange={handleChange}
 								autoFocus
 							/>
-							<button onClick={handleShowPassword} className="inset-y-0 end-0 place-content-center">
-								<Image loading={"eager"}
-									src={showPassword ? "/utils/blink_huntek.svg" : "/utils/notblink_huntek.svg"}
-									width={20}
-									height={20}
-									alt="blink"
-								/>
+							<button onClick={handleShowPassword} className="absolute right-3">
+								{showPassword ? (
+									<VisibilityOffOutlinedIcon className="w-5 h-5 text-pri-500" />
+								) : (
+									<VisibilityOutlinedIcon className="w-5 h-5 text-pri-500" />
+								)}
 							</button>
 						</div>
 					</div>
 					<div className="w-11/12 max-w-sm flex flex-col justify-center items-center">
-						<div className="w-10/12 flex flex-row justify-around border-b border-pri">
+						<div className="w-10/12 flex flex-row justify-around border-b border-pri relative">
 							<input
-								type={showPassword ? "text" : "password"}
+								type={showPasswordRepeat ? "text" : "password"}
 								name="repeatedPassword"
 								value={input.repeatedPassword}
 								placeholder="Confirmar Contraseña"
 								className="w-11/12 pb-2 bg-transparent outline-none"
 								onChange={handleChange}
 							/>
-							<button onClick={handleShowPassword} className="inset-y-0 end-0 place-content-center">
-								<Image loading={"eager"}
-									src={showPassword ? "/utils/blink_huntek.svg" : "/utils/notblink_huntek.svg"}
-									width={20}
-									height={20}
-									alt="blink"
-								/>
+							<button onClick={handleShowPasswordRepeat} className="absolute right-3">
+								{showPasswordRepeat ? (
+									<VisibilityOffOutlinedIcon className="w-5 h-5 text-pri-500" />
+								) : (
+									<VisibilityOutlinedIcon className="w-5 h-5 text-pri-500" />
+								)}
 							</button>
 						</div>
 						<button
@@ -112,4 +111,4 @@ const NewPassword = () => {
 	);
 };
 
-export default NewPassword;
+export default NewPass;

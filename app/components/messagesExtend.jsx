@@ -1,10 +1,9 @@
 "use client";
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 
-const Chat = () => {
+const MessagesExtend = () => {
 	const data = [
 		{
 			id: 1,
@@ -69,15 +68,15 @@ const Chat = () => {
 
 	return (
 		<section className="w-full h-screen text-pri flex flex-col">
-			<article className="w-full h-[10%] px-4 border-b flex flex-row justify-start items-center">
+			<nav className="w-full h-[10%] px-4 border-b flex flex-row justify-start items-center">
 				<Link
 					href="/home"
 					className="p-1 grid place-content-center rounded-full hover:bg-pri-100 hover:scale-125 duration-150">
 					<HomeOutlinedIcon className="w-6 h-6" />
 				</Link>
-				<h1 className="w-[90%] text-3xl font-bold grid place-content-center cursor-default">Mensajes</h1>
-			</article>
-			<article className="w-full h-[90%] carousel carousel-vertical">
+				<h1 className="w-[95%] text-3xl font-bold grid place-content-center cursor-default">Mensajes</h1>
+			</nav>
+			<article className="w-full h-[95%] carousel carousel-vertical">
 				{data.map((chat, index) => {
 					return (
 						<Link
@@ -109,4 +108,4 @@ const Chat = () => {
 	);
 };
 
-export default Chat;
+export default MessagesExtend;

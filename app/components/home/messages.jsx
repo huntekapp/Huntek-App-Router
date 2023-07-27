@@ -2,10 +2,10 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import getCookie from "../helpers/getCookies";
-import { useGetChatsMutation } from "../globalstore/services/useChats";
+import getCookie from "../../helpers/getCookies";
+import { useGetChatsMutation } from "../../globalstore/services/useChats";
 
-const Conversations = () => {
+const Messages = () => {
 	const [chats, setChats] = useState([
 		{
 			id: 1,
@@ -92,4 +92,4 @@ const Conversations = () => {
 	);
 };
 
-export default Conversations;
+export default Messages;

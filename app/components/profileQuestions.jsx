@@ -1,15 +1,15 @@
 "use client";
-import {useState} from "react";
+import { useState } from "react";
 import EastIcon from "@mui/icons-material/East";
-import Options from "./options/optionsQ&A";
-import OptionsCity from "./options/optionsCity";
-import Languages from "./options/language";
-import Profession from "./options/professions";
-import Studies from "./options/studies";
-import Carreer from "./options/career";
-import Hobbies from "./options/hobbies";
-import LastQuestions from "./options/formOfWork";
-import FirstQuestions from "./options/firstquestions";
+import Options from "./formApplicant/optionsQ&A";
+import OptionsCity from "./formApplicant/optionsCity";
+import Languages from "./formApplicant/language";
+import Profession from "./formApplicant/professions";
+import Studies from "./formApplicant/studies";
+import Carreer from "./formApplicant/career";
+import Hobbies from "./formApplicant/hobbies";
+import LastQuestions from "./formApplicant/formOfWork";
+import FirstQuestions from "./formApplicant/firstquestions";
 
 const FormQuestions = () => {
 	const [userData, setUserData] = useState({

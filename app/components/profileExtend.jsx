@@ -13,24 +13,24 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import HourglassTopRoundedIcon from "@mui/icons-material/HourglassTopRounded";
 import PhonelinkRoundedIcon from "@mui/icons-material/PhonelinkRounded";
 import NavigateNextOutlinedIcon from "@mui/icons-material/NavigateNextOutlined";
-import Studies from "./options/studies";
-import {useState} from "react";
-import Career from "./options/career";
-import OptionsCity from "./options/optionsCity";
-import Genres from "./options/genres";
-import Phone from "./options/phone";
-import Birthdate from "./options/birthdate";
-import Reubication from "./options/reubication";
-import Profession from "./options/professions";
+import Studies from "./formApplicant/studies";
+import { useState } from "react";
+import Career from "./formApplicant/career";
+import OptionsCity from "./formApplicant/optionsCity";
+import Genres from "./formApplicant/genres";
+import Phone from "./formApplicant/phone";
+import Birthdate from "./formApplicant/birthdate";
+import Reubication from "./formApplicant/reubication";
+import Profession from "./formApplicant/professions";
 import { useGetInfoUserQuery } from "../globalstore/services/useInfoUser";
-import Experience from "./options/yearsOfExperience";
-import Income from "./options/income";
-import Availability from "./options/availability";
-import FormOfWork from "./options/formOfWork";
-import PhotoUpload from "./options/photoUpload";
+import Experience from "./formApplicant/yearsOfExperience";
+import Income from "./formApplicant/income";
+import Availability from "./formApplicant/availability";
+import FormOfWork from "./formApplicant/formOfWork";
+import PhotoUpload from "./formApplicant/photoUpload";
 
 const ProfileExt = () => {
-	const { data, isError, isLoading, error} = useGetInfoUserQuery();
+	const { data, isError, isLoading, error } = useGetInfoUserQuery();
 	const [userData, setUserData] = useState({
 		mail: "",
 		phone: "",
@@ -194,7 +194,7 @@ const ProfileExt = () => {
 							<input type="checkbox" id="modalFotoUpload" className="modal-toggle" />
 							<div className="modal">
 								<div className="modal-box">
-									<PhotoUpload/>
+									<PhotoUpload />
 									<div className="modal-action">
 										<button className="btn  bg-pri text-sec hover:text-pri" onClick={handleInputPhotoUpload}>
 											{inputPhotoUpload === true ? "Guardar" : "Editar"}

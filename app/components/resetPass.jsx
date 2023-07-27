@@ -1,15 +1,16 @@
 "use client";
-import {useState} from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {useGetRecoveryMutation} from "../globalstore/services/useRecoverPw";
-import {AlertSuccess, AlertError} from "./alertsforrequest";
+import { useGetRecoveryMutation } from "../globalstore/services/useRecoverPw";
+import { AlertSuccess, AlertError } from "./alertsforrequest";
+import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 
-const RecoverPW = () => {
-	const [input, setInput] = useState({email: ""});
+const ResetPass = () => {
+	const [input, setInput] = useState({ email: "" });
 	const [errorCatched, setErrorCatched] = useState(null);
 	const [successReq, setSuccessReq] = useState(null);
-	const [getRecovery, {isLoading}] = useGetRecoveryMutation();
+	const [getRecovery, { isLoading }] = useGetRecoveryMutation();
 
 	const handleSubmit = async (event) => {
 		setSuccessReq(null);
@@ -44,12 +45,10 @@ const RecoverPW = () => {
 
 	return (
 		<section className="w-full h-full text-pri flex flex-col items-center justify-center">
-			<Link href="/login">
-				<button className="btn btn-ghost z-0 btn-circle absolute left-2 top-2">
-					<div className="indicator">
-						<Image loading={"eager"} src="/utils/back.svg" alt="backArrow" width={25} height={25} />
-					</div>
-				</button>
+			<Link
+				href="/login"
+				className="m-4 p-1 grid place-content-center rounded-full text-sec hover:text-pri hover:bg-pri-200 hover:scale-110 duration-150 absolute top-0 left-0">
+				<ArrowBackOutlinedIcon className="w-6 h-6" />
 			</Link>
 			<article className="w-11/12 max-w-md h-3/4 max-h-[450px] bg-sec rounded-lg shadow-2xl flex flex-col justify-center items-center">
 				<div className="w-20 h-20 p-4 border-4 rounded-full shadow-lg grid place-content-center">
@@ -90,4 +89,4 @@ const RecoverPW = () => {
 		</section>
 	);
 };
-export default RecoverPW;
+export default ResetPass;

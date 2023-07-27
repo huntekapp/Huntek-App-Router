@@ -1,11 +1,11 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { usePostVerifMutation } from "../globalstore/services/useVerifCode";
-import { usePutResendCodeMutation } from "../globalstore/services/useResendCode";
-import { AlertSuccess, AlertError } from "./alertsforrequest";
+import { usePostVerifMutation } from "../../globalstore/services/useVerifCode";
+import { usePutResendCodeMutation } from "../../globalstore/services/useResendCode";
+import { AlertSuccess, AlertError } from "../alertsforrequest";
+import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 
 const EmailCode = () => {
 	const router = useRouter();
@@ -101,13 +101,11 @@ const EmailCode = () => {
 	};
 
 	return (
-		<section className="w-11/12 max-w-md min-h-screen font-medium text-sec relative flex flex-col items-center justify-evenly overflow-hidden">
-			<Link href="/signup">
-				<button className="btn btn-ghost z-0 btn-circle absolute left-0 top-2">
-					<div className="indicator">
-						<Image loading={"eager"} src="/utils/back.svg" alt="backArrow" width={25} height={25} />
-					</div>
-				</button>
+		<section className="w-full max-w-md h-screen font-medium text-sec flex flex-col items-center justify-evenly relative">
+			<Link
+				href="/signup"
+				className="m-4 p-1 grid place-content-center rounded-full text-sec hover:text-pri hover:bg-pri-200 hover:scale-110 duration-150 absolute top-0 left-0">
+				<ArrowBackOutlinedIcon className="w-6 h-6" />
 			</Link>
 			<article className="w-full flex flex-col items-center">
 				<div className="w-40 h-40 bg-HKlogo bg-cover mt-10"></div>
@@ -117,9 +115,9 @@ const EmailCode = () => {
 					Asegúrate de ingresar correctamente el código.
 				</p>
 			</article>
-			<form className="w-full h-80 flex flex-col justify-evenly">
-				<article>
-					<div className="w-full flex flex-row justify-evenly">
+			<form className="w-full h-80 flex flex-col justify-evenly items-center">
+				<article className="w-full flex flex-col justify-between items-center">
+					<div className="w-11/12 flex flex-row justify-evenly items-center">
 						{[0, 1, 2, 3, 4, 5].map((index) => (
 							<input
 								autoFocus={index === 0 ? true : false}
@@ -146,7 +144,7 @@ const EmailCode = () => {
 				<button
 					onClick={handleSubmitVerify}
 					disabled={enableButton !== 6}
-					className="w-full py-2 text-pri bg-sec hover:bg-gray-300 active:bg-lig rounded-lg duration-150 disabled:opacity-40 disabled:hover:bg-sec">
+					className="w-11/12 py-2 text-pri bg-sec hover:bg-gray-300 active:bg-lig rounded-lg duration-150 disabled:opacity-40 disabled:hover:bg-sec">
 					Verificar
 				</button>
 			</form>

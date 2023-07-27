@@ -60,7 +60,7 @@ const ApplicantForm = () => {
 				role_name: "applicant",
 			});
 			localStorage.setItem("email", input.email);
-			router.push("/signup/emailvalidate");
+			router.push("/emailvalidate");
 		} catch (error) {
 			if (error.status === "FETCH_ERROR")
 				return setErrorCatched("No se ha podido establecer conexión con el servidor.");
