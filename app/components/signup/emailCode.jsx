@@ -1,11 +1,11 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { usePostVerifMutation } from "../../globalstore/services/useVerifCode";
 import { usePutResendCodeMutation } from "../../globalstore/services/useResendCode";
 import { AlertSuccess, AlertError } from "../alertsforrequest";
-import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 
 const EmailCode = () => {
 	const router = useRouter();
@@ -101,56 +101,66 @@ const EmailCode = () => {
 	};
 
 	return (
-		<section className="w-full max-w-md h-screen font-medium text-sec flex flex-col items-center justify-evenly relative">
-			<Link
-				href="/signup"
-				className="m-4 p-1 grid place-content-center rounded-full text-sec hover:text-pri hover:bg-pri-200 hover:scale-110 duration-150 absolute top-0 left-0">
-				<ArrowBackOutlinedIcon className="w-6 h-6" />
+		<main className="w-full flex justify-center">
+			<Link href={"/login"}>
+				<Image
+					src={"/utils/back.svg"}
+					height={1}
+					width={1}
+					alt="backArrow"
+					loading={"eager"}
+					className="btn btn-ghost btn-circle absolute left-2 top-2 w-[50px] h-[50px] p-2"
+				/>
 			</Link>
-			<article className="w-full flex flex-col items-center">
-				<div className="w-40 h-40 bg-HKlogo bg-cover mt-10"></div>
-				<p className="text-3xl">Revisa tu email</p>
-				<p className="text-gray-400 text-center mt-2">
-					Hemos enviado un código de verificación de seis dígitos a<b className="text-gray-200">{` ${email}`}</b>.<br />
-					Asegúrate de ingresar correctamente el código.
-				</p>
-			</article>
-			<form className="w-full h-80 flex flex-col justify-evenly items-center">
-				<article className="w-full flex flex-col justify-between items-center">
-					<div className="w-11/12 flex flex-row justify-evenly items-center">
-						{[0, 1, 2, 3, 4, 5].map((index) => (
-							<input
-								autoFocus={index === 0 ? true : false}
-								key={index}
-								type="text"
-								inputMode="numeric"
-								maxLength="1"
-								className="w-11 h-14 px-3 py-2 text-sec bg-lig outline-none border focus:border-hk focus:border-1 shadow-sm rounded-md text-center text-lg"
-								ref={(ref) => (inputRefs.current[index] = ref)}
-								onKeyUp={(event) => {
-									handleKeyUp(event, index), handleUserCode(event, index);
-								}}
-								required
-							/>
-						))}
-					</div>
-					<p className="mt-4 text-center text-sm">
-						No has recibido el código?{" "}
-						<button onClick={handleSubmitResend} className="hover:underline">
-							Enviar de nuevo
-						</button>
+			<section className="w-full max-w-md h-screen font-medium text-sec flex flex-col items-center justify-evenly relative">
+				<article className="w-full flex flex-col items-center">
+					<div className="w-40 h-40 bg-HKlogo bg-cover mt-10"></div>
+					<p className="text-3xl">Revisa tu email</p>
+					<p className="text-gray-400 text-center mt-2">
+						Hemos enviado un código de verificación de seis dígitos a<b className="text-gray-200">{` ${email}`}</b>.
+						<br />
+						Asegúrate de ingresar correctamente el código.
 					</p>
 				</article>
-				<button
-					onClick={handleSubmitVerify}
-					disabled={enableButton !== 6}
-					className="w-11/12 py-2 text-pri bg-sec hover:bg-gray-300 active:bg-lig rounded-lg duration-150 disabled:opacity-40 disabled:hover:bg-sec">
-					Verificar
-				</button>
-			</form>
-			{errorCatched && <AlertError alertTitle={"Error!"} alertBody={errorCatched} setErrorCatched={setErrorCatched} />}
-			{successReq && <AlertSuccess alertTitle={"Success!"} alertBody={successReq} setSuccessReq={setSuccessReq} />}
-		</section>
+				<form className="w-full h-80 flex flex-col justify-evenly items-center">
+					<article className="w-full flex flex-col justify-between items-center">
+						<div className="w-11/12 flex flex-row justify-evenly items-center">
+							{[0, 1, 2, 3, 4, 5].map((index) => (
+								<input
+									autoFocus={index === 0 ? true : false}
+									key={index}
+									type="text"
+									inputMode="numeric"
+									maxLength="1"
+									className="w-11 h-14 px-3 py-2 text-sec bg-lig outline-none border focus:border-hk focus:border-1 shadow-sm rounded-md text-center text-lg"
+									ref={(ref) => (inputRefs.current[index] = ref)}
+									onKeyUp={(event) => {
+										handleKeyUp(event, index), handleUserCode(event, index);
+									}}
+									required
+								/>
+							))}
+						</div>
+						<p className="mt-4 text-center text-sm">
+							No has recibido el código?{" "}
+							<button onClick={handleSubmitResend} className="hover:underline">
+								Enviar de nuevo
+							</button>
+						</p>
+					</article>
+					<button
+						onClick={handleSubmitVerify}
+						disabled={enableButton !== 6}
+						className="w-11/12 py-2 text-pri bg-sec hover:bg-gray-300 active:bg-lig rounded-lg duration-150 disabled:opacity-40 disabled:hover:bg-sec">
+						Verificar
+					</button>
+				</form>
+				{errorCatched && (
+					<AlertError alertTitle={"Error!"} alertBody={errorCatched} setErrorCatched={setErrorCatched} />
+				)}
+				{successReq && <AlertSuccess alertTitle={"Success!"} alertBody={successReq} setSuccessReq={setSuccessReq} />}
+			</section>
+		</main>
 	);
 };
 

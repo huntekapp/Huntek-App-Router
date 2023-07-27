@@ -1,8 +1,12 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const RoleSelection = () => {
 	return (
 		<section className="w-full max-w-md h-full text-sec text-center flex flex-col justify-evenly items-center">
+			<Link href={"/login"}>
+				<Image src={"/utils/back.svg"} height={1} width={1} alt="backArrow" loading={"eager"} className="btn btn-ghost btn-circle absolute left-2 top-2 w-[50px] h-[50px] p-2"/>
+			</Link>
 			<article className="w-11/12">
 				<p className="m-2 text-xl font-bold">¡Bienvenido/a a Huntek!</p>
 				<p className="m-2">Te ofrecemos la opción de elegir entre dos perfiles:</p>
