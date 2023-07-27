@@ -88,7 +88,7 @@ const CompanyForm = () => {
 						name="email"
 						id="email"
 						value={input.email}
-						className="w-full px-3 bg-transparent outline-none border-b"
+						className="w-full px-3 bg-transparent outline-none border-b rounded-none"
 						placeholder="Tu email"
 						onChange={handleChange}
 						autoComplete="off"
@@ -97,27 +97,15 @@ const CompanyForm = () => {
 				<label htmlFor="password">
 					Contraseña
 					<div className="relative">
-						{showPassword ? (
 							<input
-								type="text"
+								type={showPassword ? "text" : "password"}
 								name="password"
 								id="password"
 								value={input.password}
-								className="w-full px-3 bg-transparent outline-none border-b"
+								className="w-full px-3 bg-transparent outline-none border-b rounded-none"
 								placeholder="Tu contraseña"
 								onChange={handleChange}
 							/>
-						) : (
-							<input
-								type="password"
-								name="password"
-								id="password"
-								value={input.password}
-								className="w-full px-3 bg-transparent outline-none border-b"
-								placeholder="Tu contraseña"
-								onChange={handleChange}
-							/>
-						)}
 						<button onClick={handleShowPassword} className="absolute inset-y-0 end-0 grid place-content-center px-4">
 							{showPassword ? (
 								<Image

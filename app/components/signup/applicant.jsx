@@ -73,7 +73,7 @@ const ApplicantForm = () => {
 						name="first_name"
 						id="first_name"
 						value={input.first_name}
-						className="w-full px-3 bg-transparent outline-none border-b"
+						className="w-full px-3 bg-transparent outline-none border-b rounded-none"
 						placeholder="Tu nombre"
 						onChange={handleChange}
 						autoComplete="off"
@@ -86,7 +86,7 @@ const ApplicantForm = () => {
 						name="last_name"
 						id="last_name"
 						value={input.last_name}
-						className="w-full px-3 bg-transparent outline-none border-b"
+						className="w-full px-3 bg-transparent outline-none border-b rounded-none"
 						placeholder="Tu apellido"
 						onChange={handleChange}
 						autoComplete="off"
@@ -99,7 +99,7 @@ const ApplicantForm = () => {
 						name="email"
 						id="email"
 						value={input.email}
-						className="w-full px-3 bg-transparent outline-none border-b"
+						className="w-full px-3 bg-transparent outline-none border-b rounded-none"
 						placeholder="Tu email"
 						onChange={handleChange}
 						autoComplete="off"
@@ -108,27 +108,15 @@ const ApplicantForm = () => {
 				<label htmlFor="password">
 					Contraseña
 					<div className="relative">
-						{showPassword ? (
 							<input
-								type="text"
+								type={showPassword ? "text" : "password"}
 								name="password"
 								id="password"
 								value={input.password}
-								className="w-full px-3 bg-transparent outline-none border-b"
+								className="w-full px-3 bg-transparent outline-none border-b rounded-none"
 								placeholder="Tu contraseña"
 								onChange={handleChange}
 							/>
-						) : (
-							<input
-								type="password"
-								name="password"
-								id="password"
-								value={input.password}
-								className="w-full px-3 bg-transparent outline-none border-b"
-								placeholder="Tu contraseña"
-								onChange={handleChange}
-							/>
-						)}
 						<button onClick={handleShowPassword} className="absolute inset-y-0 end-0 grid place-content-center px-4">
 							{showPassword ? (
 								<Image

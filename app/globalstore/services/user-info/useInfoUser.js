@@ -13,6 +13,7 @@ export const infoUserDB = createApi({
   endpoints: (builder) => ({
     getInfoUser: builder.query({
       query: () => '',
+      method: "GET",
     }),
   }),
 });
