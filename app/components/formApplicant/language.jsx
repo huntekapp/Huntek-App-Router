@@ -1,76 +1,86 @@
 import Image from "next/image";
-const Languages = ({handleLang, handleDeleteLang, userData}) => {
+import {useState} from "react";
+const Languages = ({userData, inputLanguages}) => {
+	const options = [
+		"Ingles básico",
+		"Ingles intermedio",
+		"Ingles avanzado",
+		"Ingles nativo",
+		"Español básico",
+		"Español intermedio",
+		"Español avanzado",
+		"Español nativo",
+		"Frances básico",
+		"Frances intermedio",
+		"Frances avanzado",
+		"Frances nativo",
+		"Portugues básico",
+		"Portugues intermedio",
+		"Portugues avanzado",
+		"Portugues nativo",
+		"Italiano básico",
+		"Italiano intermedio",
+		"Italiano avanzado",
+		"Italiano nativo",
+		"Chino básico",
+		"Chino intermedio",
+		"Chino avanzado",
+		"Chino nativo",
+		"Mandarin básico",
+		"Mandarin intermedio",
+		"Mandarin avanzado",
+		"Mandarin nativo",
+	];
+	const [selectedOptions, setSelectedOptions] = useState([]);
+
+	const handleOptionClick = (option) => {
+		if (selectedOptions.includes(option)) {
+			setSelectedOptions((prevSelected) => prevSelected.filter((item) => item !== option));
+		} else {
+			setSelectedOptions((prevSelected) => [...prevSelected, option]);
+		}
+	};
+	userData.languages = selectedOptions;
 	return (
-		<div className="w-full mb-2">
-			<label htmlFor="languages" className="ml-2 font-semibold">
-				¿Qué idiomas hablas y cuál es tu dominio?
-				<div className="group inline-block">
-					<Image
-						src="/utils/asterisk_huntek.svg"
-						width={16}
-						height={16}
-						alt="asterisco"
-						className="ml-2 aspect-square"
-					/>
-					<div className="opacity-0 group-hover:opacity-100 bg-pri text-sec text-center absolute p-1 rounded-md  flex justify-center items-center transition duration-300">
-						<span>Requerido</span>
+		<>
+			<div>
+				<label htmlFor="languages" className="ml-2 font-semibold">
+					¿Que idiomas hablas?
+					<div className="group inline-block">
+						<Image
+							src="/utils/asterisk_huntek.svg"
+							width={16}
+							height={16}
+							alt="asterisco"
+							className="ml-2 aspect-square"
+						/>
+						<div className="opacity-0 group-hover:opacity-100 bg-pri text-sec text-center absolute p-1 rounded-md  flex justify-center items-center transition duration-300">
+							<span>Requerido</span>
+						</div>
+					</div>
+				</label>
+				<div className="custom-select">
+					<div className="selected-option">
+						{selectedOptions.length === 0 ? "Selecciona una opción" : selectedOptions.join(", ")}
+					</div>
+
+					<div className="w-full h-20 options carousel carousel-vertical bg-pri-100 px-2 rounded-md">
+						{options.map((option) => (
+							<div key={option} className="carousel-item flex justify-between hover:bg-pri-200">
+								<span>{option}</span>
+								<input
+									type="checkbox"
+									disabled={!inputLanguages}
+									checked={selectedOptions.includes(option)}
+									onChange={() => handleOptionClick(option)}
+									className="checkbox checkbox-sm"
+								/>
+							</div>
+						))}
 					</div>
 				</div>
-			</label>
-			<select
-				name="languages"
-				multiple
-				value={userData.languages}
-				onChange={(event) => handleLang(event)}
-				className="w-full px-2 py-1 bg-pri-100 text-gray-400 rounded-md focus:outline-none scrollnice">
-				<option value="select" hidden>
-					Selecciona una o más opciones
-				</option>
-				<option value={"Ingles básico"}>Inglés básico</option>
-				<option value={"Ingles intermedio"}>Inglés intermedio</option>
-				<option value={"Ingles avanzado"}>Inglés avanzado</option>
-				<option value={"Ingles nativo"}>Inglés nativo</option>
-				<option value={"Español básico"}>Español básico</option>
-				<option value={"Español intermedio"}>Español intermedio</option>
-				<option value={"Español avanzado"}>Español avanzado</option>
-				<option value={"Español nativo"}>Español nativo</option>
-				<option value={"Frances básico"}>Francés básico</option>
-				<option value={"Frances intermedio"}>Francés intermedio</option>
-				<option value={"Frances avanzado"}>Francés avanzado</option>
-				<option value={"Frances nativo"}>Francés nativo</option>
-				<option value={"Portugues básico"}>Portugués básico</option>
-				<option value={"Portugues intermedio"}>Portugués intermedio</option>
-				<option value={"Portugues avanzado"}>Portugués avanzado</option>
-				<option value={"Portugues nativo"}>Portugués nativo</option>
-				<option value={"Italiano básico"}>Italiano básico</option>
-				<option value={"Italiano intermedio"}>Italiano intermedio</option>
-				<option value={"Italiano avanzado"}>Italiano avanzado</option>
-				<option value={"Italiano nativo"}>Italiano nativo</option>
-				<option value={"Chino básico"}>Chino básico</option>
-				<option value={"Chino intermedio"}>Chino intermedio</option>
-				<option value={"Chino avanzado"}>Chino avanzado</option>
-				<option value={"Chino nativo"}>Chino nativo</option>
-				<option value={"Mandarin básico"}>Mandarín básico</option>
-				<option value={"Mandarin intermedio"}>Mandarín intermedio</option>
-				<option value={"Mandarin avanzado"}>Mandarín avanzado</option>
-				<option value={"Mandarin nativo"}>Mandarín nativo</option>
-			</select>
-			<div className="flex flex-row justify-start">
-				{userData.languages?.map((item, index) => {
-					return (
-						<div key={index} className="flex flex-row justify-start">
-							<p>{item} </p>
-							<button
-								onClick={() => {
-									handleDeleteLang(item);
-								}}>
-								<Image src="/utils/x_huntek.svg" width={16} height={16} alt="x" />
-							</button>
-						</div>
-					);
-				})}
 			</div>
-		</div>
+		</>
 	);
 };
 export default Languages;

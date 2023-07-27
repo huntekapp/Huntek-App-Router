@@ -5,6 +5,7 @@ import EscalatorWarningIcon from "@mui/icons-material/EscalatorWarning";
 import PhoneIcon from "@mui/icons-material/Phone";
 import MapIcon from "@mui/icons-material/Map";
 import ZoomInIcon from "@mui/icons-material/ZoomIn";
+import AbcIcon from '@mui/icons-material/Abc';
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 import AccountBalanceSharpIcon from "@mui/icons-material/AccountBalanceSharp";
@@ -13,6 +14,9 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import HourglassTopRoundedIcon from "@mui/icons-material/HourglassTopRounded";
 import PhonelinkRoundedIcon from "@mui/icons-material/PhonelinkRounded";
 import NavigateNextOutlinedIcon from "@mui/icons-material/NavigateNextOutlined";
+import SailingIcon from '@mui/icons-material/Sailing';
+import TranslateIcon from '@mui/icons-material/Translate';
+import FlagIcon from '@mui/icons-material/Flag';
 import Studies from "./formApplicant/studies";
 import { useState } from "react";
 import Career from "./formApplicant/career";
@@ -28,6 +32,10 @@ import Income from "./formApplicant/income";
 import Availability from "./formApplicant/availability";
 import FormOfWork from "./formApplicant/formOfWork";
 import PhotoUpload from "./formApplicant/photoUpload";
+import Languages from "./formApplicant/language";
+import Hobbies from "./formApplicant/hobbies";
+import Country from "./formApplicant/country";
+import Academic from "./formApplicant/academic";
 
 const ProfileExt = () => {
 	const { data, isError, isLoading, error } = useGetInfoUserQuery();
@@ -116,46 +124,24 @@ const ProfileExt = () => {
 		setInputFormOfWork(!inputFormOfWork);
 	};
 
-	const handleLang = (event) => {
-		const add = (event) => {
-			if (userData.languages.includes(event.target.value)) {
-				return [...userData.languages];
-			} else {
-				return [...userData.languages, event.target.value];
-			}
-		};
-		setUserData({
-			...userData,
-			languages: add(event),
-		});
+	const [inputLanguages, setInputLanguages] = useState(false);
+	const handleInputLanguages = () => {
+		setInputLanguages(!inputLanguages);
 	};
 
-	const handleDeleteLang = (event) => {
-		setUserData({
-			...userData,
-			languages: userData.languages.filter((temp) => temp !== event),
-		});
+	const [inputHobbies, setInputHobbies] = useState(false);
+	const handleInputHobbies = () => {
+		setInputHobbies(!inputHobbies);
 	};
 
-	const handleHobbies = (event) => {
-		const add = (event) => {
-			if (userData.hobbies.includes(event.target.value)) {
-				return [...userData.hobbies];
-			} else {
-				return [...userData.hobbies, event.target.value];
-			}
-		};
-		setUserData({
-			...userData,
-			hobbies: add(event),
-		});
+	const [inputCountry, setInputCountry] = useState(false);
+	const handleInputCountry = () => {
+		setInputCountry(!inputCountry);
 	};
 
-	const handleDeleteHobbies = (event) => {
-		setUserData({
-			...userData,
-			hobbies: userData.hobbies.filter((temp) => temp !== event),
-		});
+	const [inputAcademic, setInputAcademic] = useState(false);
+	const handleInputAcademic = () => {
+		setInputAcademic(!inputAcademic);
 	};
 
 	const handleChange = (event) => {
@@ -196,7 +182,7 @@ const ProfileExt = () => {
 								<div className="modal-box">
 									<PhotoUpload />
 									<div className="modal-action">
-										<button className="btn  bg-pri text-sec hover:text-pri" onClick={handleInputPhotoUpload}>
+										<button className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100" onClick={handleInputPhotoUpload}>
 											{inputPhotoUpload === true ? "Guardar" : "Editar"}
 										</button>
 										<label htmlFor="modalFotoUpload" className="btn">
@@ -210,8 +196,9 @@ const ProfileExt = () => {
 				</article>
 				<article className="flex flex-col justify-start items-center">
 					<h2 className="text-3xl text-black font-bold my-2">Benito Antonio Martinez</h2>
-					<h2 className="text-2xl w-fit px-4 py-2 rounded-md text-sec bg-pri">Licenciatura en MKT</h2>
-					<p className="text-sm text-gray-500 mt-2">Ubicación actual Beijing</p>
+					<h2 className="text-2xl w-fit px-4 py-2 rounded-md text-sec bg-pri">{userData.degree ? userData.degree :"Ingresa tus datos"}</h2>
+					<p className="text-md text-gray-500 mt-2">{`${userData.mail}`}</p>
+					<p className="text-sm text-gray-500 mt-2">{`Ubicación actual ${userData.city}`}</p>
 				</article>
 				<div className="mt-8">Tu plan actual: Starter</div>
 				<article className="flex flex-row pt-5 items-center w-full justify-around">
@@ -230,6 +217,27 @@ const ProfileExt = () => {
 					<h3 className="w-full text-2xl text-pri mt-5 text-start">Lo esencial</h3>
 
 					<div className="flex justify-between items-center">
+						<label htmlFor="modalEstudios" className="text-lg font-light cursor-pointer w-full relative">
+							<AbcIcon /> Situación académica
+							<NavigateNextOutlinedIcon className="absolute right-0 top-[3px]" />
+						</label>
+						<input type="checkbox" id="modalEstudios" className="modal-toggle" />
+						<div className="modal">
+							<div className="modal-box flex flex-col">
+								<Academic handleChange={handleChange} userData={userData} inputAcademic={inputAcademic} />
+								<div className="modal-action">
+									<button className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100" onClick={handleInputAcademic}>
+										{inputAcademic === true ? "Guardar" : "Editar"}
+									</button>
+									<label htmlFor="modalEstudios" className="btn">
+										Cerrar
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div className="flex justify-between items-center">
 						<label htmlFor="modalDondeEstudiaste" className="text-lg font-light cursor-pointer w-full relative">
 							<AccountBalanceSharpIcon /> Donde estudiaste?
 							<NavigateNextOutlinedIcon className="absolute right-0 top-[3px]" />
@@ -239,10 +247,52 @@ const ProfileExt = () => {
 							<div className="modal-box flex flex-col">
 								<Studies handleChange={handleChange} userData={userData} inputStudies={inputStudies} />
 								<div className="modal-action">
-									<button className="btn  bg-pri text-sec hover:text-pri" onClick={handleInputStudies}>
+									<button className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100" onClick={handleInputStudies}>
 										{inputStudies === true ? "Guardar" : "Editar"}
 									</button>
 									<label htmlFor="modalDondeEstudiaste" className="btn">
+										Cerrar
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div className="flex justify-between items-center">
+						<label htmlFor="modalIdiomas" className="text-lg font-light cursor-pointer w-full relative">
+							<TranslateIcon /> Que idiomas hablas?
+							<NavigateNextOutlinedIcon className="absolute right-0 top-[3px]" />
+						</label>
+						<input type="checkbox" id="modalIdiomas" className="modal-toggle" />
+						<div className="modal">
+							<div className="modal-box flex flex-col">
+								<Languages handleChange={handleChange} userData={userData} inputLanguages={inputLanguages} />
+								<div className="modal-action">
+									<button className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100" onClick={handleInputLanguages}>
+										{inputLanguages === true ? "Guardar" : "Editar"}
+									</button>
+									<label htmlFor="modalIdiomas" className="btn">
+										Cerrar
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div className="flex justify-between items-center">
+						<label htmlFor="modalNacimiento" className="text-lg font-light cursor-pointer w-full relative">
+							<FlagIcon /> Donde naciste?
+							<NavigateNextOutlinedIcon className="absolute right-0 top-[3px]" />
+						</label>
+						<input type="checkbox" id="modalNacimiento" className="modal-toggle" />
+						<div className="modal">
+							<div className="modal-box">
+								<Country handleChange={handleChange} userData={userData} inputCountry={inputCountry} />
+								<div className="modal-action">
+									<button className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100" onClick={handleInputCountry}>
+										{inputCountry === true ? "Guardar" : "Editar"}
+									</button>
+									<label htmlFor="modalNacimiento" className="btn">
 										Cerrar
 									</label>
 								</div>
@@ -260,7 +310,7 @@ const ProfileExt = () => {
 							<div className="modal-box">
 								<Career handleChange={handleChange} userData={userData} inputCareer={inputCareer} />
 								<div className="modal-action">
-									<button className="btn  bg-pri text-sec hover:text-pri" onClick={handleInputCareer}>
+									<button className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100" onClick={handleInputCareer}>
 										{inputCareer === true ? "Guardar" : "Editar"}
 									</button>
 									<label htmlFor="modalQueEstudias" className="btn">
@@ -285,6 +335,27 @@ const ProfileExt = () => {
 										{inputCity === true ? "Guardar" : "Editar"}
 									</button>
 									<label htmlFor="modalDondeVives" className="btn">
+										Cerrar
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div className="flex justify-between items-center">
+						<label htmlFor="modalHobbies" className="text-lg font-light cursor-pointer w-full relative">
+							<SailingIcon /> Cuáles son tus hobbies?
+							<NavigateNextOutlinedIcon className="absolute right-0 top-[3px]" />
+						</label>
+						<input type="checkbox" id="modalHobbies" className="modal-toggle" />
+						<div className="modal">
+							<div className="modal-box flex flex-col">
+								<Hobbies handleChange={handleChange} userData={userData} inputHobbies={inputHobbies} />
+								<div className="modal-action">
+									<button className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100" onClick={handleInputHobbies}>
+										{inputHobbies === true ? "Guardar" : "Editar"}
+									</button>
+									<label htmlFor="modalHobbies" className="btn">
 										Cerrar
 									</label>
 								</div>
@@ -323,7 +394,7 @@ const ProfileExt = () => {
 							<div className="modal-box">
 								<Phone handleChange={handleChange} userData={userData} inputPhone={inputPhone} />
 								<div className="modal-action">
-									<button className="btn  bg-pri text-sec hover:text-pri" onClick={handleInputPhone}>
+									<button className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100" onClick={handleInputPhone}>
 										{inputPhone === true ? "Guardar" : "Editar"}
 									</button>
 									<label htmlFor="modalTelefono" className="btn">
@@ -344,7 +415,7 @@ const ProfileExt = () => {
 							<div className="modal-box">
 								<Birthdate handleChange={handleChange} userData={userData} inputBirthdate={inputBirthdate} />
 								<div className="modal-action">
-									<button className="btn  bg-pri text-sec hover:text-pri" onClick={handleInputBirthdate}>
+									<button className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100" onClick={handleInputBirthdate}>
 										{inputBirthdate === true ? "Guardar" : "Editar"}
 									</button>
 									<label htmlFor="modalEdad" className="btn">
@@ -368,7 +439,7 @@ const ProfileExt = () => {
 							<div className="modal-box">
 								<Reubication handleChange={handleChange} userData={userData} inputReubication={inputReubication} />
 								<div className="modal-action">
-									<button className="btn  bg-pri text-sec hover:text-pri" onClick={handleInputReubication}>
+									<button className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100" onClick={handleInputReubication}>
 										{inputReubication === true ? "Guardar" : "Editar"}
 									</button>
 									<label htmlFor="modalReubicarte" className="btn">
@@ -389,7 +460,7 @@ const ProfileExt = () => {
 							<div className="modal-box">
 								<Profession userData={userData} inputProf={inputProf} />
 								<div className="modal-action">
-									<button className="btn  bg-pri text-sec hover:text-pri" onClick={handleInputProf}>
+									<button className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100" onClick={handleInputProf}>
 										{inputProf === true ? "Guardar" : "Editar"}
 									</button>
 									<label htmlFor="modalAreasInteres" className="btn">
@@ -410,7 +481,7 @@ const ProfileExt = () => {
 							<div className="modal-box">
 								<Experience userData={userData} handleChange={handleChange} inputExperience={inputExperience} />
 								<div className="modal-action">
-									<button className="btn  bg-pri text-sec hover:text-pri" onClick={handleInputExperience}>
+									<button className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100" onClick={handleInputExperience}>
 										{inputExperience === true ? "Guardar" : "Editar"}
 									</button>
 									<label htmlFor="modalExperiencia" className="btn">
@@ -431,7 +502,7 @@ const ProfileExt = () => {
 							<div className="modal-box">
 								<Income userData={userData} handleChange={handleChange} inputIncome={inputIncome} />
 								<div className="modal-action">
-									<button className="btn  bg-pri text-sec hover:text-pri" onClick={handleInputIncome}>
+									<button className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100" onClick={handleInputIncome}>
 										{inputIncome === true ? "Guardar" : "Editar"}
 									</button>
 									<label htmlFor="modalSalario" className="btn">
@@ -452,7 +523,7 @@ const ProfileExt = () => {
 							<div className="modal-box">
 								<Availability userData={userData} handleChange={handleChange} inputAvailability={inputAvailability} />
 								<div className="modal-action">
-									<button className="btn  bg-pri text-sec hover:text-pri" onClick={handleInputAvailability}>
+									<button className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100" onClick={handleInputAvailability}>
 										{inputAvailability === true ? "Guardar" : "Editar"}
 									</button>
 									<label htmlFor="modalDisponibilidad" className="btn">
@@ -473,7 +544,7 @@ const ProfileExt = () => {
 							<div className="modal-box">
 								<FormOfWork userData={userData} handleChange={handleChange} inputFormOfWork={inputFormOfWork} />
 								<div className="modal-action">
-									<button className="btn  bg-pri text-sec hover:text-pri" onClick={handleInputFormOfWork}>
+									<button className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100" onClick={handleInputFormOfWork}>
 										{inputFormOfWork === true ? "Guardar" : "Editar"}
 									</button>
 									<label htmlFor="modalFormaTrabajo" className="btn">
