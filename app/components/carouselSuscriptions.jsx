@@ -1,28 +1,13 @@
-"use client";
-import {useState} from "react";
-
-const PlanSelector = () => {
-	const [selectedPlan, setSelectedPlan] = useState(null);
-
-	const handleSelectedPlan = (plan) => {
-		setSelectedPlan(plan);
-	};
-
+const CarouselPlan = ({handleSelectedPlan}) => {
 	return (
-		<section className="w-full h-screen flex flex-col justify-evenly items-center">
-			<article className="bg-pri w-11/12 h-1/6 rounded-lg flex flex-col justify-center items-center">
-				<h2 className="text-2xl text-center text-sec">Selecciona tu plan ideal</h2>
-				<p className="text-lg text-center text-sec font-semibold underline">ve al siguiente nivel</p>
-			</article>
-			<article className="w-11/12 h-1/5 flex flex-row justify-between items-start">
-				<div className="bg-pri-500 w-5/12 h-full rounded-lg hover:bg-pri-400 flex flex-col justify-center items-center">
-					<label
-						htmlFor="modalAdvance"
-						className="text-lg font-light cursor-pointer w-full">
+		<div className="carousel w-3/5 h-full">
+			<div id="slide1" className="carousel-item relative w-full">
+				<div className="bg-pri w-full h-full rounded-lg focus:bg-pri-800 flex flex-col justify-center items-center">
+					<label htmlFor="modalAdvance" className="text-lg font-light cursor-pointer">
 						<h2 className="text-2xl text-center text-sec">Advance</h2>
 						<p className="text-lg text-center text-sec">$199mxn</p>
 					</label>
-					<input type="checkbox" id="modalAdvance" className="modal-toggle" />
+					<input type="checkbox" id="modalAdvance" className="modal-toggle"/>
 					<div className="modal">
 						<div className="modal-box bg-pri-100 ">
 							<div className="gap-6 flex flex-col justify-center items-center ">
@@ -56,11 +41,18 @@ const PlanSelector = () => {
 						</div>
 					</div>
 				</div>
-
-				<div className="bg-pri-700 w-5/12  h-full rounded-lg hover:bg-pri-600 flex flex-col justify-center items-center">
-					<label
-						htmlFor="modalPremium"
-						className="text-lg font-light cursor-pointer w-full">
+				<div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+					<a href="#slide2" className="btn btn-circle bg-transparent border-none">
+						❮
+					</a>
+					<a href="#slide2" className="btn btn-circle bg-transparent border-none">
+						❯
+					</a>
+				</div>
+			</div>
+			<div id="slide2" className="carousel-item relative w-full">
+				<div className="bg-pri w-full  h-full rounded-lg flex flex-col justify-center items-center">
+					<label htmlFor="modalPremium" className="text-lg font-light cursor-pointer w-full">
 						<h2 className="text-2xl text-center text-sec">Premium</h2>
 						<p className="text-lg text-center text-sec">$299mxn</p>
 					</label>
@@ -98,18 +90,17 @@ const PlanSelector = () => {
 						</div>
 					</div>
 				</div>
-			</article>
-			<article>
-				<div className="flex flex-col">
-					<h2 className="text-2xl font-semibold text-center text-pri">Plan seleccionado</h2>
-					<p className="px-6 text-md text-center text-pri">{selectedPlan === null ? `No ha seleccionado ningún plan` : selectedPlan}</p>
+				<div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+					<a href="#slide1" className="btn btn-circle bg-transparent border-none">
+						❮
+					</a>
+					<a href="#slide1" className="btn btn-circle bg-transparent border-none">
+						❯
+					</a>
 				</div>
-			</article>
-			<article className="h-[10px] pb-8">
-				<button className="text-lg text-center text-pri-700 font-semibold underline">{selectedPlan === null ? `Continuar sin plan` : `Continuar con el pago`}</button>
-			</article>
-		</section>
-	); 
+			</div>
+		</div>
+	);
 };
 
-export default PlanSelector;
+export default CarouselPlan;

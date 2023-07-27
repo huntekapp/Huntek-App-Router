@@ -20,7 +20,7 @@ const PhotoUpload = () => {
 			</label>
 			<label
 				htmlFor="dropzone-file"
-				className="border-2 w-full border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
+				className="border-2 w-full rounded-lg cursor-pointer">
 				<div className="flex flex-col items-center justify-center pt-5 pb-6">
 					<Image src="utils/upload.svg" width={20} height={16} alt="upload" />
 					<p className="mb-2 text-sm text-gray-500 dark:text-gray-400">

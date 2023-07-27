@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import AppleLogo from "@/public/images/apple-g44d4327db_1920.png";
