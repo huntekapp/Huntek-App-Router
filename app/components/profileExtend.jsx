@@ -26,7 +26,7 @@ import Phone from "./formApplicant/phone";
 import Birthdate from "./formApplicant/birthdate";
 import Reubication from "./formApplicant/reubication";
 import Profession from "./formApplicant/professions";
-import { useGetInfoUserQuery } from "../globalstore/services/useInfoUser";
+import { useGetInfoUserQuery } from "../globalstore/services/user-info/useInfoUser";
 import Experience from "./formApplicant/yearsOfExperience";
 import Income from "./formApplicant/income";
 import Availability from "./formApplicant/availability";
