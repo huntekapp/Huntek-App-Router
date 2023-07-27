@@ -4,9 +4,19 @@ import Link from "next/link";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import NavigateNextOutlinedIcon from "@mui/icons-material/NavigateNextOutlined";
+import { useGetInfoUserQuery } from "../globalstore/services/user-info/useInfoUser";
 
 const Profile = ({ user, closeProfile, setCloseProfile }) => {
+	const { data, isLoading } = useGetInfoUserQuery()
+	console.log(data)
 	const router = useRouter();
+	if (isLoading) {
+		return (
+			<div className="container">
+				<div className="loader2"></div>
+			</div>
+		);
+	}
 	return (
 		<section className="w-full h-screen text-pri flex flex-col">
 			<article className="w-full h-[10%] px-4 border-b flex flex-row justify-between items-center">
@@ -33,12 +43,12 @@ const Profile = ({ user, closeProfile, setCloseProfile }) => {
 						/>
 					</div>
 					<div className="flex flex-row items-center">
-						<h3 className="text-2xl font-medium cursor-default">{user.name}</h3>
+						<h3 className="text-2xl font-medium cursor-default">{data?.first_name} {data?.last_name}</h3>
 						<Link href="/profileExtend" className="ml-2">
 							<EditOutlinedIcon className="w-5 h-5 opacity-70 hover:opacity-100 hover:scale-125 duration-150" />
 						</Link>
 					</div>
-					<p className="text-xs font-normal cursor-default">{user.email}</p>
+					<p className="text-xs font-normal cursor-default">{data?.email}</p>
 				</div>
 				<div className="w-full h-4/5 text-base flex flex-col justify-around items-center">
 					<Link href="/postulations" className="w-full h-1/4 flex justify-between items-center hover:opacity-70">

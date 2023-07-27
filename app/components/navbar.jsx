@@ -11,8 +11,6 @@ import Profile from "./profile";
 
 const NavBar = () => {
 	const [user, setUser] = useState({
-		name: "Luis Sanchez",
-		email: "louissaintchess@gmail.com",
 		image: "/images/pexels-monstera-5384445.jpg",
 		notification: [
 			{
