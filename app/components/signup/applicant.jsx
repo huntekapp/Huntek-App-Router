@@ -7,10 +7,11 @@ import { useRouter } from "next/navigation";
 import { setEmail } from "../../globalstore/features/emailSlice";
 import { useDispatch } from "react-redux";
 import verifySignupInputs from "../../helpers/verifySignUpInputs";
-import { AlertError } from "../alertsforrequest";
+import { AlertSuccess, AlertError } from "../alertsforrequest";
 
 const ApplicantForm = () => {
 	const [showPassword, setShowPassword] = useState(false);
+	const [successReq, setSuccessReq] = useState(null);
 	const [errorCatched, setErrorCatched] = useState(null);
 	const [check, setCheck] = useState(false);
 	const [postUsers, { isLoading }] = usePostUsersMutation();
@@ -52,14 +53,8 @@ const ApplicantForm = () => {
 		try {
 			await postUsers(input).unwrap();
 			dispatch(setEmail(input.email));
-			setInput({
-				first_name: "",
-				last_name: "",
-				email: "",
-				password: "",
-				role_name: "applicant",
-			});
 			localStorage.setItem("email", input.email);
+			setSuccessReq("Email enviado con éxito")
 			router.push("/emailvalidate");
 		} catch (error) {
 			if (error.status === "FETCH_ERROR")
@@ -172,6 +167,7 @@ const ApplicantForm = () => {
 				</p>
 			</article>
 			{errorCatched && <AlertError alertTitle={"Error!"} alertBody={errorCatched} setErrorCatched={setErrorCatched} />}
+			{successReq && <AlertSuccess alertTitle={"Success!"} alertBody={successReq} setSuccessReq={setSuccessReq} />}
 		</section>
 	);
 };
