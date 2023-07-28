@@ -5,10 +5,10 @@ const InfoAlert = ({ alertBody }) => {
   const [showInfo, setShowInfo] = useState(true)
 
 	return (
-		<div className={`${showInfo ? "flex flex-row" : "hidden"} w-11/12 h-fit bg-pri-100 border border-pri-400 text-pri px-4 py-3 rounded justify-start items-center relative z-40`} role="alert">
+		<div className={`${showInfo ? "flex flex-row" : "hidden"} w-11/12 h-fit md:h-[60px] bg-pri-100 border border-pri-400 text-pri px-4 py-3 rounded justify-start items-center relative z-40`} role="alert">
 			<strong className="font-bold text-sm mr-4">{<InfoIcon/>}</strong>
 			<span className="w-5/6 block sm:inline md:text-sm text-sm">{alertBody}</span>
-			<span className='absolute right-2' onClick={() => setShowInfo(false)}>
+			<span className='absolute right-2 md:right-5' onClick={() => setShowInfo(false)}>
 				<svg
 					className="fill-current h-6 w-6 text-pri"
 					role="button"
