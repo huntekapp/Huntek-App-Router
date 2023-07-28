@@ -1,47 +1,51 @@
 "use client";
 import Link from "next/link";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+import InterviewsHomepage from "../interviewsHomepage";
+import InfoAlert from "./infoAlert";
+
+const hardcodedInterviews = [
+	// {
+	// 	enterprise: "Huntek",
+	// 	date: "22 SEP",
+	// 	hour: "15:30HS",
+	// },
+	// {
+	// 	enterprise: "Bimbo",
+	// 	date: "31 DIC",
+	// 	hour: "21:00HS",
+	// },
+	// {
+	// 	enterprise: "Pantene",
+	// 	date: "18 NOV",
+	// 	hour: "09:20HS",
+	// },
+];
 
 const Interviews = () => {
 	return (
-		<article className="w-full h-1/4 px-4 flex flex-col justify-around">
+		<article className="w-full h-1/4 px-4 flex flex-col justify-end">
 			<div className="mt-2 mb-1 flex flex-row justify-between">
 				<p>Mis entrevistas</p>
 				<Link href="/interviews" className="font-medium">
 					Ver todas
 				</Link>
 			</div>
-			<div className="gap-4 lg:grid lg:grid-cols-2">
-				{}
-				<div className="w-full h-20 px-4 bg-sec text-xs xs:text-sm text-pri border rounded-xl shadow-md flex flex-row justify-between items-center">
-					<div className="w-[1%] min-w-[70px]">
-						<span className="w-14 h-14 text-sm font-semibold border-pri border-2 rounded-full grid place-content-center">
-							18 SEP
-						</span>
-					</div>
-					<div className="w-[99%]">
-						<span className="btn w-full shadow-sm bg-pri border-none text-sm xs:text-xl text-sec">
-							15:30hs<span>|</span>
-							<span>Huntek</span>
-							<LocationOnIcon className="text-sm" />
-						</span>
-					</div>
+			{hardcodedInterviews.length ? (
+				<div className="gap-4 md:grid md:grid-cols-2 md:grid-rows-1 overflow-hidden">
+					{
+						hardcodedInterviews.map((interview, index) => {
+							if (index === 0 || index === 1) return (
+									<InterviewsHomepage interviewInfo={interview} index={index} />
+							)
+						})
+					}
 				</div>
-				<div className="w-full h-20 px-4 bg-sec text-xs xs:text-sm hidden lg:flex  text-pri border rounded-xl shadow-md flex flex-row justify-between items-center">
-					<div className="w-[1%] min-w-[70px]">
-						<span className="w-14 h-14 text-sm font-semibold border-pri border-2 rounded-full grid place-content-center">
-							22 SEP
-						</span>
-					</div>
-					<div className="w-[99%]">
-						<span className="btn w-full shadow-sm bg-pri border-none text-sm xs:text-xl text-sec">
-							16:00hs<span>|</span>
-							<span>Grupo Frontera</span>
-							<LocationOnIcon className="text-sm" />
-						</span>
-					</div>
+			) : (
+				<div className="w-full min-h-[88px] px-2 flex justify-center items-center relative mb-1 md:mb-0">
+					<InfoAlert alertBody={"En este espacio tendrás un recordatorio de tu entrevista mas cercana"} />
+					<p className="text-pri absolute z-10">No tienes entrevistas agendadas</p>
 				</div>
-			</div>
+			)}
 		</article>
 	);
 };
