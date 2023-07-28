@@ -29,10 +29,10 @@ const Home = () => {
 				</div>
 				<div className="card animate-pulse">
 					<div className="card__skeleton bg-slate-400 card__title"></div>
-					<div className="card__skeleton bg-slate-400 card__description">         </div>
+					<div className="card__skeleton bg-slate-400 card__description"></div>
 				</div>
 				<div className="card2 animate-pulse">
-					<div className="card__skeleton2 bg-slate-400 card__description2">         </div>
+					<div className="card__skeleton2 bg-slate-400 card__description2"></div>
 				</div>
 			</div>
 		);
@@ -41,7 +41,7 @@ const Home = () => {
 	return (
 		<main className="h-[90%]">
 			<section className="w-full h-homecontent text-pri flex flex-col justify-around items-left">
-				<article className="w-full h-20 px-4 flex flex-col justify-center">
+				<article className="w-full h-[15%] px-4 flex flex-col justify-center">
 					<p className="text-xl">¡Hola!</p>
 					<p className="text-3xl font-medium">
 						{data?.first_name} {data?.last_name}
