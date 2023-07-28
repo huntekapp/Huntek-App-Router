@@ -36,13 +36,10 @@ import Languages from "./formApplicant/language";
 import Hobbies from "./formApplicant/hobbies";
 import Country from "./formApplicant/country";
 import Academic from "./formApplicant/academic";
-import Advance from "./plan/advance";
-import Premium from "./plan/premuim";
 import CarouselPlan from "./carouselSuscriptions";
 
 const ProfileExt = () => {
 	const { data, isError, isLoading, error } = useGetInfoUserQuery();
-	console.log(data);
 	const [userData, setUserData] = useState({
 		mail: "",
 		phone: "",
@@ -152,7 +149,6 @@ const ProfileExt = () => {
 	const handleSelectedPlan = (plan) => {
 		setSelectedPlan(plan);
 	};
-	// const fullName = data.first_name + ' ' + data.last_name;
 
 	const handleChange = (event) => {
 		event.preventDefault();
