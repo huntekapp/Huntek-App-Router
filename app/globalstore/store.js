@@ -13,10 +13,12 @@ import { messagesDB } from "./services/chats-msg/useMessages";
 import { postMessagesDB } from "./services/chats-msg/usePostMessage";
 import { interviewsDB } from "./services/user-info/useInterviews";
 import { infoUserDB } from "./services/user-info/useInfoUser";
-import { newFilesDB } from "./services/user-info/useNewFiles";
-import { filesUserDB } from "./services/user-info/useFiles";
-import { deleteFilesDB } from "./services/user-info/useDeleteFiles";
-import { editFilesDB } from "./services/user-info/useEditFiles";
+import { newFilesDB } from "./services/user-files/useNewFiles";
+import { filesUserDB } from "./services/user-files/useFiles";
+import { deleteFilesDB } from "./services/user-files/useDeleteFiles";
+import { editFilesDB } from "./services/user-files/useEditFiles";
+import { resumeDB } from "./services/user-profile/useResume";
+import { infoResumeDB } from "./services/user-profile/useGetResume";
 
 export const store = configureStore({
   reducer: {
@@ -36,7 +38,9 @@ export const store = configureStore({
     [newFilesDB.reducerPath]: newFilesDB.reducer,
     [filesUserDB.reducerPath]: filesUserDB.reducer,
     [deleteFilesDB.reducerPath]: deleteFilesDB.reducer,
-    [editFilesDB.reducerPath]: editFilesDB.reducer
+    [editFilesDB.reducerPath]: editFilesDB.reducer,
+    [resumeDB.reducerPath]: resumeDB.reducer,
+    [infoResumeDB.reducerPath]: infoResumeDB.reducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat([
@@ -55,7 +59,9 @@ export const store = configureStore({
       newFilesDB.middleware,
       filesUserDB.middleware,
       deleteFilesDB.middleware,
-      editFilesDB.middleware
+      editFilesDB.middleware,
+      resumeDB.middleware,
+      infoResumeDB.middleware
     ]),
 });
 setupListeners(store.dispatch);

@@ -10,7 +10,7 @@ const Home = () => {
 
 	if (isLoading) {
 		return (
-			<div className="flex flex-col space-y-5 justify-start h-full w-full">
+			<div className="flex flex-col  justify-start h-full w-full">
 				<div className="h-24 w-60">
     <div className="flex flex-row items-center justify-start ml-6 h-full mt-2  animate-pulse">
         <div className="flex flex-col space-y-3">
