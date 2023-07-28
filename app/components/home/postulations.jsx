@@ -2,18 +2,17 @@
 import InfoAlert from "./infoAlert"
 import Image from "next/image";
 import Link from "next/link";
-import InfoIcon from '@mui/icons-material/Info';
 
 const Postulations = () => {
 	const postulaciones = [
-		{ id: "Huntek", image: "/huntek/logo/G.svg" },
-		{ id: "Google", image: "/social/google.svg" },
-		{ id: "Facebook", image: "/social/facebook.svg" },
-		{ id: "Linkedin", image: "/social/linkedin.svg" },
-		{ id: "Youtube", image: "/images/youtube-g6a795f8e6_1920.png" },
-		{ id: "Windows", image: "/images/windows-gc6d7a955d_1920.png" },
-		{ id: "Apple", image: "/images/apple-g44d4327db_1920.png" },
-		{ id: "Bitcoin", image: "/images/bitcoin-gfe80587d1_1920.png" },
+		// { id: "Huntek", image: "/huntek/logo/G.svg" },
+		// { id: "Google", image: "/social/google.svg" },
+		// { id: "Facebook", image: "/social/facebook.svg" },
+		// { id: "Linkedin", image: "/social/linkedin.svg" },
+		// { id: "Youtube", image: "/images/youtube-g6a795f8e6_1920.png" },
+		// { id: "Windows", image: "/images/windows-gc6d7a955d_1920.png" },
+		// { id: "Apple", image: "/images/apple-g44d4327db_1920.png" },
+		// { id: "Bitcoin", image: "/images/bitcoin-gfe80587d1_1920.png" },
 	];
 
 	return (
@@ -46,7 +45,7 @@ const Postulations = () => {
 					<div className="w-full h-full px-2 flex justify-center items-center relative">
 						<InfoAlert alertBody={"Aquí tendrás una vista previa de todas tus postulaciones"} />
 						<p className="text-pri absolute z-10">Aún no tienes postulaciones...</p>
-				</div>
+					</div>
 			)}
 		</article>
 	);
