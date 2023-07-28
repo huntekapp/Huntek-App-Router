@@ -51,7 +51,7 @@ const Messages = () => {
 	}, []);
 
 	return (
-		<article className="w-full h-2/6 px-4 flex flex-col justify-around">
+		<article className="w-full h-2/5 px-4 flex flex-col justify-around">
 			<div className="mt-2 mb-1 flex flex-row justify-between">
 				<p>Mis conversaciones</p>
 				<Link href="/messages" className="font-medium">
