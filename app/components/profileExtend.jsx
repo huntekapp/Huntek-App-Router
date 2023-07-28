@@ -36,7 +36,7 @@ import Languages from "./formApplicant/language";
 import Hobbies from "./formApplicant/hobbies";
 import Country from "./formApplicant/country";
 import Academic from "./formApplicant/academic";
-import CarouselPlan from "./carouselSubscriptions";
+import CarouselPlan from "./carouselSuscriptions";
 
 const ProfileExt = () => {
 	const { data, isError, isLoading, error } = useGetInfoUserQuery();

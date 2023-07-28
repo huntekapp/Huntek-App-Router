@@ -60,7 +60,7 @@ const Languages = ({ userData, inputLanguages }) => {
 					</div>
 				</label>
 				<div className="custom-select">
-					<div className="w-full h-24 options carousel carousel-vertical bg-pri-100 rounded-md">
+					<div className="w-full h-[70px] options carousel carousel-vertical bg-pri-100 rounded-md">
 						{options.map((option) => (
 							<div key={option} className="carousel-item px-4 flex justify-between hover:bg-pri-200">
 								<span>{option}</span>

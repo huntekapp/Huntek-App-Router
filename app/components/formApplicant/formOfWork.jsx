@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { useState } from "react";
+import NotListedLocationOutlinedIcon from "@mui/icons-material/NotListedLocationOutlined";
 
 const FormOfWork = ({ userData, handleChange, inputFormOfWork }) => {
 	const options = ["Presencial", "Híbrido", "Remoto"];
@@ -13,20 +13,18 @@ const FormOfWork = ({ userData, handleChange, inputFormOfWork }) => {
 
 	return (
 		<div className="w-full mb-2">
-			<label htmlFor="form_of_work" className="ml-2 font-semibold">
-				¿Con qué forma de trabajo estás más cómodo?
-				<div className="group inline-block">
-					<Image
-						src="/utils/asterisk_huntek.svg"
-						width={16}
-						height={16}
-						alt="asterisco"
-						className="ml-2 aspect-square"
-					/>
-					<div className="opacity-0 group-hover:opacity-100 bg-pri text-sec text-center absolute p-1 rounded-md  flex justify-center items-center transition duration-300">
-						<span>Requerido</span>
+			<label htmlFor="form_of_work" className="mr-2 font-semibold">
+				¿Qué forma de trabajo prefieres?
+				<span className="dropdown dropdown-hover font-normal">
+					<div tabIndex={0}>
+						<NotListedLocationOutlinedIcon className="pb-1" />
 					</div>
-				</div>
+					<div
+						tabIndex={0}
+						className="w-fit px-2 py-1 dropdown-content -translate-x-20 z-[1] shadow bg-sec rounded-box">
+						Requerido
+					</div>
+				</span>
 			</label>
 
 			<div className="custom-select">
