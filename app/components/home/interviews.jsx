@@ -4,7 +4,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 const Interviews = () => {
 	return (
-		<article className="w-full h-28 px-4 flex flex-col justify-around">
+		<article className="w-full h-1/4 px-4 flex flex-col justify-around">
 			<div className="mt-2 mb-1 flex flex-row justify-between">
 				<p>Mis entrevistas</p>
 				<Link href="/interviews" className="font-medium">
