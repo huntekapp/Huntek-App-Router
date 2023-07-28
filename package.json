@@ -21,6 +21,7 @@
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.8",
     "jose": "^4.14.4",
+    "mui-tel-input": "^3.2.2",
     "next": "13.4.8",
     "postcss": "8.4.24",
     "react": "18.2.0",

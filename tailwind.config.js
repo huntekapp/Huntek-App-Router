@@ -26,6 +26,7 @@ module.exports = {
       backgroundImage: {
         HKanimate: "url('/huntek/logo-text-animate/W(D).svg')",
         HKtext: "url('/huntek/logo-text/W(D).svg')",
+        HKGtext: "url('/huntek/logo-text/G(D).svg')",
         HKlogo: "url('/huntek/logo/W.svg')",
         HKGlogo: "url('/huntek/logo/G.svg')",
         Huntek: "url('/huntek/text/W(D).svg')",
