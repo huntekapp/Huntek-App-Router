@@ -38,25 +38,28 @@ const LogForm = () => {
 	};
 
 	const handleShowPassword = (event) => {
-		event.preventDefault();
+		console.log(event.keyCode)
 		setShowPassword(!showPassword);
 	};
 
+	const handleKeypress = (event) => {
+		if (event.keyCode === 13) {
+			handleSubmit(event)
+	 }
+	}
+
 	const handleSubmit = async (event) => {
+		const fixedInput = {...input, email: input.email.toLowerCase()}
 		event.preventDefault();
 		setErrorCatched(null);
 		try {
-			const response = await postLogin(input).unwrap();
+			const response = await postLogin(fixedInput).unwrap();
 			const { access_token, refresh_token } = response;
 			const token = access_token.split("'")[1]
 			const date = new Date();
 			date.setDate(date.getDate() + 7);
 			document.cookie = `kTnKETkt=${token}; expires=${date.toUTCString()}`;
 			router.push("/home");
-			setInput({
-				email: "",
-				password: "",
-			});
 		} catch (error) {
 			if (error.status === "FETCH_ERROR")
 				return setErrorCatched("No se ha podido establecer conexión con el servidor.");
@@ -99,8 +102,9 @@ const LogForm = () => {
 								className="w-full px-3 bg-transparent outline-none border-b rounded-none"
 								placeholder="Tu contraseña"
 								onChange={handleChange}
+								onKeyUp={handleKeypress}
 							/>
-							<button onClick={handleShowPassword} className="absolute right-3">
+							<button onClick={handleShowPassword} className="absolute right-3" type="button">
 								{showPassword ? (
 									<VisibilityOffOutlinedIcon className="w-5 h-5 text-gray-500" />
 								) : (
