@@ -64,7 +64,7 @@ const NavBar = () => {
 								className="rounded-full object-cover absolute"
 							/>
 						</label>
-						<div className="drawer-side z-10">
+						<div className="drawer-side z-50">
 							<ul className="w-full h-screen bg-sec">
 								<Profile user={user} closeProfile={closeProfile} setCloseProfile={setCloseProfile} />
 							</ul>
@@ -101,7 +101,7 @@ const NavBar = () => {
 								<NotificationsNoneOutlinedIcon className="w-6 h-6 text-sec hover:text-pri" />
 							</label>
 						</div>
-						<div className="drawer-side z-10">
+						<div className="drawer-side z-50">
 							<ul className="w-full h-screen bg-sec">
 								<li>
 									<Notification user={user} closeNotif={closeNotif} setCloseNotif={setCloseNotif} />
