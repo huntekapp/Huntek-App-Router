@@ -23,8 +23,8 @@ import Availability from "../formApplicant/availability";
 
 const ApplicantConfig = () => {
 	const [needData, setNeedData] = useState({
-		image: "",
 		cv: "",
+		profile_picture: "",
 	});
 
 	const [userData, setUserData] = useState({
@@ -80,7 +80,7 @@ const ApplicantConfig = () => {
 						<div className="w-full flex flex-col justify-around items-center">
 							<div className="w-28 h-28 border-4 border-pri rounded-full relative">
 								<Image
-									src={needData.image === "" ? "/images/defaultPhoto.png" : `${needData.image}`}
+									src={needData.profile_picture === "" ? "/images/defaultPhoto.png" : `${needData.profile_picture}`}
 									alt="profileImg"
 									fill={true}
 									className="rounded-full object-cover absolute"

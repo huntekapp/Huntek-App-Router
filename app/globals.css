@@ -389,3 +389,42 @@ select:-webkit-autofill:focus {
   color: hsl(var(--bc) / var(--tw-text-opacity));
   --tw-text-opacity: 0.2;
 }
+.card {
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  border-radius: .8rem;
+ 
+}
+
+.card__skeleton {
+  background-size: 300%;
+  background-position: 100% 0;
+  border-radius: inherit;
+  animation: shimmer 1.5s infinite;
+}
+
+.card__title {
+  height: 15px;
+  margin-bottom: 15px;
+}
+
+.card__description {
+  height: 180px;
+}
+
+.card2 {
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  border-radius: .8rem;
+}
+.card__description2 {
+  height: 80px;
+}
+.card__skeleton2 {
+  background-size: 300%;
+  background-position: 100% 0;
+  border-radius: inherit;
+  animation: shimmer 1.5s infinite;
+}
