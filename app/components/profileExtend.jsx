@@ -18,7 +18,7 @@ import SailingIcon from "@mui/icons-material/Sailing";
 import TranslateIcon from "@mui/icons-material/Translate";
 import FlagIcon from "@mui/icons-material/Flag";
 import Studies from "./formApplicant/studies";
-import {useState} from "react";
+import { useState } from "react";
 import Career from "./formApplicant/career";
 import OptionsCity from "./formApplicant/optionsCity";
 import Genres from "./formApplicant/genres";
@@ -26,7 +26,7 @@ import Phone from "./formApplicant/phone";
 import Birthdate from "./formApplicant/birthdate";
 import Reubication from "./formApplicant/reubication";
 import Profession from "./formApplicant/professions";
-import {useGetInfoUserQuery} from "../globalstore/services/user-info/useInfoUser";
+import { useGetInfoUserQuery } from "../globalstore/services/user-info/useInfoUser";
 import Experience from "./formApplicant/yearsOfExperience";
 import Income from "./formApplicant/income";
 import Availability from "./formApplicant/availability";
@@ -41,8 +41,8 @@ import Premium from "./plan/premuim";
 import CarouselPlan from "./carouselSuscriptions";
 
 const ProfileExt = () => {
-	const {data, isError, isLoading, error} = useGetInfoUserQuery();
-	console.log(data)
+	const { data, isError, isLoading, error } = useGetInfoUserQuery();
+	console.log(data);
 	const [userData, setUserData] = useState({
 		mail: "",
 		phone: "",
@@ -153,7 +153,7 @@ const ProfileExt = () => {
 		setSelectedPlan(plan);
 	};
 	// const fullName = data.first_name + ' ' + data.last_name;
-	
+
 	const handleChange = (event) => {
 		event.preventDefault();
 		setUserData({
@@ -161,6 +161,7 @@ const ProfileExt = () => {
 			[event.target.name]: event.target.value,
 		});
 	};
+
 	if (isLoading) {
 		return (
 			<div className="container">
@@ -224,7 +225,7 @@ const ProfileExt = () => {
 				</article>
 				<div className="mt-4">{`Tu plan actual: ${selectedPlan ? selectedPlan : "Starter"}`}</div>
 				<article className="w-full h-1/6 mt-1 lg:-mt-1 flex flex-row  items-center justify-around">
-				<CarouselPlan handleSelectedPlan={handleSelectedPlan}/>
+					<CarouselPlan handleSelectedPlan={handleSelectedPlan} />
 				</article>
 			</section>
 			<section className="flex flex-col lg:justify-around">
