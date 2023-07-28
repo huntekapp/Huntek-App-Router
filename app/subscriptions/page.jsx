@@ -1,6 +1,6 @@
 import PlanSelector from "../components/plan/plan";
 
-const Suscriptions = () => {
+const Subscriptions = () => {
 	return (
 		<main className="w-full h-screen lightcentergrad">
 			<PlanSelector />
@@ -8,4 +8,4 @@ const Suscriptions = () => {
 	);
 };
 
-export default Suscriptions;
+export default Subscriptions;

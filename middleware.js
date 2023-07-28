@@ -5,7 +5,7 @@ export async function middleware(request) {
   const jwt = request.cookies.get("kTnKETkt");
   const response = NextResponse.next();
 
-  const protectedPaths = ["/home", "/swipe", "/profileExtend", "/postulations", "/messages", "/interviews", "/suscriptions"];
+  const protectedPaths = ["/home", "/swipe", "/profileExtend", "/postulations", "/messages", "/interviews", "/subscriptions"];
   if (protectedPaths.some((path) => request.nextUrl.pathname.startsWith(path))) {
     if (jwt?.value === undefined) {
       return NextResponse.redirect(new URL("/login", request.url));
