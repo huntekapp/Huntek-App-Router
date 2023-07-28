@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useState } from "react";
-const Profession = ({userData, inputProf}) => {
+const Profession = ({ userData, inputProf }) => {
 	const options = [
 		"Servicios legales",
 		"Comercial",
@@ -27,7 +27,7 @@ const Profession = ({userData, inputProf}) => {
 			setSelectedOptions((prevSelected) => [...prevSelected, option]);
 		}
 	};
-	userData.profession = selectedOptions
+	userData.profession = selectedOptions;
 	return (
 		<>
 			<div>
@@ -47,13 +47,9 @@ const Profession = ({userData, inputProf}) => {
 					</div>
 				</label>
 				<div className="custom-select">
-					<div className="selected-option">
-						{selectedOptions.length === 0 ? "Selecciona una opción" : selectedOptions.join(", ")}
-					</div>
-
-					<div className="w-full h-20 options carousel carousel-vertical bg-pri-100 px-2 rounded-md">
+					<div className="w-full h-24 options carousel carousel-vertical bg-pri-100 rounded-md">
 						{options.map((option) => (
-							<div key={option} className="carousel-item flex justify-between hover:bg-pri-200">
+							<div key={option} className="carousel-item px-4 flex justify-between hover:bg-pri-200">
 								<span>{option}</span>
 								<input
 									type="checkbox"
@@ -64,6 +60,9 @@ const Profession = ({userData, inputProf}) => {
 								/>
 							</div>
 						))}
+					</div>
+					<div className="selected-option">
+						{selectedOptions.length === 0 ? "Selecciona una opción" : selectedOptions.join(", ")}
 					</div>
 				</div>
 			</div>

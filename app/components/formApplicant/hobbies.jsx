@@ -48,8 +48,8 @@
 // export default Hobbies;
 
 import Image from "next/image";
-import {useState} from "react";
-const Hobbies = ({userData, inputHobbies}) => {
+import { useState } from "react";
+const Hobbies = ({ userData, inputHobbies }) => {
 	const options = [
 		"Baile",
 		"Cine",
@@ -91,13 +91,9 @@ const Hobbies = ({userData, inputHobbies}) => {
 					</div>
 				</label>
 				<div className="custom-select">
-					<div className="selected-option">
-						{selectedOptions.length === 0 ? "Selecciona una opción" : selectedOptions.join(", ")}
-					</div>
-
-					<div className="w-full h-20 options carousel carousel-vertical bg-pri-100 px-2 rounded-md">
+					<div className="w-full h-24 options carousel carousel-vertical bg-pri-100 rounded-md">
 						{options.map((option) => (
-							<div key={option} className="carousel-item flex justify-between hover:bg-pri-200">
+							<div key={option} className="carousel-item px-4 flex justify-between hover:bg-pri-200">
 								<span>{option}</span>
 								<input
 									type="checkbox"
@@ -108,6 +104,9 @@ const Hobbies = ({userData, inputHobbies}) => {
 								/>
 							</div>
 						))}
+					</div>
+					<div className="selected-option">
+						{selectedOptions.length === 0 ? "Selecciona una opción" : selectedOptions.join(", ")}
 					</div>
 				</div>
 			</div>

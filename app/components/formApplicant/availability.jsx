@@ -1,7 +1,7 @@
 import Image from "next/image";
-import {useState} from "react";
+import { useState } from "react";
 
-const Availability = ({userData, handleChange, inputAvailability}) => {
+const Availability = ({ userData, handleChange, inputAvailability }) => {
 	const options = ["Full time", "Part time"];
 	const [selectedOption, setSelectedOption] = useState(null);
 
@@ -29,11 +29,11 @@ const Availability = ({userData, handleChange, inputAvailability}) => {
 				</div>
 			</label>
 			<div className="custom-select">
-				<div className="w-full h-fit options bg-pri-100 px-2 rounded-md">
+				<div className="w-full h-fit options bg-pri-100 rounded-md">
 					{options.map((option) => (
 						<div
 							key={option}
-							className={`carousel-item flex justify-between hover:bg-pri-200 ${
+							className={`carousel-item px-4 flex justify-between hover:bg-pri-200 ${
 								selectedOption === option ? "bg-pri-200" : ""
 							}`}
 							onClick={() => handleOptionClick(option)}>

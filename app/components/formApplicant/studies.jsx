@@ -1,10 +1,10 @@
 import Image from "next/image";
 
-const Studies = ({userData, handleChange, inputStudies}) => {
+const Studies = ({ userData, handleChange, inputStudies }) => {
 	return (
 		<div className="w-full mb-2">
 			<label htmlFor="university" className="ml-2 font-semibold">
-				¿Dónde estudiaste?
+				¿Dónde estudias/aste?
 				<div className="group inline-block">
 					<Image
 						src="/utils/asterisk_huntek.svg"

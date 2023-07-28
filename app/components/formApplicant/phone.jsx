@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const Phone = ({userData, handleChange, inputPhone}) => {
+const Phone = ({ userData, handleChange, inputPhone }) => {
 	return (
 		<div className="w-full mb-2">
 			<label htmlFor="phone" className="ml-2 font-semibold">
@@ -22,6 +22,7 @@ const Phone = ({userData, handleChange, inputPhone}) => {
 				type="tel"
 				inputMode="tel"
 				name="phone"
+				placeholder="Ingrese su teléfono"
 				disabled={!inputPhone}
 				value={userData.phone}
 				onChange={(event) => handleChange(event)}

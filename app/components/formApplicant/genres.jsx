@@ -1,10 +1,10 @@
 import Image from "next/image";
 
-const Genres = ({userData, handleChange, inputGenre}) => {
+const Genres = ({ userData, handleChange, inputGenre }) => {
 	return (
 		<div className="w-full mb-2">
 			<label htmlFor="genre" className="ml-2 font-semibold">
-				¿Con que género te sientes identificado?
+				¿Cuál es tu género?
 				<div className="group inline-block">
 					<Image
 						src="/utils/asterisk_huntek.svg"
@@ -20,8 +20,8 @@ const Genres = ({userData, handleChange, inputGenre}) => {
 			</label>
 			<select
 				name="genre"
-        value={userData.genre}
-        disabled={!inputGenre}
+				value={userData.genre}
+				disabled={!inputGenre}
 				onChange={(event) => handleChange(event)}
 				className="w-full px-2 py-1 bg-pri-100 text-gray-400 rounded-md focus:outline-none">
 				<option value="select" hidden>

@@ -1,7 +1,7 @@
 import Image from "next/image";
-import {useState} from "react";
+import { useState } from "react";
 
-const Experience = ({userData, inputExperience}) => {
+const Experience = ({ userData, inputExperience }) => {
 	const options = ["0", "1-4", "4-6", "6-9", "10-15"];
 	const [selectedOption, setSelectedOption] = useState(null);
 
@@ -30,11 +30,11 @@ const Experience = ({userData, inputExperience}) => {
 					</div>
 				</label>
 				<div className="custom-select">
-					<div className="w-full h-20 options carousel carousel-vertical bg-pri-100 px-2 rounded-md">
+					<div className="w-full h-12 options carousel carousel-vertical bg-pri-100 rounded-md">
 						{options.map((option) => (
 							<div
 								key={option}
-								className={`carousel-item flex justify-between hover:bg-pri-200 ${
+								className={`carousel-item flex px-2 justify-between hover:bg-pri-200 ${
 									selectedOption === option ? "bg-pri-200" : ""
 								}`}
 								onClick={() => handleOptionClick(option)}>

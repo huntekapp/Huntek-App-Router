@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const Birthdate = ({userData, handleChange, inputBirthdate}) => {
+const Birthdate = ({ userData, handleChange, inputBirthdate }) => {
 	return (
 		<div className="w-full mb-2">
 			<label htmlFor="birthdate" className="ml-2 font-semibold">
@@ -18,14 +18,16 @@ const Birthdate = ({userData, handleChange, inputBirthdate}) => {
 					</div>
 				</div>
 			</label>
-			<input
-				type="date"
-				name="birthdate"
-				disabled={!inputBirthdate}
-				value={userData.birthdate}
-				onChange={(event) => handleChange(event)}
-				className="w-full px-2 py-1 bg-pri-100 text-gray-400 rounded-md focus:outline-none"
-			/>
+			<div className="w-full h-8 bg-pri-100 rounded-lg">
+				<input
+					type="date"
+					name="birthdate"
+					disabled={!inputBirthdate}
+					value={userData.birthdate}
+					onChange={(event) => handleChange(event)}
+					className="w-full px-2 py-1 bg-pri-100 text-gray-400 rounded-md focus:outline-none"
+				/>
+			</div>
 		</div>
 	);
 };

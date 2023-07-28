@@ -1,11 +1,11 @@
 import Image from "next/image";
 
-const OptionsCity = ({userData, handleChange, inputCity}) => {
+const OptionsCity = ({ userData, handleChange, inputCity }) => {
 	return (
 		<>
 			<div className="w-full mb-2">
 				<label htmlFor="city" className="ml-2 font-semibold">
-					¿En qué ciudad te encuentras?
+					¿En qué ciudad vives?
 					<div className="group inline-block">
 						<Image
 							src="/utils/asterisk_huntek.svg"
