@@ -10,7 +10,7 @@ const Home = () => {
 
 	if (isLoading) {
 		return (
-			<div className="flex flex-col  justify-start h-full w-full">
+			<div className="flex flex-col justify-evenly h-full w-full">
 				<div className="h-24 w-60">
     <div className="flex flex-row items-center justify-start ml-6 h-full mt-2  animate-pulse">
         <div className="flex flex-col space-y-3">
@@ -21,17 +21,20 @@ const Home = () => {
         </div>
     </div>
 </div>
-				<div className=" flex w-64 animate-pulse gap-3 p-4">
-					<div className="h-16 w-16 rounded-full bg-slate-400"></div>
-					<div className="h-16 w-16 rounded-full bg-slate-400"></div>
-					<div className="h-16 w-16 rounded-full bg-slate-400"></div>
-					
+				<div className="card flex w-64 animate-pulse p-4">
+					<div className="card__skeleton flex flex-row bg-slate-400 card__title"></div>
+					<div className="flex flex-row gap-3">
+						<div className="h-16 w-16 rounded-full bg-slate-400"></div>
+						<div className="h-16 w-16 rounded-full bg-slate-400"></div>
+						<div className="h-16 w-16 rounded-full bg-slate-400"></div>
+					</div>
 				</div>
 				<div className="card animate-pulse">
 					<div className="card__skeleton bg-slate-400 card__title"></div>
 					<div className="card__skeleton bg-slate-400 card__description"></div>
 				</div>
 				<div className="card2 animate-pulse">
+					<div className="card__skeleton bg-slate-400 card__title"></div>
 					<div className="card__skeleton2 bg-slate-400 card__description2"></div>
 				</div>
 			</div>
