@@ -165,9 +165,10 @@ const ProfileExt = () => {
 			</div>
 		);
 	}
+	
 	return (
-		<main className="w-full px-3 bg-sec lg:max-w-full h-full lg:gap-6 lg:grid lg:grid-cols-2 lg:items-center">
-			<section className="lg:h-full text-pri text-center flex flex-col justify-start lg:justify-center items-center">
+		<main className="w-full px-3 lg:px-0 bg-sec lg:max-w-full h-full lg:gap-6">
+			<section className="lg:h-[90%] lg:w-2/4 text-pri text-center flex flex-col justify-start lg:justify-center items-center lg:fixed lg:z-30">
 				<article className="w-11/12 flex flex-col justify-center items-center">
 					<div className="relative border-8 border-pri rounded-full shadow-lg mt-5 lg:mt-0">
 						<Image
@@ -220,11 +221,11 @@ const ProfileExt = () => {
 					<p className="text-sm text-gray-500 mt-2">{`Ubicación actual ${userData.city}`}</p>
 				</article>
 				<div className="mt-4">{`Tu plan actual: ${selectedPlan ? selectedPlan : "Starter"}`}</div>
-				<article className="w-full h-1/6 mt-1 lg:-mt-1 flex flex-row  items-center justify-around">
+				<article className="w-full h-1/6 mt-1 lg:mb-16 lg:mr-1 flex flex-row items-center justify-center ">
 					<CarouselPlan handleSelectedPlan={handleSelectedPlan} />
 				</article>
 			</section>
-			<section className="flex flex-col lg:justify-around">
+			<section className="flex flex-col lg:justify-around lg:w-2/4 lg:ml-[50%]">
 				<article className="grid grid-cols-1 gap-3 justify-start ">
 					<h3 className="w-full text-2xl text-pri mt-5 text-start">Lo esencial</h3>
 

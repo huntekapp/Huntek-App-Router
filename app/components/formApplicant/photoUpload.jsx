@@ -54,7 +54,7 @@ subirImagen({
 				</div>
 				<form onSubmit={handleSubmit}>
 					<input id="dropzone-file" name="profile_picture" type="file" onChange={handleChange} value={imagen.profile_picture} className="hidden" />
-					<button className="absolute top-1/2 left-1/2 translate-x-1/2 translate-y-1/2">Subit foto</button>
+					<button className="absolute top-1/2 left-1/2 translate-x-1/2 translate-y-1/2">Subir foto</button>
 					</form>
 			</label>
 		</div>
