@@ -4,21 +4,21 @@ import InterviewsHomepage from "../interviewsHomepage";
 import InfoAlert from "./infoAlert";
 
 const hardcodedInterviews = [
-	// {
-	// 	enterprise: "Huntek",
-	// 	date: "22 SEP",
-	// 	hour: "15:30HS",
-	// },
-	// {
-	// 	enterprise: "Bimbo",
-	// 	date: "31 DIC",
-	// 	hour: "21:00HS",
-	// },
-	// {
-	// 	enterprise: "Pantene",
-	// 	date: "18 NOV",
-	// 	hour: "09:20HS",
-	// },
+	{
+		enterprise: "Huntek",
+		date: "22 SEP",
+		hour: "15:30HS",
+	},
+	{
+		enterprise: "Bimbo",
+		date: "31 DIC",
+		hour: "21:00HS",
+	},
+	{
+		enterprise: "Pantene",
+		date: "18 NOV",
+		hour: "09:20HS",
+	},
 ];
 
 const Interviews = () => {
