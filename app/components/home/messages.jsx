@@ -9,38 +9,38 @@ import SmsFailedIcon from '@mui/icons-material/SmsFailed';
 
 const Messages = () => {
 	const chats = [
-		// {
-		// 	id: 1,
-		// 	name: "Nico Front",
-		// 	image: "/images/pexels-monstera-5384445.jpg",
-		// 	enterprise: "Huntek",
-		// 	time: "17:00",
-		// 	msg: "2",
-		// },
-		// {
-		// 	id: 2,
-		// 	name: "Agus Cabral",
-		// 	image: "/images/pexels-monstera-5384445.jpg",
-		// 	enterprise: "Huntek",
-		// 	time: "16:54",
-		// 	msg: "1",
-		// },
-		// {
-		// 	id: 3,
-		// 	name: "Fran Vazquez",
-		// 	image: "/images/pexels-monstera-5384445.jpg",
-		// 	enterprise: "Huntek",
-		// 	time: "12:20",
-		// 	msg: "2",
-		// },
-		// {
-		// 	id: 4,
-		// 	name: "Mati Gigena",
-		// 	image: "/images/pexels-monstera-5384445.jpg",
-		// 	enterprise: "Huntek",
-		// 	time: "11:01",
-		// 	msg: "5",
-		// },
+		{
+			id: 1,
+			name: "Nico Front",
+			image: "/images/pexels-monstera-5384445.jpg",
+			enterprise: "Huntek",
+			time: "17:00",
+			msg: "2",
+		},
+		{
+			id: 2,
+			name: "Agus Cabral",
+			image: "/images/pexels-monstera-5384445.jpg",
+			enterprise: "Huntek",
+			time: "16:54",
+			msg: "1",
+		},
+		{
+			id: 3,
+			name: "Fran Vazquez",
+			image: "/images/pexels-monstera-5384445.jpg",
+			enterprise: "Huntek",
+			time: "12:20",
+			msg: "2",
+		},
+		{
+			id: 4,
+			name: "Mati Gigena",
+			image: "/images/pexels-monstera-5384445.jpg",
+			enterprise: "Huntek",
+			time: "11:01",
+			msg: "5",
+		},
 	];
 
 	const [getChats, { isLoading }] = useGetChatsMutation();
@@ -95,7 +95,7 @@ const Messages = () => {
 						<InfoAlert alertBody={"En esta sección verás tus chats con empresas"} />
 						<div className="text-pri absolute flex flex-col justify-center items-center">
 							<SmsFailedIcon className="text-4xl opacity-90 z-10"/>
-							<p className="z-10">¡Nada que mostrar por aquí!</p>
+							<p className="z-10 mt-2">¡Aquí se encontrarán tus mensajes mas recientes!</p>
 						</div>
 					</div>
 				)}

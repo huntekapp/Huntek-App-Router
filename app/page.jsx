@@ -22,7 +22,7 @@ export default function Landing() {
 	}, []);
 
 	return (
-		<section className="w-screen h-screen bg-pri grid place-content-center border-2 border-black">
+		<section className="w-screen h-screen darkrightgrad grid place-content-center border-2 border-black">
 			<div className={`w-[250px] h-[250px] bg-HKanimate ${ping && "animate-ping"}`}></div>
 		</section>
 	);
