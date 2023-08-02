@@ -62,7 +62,7 @@ const CarouselPlan = ({ handleSelectedPlan }) => {
 						<p className="text-lg text-center text-sec">$299mxn</p>
 						<input type="checkbox" id="modalPremium" className="modal-toggle" />
 						<div className="modal cursor-default">
-							<div className="modal-box bg-sec z-50">
+							<div className="modal-box bg-sec">
 								<div className="gap-6 flex flex-col justify-center items-center ">
 									<div className="w-11/12 bg-pri rounded-md flex flex-col justify-center items-center py-3 mt-4">
 										<h1 className="text-2xl font-semibold text-center text-sec mb-1">Premium</h1>
