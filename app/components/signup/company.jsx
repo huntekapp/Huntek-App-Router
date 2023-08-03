@@ -52,6 +52,7 @@ const CompanyForm = () => {
 		try {
 			await postUsers(fixedInput).unwrap();
 			dispatch(setEmail(fixedInput.email));
+			localStorage.setItem("email", fixedInput.email);
 			setSuccessReq("Email enviado con éxito")
 			setTimeout(() => {
 				router.push("/emailvalidate");

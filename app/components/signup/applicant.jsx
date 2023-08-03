@@ -49,6 +49,7 @@ const ApplicantForm = () => {
 		let inputValid = verifySignupInputs(input);
 		if (inputValid !== "valid") return setErrorCatched(inputValid);
 		setErrorCatched(null);
+		setSuccessReq(null)
 		try {
 			await postUsers(fixedInput).unwrap();
 			dispatch(setEmail(fixedInput.email));
