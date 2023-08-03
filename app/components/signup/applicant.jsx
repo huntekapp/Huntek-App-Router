@@ -93,7 +93,7 @@ const ApplicantForm = () => {
 						type="text"
 						name="email"
 						id="email"
-						value={input.email.toLowerCase()}
+						value={input.email}
 						className="w-full px-3 bg-transparent outline-none border-b rounded-none"
 						placeholder="Tu email"
 						onChange={handleChange}
