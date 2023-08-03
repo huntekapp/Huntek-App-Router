@@ -101,22 +101,22 @@ const EmailCode = () => {
 	};
 
 	return (
-		<main className="w-full flex justify-center">
+		<main className="w-full h-full flex flex-col justify-evenly items-center">
 			<Link href={"/login"}>
-				<Image
-					src={"/utils/back.svg"}
-					height={1}
-					width={1}
-					alt="backArrow"
-					loading={"eager"}
-					className="btn btn-ghost btn-circle absolute left-2 top-2 w-[50px] h-[50px] p-2"
-				/>
+					<Image
+						src={"/utils/back.svg"}
+						height={1}
+						width={1}
+						alt="backArrow"
+						loading={"eager"}
+						className="btn btn-ghost btn-circle w-[50px] h-[50px] p-2 absolute left-2 top-2 z-40"
+					/>
 			</Link>
-			<section className="w-full max-w-md h-screen font-medium text-sec flex flex-col items-center justify-evenly relative">
+			<section className="w-full max-w-md h-screen font-medium text-sec items-center relative">
 				<article className="w-full flex flex-col items-center">
 					<div className="w-40 h-40 bg-HKlogo bg-cover mt-10"></div>
 					<p className="text-3xl">Revisa tu email</p>
-					<p className="text-gray-400 text-center mt-2">
+					<p className="text-gray-400 text-center mt-2 mx-1">
 						Hemos enviado un código de verificación de seis dígitos a<b className="text-gray-200">{` ${email}`}</b>.
 						<br />
 						Asegúrate de ingresar correctamente el código.
