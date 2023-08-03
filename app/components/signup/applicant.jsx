@@ -13,7 +13,6 @@ const ApplicantForm = () => {
 	const [showPassword, setShowPassword] = useState(false);
 	const [successReq, setSuccessReq] = useState(null);
 	const [errorCatched, setErrorCatched] = useState(null);
-	const [check, setCheck] = useState(false);
 	const [postUsers, { isLoading }] = usePostUsersMutation();
 	const dispatch = useDispatch();
 	const router = useRouter();
@@ -33,14 +32,6 @@ const ApplicantForm = () => {
 		});
 	};
 
-	const handleCheck = (event) => {
-		setCheck(!check);
-		setInput({
-			...input,
-			[event.target.name]: event.target.checked,
-		});
-	};
-
 	const handleShowPassword = (event) => {
 		event.preventDefault();
 		setShowPassword(!showPassword);
@@ -48,14 +39,18 @@ const ApplicantForm = () => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
+		const fixedInput = {...input, email: input.email.toLowerCase()}
 		let inputValid = verifySignupInputs(input);
 		if (inputValid !== "valid") return setErrorCatched(inputValid);
+		setErrorCatched(null);
 		try {
-			await postUsers(input).unwrap();
-			dispatch(setEmail(input.email));
-			localStorage.setItem("email", input.email);
+			await postUsers(fixedInput).unwrap();
+			// dispatch(setEmail(fixedInput.email));
+			// localStorage.setItem("email", fixedInput.email);
 			setSuccessReq("Email enviado con éxito")
-			router.push("/emailvalidate");
+			setTimeout(() => {
+				router.push("/emailvalidate");
+			}, 2000);
 		} catch (error) {
 			if (error.status === "FETCH_ERROR")
 				return setErrorCatched("No se ha podido establecer conexión con el servidor.");

@@ -7,12 +7,12 @@ import { useRouter } from "next/navigation";
 import { setEmail } from "../../globalstore/features/emailSlice";
 import { useDispatch } from "react-redux";
 import verifySignupInputs from "../../helpers/verifySignUpInputs";
-import { AlertError } from "../alertsforrequest";
+import { AlertSuccess, AlertError } from "../alertsforrequest";
 
 const CompanyForm = () => {
 	const [showPassword, setShowPassword] = useState(false);
 	const [errorCatched, setErrorCatched] = useState(null);
-	const [check, setCheck] = useState(false);
+	const [successReq, setSuccessReq] = useState(null);
 	const [postUsers, { isLoading }] = usePostUsersMutation();
 	const dispatch = useDispatch();
 	const router = useRouter();
@@ -31,14 +31,6 @@ const CompanyForm = () => {
 		});
 	};
 
-	const handleCheck = (event) => {
-		setCheck(!check);
-		setInput({
-			...input,
-			[event.target.name]: event.target.checked,
-		});
-	};
-
 	const handleShowPassword = (event) => {
 		event.preventDefault();
 		setShowPassword(!showPassword);
@@ -46,18 +38,18 @@ const CompanyForm = () => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
+		const fixedInput = {...input, email: input.email.toLowerCase()}
 		let inputValid = verifySignupInputs(input);
 		if (inputValid !== "valid") return setErrorCatched(inputValid);
+		setErrorCatched(null);
+		setSuccessReq(null)
 		try {
-			await postUsers(input).unwrap();
-			dispatch(setEmail(input.email));
-			setInput({
-				company_name: "",
-				email: "",
-				password: "",
-				role_name: "company",
-			});
-			router.push("/emailvalidate");
+			await postUsers(fixedInput).unwrap();
+			dispatch(setEmail(fixedInput.email));
+			setSuccessReq("Email enviado con éxito")
+			setTimeout(() => {
+				router.push("/emailvalidate");
+			}, 2000);
 		} catch (error) {
 			if (error.status === "FETCH_ERROR")
 				return setErrorCatched("No se ha podido establecer conexión con el servidor.");
@@ -144,6 +136,7 @@ const CompanyForm = () => {
 				</p>
 			</article>
 			{errorCatched && <AlertError alertTitle={"Error!"} alertBody={errorCatched} setErrorCatched={setErrorCatched} />}
+			{successReq && <AlertSuccess alertTitle={"Success!"} alertBody={successReq} setSuccessReq={setSuccessReq} />}
 		</section>
 	);
 };
