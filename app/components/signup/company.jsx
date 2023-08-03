@@ -1,13 +1,14 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
-import { usePostUsersMutation } from "../../globalstore/services/log-reg-val/useRegister";
-import { useRouter } from "next/navigation";
 import { setEmail } from "../../globalstore/features/emailSlice";
+import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import verifySignupInputs from "../../helpers/verifySignUpInputs";
+import { usePostUsersMutation } from "../../globalstore/services/log-reg-val/useRegister";
 import { AlertSuccess, AlertError } from "../alertsforrequest";
+import verifySignupInputs from "../../helpers/verifySignUpInputs";
+import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
+import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 
 const CompanyForm = () => {
 	const [showPassword, setShowPassword] = useState(false);
@@ -106,20 +107,13 @@ const CompanyForm = () => {
 								onChange={handleChange}
 								onKeyUp={handleKeypress}
 							/>
-						<button onClick={handleShowPassword} className="absolute inset-y-0 end-0 grid place-content-center px-4">
-							{showPassword ? (
-								<Image
-									loading={"eager"}
-									src={"/utils/blink.svg"}
-									width={20}
-									height={20}
-									alt="blink"
-									unoptimized={true}
-								/>
-							) : (
-								<Image loading={"eager"} src={"/utils/notblink.svg"} width={20} height={20} alt="notblink" />
-							)}
-						</button>
+						<button onClick={handleShowPassword} className="absolute right-3" type="button">
+								{showPassword ? (
+									<VisibilityOffOutlinedIcon className="w-5 h-5 text-gray-500" />
+								) : (
+									<VisibilityOutlinedIcon className="w-5 h-5 text-gray-500" />
+								)}
+							</button>
 					</div>
 				</label>
 				<p className="text-xs text-gray-400 py-2 cursor-default">
