@@ -74,20 +74,25 @@ const EmailCode = () => {
 	const handleSubmitVerify = async (event) => {
 		event.preventDefault();
 		setErrorCatched(null);
+		setSuccessReq(null);
 		try {
 			let userNumber = Object.values(userCode.code).join("");
 			const response = await postVerif({ email: userCode.email, code: userNumber }).unwrap();
-			router.push("/login");
+			const { access_token } = response;
+			const token = access_token.split("'")[1]
+			const date = new Date();
+			date.setDate(date.getDate() + 7);
+			document.cookie = `kTnKETkt=${token}; expires=${date.toUTCString()}`;
+			setSuccessReq("Cuenta activada! \nRedireccionando...");
+			setTimeout(() => {
+				router.push("/userconfig");
+			}, 2000);
 		} catch (error) {
 			if (error.status === "FETCH_ERROR")
 				return setErrorCatched("No se ha podido establecer conexión con el servidor.");
 			if (error.data?.detail[0].msg) return setErrorCatched(error.data.detail[0].msg);
 			setErrorCatched(error.data?.detail);
 		}
-		setUserCode({
-			code: { 0: "", 1: "", 2: "", 3: "", 4: "", 5: "" },
-			email: userCode.email,
-		});
 	};
 
 	const handleSubmitResend = async (event) => {
@@ -155,9 +160,7 @@ const EmailCode = () => {
 						Verificar
 					</button>
 				</form>
-				{errorCatched && (
-					<AlertError alertTitle={"Error!"} alertBody={errorCatched} setErrorCatched={setErrorCatched} />
-				)}
+				{errorCatched && <AlertError alertTitle={"Error!"} alertBody={errorCatched} setErrorCatched={setErrorCatched} />}
 				{successReq && <AlertSuccess alertTitle={"Success!"} alertBody={successReq} setSuccessReq={setSuccessReq} />}
 			</section>
 		</main>
