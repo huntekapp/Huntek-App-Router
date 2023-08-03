@@ -45,8 +45,8 @@ const ApplicantForm = () => {
 		setErrorCatched(null);
 		try {
 			await postUsers(fixedInput).unwrap();
-			// dispatch(setEmail(fixedInput.email));
-			// localStorage.setItem("email", fixedInput.email);
+			dispatch(setEmail(fixedInput.email));
+			localStorage.setItem("email", fixedInput.email);
 			setSuccessReq("Email enviado con éxito")
 			setTimeout(() => {
 				router.push("/emailvalidate");
@@ -93,7 +93,7 @@ const ApplicantForm = () => {
 						type="text"
 						name="email"
 						id="email"
-						value={input.email}
+						value={input.email.toLowerCase()}
 						className="w-full px-3 bg-transparent outline-none border-b rounded-none"
 						placeholder="Tu email"
 						onChange={handleChange}
@@ -103,15 +103,15 @@ const ApplicantForm = () => {
 				<label htmlFor="password">
 					Contraseña
 					<div className="relative">
-							<input
-								type={showPassword ? "text" : "password"}
-								name="password"
-								id="password"
-								value={input.password}
-								className="w-full px-3 bg-transparent outline-none border-b rounded-none"
-								placeholder="Tu contraseña"
-								onChange={handleChange}
-							/>
+						<input
+							type={showPassword ? "text" : "password"}
+							name="password"
+							id="password"
+							value={input.password}
+							className="w-full px-3 bg-transparent outline-none border-b rounded-none"
+							placeholder="Tu contraseña"
+							onChange={handleChange}
+						/>
 						<button onClick={handleShowPassword} className="absolute inset-y-0 end-0 grid place-content-center px-4">
 							{showPassword ? (
 								<Image
