@@ -37,6 +37,12 @@ const ApplicantForm = () => {
 		setShowPassword(!showPassword);
 	};
 
+	const handleKeypress = (event) => {
+		if (event.keyCode === 13) {
+			handleSubmit(event)
+	 }
+	}
+
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		const fixedInput = {...input, email: input.email.toLowerCase()}
@@ -47,7 +53,7 @@ const ApplicantForm = () => {
 			await postUsers(fixedInput).unwrap();
 			dispatch(setEmail(fixedInput.email));
 			localStorage.setItem("email", fixedInput.email);
-			setSuccessReq("Email enviado con éxito")
+			setSuccessReq("Email enviado con éxito.")
 			setTimeout(() => {
 				router.push("/emailvalidate");
 			}, 2000);
@@ -111,6 +117,7 @@ const ApplicantForm = () => {
 							className="w-full px-3 bg-transparent outline-none border-b rounded-none"
 							placeholder="Tu contraseña"
 							onChange={handleChange}
+							onKeyUp={handleKeypress}
 						/>
 						<button onClick={handleShowPassword} className="absolute inset-y-0 end-0 grid place-content-center px-4">
 							{showPassword ? (
