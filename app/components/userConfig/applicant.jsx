@@ -139,11 +139,11 @@ const ApplicantConfig = () => {
 				</article>
 			) : (
 				<article className="w-full h-full p-4 flex flex-col justify-evenly items-center">
-					<main className="w-full h-[90%] carousel lg:grid lg:grid-cols-3 text-pri">
+					<main className="w-full h-[90%] carousel carousel-center lg:gap-4 text-pri">
 						<section
 							id="Q1"
-							className="carousel-item w-full h-full bg-sec rounded-xl flex flex-col justify-between items-center">
-							<h2 className="mt-8 text-xl font-medium">Información Importante</h2>
+							className="carousel-item w-full lg:w-1/2 h-full bg-sec rounded-xl flex flex-col justify-between items-center">
+							<h2 className="mt-[5%] text-xl font-medium">Información Importante</h2>
 							<article className="w-full flex flex-col justify-around items-center">
 								<div className="w-32 h-32 border-4 border-pri rounded-full relative">
 									<Image
@@ -180,14 +180,14 @@ const ApplicantConfig = () => {
 								onClick={() => {
 									handleUpload, setProgress(16.6);
 								}}
-								className="w-fit mb-8 px-2 py-1 bg-pri-200 text-pri rounded-lg shadow-lg hover:bg-pri hover:text-sec">
+								className="w-fit mb-[5%] px-2 py-1 bg-pri-200 text-pri rounded-lg shadow-lg hover:bg-pri hover:text-sec">
 								Siguiente
 							</a>
 						</section>
 						<section
 							id="Q2"
-							className="carousel-item w-full h-full bg-sec rounded-xl flex flex-col justify-between items-center">
-							<p className="text-xl font-medium">Información Personal</p>
+							className="carousel-item w-full lg:w-1/2 h-full bg-sec rounded-xl flex flex-col justify-between items-center">
+							<p className="mt-[5%] text-xl font-medium">Información Personal</p>
 							<article className="w-11/12">
 								<Phone userData={userData} handleChange={handleChange} inputPhone={true} />
 							</article>
@@ -200,7 +200,7 @@ const ApplicantConfig = () => {
 							<article className="w-11/12">
 								<Country userData={userData} handleChange={handleChange} inputCountry={true} />
 							</article>
-							<article className="mb-8 flex flex-row gap-4">
+							<article className="mb-[5%] flex flex-row gap-4">
 								<a
 									href="#Q1"
 									onClick={() => {
@@ -221,8 +221,8 @@ const ApplicantConfig = () => {
 						</section>
 						<section
 							id="Q3"
-							className="carousel-item w-full h-full bg-sec rounded-xl flex flex-col justify-between items-center">
-							<p className="text-xl font-medium">Información Académica</p>
+							className="carousel-item w-full lg:w-1/2 h-full bg-sec rounded-xl flex flex-col justify-between items-center">
+							<p className="mt-[5%] text-xl font-medium">Información Académica</p>
 							<article className="w-11/12">
 								<Academic userData={userData} handleChange={handleChange} inputAcademic={true} />
 							</article>
@@ -232,7 +232,7 @@ const ApplicantConfig = () => {
 							<article className="w-11/12">
 								<Career userData={userData} handleChange={handleChange} inputCareer={true} />
 							</article>
-							<article className="mb-8 flex flex-row gap-4">
+							<article className="mb-[5%] flex flex-row gap-4">
 								<a
 									href="#Q2"
 									onClick={() => {
@@ -253,8 +253,8 @@ const ApplicantConfig = () => {
 						</section>
 						<section
 							id="Q4"
-							className="carousel-item w-full h-full bg-sec rounded-xl flex flex-col justify-between items-center">
-							<p className="text-xl font-medium">Información Adicional</p>
+							className="carousel-item w-full lg:w-1/2 h-full bg-sec rounded-xl flex flex-col justify-between items-center">
+							<p className="mt-[5%] text-xl font-medium">Información Adicional</p>
 							<article className="w-11/12">
 								<OptionsCity userData={userData} handleChange={handleChange} inputCity={true} />
 							</article>
@@ -264,7 +264,7 @@ const ApplicantConfig = () => {
 							<article className="w-11/12">
 								<Hobbies userData={userData} handleChange={handleChange} inputHobbies={true} />
 							</article>
-							<article className="mb-8 flex flex-row gap-4">
+							<article className="mb-[5%] flex flex-row gap-4">
 								<a
 									href="#Q3"
 									onClick={() => {
@@ -285,8 +285,8 @@ const ApplicantConfig = () => {
 						</section>
 						<section
 							id="Q5"
-							className="carousel-item w-full h-full bg-sec rounded-xl flex flex-col justify-between items-center">
-							<p className="text-xl font-medium">Información Adicional</p>
+							className="carousel-item w-full lg:w-1/2 h-full bg-sec rounded-xl flex flex-col justify-between items-center">
+							<p className="mt-[5%] text-xl font-medium">Información Adicional</p>
 							<article className="w-11/12">
 								<Reubication userData={userData} handleChange={handleChange} inputReubication={true} />
 							</article>
@@ -296,7 +296,7 @@ const ApplicantConfig = () => {
 							<article className="w-11/12">
 								<Experience userData={userData} handleChange={handleChange} inputExperience={true} />
 							</article>
-							<article className="mb-8 flex flex-row gap-4">
+							<article className="mb-[5%] flex flex-row gap-4">
 								<a
 									href="#Q4"
 									onClick={() => {
@@ -317,8 +317,8 @@ const ApplicantConfig = () => {
 						</section>
 						<section
 							id="Q6"
-							className="carousel-item w-full h-full bg-sec rounded-xl flex flex-col justify-between items-center">
-							<p className="text-xl font-medium">Información Adicional</p>
+							className="carousel-item w-full lg:w-1/2 h-full bg-sec rounded-xl flex flex-col justify-between items-center">
+							<p className="mt-[5%] text-xl font-medium">Información Adicional</p>
 							<article className="w-11/12">
 								<Income userData={userData} handleChange={handleChange} inputIncome={true} />
 							</article>
@@ -328,7 +328,7 @@ const ApplicantConfig = () => {
 							<article className="w-11/12">
 								<FormOfWork userData={userData} handleChange={handleChange} inputFormOfWork={true} />
 							</article>
-							<article className="mb-8 flex flex-row gap-4">
+							<article className="mb-[5%] flex flex-row gap-4">
 								<a
 									href="#Q5"
 									onClick={() => {
