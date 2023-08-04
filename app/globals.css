@@ -11,10 +11,6 @@
   height: 100svh;
 }
 
-.h-home {
-  height: 100svh;
-}
-
 .h-homecontent {
   height: calc(100svh - 10% - 80px);
 }
@@ -203,6 +199,12 @@ select:-webkit-autofill:focus {
 }
 .border-grad {
   border-color: linear-gradient(90deg, #ffffff, #00000000);
+}
+.advance-grad {
+  background-image: linear-gradient(90deg, #53b1a4, #046255);
+}
+.premium-grad {
+  background-image: linear-gradient(90deg, #fdff8b, #fbff02);
 }
 
 ::-webkit-scrollbar {
