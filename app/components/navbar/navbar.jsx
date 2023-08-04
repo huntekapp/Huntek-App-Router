@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -17,37 +17,45 @@ const NavBar = () => {
 				name: "Tienes una nueva cita!",
 				value:
 					"Aunque nadie lo pueda creer, tienes una nueva cita! De manera totalmente increible, una fémina le dio me gusta a tu carta e hicieron match, estamos seguros de que vas a tener que bañarte por primera vez en los ultimos seis meses.",
+				unreaded: true
 			},
 			{
 				name: "Te han bloqueado.",
 				value:
 					"Lamentamos informarte que has sido bloqueado por la usuaria @dualipa_temperley debido a que has spameado su casilla de mensajes.",
+				unreaded: true
 			},
 			{
 				name: "Actualizacion.",
 				value: `Hemos actualizado nuestra politica.`,
+				unreaded: true
 			},
-			{
-				name: "La notificacion mas larga de la historia",
-				value: `En esta notificacion vamos a concentrarnos en explayar lo más posible este texto. Cada vez que un gato salta al techo del vecino las placas tectonicas de la zona aledaña deciden moverse en el eje y en un angulo de 45 grados. Este movimiento produce maremotos en las costas Tailandesas, haciendo que los barcos pesqueros Japoneses tomen la retirada debido a las inminentes inundaciones que se avecinan a sus vecinos alemanes.`,
-			},
-			{
-				name: "Notifid",
-				value: `Lorem ipsum dolor, etc etc. Quien escribió esto? Por que lo veo en todos lados?`,
-			},
-			{
-				name: "Marco Polo",
-				value: `Lorem ipsum dolor, etc etc. Quien escribió esto? Por que lo veo en todos lados?`,
-			},
-			{
-				name: "Usurpa Door",
-				value: `Lorem ipsum dolor, etc etc. Quien escribió esto? Por que lo veo en todos lados?`,
-			},
+			// {
+			// 	name: "La notificacion mas larga de la historia",
+			// 	value: `En esta notificacion vamos a concentrarnos en explayar lo más posible este texto. Cada vez que un gato salta al techo del vecino las placas tectonicas de la zona aledaña deciden moverse en el eje y en un angulo de 45 grados. Este movimiento produce maremotos en las costas Tailandesas, haciendo que los barcos pesqueros Japoneses tomen la retirada debido a las inminentes inundaciones que se avecinan a sus vecinos alemanes.`,
+			// 	unreaded: true
+			// },
+			// {
+			// 	name: "Notifid",
+			// 	value: `Lorem ipsum dolor, etc etc. Quien escribió esto? Por que lo veo en todos lados?`,
+			// 	unreaded: true
+			// },
+			// {
+			// 	name: "Marco Polo",
+			// 	value: `Lorem ipsum dolor, etc etc. Quien escribió esto? Por que lo veo en todos lados?`,
+			// 	unreaded: true
+			// },
+			// {
+			// 	name: "Usurpa Door",
+			// 	value: `Lorem ipsum dolor, etc etc. Quien escribió esto? Por que lo veo en todos lados?`,
+			// 	unreaded: true
+			// },
 		],
 	});
 	const currentPath = usePathname();
 	const [closeProfile, setCloseProfile] = useState(false);
 	const [closeNotif, setCloseNotif] = useState(false);
+	const [unreadNotif, setUnreadNotif] = useState(false)
 
 	return (
 		<nav className="navbar h-[10%] px-4 bg-pri shadow-xl">
@@ -98,13 +106,14 @@ const NavBar = () => {
 							<label
 								htmlFor="notif"
 								className="p-1 grid place-content-center rounded-full hover:bg-pri-100 hover:scale-125 duration-200 cursor-pointer">
+								{unreadNotif && <p className="absolute text-yellow-500 right-0 -top-2  md:-top-1 text-3xl md:text-2xl ">●</p>}
 								<NotificationsNoneOutlinedIcon className="w-6 h-6 text-sec hover:text-pri" />
 							</label>
 						</div>
 						<div className="drawer-side z-50">
 							<ul className="w-full h-screen bg-sec">
 								<li>
-									<Notification user={user} closeNotif={closeNotif} setCloseNotif={setCloseNotif} />
+									<Notification user={user} closeNotif={closeNotif} setCloseNotif={setCloseNotif} unreadNotif={unreadNotif} setUnreadNotif={setUnreadNotif} />
 								</li>
 							</ul>
 						</div>
