@@ -19,20 +19,20 @@ const Notification = ({ user, setCloseNotif, closeNotif }) => {
 						document.getElementById("notif").click();
 						setCloseNotif(!closeNotif);
 					}}
-					className="w-[5%] grid place-content-center">
-					<CloseOutlinedIcon className="w-6 h-6 rounded-full hover:bg-pri-100 hover:scale-125 duration-150" />
+					className="w-6 h-6 rounded-full grid place-content-center hover:bg-pri-100 hover:scale-125 duration-150">
+					<CloseOutlinedIcon />
 				</button>
-				<h1 className="w-[90%] text-3xl font-bold grid place-content-center cursor-default">Notificaciones</h1>
-				<div className="w-[5%]"></div>
+				<h1 className="w-full text-center text-3xl font-bold cursor-default">Notificaciones</h1>
+				<div className="w-6 h-6"></div>
 			</section>
-			<section className="w-full h-[90%] carousel carousel-vertical">
+			<section className="w-full h-[90%] carousel-vertical scrollnice">
 				{notis.map((noti, index) => {
 					return (
 						<article
 							key={index}
 							className="w-full h-24 border-b cursor-default carousel-item flex flex-row justify-center items-center relative">
-							<div className="w-[5%] grid px-8 place-content-center">●</div>
-							<div className="w-[95%] h-full pr-4 flex flex-col justify-center">
+							<div className="w-6 h-6 grid px-8 place-content-center">●</div>
+							<div className="w-full h-full pr-4 flex flex-col justify-center">
 								<h2 className="text-lg font-medium line-clamp-1">{noti.name}</h2>
 								<h3 className="h-12 text-base text-pri-500 font-light line-clamp-2">
 									<a
@@ -52,7 +52,7 @@ const Notification = ({ user, setCloseNotif, closeNotif }) => {
 									</div>
 								</h3>
 							</div>
-							<div className="absolute top-3 right-3">
+							<div className="w-6 h-full pr-8 py-4 flex flex-row items-start">
 								<button onClick={() => handleClick(noti.name)}>
 									<CloseOutlinedIcon className="w-4 h-4 hover:scale-125 duration-150" />
 								</button>

@@ -11,7 +11,7 @@ import Profile from "./profile";
 
 const NavBar = () => {
 	const [user, setUser] = useState({
-		image: "/images/pexels-monstera-5384445.jpg",
+		image: "/images/defaultPhoto.png",
 		notification: [
 			{
 				name: "Tienes una nueva cita!",
