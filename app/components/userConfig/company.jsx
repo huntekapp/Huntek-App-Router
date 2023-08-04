@@ -1,7 +1,7 @@
 const CompanyConfig = () => {
 	return (
 		<section>
-			<form action=""></form>
+			<form className="bg-Huntek bg-contain w-screen h-screen center">Este es el form chango</form>
 		</section>
 	);
 };

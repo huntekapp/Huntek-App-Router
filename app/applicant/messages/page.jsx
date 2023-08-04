@@ -1,4 +1,4 @@
-import MessagesExtend from "../components/messagesExtend";
+import MessagesExtend from "../../components/messagesExtend";
 
 const Messages = () => {
 	return (
