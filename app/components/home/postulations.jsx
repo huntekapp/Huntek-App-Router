@@ -1,5 +1,5 @@
 "use client";
-import InfoAlert from "./infoAlert"
+import InfoAlert from "./infoAlert";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -16,8 +16,8 @@ const Postulations = () => {
 	];
 
 	return (
-		<article className="w-full h-1/5 flex flex-col justify-around">
-			<div className="w-full px-4 mb-1 flex flex-row justify-between">
+		<article className="w-full h-1/5 flex flex-col justify-center">
+			<div className="h-6 px-4 mb-1 flex flex-row justify-between">
 				<p>Mis postulaciones</p>
 				<Link href="/postulations" className="font-medium">
 					Ver todas
@@ -29,7 +29,7 @@ const Postulations = () => {
 						<div key={index} className="carousel-item avatar">
 							<Link
 								href={`/postulations/${post.id}`}
-								className="w-[70px] h-[70px] border-4 border-pri rounded-full relative">
+								className="w-[65px] h-[65px] border-4 border-pri rounded-full relative">
 								<Image
 									src={post.image}
 									alt={post.id}
@@ -42,10 +42,10 @@ const Postulations = () => {
 					))}
 				</div>
 			) : (
-					<div className="w-full h-full px-2 flex justify-center items-center relative">
-						<InfoAlert alertBody={"Aquí tendrás una vista previa de todas tus postulaciones"} />
-						<p className="text-pri absolute z-10">Aún no tienes postulaciones...</p>
-					</div>
+				<div className="w-full h-full px-2 flex justify-center items-center relative">
+					<InfoAlert alertBody={"Aquí tendrás una vista previa de todas tus postulaciones"} />
+					<p className="text-pri absolute z-10">Aún no tienes postulaciones...</p>
+				</div>
 			)}
 		</article>
 	);

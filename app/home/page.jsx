@@ -1,11 +1,13 @@
-import NavBar from "../components/navbar";
+import NavBar from "../components/navbar/navbar";
 import Home from "../components/home/home";
+import Footbar from "../components/footbar";
 
 const HomePage = () => {
 	return (
-		<main className="h-home lightcentergrad flex flex-col justify-between">
+		<main className="w-full h-screen lightcentergrad flex flex-col justify-between">
 			<NavBar />
 			<Home />
+			<Footbar />
 		</main>
 	);
 };
