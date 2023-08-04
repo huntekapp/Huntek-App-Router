@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Academic = ({ userData, handleChange, inputAcademic }) => {
 	return (
-		<div className="w-full mb-2">
+		<div className="w-full text-pri">
 			<label htmlFor="studies" className="ml-2 font-semibold">
 				¿Cuál es tu situación academica?
 				<div className="group inline-block">
@@ -20,10 +20,10 @@ const Academic = ({ userData, handleChange, inputAcademic }) => {
 			</label>
 			<select
 				name="studies"
-        value={userData.studies}
-        disabled={!inputAcademic}
+				value={userData.studies}
+				disabled={!inputAcademic}
 				onChange={(event) => handleChange(event)}
-				className="w-full px-2 py-1 bg-pri-100 text-gray-400 rounded-md focus:outline-none">
+				className="w-full px-2 py-1 bg-pri-100 text-pri rounded-md focus:outline-none">
 				<option value="select" hidden>
 					Selecciona una opción
 				</option>

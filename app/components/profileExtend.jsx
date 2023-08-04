@@ -145,11 +145,6 @@ const ProfileExt = () => {
 		setInputAcademic(!inputAcademic);
 	};
 
-	const [selectedPlan, setSelectedPlan] = useState(null);
-	const handleSelectedPlan = (plan) => {
-		setSelectedPlan(plan);
-	};
-
 	const handleChange = (event) => {
 		event.preventDefault();
 		setUserData({
@@ -165,9 +160,9 @@ const ProfileExt = () => {
 			</div>
 		);
 	}
-	
+
 	return (
-		<main className="w-full px-3 lg:px-0 bg-sec lg:max-w-full h-full lg:gap-6">
+		<main className="w-full h-screen flex flex-col md:flex-row justify-start items-center">
 			<section className="lg:h-[90%] lg:w-2/4 text-pri text-center flex flex-col justify-start lg:justify-center items-center lg:fixed lg:z-30">
 				<article className="w-11/12 flex flex-col justify-center items-center">
 					<div className="relative border-8 border-pri rounded-full shadow-lg mt-5 lg:mt-0">
@@ -179,7 +174,6 @@ const ProfileExt = () => {
 							loading={"eager"}
 							className="rounded-full aspect-square"
 						/>
-
 						<div className="flex justify-between items-center">
 							<label htmlFor="modalFotoUpload" className="text-lg font-light cursor-pointer w-full relative">
 								<Image
@@ -193,11 +187,11 @@ const ProfileExt = () => {
 							</label>
 							<input type="checkbox" id="modalFotoUpload" className="modal-toggle" />
 							<div className="modal">
-								<div className="modal-box">
+								<div className="modal-box bg-sec">
 									<PhotoUpload handleID={data?.id} />
 									<div className="modal-action">
 										<button
-											className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100"
+											className="btn bg-pri text-sec focus:text-pri focus:bg-pri-100"
 											onClick={handleInputPhotoUpload}>
 											{inputPhotoUpload === true ? "Guardar" : "Editar"}
 										</button>
@@ -220,10 +214,6 @@ const ProfileExt = () => {
 					<p className="text-md text-gray-500 mt-2">{`${userData.mail}`}</p>
 					<p className="text-sm text-gray-500 mt-2">{`Ubicación actual ${userData.city}`}</p>
 				</article>
-				<div className="mt-4">{`Tu plan actual: ${selectedPlan ? selectedPlan : "Starter"}`}</div>
-				<article className="w-full h-1/6 mt-1 lg:mb-16 lg:mr-1 flex flex-row items-center justify-center ">
-					<CarouselPlan handleSelectedPlan={handleSelectedPlan} />
-				</article>
 			</section>
 			<section className="flex flex-col lg:justify-around lg:w-2/4 lg:ml-[50%]">
 				<article className="grid grid-cols-1 gap-3 justify-start ">
@@ -236,12 +226,10 @@ const ProfileExt = () => {
 						</label>
 						<input type="checkbox" id="modalEstudios" className="modal-toggle" />
 						<div className="modal">
-							<div className="modal-box flex flex-col">
+							<div className="modal-box bg-sec flex flex-col">
 								<Academic handleChange={handleChange} userData={userData} inputAcademic={inputAcademic} />
 								<div className="modal-action">
-									<button
-										className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100"
-										onClick={handleInputAcademic}>
+									<button className="btn bg-pri text-sec focus:text-pri focus:bg-pri-100" onClick={handleInputAcademic}>
 										{inputAcademic === true ? "Guardar" : "Editar"}
 									</button>
 									<label htmlFor="modalEstudios" className="btn">
@@ -259,12 +247,10 @@ const ProfileExt = () => {
 						</label>
 						<input type="checkbox" id="modalDondeEstudiaste" className="modal-toggle" />
 						<div className="modal">
-							<div className="modal-box flex flex-col">
+							<div className="modal-box bg-sec flex flex-col">
 								<Studies handleChange={handleChange} userData={userData} inputStudies={inputStudies} />
 								<div className="modal-action">
-									<button
-										className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100"
-										onClick={handleInputStudies}>
+									<button className="btn bg-pri text-sec focus:text-pri focus:bg-pri-100" onClick={handleInputStudies}>
 										{inputStudies === true ? "Guardar" : "Editar"}
 									</button>
 									<label htmlFor="modalDondeEstudiaste" className="btn">
@@ -282,11 +268,11 @@ const ProfileExt = () => {
 						</label>
 						<input type="checkbox" id="modalIdiomas" className="modal-toggle" />
 						<div className="modal">
-							<div className="modal-box flex flex-col">
+							<div className="modal-box bg-sec flex flex-col">
 								<Languages handleChange={handleChange} userData={userData} inputLanguages={inputLanguages} />
 								<div className="modal-action">
 									<button
-										className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100"
+										className="btn bg-pri text-sec focus:text-pri focus:bg-pri-100"
 										onClick={handleInputLanguages}>
 										{inputLanguages === true ? "Guardar" : "Editar"}
 									</button>
@@ -305,12 +291,10 @@ const ProfileExt = () => {
 						</label>
 						<input type="checkbox" id="modalNacimiento" className="modal-toggle" />
 						<div className="modal">
-							<div className="modal-box">
+							<div className="modal-box bg-sec">
 								<Country handleChange={handleChange} userData={userData} inputCountry={inputCountry} />
 								<div className="modal-action">
-									<button
-										className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100"
-										onClick={handleInputCountry}>
+									<button className="btn bg-pri text-sec focus:text-pri focus:bg-pri-100" onClick={handleInputCountry}>
 										{inputCountry === true ? "Guardar" : "Editar"}
 									</button>
 									<label htmlFor="modalNacimiento" className="btn">
@@ -328,10 +312,10 @@ const ProfileExt = () => {
 						</label>
 						<input type="checkbox" id="modalQueEstudias" className="modal-toggle" />
 						<div className="modal">
-							<div className="modal-box">
+							<div className="modal-box bg-sec">
 								<Career handleChange={handleChange} userData={userData} inputCareer={inputCareer} />
 								<div className="modal-action">
-									<button className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100" onClick={handleInputCareer}>
+									<button className="btn bg-pri text-sec focus:text-pri focus:bg-pri-100" onClick={handleInputCareer}>
 										{inputCareer === true ? "Guardar" : "Editar"}
 									</button>
 									<label htmlFor="modalQueEstudias" className="btn">
@@ -343,13 +327,13 @@ const ProfileExt = () => {
 					</div>
 
 					<div className="flex justify-between items-center">
-						<label htmlFor="modalDondeVives" className="text-lg font-light  cursor-pointer w-full relative">
+						<label htmlFor="modalDondeVives" className="text-lg font-light cursor-pointer w-full relative">
 							<LocationOnIcon /> Donde vives?
 							<NavigateNextOutlinedIcon className="absolute right-0 top-[3px]" />
 						</label>
 						<input type="checkbox" id="modalDondeVives" className="modal-toggle" />
 						<div className="modal">
-							<div className="modal-box">
+							<div className="modal-box bg-sec">
 								<OptionsCity handleChange={handleChange} userData={userData} inputCity={inputCity} />
 								<div className="modal-action">
 									<button className="btn bg-pri text-sec hover:text-pri" onClick={handleInputCity}>
@@ -370,12 +354,10 @@ const ProfileExt = () => {
 						</label>
 						<input type="checkbox" id="modalHobbies" className="modal-toggle" />
 						<div className="modal">
-							<div className="modal-box flex flex-col">
+							<div className="modal-box bg-sec flex flex-col">
 								<Hobbies handleChange={handleChange} userData={userData} inputHobbies={inputHobbies} />
 								<div className="modal-action">
-									<button
-										className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100"
-										onClick={handleInputHobbies}>
+									<button className="btn bg-pri text-sec focus:text-pri focus:bg-pri-100" onClick={handleInputHobbies}>
 										{inputHobbies === true ? "Guardar" : "Editar"}
 									</button>
 									<label htmlFor="modalHobbies" className="btn">
@@ -393,7 +375,7 @@ const ProfileExt = () => {
 						</label>
 						<input type="checkbox" id="modalGenero" className="modal-toggle" />
 						<div className="modal">
-							<div className="modal-box">
+							<div className="modal-box bg-sec">
 								<Genres handleChange={handleChange} userData={userData} inputGenre={inputGenre} />
 								<div className="modal-action">
 									<button className="btn bg-pri text-sec hover:text-pri" onClick={handleInputGenre}>
@@ -414,10 +396,10 @@ const ProfileExt = () => {
 						</label>
 						<input type="checkbox" id="modalTelefono" className="modal-toggle" />
 						<div className="modal">
-							<div className="modal-box">
+							<div className="modal-box bg-sec">
 								<Phone handleChange={handleChange} userData={userData} inputPhone={inputPhone} />
 								<div className="modal-action">
-									<button className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100" onClick={handleInputPhone}>
+									<button className="btn bg-pri text-sec focus:text-pri focus:bg-pri-100" onClick={handleInputPhone}>
 										{inputPhone === true ? "Guardar" : "Editar"}
 									</button>
 									<label htmlFor="modalTelefono" className="btn">
@@ -435,11 +417,11 @@ const ProfileExt = () => {
 						</label>
 						<input type="checkbox" id="modalEdad" className="modal-toggle" />
 						<div className="modal">
-							<div className="modal-box">
+							<div className="modal-box bg-sec">
 								<Birthdate handleChange={handleChange} userData={userData} inputBirthdate={inputBirthdate} />
 								<div className="modal-action">
 									<button
-										className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100"
+										className="btn bg-pri text-sec focus:text-pri focus:bg-pri-100"
 										onClick={handleInputBirthdate}>
 										{inputBirthdate === true ? "Guardar" : "Editar"}
 									</button>
@@ -461,11 +443,11 @@ const ProfileExt = () => {
 						</label>
 						<input type="checkbox" id="modalReubicarte" className="modal-toggle" />
 						<div className="modal">
-							<div className="modal-box">
+							<div className="modal-box bg-sec">
 								<Reubication handleChange={handleChange} userData={userData} inputReubication={inputReubication} />
 								<div className="modal-action">
 									<button
-										className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100"
+										className="btn bg-pri text-sec focus:text-pri focus:bg-pri-100"
 										onClick={handleInputReubication}>
 										{inputReubication === true ? "Guardar" : "Editar"}
 									</button>
@@ -484,10 +466,10 @@ const ProfileExt = () => {
 						</label>
 						<input type="checkbox" id="modalAreasInteres" className="modal-toggle" />
 						<div className="modal">
-							<div className="modal-box">
+							<div className="modal-box bg-sec">
 								<Profession userData={userData} inputProf={inputProf} />
 								<div className="modal-action">
-									<button className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100" onClick={handleInputProf}>
+									<button className="btn bg-pri text-sec focus:text-pri focus:bg-pri-100" onClick={handleInputProf}>
 										{inputProf === true ? "Guardar" : "Editar"}
 									</button>
 									<label htmlFor="modalAreasInteres" className="btn">
@@ -505,11 +487,11 @@ const ProfileExt = () => {
 						</label>
 						<input type="checkbox" id="modalExperiencia" className="modal-toggle" />
 						<div className="modal">
-							<div className="modal-box">
+							<div className="modal-box bg-sec">
 								<Experience userData={userData} handleChange={handleChange} inputExperience={inputExperience} />
 								<div className="modal-action">
 									<button
-										className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100"
+										className="btn bg-pri text-sec focus:text-pri focus:bg-pri-100"
 										onClick={handleInputExperience}>
 										{inputExperience === true ? "Guardar" : "Editar"}
 									</button>
@@ -528,10 +510,10 @@ const ProfileExt = () => {
 						</label>
 						<input type="checkbox" id="modalSalario" className="modal-toggle" />
 						<div className="modal">
-							<div className="modal-box">
+							<div className="modal-box bg-sec">
 								<Income userData={userData} handleChange={handleChange} inputIncome={inputIncome} />
 								<div className="modal-action">
-									<button className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100" onClick={handleInputIncome}>
+									<button className="btn bg-pri text-sec focus:text-pri focus:bg-pri-100" onClick={handleInputIncome}>
 										{inputIncome === true ? "Guardar" : "Editar"}
 									</button>
 									<label htmlFor="modalSalario" className="btn">
@@ -549,11 +531,11 @@ const ProfileExt = () => {
 						</label>
 						<input type="checkbox" id="modalDisponibilidad" className="modal-toggle" />
 						<div className="modal">
-							<div className="modal-box">
+							<div className="modal-box bg-sec">
 								<Availability userData={userData} handleChange={handleChange} inputAvailability={inputAvailability} />
 								<div className="modal-action">
 									<button
-										className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100"
+										className="btn bg-pri text-sec focus:text-pri focus:bg-pri-100"
 										onClick={handleInputAvailability}>
 										{inputAvailability === true ? "Guardar" : "Editar"}
 									</button>
@@ -572,11 +554,11 @@ const ProfileExt = () => {
 						</label>
 						<input type="checkbox" id="modalFormaTrabajo" className="modal-toggle" />
 						<div className="modal">
-							<div className="modal-box">
+							<div className="modal-box bg-sec">
 								<FormOfWork userData={userData} handleChange={handleChange} inputFormOfWork={inputFormOfWork} />
 								<div className="modal-action">
 									<button
-										className="btn  bg-pri text-sec  focus:text-pri focus:bg-pri-100"
+										className="btn bg-pri text-sec focus:text-pri focus:bg-pri-100"
 										onClick={handleInputFormOfWork}>
 										{inputFormOfWork === true ? "Guardar" : "Editar"}
 									</button>
