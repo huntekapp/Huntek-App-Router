@@ -10,9 +10,8 @@ const Income = ({ userData, handleChange, inputIncome }) => {
 				<div tabIndex={0}>
 					<NotListedLocationOutlinedIcon className="pb-1" />
 				</div>
-				<div tabIndex={0} className="w-fit px-2 py-1 dropdown-content -translate-x-20 z-[1] shadow bg-sec rounded-box">
-					Requerido
-					<p className="text-sm text-gray-500">(Ejm 20,000 x 12 = 240,000) Sin incluir prestaciones</p>
+				<div tabIndex={0} className="w-52 px-2 py-1 dropdown-content -translate-x-44 z-[1] shadow bg-sec rounded-box">
+					<p className="text-sm text-gray-500">Sueldo anual promedio (incluyendo comisiones)</p>
 				</div>
 			</span>
 			<input

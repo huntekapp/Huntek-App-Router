@@ -1,5 +1,6 @@
-import Image from "next/image";
 import { useState } from "react";
+import NotListedLocationOutlinedIcon from "@mui/icons-material/NotListedLocationOutlined";
+
 const Profession = ({ userData, inputProf }) => {
 	const options = [
 		"Servicios legales",
@@ -33,18 +34,16 @@ const Profession = ({ userData, inputProf }) => {
 			<div>
 				<label htmlFor="profession" className="ml-2 font-semibold">
 					¿En que área te gustaria trabajar?
-					<div className="group inline-block">
-						<Image
-							src="/utils/asterisk_huntek.svg"
-							width={16}
-							height={16}
-							alt="asterisco"
-							className="ml-2 aspect-square"
-						/>
-						<div className="opacity-0 group-hover:opacity-100 bg-pri text-sec text-center absolute p-1 rounded-md  flex justify-center items-center transition duration-300">
-							<span>Requerido</span>
+					<span className="dropdown dropdown-hover font-normal">
+						<div tabIndex={0}>
+							<NotListedLocationOutlinedIcon className="pb-1" />
 						</div>
-					</div>
+						<div
+							tabIndex={0}
+							className="w-fit px-2 py-1 dropdown-content -translate-x-20 z-[1] shadow bg-sec rounded-box">
+							Requerido
+						</div>
+					</span>
 				</label>
 				<div className="custom-select">
 					<div className="w-full h-24 options carousel carousel-vertical bg-pri-100 rounded-md">
