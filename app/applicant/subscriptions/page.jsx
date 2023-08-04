@@ -1,4 +1,4 @@
-import PlanSelector from "../components/plan/plan";
+import PlanSelector from "../../components/plan/plan";
 
 const Subscriptions = () => {
 	return (

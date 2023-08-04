@@ -1,6 +1,6 @@
 "use client";
-import NavBar from "../components/navbar/navbar";
-import Swipe from "../components/swipe/swipe";
+import NavBar from "../../components/navbar/navbar";
+import Swipe from "../../components/swipe/swipe";
 
 const SwipePage = () => {
 	return (
