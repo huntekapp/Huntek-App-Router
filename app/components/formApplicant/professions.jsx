@@ -1,7 +1,44 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Select from "react-select";
 import NotListedLocationOutlinedIcon from "@mui/icons-material/NotListedLocationOutlined";
 
-const Profession = ({ userData, inputProf }) => {
+const customStyles = {
+	control: (provided, state) => ({
+		...provided,
+		textAlign: "left",
+		backgroundColor: state.isFocused ? "#e3eeec" : "#fff",
+		borderColor: state.isFocused ? "#046255" : "#ccc",
+		boxShadow: state.isFocused && "none",
+		"&:hover": {
+			borderColor: "#046255",
+		},
+		cursor: "pointer",
+	}),
+	singleValue: (provided) => ({
+		...provided,
+		color: "#046255",
+	}),
+	menu: (provided) => ({
+		...provided,
+		backgroundColor: "#e3eeec",
+	}),
+	option: (provided, state) => ({
+		...provided,
+		height: "35px",
+		textAlign: "left",
+		backgroundColor: state.isSelected ? "#046255" : "#e3eeec",
+		color: state.isSelected ? "#fff" : "#333",
+		"&:hover": {
+			backgroundColor: "#c7dcd9",
+		},
+		cursor: "pointer",
+		whiteSpace: "nowrap",
+		overflow: "hidden",
+		textOverflow: "ellipsis",
+	}),
+};
+
+const Profession = ({ userData, handleChange, inputProf }) => {
 	const options = [
 		"Servicios legales",
 		"Comercial",
@@ -19,53 +56,53 @@ const Profession = ({ userData, inputProf }) => {
 		"Comunicaciones",
 		"Otras",
 	];
-	const [selectedOptions, setSelectedOptions] = useState([]);
 
-	const handleOptionClick = (option) => {
-		if (selectedOptions.includes(option)) {
-			setSelectedOptions((prevSelected) => prevSelected.filter((item) => item !== option));
-		} else {
-			setSelectedOptions((prevSelected) => [...prevSelected, option]);
-		}
+	const selectOptions = options.map((profession) => ({ value: profession, label: profession }));
+
+	const [selectedOption, setSelectedOption] = useState([]);
+
+	useEffect(() => {
+		const prof = selectedOption.map((opt) => opt.value);
+		handleChange({
+			target: {
+				name: "profession",
+				value: selectedOption ? prof : "",
+			},
+		});
+	}, [selectedOption]);
+
+	const handleSelectChange = (selectedOption) => {
+		setSelectedOption(selectedOption);
 	};
-	userData.profession = selectedOptions;
+
 	return (
-		<>
-			<div>
-				<label htmlFor="profession" className="ml-2 font-semibold">
-					¿En que área te gustaria trabajar?
-					<span className="dropdown dropdown-hover font-normal">
-						<div tabIndex={0}>
-							<NotListedLocationOutlinedIcon className="pb-1" />
-						</div>
-						<div
-							tabIndex={0}
-							className="w-fit px-2 py-1 dropdown-content -translate-x-20 z-[1] shadow bg-sec rounded-box">
-							Requerido
-						</div>
-					</span>
-				</label>
-				<div className="custom-select">
-					<div className="w-full h-24 options carousel carousel-vertical bg-pri-100 rounded-md">
-						{options.map((option) => (
-							<div key={option} className="carousel-item px-4 flex justify-between hover:bg-pri-200">
-								<span>{option}</span>
-								<input
-									type="checkbox"
-									disabled={!inputProf}
-									checked={selectedOptions.includes(option)}
-									onChange={() => handleOptionClick(option)}
-									className="checkbox checkbox-sm"
-								/>
-							</div>
-						))}
+		<div>
+			<label htmlFor="profession" className="ml-2 font-semibold">
+				¿En que área te gustaría trabajar?
+				<span className="dropdown dropdown-hover font-normal">
+					<div tabIndex={0}>
+						<NotListedLocationOutlinedIcon className="pb-1" />
 					</div>
-					<div className="selected-option">
-						{selectedOptions.length === 0 ? "Selecciona una opción" : selectedOptions.join(", ")}
+					<div
+						tabIndex={0}
+						className="w-fit px-2 py-1 dropdown-content -translate-x-20 z-[1] shadow bg-sec rounded-box">
+						Requerido
 					</div>
-				</div>
-			</div>
-		</>
+				</span>
+			</label>
+			<Select
+				isMulti
+				name="profession"
+				value={selectedOption}
+				options={selectOptions}
+				menuPlacement="auto"
+				placeholder="Selecciona una profesión"
+				isDisabled={!inputProf}
+				isClearable={selectedOption !== null}
+				onChange={handleSelectChange}
+				styles={customStyles}
+			/>
+		</div>
 	);
 };
 export default Profession;

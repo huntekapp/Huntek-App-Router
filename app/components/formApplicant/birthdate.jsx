@@ -1,6 +1,5 @@
-"use client"
 import NotListedLocationOutlinedIcon from "@mui/icons-material/NotListedLocationOutlined";
-import Input from "@mui/joy/Input/Input";
+
 const Birthdate = ({ userData, handleChange, inputBirthdate }) => {
 	return (
 		<div className="w-full mb-2">
@@ -17,19 +16,17 @@ const Birthdate = ({ userData, handleChange, inputBirthdate }) => {
 					</div>
 				</span>
 			</label>
-			<Input
-			onChange={handleChange}
-			value={userData.birthdate}
-			required={inputBirthdate}
-			name="birthdate"
-        type="date"
-        slotProps={{
-          input: {
-            min: '1960-06-07T00:00',
-            max: '2005-12-31T00:00',
-          },
-        }}
-      />
+			<div className="w-full h-8 bg-pri-100 rounded-lg">
+				<input
+					type="date"
+					name="birthdate"
+					value={userData.birthdate}
+					placeholder="Seleccione una fecha"
+					disabled={!inputBirthdate}
+					onChange={(event) => handleChange(event)}
+					className="w-full px-3 py-1 text-pri bg-sec border border-[#ccc] rounded-[4px] focus:outline-none focus:bg-pri-100 focus:border-pri hover:border-pri cursor-pointer"
+				/>
+			</div>
 		</div>
 	);
 };

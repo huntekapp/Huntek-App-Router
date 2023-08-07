@@ -18,10 +18,11 @@ const Income = ({ userData, handleChange, inputIncome }) => {
 				type="text"
 				inputMode="text"
 				name="income"
-				disabled={!inputIncome}
 				value={userData.income}
+				placeholder="Ingese sueldo deseado (MXN)"
+				disabled={!inputIncome}
 				onChange={(event) => handleChange(event)}
-				className="w-full px-2 py-1 bg-pri-100 text-gray-400 rounded-md focus:outline-none"
+				className="w-full px-3 py-1 text-pri bg-sec border border-[#ccc] rounded-[4px] focus:outline-none focus:bg-pri-100 focus:border-pri hover:border-pri"
 			/>
 		</div>
 	);

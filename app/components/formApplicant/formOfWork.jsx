@@ -1,15 +1,59 @@
 import { useState } from "react";
+import Select from "react-select";
 import NotListedLocationOutlinedIcon from "@mui/icons-material/NotListedLocationOutlined";
+
+const customStyles = {
+	control: (provided, state) => ({
+		...provided,
+		textAlign: "left",
+		backgroundColor: state.isFocused ? "#e3eeec" : "#fff",
+		borderColor: state.isFocused ? "#046255" : "#ccc",
+		boxShadow: state.isFocused && "none",
+		"&:hover": {
+			borderColor: "#046255",
+		},
+		cursor: "pointer",
+	}),
+	singleValue: (provided) => ({
+		...provided,
+		color: "#046255",
+	}),
+	menu: (provided) => ({
+		...provided,
+		backgroundColor: "#e3eeec",
+	}),
+	option: (provided, state) => ({
+		...provided,
+		height: "35px",
+		textAlign: "left",
+		backgroundColor: state.isSelected ? "#046255" : "#e3eeec",
+		color: state.isSelected ? "#fff" : "#333",
+		"&:hover": {
+			backgroundColor: "#c7dcd9",
+		},
+		cursor: "pointer",
+		whiteSpace: "nowrap",
+		overflow: "hidden",
+		textOverflow: "ellipsis",
+	}),
+};
 
 const FormOfWork = ({ userData, handleChange, inputFormOfWork }) => {
 	const options = ["Presencial", "Híbrido", "Remoto"];
+
+	const selectOptions = options.map((form_of_work) => ({ value: form_of_work, label: form_of_work }));
+
 	const [selectedOption, setSelectedOption] = useState(null);
 
-	const handleOptionClick = (option) => {
-		setSelectedOption(option);
+	const handleSelectChange = (selectedOption) => {
+		setSelectedOption(selectedOption);
+		handleChange({
+			target: {
+				name: "form_of_work",
+				value: selectedOption ? selectedOption.value : "",
+			},
+		});
 	};
-
-	userData.form_of_work = selectedOption;
 
 	return (
 		<div className="w-full mb-2">
@@ -26,29 +70,17 @@ const FormOfWork = ({ userData, handleChange, inputFormOfWork }) => {
 					</div>
 				</span>
 			</label>
-
-			<div className="custom-select">
-				<div className="w-full h-fit options bg-pri-100 rounded-md">
-					{options.map((option) => (
-						<div
-							key={option}
-							className={`carousel-item px-4 flex justify-between hover:bg-pri-200 ${
-								selectedOption === option ? "bg-pri-200" : ""
-							}`}
-							onClick={() => handleOptionClick(option)}>
-							<span>{option}</span>
-							<input
-								type="radio"
-								name="form_of_work"
-								disabled={!inputFormOfWork}
-								checked={selectedOption === option}
-								onChange={() => handleOptionClick(option)}
-								className="radio radio-sm"
-							/>
-						</div>
-					))}
-				</div>
-			</div>
+			<Select
+				name="form_of_work"
+				value={selectedOption}
+				options={selectOptions}
+				menuPlacement="auto"
+				placeholder="Selecciona una respuesta"
+				isDisabled={!inputFormOfWork}
+				isClearable={selectedOption !== null}
+				onChange={handleSelectChange}
+				styles={customStyles}
+			/>
 		</div>
 	);
 };

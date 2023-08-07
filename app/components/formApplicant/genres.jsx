@@ -1,18 +1,56 @@
+import { useState } from "react";
+import Select from "react-select";
 import NotListedLocationOutlinedIcon from "@mui/icons-material/NotListedLocationOutlined";
-import Checkbox from "@mui/material/Checkbox";
-import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
-import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
-import CheckBoxIcon from "@mui/icons-material/CheckBox";
+
+const customStyles = {
+	control: (provided, state) => ({
+		...provided,
+		textAlign: "left",
+		backgroundColor: state.isFocused ? "#e3eeec" : "#fff",
+		borderColor: state.isFocused ? "#046255" : "#ccc",
+		boxShadow: state.isFocused && "none",
+		"&:hover": {
+			borderColor: "#046255",
+		},
+		cursor: "pointer",
+	}),
+	singleValue: (provided) => ({
+		...provided,
+		color: "#046255",
+	}),
+	menu: (provided) => ({
+		...provided,
+		backgroundColor: "#e3eeec",
+	}),
+	option: (provided, state) => ({
+		...provided,
+		height: "35px",
+		textAlign: "left",
+		backgroundColor: state.isSelected ? "#046255" : "#e3eeec",
+		color: state.isSelected ? "#fff" : "#333",
+		"&:hover": {
+			backgroundColor: "#c7dcd9",
+		},
+		cursor: "pointer",
+	}),
+};
 
 const Genres = ({ userData, handleChange, inputGenre }) => {
-	const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
-	const checkedIcon = <CheckBoxIcon fontSize="small" />;
-	const genres = [
-		{ name: "Hombre", valor: "hom" },
-		{ name: "Mujer", valor: "muj" },
-		{ name: "Otro", calor: "otro" },
-	];
+	const options = ["Hombre", "Mujer", "Otro"];
+
+	const selectOptions = options.map((genre) => ({ value: genre, label: genre }));
+
+	const [selectedOption, setSelectedOption] = useState(null);
+
+	const handleSelectChange = (selectedOption) => {
+		setSelectedOption(selectedOption);
+		handleChange({
+			target: {
+				name: "genre",
+				value: selectedOption ? selectedOption.value : "",
+			},
+		});
+	};
 
 	return (
 		<div className="w-full mb-2">
@@ -29,19 +67,16 @@ const Genres = ({ userData, handleChange, inputGenre }) => {
 					</div>
 				</span>
 			</label>
-			<Autocomplete
-				id="countries"
-				options={genres}
-				disableCloseOnSelect
-				getOptionLabel={(option) => option.name}
-				renderOption={(props, option, { selected }) => (
-					<li {...props}>
-						<Checkbox icon={icon} checkedIcon={checkedIcon} style={{ marginRight: 8 }} checked={selected} />
-						{option.name}
-					</li>
-				)}
-				renderInput={(params) => <TextField {...params} label="Selecciona un país" placeholder="Busca tu país" />}
-				className="w-full"
+			<Select
+				name="genre"
+				value={selectedOption}
+				options={selectOptions}
+				menuPlacement="auto"
+				placeholder="Selecciona un género"
+				isDisabled={!inputGenre}
+				isClearable={selectedOption !== null}
+				onChange={handleSelectChange}
+				styles={customStyles}
 			/>
 		</div>
 	);
