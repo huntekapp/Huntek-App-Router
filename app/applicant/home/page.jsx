@@ -1,6 +1,6 @@
-import NavBar from "../../components/navbar/navbar";
-import Home from "../../components/home/home";
-import Footbar from "../../components/footbar";
+import NavBar from "../../components/applicant/navbar/navbar";
+import Home from "../../components/applicant/home/home";
+import Footbar from "@/app/components/applicant/footbar/footbar";
 
 const HomePage = () => {
 	return (

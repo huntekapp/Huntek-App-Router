@@ -3,9 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { usePostVerifMutation } from "../../globalstore/services/log-reg-val/useVerifCode";
-import { usePutResendCodeMutation } from "../../globalstore/services/log-reg-val/useResendCode";
-import { AlertSuccess, AlertError } from "../alertsforrequest";
+import { usePostVerifMutation } from "../globalstore/services/log-reg-val/useVerifCode";
+import { usePutResendCodeMutation } from "../globalstore/services/log-reg-val/useResendCode";
+import { AlertSuccess, AlertError } from "./alertsforrequest";
 
 const EmailCode = () => {
 	const router = useRouter();

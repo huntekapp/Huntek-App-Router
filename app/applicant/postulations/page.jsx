@@ -1,4 +1,4 @@
-import PostulationsExtend from "../../components/postulationsExtend";
+import PostulationsExtend from "../../components/applicant/postulation/postulationsExtend";
 
 const PostulationsPage = () => {
 	return (

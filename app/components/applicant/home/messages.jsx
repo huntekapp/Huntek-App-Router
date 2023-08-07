@@ -2,8 +2,8 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import getCookie from "../../helpers/getCookies";
-import { useGetChatsMutation } from "../../globalstore/services/chats-msg/useChats";
+import getCookie from "../../../helpers/getCookies";
+import { useGetChatsMutation } from "../../../globalstore/services/chats-msg/useChats";
 import InfoAlert from "./infoAlert";
 import SmsFailedIcon from "@mui/icons-material/SmsFailed";
 

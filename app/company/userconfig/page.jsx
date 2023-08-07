@@ -1,4 +1,4 @@
-import CompanyConfig from "../../components/userConfig/company";
+import CompanyConfig from "../../components/company/userConfig/company";
 
 const UserConfig = () => {
 	const role = "company";

@@ -1,4 +1,4 @@
-import RoleSelection from "../components/signup/roleSelection";
+import RoleSelection from "../components/roleSelection";
 
 const SelectRole = () => {
 	return (

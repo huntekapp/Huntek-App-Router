@@ -1,15 +1,15 @@
 "use client";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import CarouselPlan from "../suscription/carouselSuscriptions";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import { useGetInfoUserQuery } from "../../globalstore/services/user-info/useInfoUser";
-import { useState } from "react";
-import CarouselPlan from "../carouselSuscriptions";
-import KeyboardDoubleArrowRightOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowRightOutlined";
-import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
+import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
+import KeyboardDoubleArrowRightOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowRightOutlined";
+import { useGetInfoUserQuery } from "../../../globalstore/services/user-info/useInfoUser";
 
 const Profile = ({ user, closeProfile, setCloseProfile }) => {
 	const router = useRouter();

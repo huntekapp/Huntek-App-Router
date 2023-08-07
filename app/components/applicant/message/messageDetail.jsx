@@ -3,14 +3,14 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import getCookie from "../helpers/getCookies";
-import { usePostMessageMutation } from "../globalstore/services/chats-msg/usePostMessage";
-import { useGetMessagesMutation } from "../globalstore/services/chats-msg/useMessages";
+import getCookie from "../../../helpers/getCookies";
+import { usePostMessageMutation } from "../../../globalstore/services/chats-msg/usePostMessage";
+import { useGetMessagesMutation } from "../../../globalstore/services/chats-msg/useMessages";
 import SendIcon from "@mui/icons-material/Send";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import AttachFileOutlinedIcon from "@mui/icons-material/AttachFileOutlined";
 
-const ChatUi = () => {
+const MessageDetail = () => {
 	const params = useParams();
 	const userData = [
 		{
@@ -176,4 +176,4 @@ const ChatUi = () => {
 		</main>
 	);
 };
-export default ChatUi;
+export default MessageDetail;

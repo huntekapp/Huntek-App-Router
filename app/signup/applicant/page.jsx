@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ApplicantForm from "../../components/signup/applicant";
+import ApplicantForm from "../../components/applicant";
 import Link from "next/link";
 
 const Signup = () => {

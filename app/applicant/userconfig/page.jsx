@@ -1,5 +1,5 @@
-import ApplicantConfig from "../../components/userConfig/applicant";
-import CompanyConfig from "../../components/userConfig/company";
+import ApplicantConfig from "../../components/applicant/userConfig/applicant";
+import CompanyConfig from "../../components/company/userConfig/company";
 
 const UserConfig = () => {
 	const role = "applicant";

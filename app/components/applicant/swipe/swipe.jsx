@@ -1,10 +1,10 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import confetti from "canvas-confetti";
-import getCookie from "../../helpers/getCookies";
-import { useCreateChatMutation } from "../../globalstore/services/chats-msg/useCreateChat";
 import SwipeCards from "./swipeCards";
-import FootbarSwipe from "../footbarswipe";
+import FootbarSwipe from "../footbar/footbarswipe";
+import getCookie from "../../../helpers/getCookies";
+import { useCreateChatMutation } from "../../../globalstore/services/chats-msg/useCreateChat";
 
 const Swipe = () => {
 	const [createChat, { isLoading }] = useCreateChatMutation();

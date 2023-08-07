@@ -1,15 +1,14 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { setEmail } from "../../globalstore/features/emailSlice";
+import { setEmail } from "../globalstore/features/emailSlice";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { usePostUsersMutation } from "../../globalstore/services/log-reg-val/useRegister";
-import { AlertSuccess, AlertError } from "../alertsforrequest";
-import verifySignupInputs from "../../helpers/verifySignUpInputs";
+import { usePostUsersMutation } from "../globalstore/services/log-reg-val/useRegister";
+import { AlertSuccess, AlertError } from "./alertsforrequest";
+import verifySignupInputs from "../helpers/verifySignUpInputs";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
-
 
 const ApplicantForm = () => {
 	const [showPassword, setShowPassword] = useState(false);
@@ -41,22 +40,22 @@ const ApplicantForm = () => {
 
 	const handleKeypress = (event) => {
 		if (event.keyCode === 13) {
-			handleSubmit(event)
-	 }
-	}
+			handleSubmit(event);
+		}
+	};
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		const fixedInput = {...input, email: input.email.toLowerCase()}
+		const fixedInput = { ...input, email: input.email.toLowerCase() };
 		let inputValid = verifySignupInputs(input);
 		if (inputValid !== "valid") return setErrorCatched(inputValid);
 		setErrorCatched(null);
-		setSuccessReq(null)
+		setSuccessReq(null);
 		try {
 			await postUsers(fixedInput).unwrap();
 			dispatch(setEmail(fixedInput.email));
 			localStorage.setItem("email", fixedInput.email);
-			setSuccessReq("Email enviado con éxito.")
+			setSuccessReq("Email enviado con éxito.");
 			setTimeout(() => {
 				router.push("/emailvalidate");
 			}, 2000);
@@ -123,12 +122,12 @@ const ApplicantForm = () => {
 							onKeyUp={handleKeypress}
 						/>
 						<button onClick={handleShowPassword} className="absolute right-3" type="button">
-								{showPassword ? (
-									<VisibilityOffOutlinedIcon className="w-5 h-5 text-gray-500" />
-								) : (
-									<VisibilityOutlinedIcon className="w-5 h-5 text-gray-500" />
-								)}
-							</button>
+							{showPassword ? (
+								<VisibilityOffOutlinedIcon className="w-5 h-5 text-gray-500" />
+							) : (
+								<VisibilityOutlinedIcon className="w-5 h-5 text-gray-500" />
+							)}
+						</button>
 					</div>
 				</label>
 				<p className="text-xs text-gray-400 py-2 cursor-default">

@@ -1,9 +1,9 @@
-import ChatUi from "@/app/components/chatUi";
+import MessageDetail from "@/app/components/applicant/message/messageDetail";
 
 const SingularChat = () => {
 	return (
 		<section className="bg-pri-200">
-			<ChatUi />
+			<MessageDetail />
 		</section>
 	);
 };

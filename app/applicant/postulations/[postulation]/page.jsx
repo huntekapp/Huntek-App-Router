@@ -1,5 +1,5 @@
-import NavBar from "@/app/components/navbar/navbar";
-import Postulation from "@/app/components/postulation";
+import NavBar from "@/app/components/applicant/navbar/navbar";
+import Postulation from "@/app/components/applicant/postulation/postulation";
 
 const PostuId = () => {
 	return (

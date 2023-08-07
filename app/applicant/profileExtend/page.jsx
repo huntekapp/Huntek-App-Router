@@ -1,5 +1,5 @@
-import NavBar from "../../components/navbar/navbar";
-import ProfileExt from "../../components/profileExtend";
+import NavBar from "../../components/applicant/navbar/navbar";
+import ProfileExt from "../../components/applicant/profile/profileExtend";
 
 const ProfileExtPage = () => {
 	return (

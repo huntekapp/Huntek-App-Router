@@ -1,4 +1,4 @@
-import CompanyForm from "@/app/components/signup/company";
+import CompanyForm from "@/app/components/company";
 import Image from "next/image";
 import Link from "next/link";
 

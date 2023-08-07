@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import InterviewsHomepage from "../interviewsHomepage";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import InfoAlert from "./infoAlert";
 
 const hardcodedInterviews = [
@@ -33,7 +33,28 @@ const Interviews = () => {
 			{hardcodedInterviews.length ? (
 				<div className="overflow-hidden md:grid md:grid-cols-2 md:grid-rows-1 md:gap-4">
 					{hardcodedInterviews.map((interview, index) => {
-						if (index === 0 || index === 1) return <InterviewsHomepage interviewInfo={interview} index={index} />;
+						if (index === 0 || index === 1) {
+							return (
+								<article
+									className={`${
+										index === 1 && "hidden md:flex md:flex-row"
+									} flex flex-row w-full h-20 px-4 bg-sec text-xs xs:text-sm text-pri border rounded-xl shadow-md justify-between items-center`}>
+									<div className="w-[1%] min-w-[70px]">
+										<span className="w-14 h-14 text-sm font-semibold border-pri border-2 rounded-full grid place-content-center">
+											{interview.date}
+										</span>
+									</div>
+									<div className="w-[99%]">
+										<span className="btn w-full shadow-sm bg-pri border-none text-sm xs:text-xl text-sec">
+											<span>
+												{interview.hour} | {interview.enterprise}
+											</span>
+											<LocationOnIcon className="text-lg" />
+										</span>
+									</div>
+								</article>
+							);
+						}
 					})}
 				</div>
 			) : (

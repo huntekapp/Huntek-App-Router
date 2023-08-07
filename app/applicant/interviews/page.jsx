@@ -1,4 +1,4 @@
-import InterviewExtend from "../../components/interviewsExtend";
+import InterviewExtend from "../../components/applicant/interview/interviewsExtend";
 
 const InterviewsPage = () => {
 	return (
