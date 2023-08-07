@@ -17,18 +17,18 @@ const NavBar = () => {
 				name: "Tienes una nueva cita!",
 				value:
 					"Aunque nadie lo pueda creer, tienes una nueva cita! De manera totalmente increible, una fémina le dio me gusta a tu carta e hicieron match, estamos seguros de que vas a tener que bañarte por primera vez en los ultimos seis meses.",
-				unreaded: true
+				unreaded: true,
 			},
 			{
 				name: "Te han bloqueado.",
 				value:
 					"Lamentamos informarte que has sido bloqueado por la usuaria @dualipa_temperley debido a que has spameado su casilla de mensajes.",
-				unreaded: true
+				unreaded: true,
 			},
 			{
 				name: "Actualizacion.",
 				value: `Hemos actualizado nuestra politica.`,
-				unreaded: true
+				unreaded: true,
 			},
 			// {
 			// 	name: "La notificacion mas larga de la historia",
@@ -55,12 +55,12 @@ const NavBar = () => {
 	const currentPath = usePathname();
 	const [closeProfile, setCloseProfile] = useState(false);
 	const [closeNotif, setCloseNotif] = useState(false);
-	const [unreadNotif, setUnreadNotif] = useState(false)
+	const [unreadNotif, setUnreadNotif] = useState(false);
 
 	return (
 		<nav className="navbar h-[10%] px-4 bg-pri shadow-xl">
 			<article className="navbar-start">
-				{currentPath === "/home" ? (
+				{currentPath === "/applicant/home" ? (
 					<div className="drawer">
 						<input type="checkbox" id="profile" className="drawer-toggle" />
 						<label htmlFor="profile" className="drawer-button w-10 h-10 relative cursor-pointer">
@@ -80,7 +80,7 @@ const NavBar = () => {
 					</div>
 				) : (
 					<Link
-						href="/home"
+						href="/applicant/home"
 						className="p-1 grid place-content-center rounded-full hover:text-pri hover:bg-pri-100 hover:scale-125 duration-200">
 						<HomeOutlinedIcon className="w-6 h-6 text-sec" />
 					</Link>
@@ -88,7 +88,7 @@ const NavBar = () => {
 			</article>
 
 			<Link
-				href={"/home"}
+				href="/applicant/home"
 				className="w-1/4 h-8 bg-Huntek bg-contain bg-no-repeat bg-center flex flex-row justify-center navbar-center">
 				<span className="sr-only">home</span>
 			</Link>
@@ -96,7 +96,7 @@ const NavBar = () => {
 			<article className="navbar-end">
 				<div className="w-[75px] flex flex-row justify-between items-center">
 					<Link
-						href="/messages"
+						href="/applicant/messages"
 						className="p-1 grid place-content-center rounded-full hover:bg-pri-100 hover:scale-125 duration-200">
 						<ForumOutlinedIcon className="w-6 h-6 text-sec hover:text-pri" />
 					</Link>
@@ -106,14 +106,22 @@ const NavBar = () => {
 							<label
 								htmlFor="notif"
 								className="p-1 grid place-content-center rounded-full hover:bg-pri-100 hover:scale-125 duration-200 cursor-pointer">
-								{unreadNotif && <p className="absolute text-yellow-500 right-0 -top-2  md:-top-1 text-3xl md:text-2xl ">●</p>}
+								{unreadNotif && (
+									<p className="absolute text-yellow-500 right-0 -top-2  md:-top-1 text-3xl md:text-2xl ">●</p>
+								)}
 								<NotificationsNoneOutlinedIcon className="w-6 h-6 text-sec hover:text-pri" />
 							</label>
 						</div>
 						<div className="drawer-side z-50">
 							<ul className="w-full h-screen bg-sec">
 								<li>
-									<Notification user={user} closeNotif={closeNotif} setCloseNotif={setCloseNotif} unreadNotif={unreadNotif} setUnreadNotif={setUnreadNotif} />
+									<Notification
+										user={user}
+										closeNotif={closeNotif}
+										setCloseNotif={setCloseNotif}
+										unreadNotif={unreadNotif}
+										setUnreadNotif={setUnreadNotif}
+									/>
 								</li>
 							</ul>
 						</div>

@@ -112,7 +112,7 @@ const ApplicantConfig = () => {
 		try {
 			const response = await postResume(userData).unwrap();
 			console.log(response);
-			router.push("/home");
+			router.push("/applicant/home");
 		} catch (error) {
 			console.log(error);
 		}

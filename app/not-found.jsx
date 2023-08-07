@@ -12,7 +12,7 @@ const Error404 = () => {
 					<div className="text-lg mb-8">
 						Puede ser que hayas ingresado incorrectamente la dirección o que la página se haya movido.
 					</div>
-					<a href="/home" className="border border-white rounded p-4">
+					<a href="/applicant/home" className="border border-white rounded p-4">
 						Home
 					</a>
 				</div>

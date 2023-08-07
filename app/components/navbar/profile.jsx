@@ -60,7 +60,7 @@ const Profile = ({ user, closeProfile, setCloseProfile }) => {
 						<h3 className="text-2xl font-medium cursor-default">
 							{data?.first_name.split(" ")[0]} {data?.last_name.split(" ")[0]}
 						</h3>
-						<Link href="/profileExtend" className="ml-2">
+						<Link href="/applicant/profileExtend" className="ml-2">
 							<EditOutlinedIcon className="w-5 h-5 opacity-70 hover:opacity-100 hover:scale-125 duration-150" />
 						</Link>
 					</div>

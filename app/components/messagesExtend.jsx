@@ -70,7 +70,7 @@ const MessagesExtend = () => {
 		<section className="w-full h-screen text-pri flex flex-col">
 			<nav className="w-full h-[10%] px-4 border-b flex flex-row justify-start items-center">
 				<Link
-					href="/home"
+					href="/applicant/home"
 					className="p-1 grid place-content-center rounded-full hover:bg-pri-100 hover:scale-125 duration-150">
 					<HomeOutlinedIcon className="w-6 h-6" />
 				</Link>
@@ -80,7 +80,7 @@ const MessagesExtend = () => {
 				{data.map((chat, index) => {
 					return (
 						<Link
-							href={`/messages/${chat.id}`}
+							href={`/applicant/messages/${chat.id}`}
 							key={index}
 							className="w-full h-24 px-2 border-b flex flex-row justify-between items-center">
 							<div className="min-w-[60px] h-[60px] border-2 border-pri rounded-full grid place-content-center relative">

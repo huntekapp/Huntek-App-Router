@@ -79,13 +79,13 @@ const EmailCode = () => {
 			let userNumber = Object.values(userCode.code).join("");
 			const response = await postVerif({ email: userCode.email, code: userNumber }).unwrap();
 			const { access_token } = response;
-			const token = access_token.split("'")[1]
+			const token = access_token.split("'")[1];
 			const date = new Date();
 			date.setDate(date.getDate() + 7);
 			document.cookie = `kTnKETkt=${token}; expires=${date.toUTCString()}`;
 			setSuccessReq("Cuenta activada! \nRedireccionando...");
 			setTimeout(() => {
-				router.push("/userconfig");
+				router.push("/applicant/userconfig");
 			}, 2000);
 		} catch (error) {
 			if (error.status === "FETCH_ERROR")
@@ -107,15 +107,15 @@ const EmailCode = () => {
 
 	return (
 		<main className="w-full h-full flex flex-col justify-evenly items-center">
-			<Link href={"/login"}>
-					<Image
-						src={"/utils/back.svg"}
-						height={1}
-						width={1}
-						alt="backArrow"
-						loading={"eager"}
-						className="btn btn-ghost btn-circle w-[50px] h-[50px] p-2 absolute left-2 top-2 z-40"
-					/>
+			<Link href="/login">
+				<Image
+					src={"/utils/back.svg"}
+					height={1}
+					width={1}
+					alt="backArrow"
+					loading={"eager"}
+					className="btn btn-ghost btn-circle w-[50px] h-[50px] p-2 absolute left-2 top-2 z-40"
+				/>
 			</Link>
 			<section className="w-full max-w-md h-screen font-medium text-sec items-center relative">
 				<article className="w-full flex flex-col items-center">
@@ -160,7 +160,9 @@ const EmailCode = () => {
 						Verificar
 					</button>
 				</form>
-				{errorCatched && <AlertError alertTitle={"Error!"} alertBody={errorCatched} setErrorCatched={setErrorCatched} />}
+				{errorCatched && (
+					<AlertError alertTitle={"Error!"} alertBody={errorCatched} setErrorCatched={setErrorCatched} />
+				)}
 				{successReq && <AlertSuccess alertTitle={"Success!"} alertBody={successReq} setSuccessReq={setSuccessReq} />}
 			</section>
 		</main>

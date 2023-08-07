@@ -38,7 +38,7 @@ export async function middleware(request) {
           new TextEncoder().encode("DSxSz^r#r@6u^ZFkipmgySATzypg@&MMyuW@Kigp")
         );
         if (payload.user_info) {
-          return NextResponse.redirect(new URL("/home", request.url));
+          return NextResponse.redirect(new URL("/applicant/home", request.url));
         }
       } catch (error) {
         // Nada.

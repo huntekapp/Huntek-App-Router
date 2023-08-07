@@ -26,7 +26,7 @@ const Interviews = () => {
 		<article className="w-full h-1/4 px-4 flex flex-col justify-center">
 			<div className="h-6 mt-2 mb-1 flex flex-row justify-between">
 				<p>Mis entrevistas</p>
-				<Link href="/interviews" className="font-medium">
+				<Link href="/applicant/interviews" className="font-medium">
 					Ver todas
 				</Link>
 			</div>

@@ -6,7 +6,7 @@ import { IconButton } from "@mui/material";
 const Footbar = () => {
 	return (
 		<footer className="w-full h-20 flex flex-col justify-between items-center relative">
-			<Link href="/swipe" className="w-full flex flex-row justify-center items-center relative">
+			<Link href="/applicant/swipe" className="w-full flex flex-row justify-center items-center relative">
 				<IconButton
 					style={{ border: "2px solid #046266", background: "#ffffff" }}
 					className="w-16 h-16 bg-sec rounded-full absolute top-1 z-10">

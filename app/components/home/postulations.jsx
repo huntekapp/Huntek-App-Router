@@ -19,7 +19,7 @@ const Postulations = () => {
 		<article className="w-full h-1/5 flex flex-col justify-center">
 			<div className="h-6 px-4 mb-1 flex flex-row justify-between">
 				<p>Mis postulaciones</p>
-				<Link href="/postulations" className="font-medium">
+				<Link href="/applicant/postulations" className="font-medium">
 					Ver todas
 				</Link>
 			</div>
@@ -28,7 +28,7 @@ const Postulations = () => {
 					{postulaciones.map((post, index) => (
 						<div key={index} className="carousel-item avatar">
 							<Link
-								href={`/postulations/${post.id}`}
+								href={`/applicant/postulations/${post.id}`}
 								className="w-[65px] h-[65px] border-4 border-pri rounded-full relative">
 								<Image
 									src={post.image}

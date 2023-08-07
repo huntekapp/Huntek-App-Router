@@ -38,28 +38,28 @@ const LogForm = () => {
 	};
 
 	const handleShowPassword = (event) => {
-		console.log(event.keyCode)
+		console.log(event.keyCode);
 		setShowPassword(!showPassword);
 	};
 
 	const handleKeypress = (event) => {
 		if (event.keyCode === 13) {
-			handleSubmit(event)
-	 }
-	}
+			handleSubmit(event);
+		}
+	};
 
 	const handleSubmit = async (event) => {
-		const fixedInput = {...input, email: input.email.toLowerCase()}
+		const fixedInput = { ...input, email: input.email.toLowerCase() };
 		event.preventDefault();
 		setErrorCatched(null);
 		try {
 			const response = await postLogin(fixedInput).unwrap();
 			const { access_token, refresh_token } = response;
-			const token = access_token.split("'")[1]
+			const token = access_token.split("'")[1];
 			const date = new Date();
 			date.setDate(date.getDate() + 7);
 			document.cookie = `kTnKETkt=${token}; expires=${date.toUTCString()}`;
-			router.push("/home");
+			router.push("/applicant/home");
 		} catch (error) {
 			if (error.status === "FETCH_ERROR")
 				return setErrorCatched("No se ha podido establecer conexión con el servidor.");
