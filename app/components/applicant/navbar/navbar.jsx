@@ -1,13 +1,13 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import Notification from "./notification";
+import Profile from "./profile";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ForumOutlinedIcon from "@mui/icons-material/ForumOutlined";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
-import Notification from "./notification";
-import Profile from "./profile";
 
 const NavBar = () => {
 	const [user, setUser] = useState({
