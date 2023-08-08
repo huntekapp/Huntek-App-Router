@@ -1,9 +1,9 @@
 "use client";
+import Link from "next/link";
 import { useParams } from "next/navigation";
 import VacantTable from "./vacantTable";
 import PostulantCard from "./postulantCard";
-import Link from "next/link";
-import Image from "next/image";
+import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 
 const VacantStats = () => {
 	const id = useParams();
@@ -63,25 +63,20 @@ const VacantStats = () => {
 
 	return (
 		<section className="w-full h-[90%] center bg-gray-50">
-			<article className="h-full w-[70%] flex flex-col">
-				<div className="text-2xl ml-4 my-2 flex items-center">
-					<Link href="/company/dashboard">
-						<Image
-							src={"/utils/back_huntek.svg"}
-							height={1}
-							width={1}
-							alt="backArrow"
-							loading={"eager"}
-							className="w-[20px] h-[20px] mr-3 rounded-full hover:scale-110 duration-200 hover:bg-black/5"
-						/>
+			<article className="w-[70%] h-full flex flex-col">
+				<div className="h-[10%] text-2xl flex items-center">
+					<Link
+						href="/company/dashboard"
+						className="m-4 p-1 grid place-content-center rounded-full text-pri hover:bg-pri-100 hover:scale-110 duration-150">
+						<ArrowBackOutlinedIcon className="w-6 h-6" />
 					</Link>
 					{vacant}
 				</div>
 				<VacantTable postulants={hardcodedPostulants} />
 			</article>
-      <article className="h-full w-[30%] center">
-        <PostulantCard/>
-      </article>
+			<article className="h-full w-[30%] center">
+				<PostulantCard />
+			</article>
 		</section>
 	);
 };

@@ -57,7 +57,7 @@ const Dashboard = () => {
 					</p>
 				</div>
 			</article>
-			<article className="w-full h-[80%] flex flex-row justify-between items-center">
+			<article className="w-full h-[80%] flex flex-row justify-between items-start">
 				<Table vacants={vacants} />
 				<Analytics />
 			</article>
