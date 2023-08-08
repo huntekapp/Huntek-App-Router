@@ -59,7 +59,7 @@ const ApplicantConfig = () => {
 		}
 	};
 
-	const [activate, setActivate] = useState(false);
+	const [activate, setActivate] = useState(true);
 
 	const [userData, setUserData] = useState({
 		mail: userInfo?.email,
@@ -70,7 +70,7 @@ const ApplicantConfig = () => {
 		country: "",
 
 		studies: "",
-		university: "",
+		university: "Chimuelo",
 		career: "",
 
 		city: "",
@@ -152,7 +152,7 @@ const ApplicantConfig = () => {
 						<button
 							className="w-fit px-2 py-1 bg-pri-100 text-pri rounded-lg hover:bg-sec"
 							onClick={() => {
-								setActivate(true);
+								setActivate(!activate);
 								setUserData({
 									...userData,
 									mail: userInfo?.email,
