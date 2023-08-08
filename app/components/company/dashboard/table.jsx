@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Table = ({ vacants }) => {
 	return (
 		<table className="w-full h-full">
@@ -14,7 +16,11 @@ const Table = ({ vacants }) => {
 					if (index % 2 === 0) {
 						return (
 							<tr key={index} className="w-full h-6 bg-pri-100 text-center text-pri">
-								<td className="text-left px-4 ">{vac.name}</td>
+								<td>
+									<Link href={`/company/dashboard/${vac.name}`}>
+										{vac.name}
+									</Link>
+								</td>
 								<td>{vac.match}</td>
 								<td>{vac.quanty}</td>
 								<td>{vac.reject}</td>
@@ -23,7 +29,11 @@ const Table = ({ vacants }) => {
 					} else {
 						return (
 							<tr key={index} className="w-full h-6 bg-pri-400 text-center text-pri">
-								<td className="text-left px-4 ">{vac.name}</td>
+								<td>
+									<Link href={`/company/dashboard/${vac.name}`}>
+										{vac.name}
+									</Link>
+								</td>
 								<td>{vac.match}</td>
 								<td>{vac.quanty}</td>
 								<td>{vac.reject}</td>
