@@ -63,30 +63,24 @@ const ApplicantConfig = () => {
 
 	const [userData, setUserData] = useState({
 		mail: userInfo?.email,
-
 		phone: "",
+		academic: "",
 		birthdate: "",
 		genre: "",
 		country: "",
-
-		studies: "",
-		university: "Chimuelo",
-		career: "",
-
 		city: "",
-		languages: [],
-		hobbies: [],
-
 		reubication: "",
+		languages: [],
 		profession: [],
+		university: "",
+    career: "",
+		hobbies: [],
 		years_xp: "",
-
 		income: "",
 		form_of_work: "",
-		availability: "",
+		availability: "",		
 	});
 
-	console.log(userData);
 
 	const [progress, setProgress] = useState(0);
 

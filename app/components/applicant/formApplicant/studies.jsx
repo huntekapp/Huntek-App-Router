@@ -142,7 +142,7 @@ const Studies = ({ userData, handleChange, inputStudies }) => {
 		setSelectedOption(selectedOption);
 		handleChange({
 			target: {
-				name: "studies",
+				name: "university",
 				value: selectedOption ? selectedOption.value : "",
 			},
 		});
