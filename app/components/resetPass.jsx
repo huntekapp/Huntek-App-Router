@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useGetRecoveryMutation } from "../globalstore/services/reco-pw/useRecoverPw";
+import { useGetRecoveryMutation } from "../globalstore/services/both/reco-pw/useRecoverPw";
 import { AlertSuccess, AlertError } from "./alertsforrequest";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";

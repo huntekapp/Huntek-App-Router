@@ -2,7 +2,7 @@
 import Postulations from "./postulations";
 import Messages from "./messages";
 import Interviews from "./interviews";
-import { useGetInfoUserQuery } from "@/app/globalstore/services/user-info/useInfoUser";
+import { useGetInfoUserQuery } from "@/app/globalstore/services/applicant/user-info/useInfoUser";
 
 const Home = () => {
 	const { data, isLoading } = useGetInfoUserQuery();

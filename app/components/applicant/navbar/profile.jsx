@@ -9,7 +9,7 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 import KeyboardDoubleArrowRightOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowRightOutlined";
-import { useGetInfoUserQuery } from "../../../globalstore/services/user-info/useInfoUser";
+import { useGetInfoUserQuery } from "../../../globalstore/services/applicant/user-info/useInfoUser";
 
 const Profile = ({ user, closeProfile, setCloseProfile }) => {
 	const router = useRouter();

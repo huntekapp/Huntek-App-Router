@@ -1,24 +1,25 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
 import emailReducer from "./features/emailSlice";
-import { registerDB } from "./services/log-reg-val/useRegister";
-import { verifDB } from "./services/log-reg-val/useVerifCode";
-import { loginDB } from "./services/log-reg-val/useLogin";
-import { recoverDB } from "./services/reco-pw/useRecoverPw";
-import { resendCodeDB } from "./services/log-reg-val/useResendCode";
-import { newPasswordDB } from "./services/reco-pw/useNewPassword";
-import { chatsDB } from "./services/chats-msg/useChats";
-import { createChatDB } from "./services/chats-msg/useCreateChat";
-import { messagesDB } from "./services/chats-msg/useMessages";
-import { postMessagesDB } from "./services/chats-msg/usePostMessage";
-import { interviewsDB } from "./services/user-info/useInterviews";
-import { infoUserDB } from "./services/user-info/useInfoUser";
-import { newFilesDB } from "./services/user-files/useNewFiles";
-import { filesUserDB } from "./services/user-files/useFiles";
-import { deleteFilesDB } from "./services/user-files/useDeleteFiles";
-import { editFilesDB } from "./services/user-files/useEditFiles";
-import { resumeDB } from "./services/user-profile/useResume";
-import { infoResumeDB } from "./services/user-profile/useGetResume";
+import { registerDB } from "./services/both/log-reg-val/useRegister";
+import { verifDB } from "./services/both/log-reg-val/useVerifCode";
+import { loginDB } from "./services/both/log-reg-val/useLogin";
+import { recoverDB } from "./services/both/reco-pw/useRecoverPw";
+import { resendCodeDB } from "./services/both/log-reg-val/useResendCode";
+import { newPasswordDB } from "./services/both/reco-pw/useNewPassword";
+import { chatsDB } from "./services/both/chats-msg/useChats";
+import { createChatDB } from "./services/both/chats-msg/useCreateChat";
+import { messagesDB } from "./services/both/chats-msg/useMessages";
+import { postMessagesDB } from "./services/both/chats-msg/usePostMessage";
+import { interviewsDB } from "./services/applicant/user-info/useInterviews";
+import { infoUserDB } from "./services/applicant/user-info/useInfoUser";
+import { newFilesDB } from "./services/applicant/user-files/useNewFiles";
+import { filesUserDB } from "./services/applicant/user-files/useFiles";
+import { deleteFilesDB } from "./services/applicant/user-files/useDeleteFiles";
+import { editFilesDB } from "./services/applicant/user-files/useEditFiles";
+import { resumeDB } from "./services/applicant/user-profile/useResume";
+import { infoResumeDB } from "./services/applicant/user-profile/useGetResume";
+import { editResumeDB } from "./services/applicant/user-profile/useEditResume";
 
 export const store = configureStore({
   reducer: {
@@ -40,7 +41,8 @@ export const store = configureStore({
     [deleteFilesDB.reducerPath]: deleteFilesDB.reducer,
     [editFilesDB.reducerPath]: editFilesDB.reducer,
     [resumeDB.reducerPath]: resumeDB.reducer,
-    [infoResumeDB.reducerPath]: infoResumeDB.reducer
+    [infoResumeDB.reducerPath]: infoResumeDB.reducer,
+    [editResumeDB.reducerPath]: editResumeDB.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat([
@@ -61,7 +63,8 @@ export const store = configureStore({
       deleteFilesDB.middleware,
       editFilesDB.middleware,
       resumeDB.middleware,
-      infoResumeDB.middleware
+      infoResumeDB.middleware,
+      editResumeDB.middleware,
     ]),
 });
 setupListeners(store.dispatch);

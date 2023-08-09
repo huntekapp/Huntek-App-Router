@@ -4,7 +4,7 @@ import confetti from "canvas-confetti";
 import SwipeCards from "./swipeCards";
 import FootbarSwipe from "../footbar/footbarswipe";
 import getCookie from "../../../helpers/getCookies";
-import { useCreateChatMutation } from "../../../globalstore/services/chats-msg/useCreateChat";
+import { useCreateChatMutation } from "../../../globalstore/services/both/chats-msg/useCreateChat";
 
 const Swipe = () => {
 	const [createChat, { isLoading }] = useCreateChatMutation();

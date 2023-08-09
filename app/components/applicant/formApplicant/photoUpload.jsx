@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react";
-import { usePostNewFilesMutation } from "@/app/globalstore/services/user-files/useNewFiles";
-import { useGetFilesQuery } from "@/app/globalstore/services/user-files/useFiles";
+import { usePostNewFilesMutation } from "@/app/globalstore/services/applicant/user-files/useNewFiles";
+import { useGetFilesQuery } from "@/app/globalstore/services/applicant/user-files/useFiles";
 import Image from "next/image";
 
 const PhotoUpload = ({handleID}) => {

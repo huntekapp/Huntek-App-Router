@@ -36,7 +36,7 @@ import Languages from "../formApplicant/language";
 import Hobbies from "../formApplicant/hobbies";
 import Country from "../formApplicant/country";
 import Academic from "../formApplicant/academic";
-import { useGetInfoUserQuery } from "../../../globalstore/services/user-info/useInfoUser";
+import { useGetInfoUserQuery } from "../../../globalstore/services/applicant/user-info/useInfoUser";
 
 const ProfileExt = () => {
 	const { data, isError, isLoading, error } = useGetInfoUserQuery();

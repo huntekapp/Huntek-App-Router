@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { usePostLoginMutation } from "../globalstore/services/log-reg-val/useLogin";
+import { usePostLoginMutation } from "../globalstore/services/both/log-reg-val/useLogin";
 import { useRouter } from "next/navigation";
 import { AlertError } from "./alertsforrequest";
 import CheckBoxOutlineBlankOutlinedIcon from "@mui/icons-material/CheckBoxOutlineBlankOutlined";

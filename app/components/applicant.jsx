@@ -4,7 +4,7 @@ import { useState } from "react";
 import { setEmail } from "../globalstore/features/emailSlice";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { usePostUsersMutation } from "../globalstore/services/log-reg-val/useRegister";
+import { usePostUsersMutation } from "../globalstore/services/both/log-reg-val/useRegister";
 import { AlertSuccess, AlertError } from "./alertsforrequest";
 import verifySignupInputs from "../helpers/verifySignUpInputs";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
