@@ -53,12 +53,20 @@ const ApplicantConfig = () => {
 		const formData = new FormData();
 		formData.append("cv", cvFile);
 		formData.append("profile_picture", profilePictureFile);
+		setErrorCatched(null);
+		setSuccessReq(null);
 		try {
 			const response = await postNewFiles({ user_id: userInfo?.id, data: formData }).unwrap();
-			console.log("Files uploaded successfully!");
+			setSuccessReq("Archivos subidos con éxito!");
 			refetch();
 		} catch (error) {
-			console.error("Error uploading files:", error);
+			if (error.status === "FETCH_ERROR") {
+				return setErrorCatched("No se ha podido establecer conexión con el servidor.");
+			}
+			if (error.data?.detail[0].msg) {
+				return setErrorCatched(error.data.detail[0].msg);
+			}
+			setErrorCatched(error.data?.detail);
 		}
 	};
 
