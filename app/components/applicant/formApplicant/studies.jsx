@@ -151,7 +151,7 @@ const Studies = ({ userData, handleChange, inputStudies }) => {
 	return (
 		<div className="w-full mb-2">
 			<label htmlFor="university" className="ml-2 font-semibold">
-				{userData.academic === "Egresado" ? "¿Dónde estudiaste?" : "¿Dónde estudias"}
+				{userData.academic === "Egresado" ? "¿Dónde estudiaste?" : "¿Dónde estudias?"}
 				<span className="dropdown dropdown-hover font-normal">
 					<div tabIndex={0}>
 						<NotListedLocationOutlinedIcon className="pb-1" />
