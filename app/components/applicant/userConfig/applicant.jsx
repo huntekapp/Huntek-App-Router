@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { AlertSuccess, AlertError } from "../../alertsforrequest";
 import { useGetInfoUserQuery } from "@/app/globalstore/services/applicant/user-info/useInfoUser";
 import { usePostNewFilesMutation } from "@/app/globalstore/services/applicant/user-files/useNewFiles";
 import { usePostResumeMutation } from "@/app/globalstore/services/applicant/user-profile/useResume";
@@ -32,6 +33,8 @@ const ApplicantConfig = () => {
 	const [postNewFiles] = usePostNewFilesMutation();
 	const [cvFile, setCvFile] = useState(null);
 	const [profilePictureFile, setProfilePictureFile] = useState(null);
+	const [errorCatched, setErrorCatched] = useState(null);
+	const [successReq, setSuccessReq] = useState(null);
 	const { data: userInfo, isLoading } = useGetInfoUserQuery();
 	const firstName = userInfo?.first_name.split(" ")[0];
 	const lastName = userInfo?.last_name.split(" ")[0];
@@ -103,12 +106,22 @@ const ApplicantConfig = () => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
+		setErrorCatched(null);
+		setSuccessReq(null);
 		try {
 			const response = await postResume(userData).unwrap();
-			console.log(response);
-			router.push("/applicant/home");
+			setSuccessReq("Cambios guardados! \nRedireccionando...");
+			setTimeout(() => {
+				router.push("/applicant/home");
+			}, 2000);
 		} catch (error) {
-			console.log(error);
+			if (error.status === "FETCH_ERROR") {
+				return setErrorCatched("No se ha podido establecer conexión con el servidor.");
+			}
+			if (error.data?.detail[0].msg) {
+				return setErrorCatched(error.data.detail[0].msg);
+			}
+			setErrorCatched(error.data?.detail);
 		}
 	};
 
@@ -138,7 +151,7 @@ const ApplicantConfig = () => {
 							<p>A continuacón tendrás que responder</p>
 							<p>varias preguntas</p>
 						</div>
-						<p>Tomate un tiempo</p>
+						<p>Tómate un tiempo</p>
 						<div>
 							<p>Mientras más preguntas hayas completado</p>
 							<p>mejor posicionado estará tu perfil!</p>
@@ -152,7 +165,7 @@ const ApplicantConfig = () => {
 									mail: userInfo?.email,
 								});
 							}}>
-							COMENZAR!
+							Comenzar
 						</button>
 					</div>
 				</article>
@@ -166,7 +179,7 @@ const ApplicantConfig = () => {
 						<section
 							id="Q1"
 							className="carousel-item w-full lg:w-1/2 h-full bg-sec rounded-xl flex flex-col justify-between items-center">
-							<h2 className="mt-[5%] text-xl font-medium">Información Importante</h2>
+							<h2 className="mt-[5%] text-xl font-medium">Información importante</h2>
 							<article className="w-full flex flex-col justify-around items-center">
 								<div className="w-32 h-32 border-4 border-pri rounded-full relative">
 									<Image
@@ -185,17 +198,17 @@ const ApplicantConfig = () => {
 									</label>
 								</div>
 								<label className="text-lg font-medium" htmlFor="file_input">
-									Foto de Perfil
+									Foto de perfil
 								</label>
 							</article>
 							<article className="h-1/4 flex flex-col justify-center items-center">
 								<label className="w-fit h-16 px-4 flex flex-col justify-center items-center bg-pri text-sec rounded-lg shadow-lg cursor-pointer hover:bg-sec hover:text-pri">
 									<DriveFolderUploadOutlinedIcon />
-									<span>Seleccionar Archivo</span>
+									<span>Seleccionar archivo</span>
 									<input type="file" className="hidden" onChange={handleCvChange} />
 								</label>
 								<label className="text-lg font-medium" htmlFor="file_input">
-									Curriculum
+									Currículum
 								</label>
 							</article>
 							<a
@@ -210,7 +223,7 @@ const ApplicantConfig = () => {
 						<section
 							id="Q2"
 							className="carousel-item w-full lg:w-1/2 h-full bg-sec rounded-xl flex flex-col justify-between items-center">
-							<p className="mt-[5%] text-xl font-medium">Información Personal</p>
+							<p className="mt-[5%] text-xl font-medium">Información personal</p>
 							<article className="w-11/12">
 								<Phone userData={userData} handleChange={handleChange} inputPhone={true} />
 							</article>
@@ -245,7 +258,7 @@ const ApplicantConfig = () => {
 						<section
 							id="Q3"
 							className="carousel-item w-full lg:w-1/2 h-full bg-sec rounded-xl flex flex-col justify-between items-center">
-							<p className="mt-[5%] text-xl font-medium">Información Académica</p>
+							<p className="mt-[5%] text-xl font-medium">Información académica</p>
 							<article className="w-11/12">
 								<Academic userData={userData} handleChange={handleChange} inputAcademic={true} />
 							</article>
@@ -277,7 +290,7 @@ const ApplicantConfig = () => {
 						<section
 							id="Q4"
 							className="carousel-item w-full lg:w-1/2 h-full bg-sec rounded-xl flex flex-col justify-between items-center">
-							<p className="mt-[5%] text-xl font-medium">Información Adicional</p>
+							<p className="mt-[5%] text-xl font-medium">Información adicional</p>
 							<article className="w-11/12">
 								<OptionsCity userData={userData} handleChange={handleChange} inputCity={true} />
 							</article>
@@ -309,7 +322,7 @@ const ApplicantConfig = () => {
 						<section
 							id="Q5"
 							className="carousel-item w-full lg:w-1/2 h-full bg-sec rounded-xl flex flex-col justify-between items-center">
-							<p className="mt-[5%] text-xl font-medium">Información Adicional</p>
+							<p className="mt-[5%] text-xl font-medium">Información adicional</p>
 							<article className="w-11/12">
 								<Reubication userData={userData} handleChange={handleChange} inputReubication={true} />
 							</article>
@@ -341,7 +354,7 @@ const ApplicantConfig = () => {
 						<section
 							id="Q6"
 							className="carousel-item w-full lg:w-1/2 h-full bg-sec rounded-xl flex flex-col justify-between items-center">
-							<p className="mt-[5%] text-xl font-medium">Información Adicional</p>
+							<p className="mt-[5%] text-xl font-medium">Información adicional</p>
 							<article className="w-11/12">
 								<Income userData={userData} handleChange={handleChange} inputIncome={true} />
 							</article>
@@ -369,7 +382,13 @@ const ApplicantConfig = () => {
 								</button>
 							</article>
 						</section>
-					</form>
+						</form>
+						{errorCatched && (
+							<AlertError alertTitle={"Error!"} alertBody={errorCatched} setErrorCatched={setErrorCatched} />
+						)}
+						{successReq && (
+							<AlertSuccess alertTitle={"Success!"} alertBody={successReq} setSuccessReq={setSuccessReq} />
+						)}
 				</article>
 			)}
 		</section>
