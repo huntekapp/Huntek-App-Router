@@ -250,7 +250,7 @@ const Country = ({ userData, handleChange, inputCountry }) => {
 	return (
 		<div className="w-full flex flex-col">
 			<label htmlFor="country" className="ml-2 mb-2 font-semibold">
-				¿En que pais naciste?
+				¿En qué país naciste?
 				<span className="dropdown dropdown-hover font-normal">
 					<div tabIndex={0}>
 						<NotListedLocationOutlinedIcon className="pb-1" />
