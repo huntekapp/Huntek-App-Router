@@ -78,7 +78,7 @@ const Profession = ({ userData, handleChange, inputProf }) => {
 	return (
 		<div>
 			<label htmlFor="profession" className="ml-2 font-semibold">
-				¿En que área te gustaría trabajar?
+				¿En qué área te gustaría trabajar?
 				<span className="dropdown dropdown-hover font-normal">
 					<div tabIndex={0}>
 						<NotListedLocationOutlinedIcon className="pb-1" />
