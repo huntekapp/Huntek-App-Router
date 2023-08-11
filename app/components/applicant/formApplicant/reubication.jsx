@@ -75,7 +75,7 @@ const Reubication = ({ userData, handleChange, inputReubication }) => {
 				value={selectedOption}
 				options={selectOptions}
 				menuPlacement="auto"
-				placeholder="Selecciona una respuesta"
+				placeholder={userData.reubication ? userData.reubication : "Selecciona una respuesta"}
 				isDisabled={!inputReubication}
 				isClearable={selectedOption !== null}
 				onChange={handleSelectChange}
