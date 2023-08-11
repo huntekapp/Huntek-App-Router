@@ -240,8 +240,8 @@ console.log("RESUMEJSON", initialResumeJson);
 					</h2>
 				</article>
 				<article className="flex flex-col justify-start items-center">
-					<h2 className="w-fit px-2 py-1 text-2xl lg:text-3xl text-sec bg-pri rounded-md">
-						{userData.degree ? userData.degree : "Datos incompletos"}
+					<h2 className="w-fit px-1 mx-1 py-1 text-2xl lg:text-2xl text-sec bg-pri rounded-md text-center">
+						{userData.career ? userData.career : "Datos incompletos"}
 					</h2>
 					<p className="text-md text-gray-500 mt-2">{`${userData.mail}`}</p>
 					<p className="text-sm text-gray-500 mt-2">{`Ubicación actual ${userData.city}`}</p>
@@ -508,7 +508,7 @@ console.log("RESUMEJSON", initialResumeJson);
 							htmlFor="modalDondeVives"
 							className="w-full flex flex-row justify-between items-center cursor-pointer">
 							<span>
-								<LocationOnIcon /> Dirección Actual
+								<LocationOnIcon /> Dirección actual
 							</span>
 							<NavigateNextOutlinedIcon />
 						</label>
@@ -538,7 +538,7 @@ console.log("RESUMEJSON", initialResumeJson);
 							htmlFor="modalExperiencia"
 							className="w-full flex flex-row justify-between items-center cursor-pointer">
 							<span>
-								<AutoFixHighIcon /> Años de Experiencia
+								<AutoFixHighIcon /> Años de experiencia
 							</span>
 							<NavigateNextOutlinedIcon />
 						</label>
@@ -566,7 +566,7 @@ console.log("RESUMEJSON", initialResumeJson);
 					<div className="flex justify-between items-center">
 						<label htmlFor="modalSalario" className="w-full flex flex-row justify-between items-center cursor-pointer">
 							<span>
-								<AttachMoneyIcon /> Salario Deseado
+								<AttachMoneyIcon /> Salario deseado
 							</span>
 							<NavigateNextOutlinedIcon />
 						</label>
@@ -626,7 +626,7 @@ console.log("RESUMEJSON", initialResumeJson);
 							htmlFor="modalAreasInteres"
 							className="w-full flex flex-row justify-between items-center cursor-pointer">
 							<span>
-								<ZoomInIcon /> Áreas de Interés
+								<ZoomInIcon /> Áreas de interés
 							</span>
 							<NavigateNextOutlinedIcon />
 						</label>
