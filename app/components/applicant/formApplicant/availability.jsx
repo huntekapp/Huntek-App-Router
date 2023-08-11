@@ -75,7 +75,7 @@ const Availability = ({ userData, handleChange, inputAvailability }) => {
 				value={selectedOption}
 				options={selectOptions}
 				menuPlacement="auto"
-				placeholder="Selecciona una respuesta"
+				placeholder={userData.availability ? userData.availability : "Selecciona una respuesta"}
 				isDisabled={!inputAvailability}
 				isClearable={selectedOption !== null}
 				onChange={handleSelectChange}
