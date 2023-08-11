@@ -5,7 +5,7 @@ import { useGetFilesQuery } from "@/app/globalstore/services/applicant/user-file
 import Image from "next/image";
 
 const PhotoUpload = ({handleID}) => {
-	const {data, isError, isLoading, error} = useGetFilesQuery(handleID);
+	const {data: filesInfo, isError, isLoading, error} = useGetFilesQuery(handleID);
 	const [postNewFiles] = usePostNewFilesMutation();
 	const [imagen, subirImagen] = useState({
 		cv:"Sin título.png",

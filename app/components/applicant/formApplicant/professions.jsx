@@ -61,15 +61,15 @@ const Profession = ({ userData, handleChange, inputProf }) => {
 
 	const [selectedOption, setSelectedOption] = useState([]);
 
-	useEffect(() => {
-		const prof = selectedOption.map((opt) => opt.value);
-		handleChange({
-			target: {
-				name: "profession",
-				value: selectedOption ? prof : "",
-			},
-		});
-	}, [selectedOption]);
+	// useEffect(() => {
+	// 	const prof = selectedOption.map((opt) => opt.value);
+	// 	handleChange({
+	// 		target: {
+	// 			name: "profession",
+	// 			value: selectedOption ? prof : "",
+	// 		},
+	// 	});
+	// }, [selectedOption]);
 
 	const handleSelectChange = (selectedOption) => {
 		setSelectedOption(selectedOption);

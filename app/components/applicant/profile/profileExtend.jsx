@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PersonIcon from "@mui/icons-material/Person";
 import EscalatorWarningIcon from "@mui/icons-material/EscalatorWarning";
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -37,34 +37,70 @@ import Hobbies from "../formApplicant/hobbies";
 import Country from "../formApplicant/country";
 import Academic from "../formApplicant/academic";
 import { useGetInfoUserQuery } from "../../../globalstore/services/applicant/user-info/useInfoUser";
-
+import { useGetResumeQuery } from "@/app/globalstore/services/applicant/user-profile/useGetResume";
 const ProfileExt = () => {
-	const { data, isError, isLoading, error } = useGetInfoUserQuery();
-	const [userData, setUserData] = useState({
-		mail: "",
-		phone: "",
-		birthdate: "",
-		genre: "",
-		country: "",
-		city: "",
-		reubication: "",
-		languages: [],
-		profession: [],
-		studies: "",
-		university: "",
-		degree: "",
-		hobbies: [],
-		years_xp: "",
-		income: "",
-		form_of_work: "",
-		availability: "",
-	});
+	const { data, isLoading } = useGetInfoUserQuery();
+	console.log(data)
+	const { data: resumeInfo } = useGetResumeQuery();
+  let initialResumeJson = {};
+
+  if (resumeInfo && resumeInfo.resume) {
+    initialResumeJson = JSON.parse(resumeInfo.resume);
+  }
+
+  const [userData, setUserData] = useState({
+    mail: "",
+    phone: "",
+    birthdate: "",
+    genre: "",
+    country: "",
+    city: "",
+    reubication: "",
+    languages: "",
+    profession: "",
+    studies: "",
+    university: "",
+    degree: "",
+    hobbies: "",
+    years_xp: "",
+    income: "",
+    form_of_work: "",
+    availability: "",
+  });
+
+  useEffect(() => {
+    if (resumeInfo && resumeInfo.resume) {
+      const resumeJson = JSON.parse(resumeInfo.resume);
+      setUserData({
+        mail: "",
+        phone: resumeJson.phone || "",
+        birthdate: resumeJson.birthdate || "",
+        genre: resumeJson.genre || "",
+        country: "",
+        city: resumeJson.city || "",
+        reubication: resumeJson.reubication || "",
+        languages: resumeJson.languages || "",
+        profession: resumeJson.profession || "",
+        studies: "",
+        university: resumeJson.university || "",
+        degree: "",
+        hobbies: resumeJson.hobbies || "",
+        years_xp: resumeJson.years_xp || "",
+        income: resumeJson.income || "",
+        form_of_work: resumeJson.form_of_work || "",
+        availability: resumeJson.availability || "",
+      });
+    }
+  }, [resumeInfo]);
+
+console.log(userData)
+console.log(initialResumeJson);
 
 	const [inputPhotoUpload, setInputPhotoUpload] = useState(false);
 	const handleInputPhotoUpload = () => {
 		setInputPhotoUpload(!inputPhotoUpload);
 	};
-
+	
 	const [inputStudies, setInputStudies] = useState(false);
 	const handleInputStudies = () => {
 		setInputStudies(!inputStudies);
@@ -146,7 +182,6 @@ const ProfileExt = () => {
 	};
 
 	const handleChange = (event) => {
-		event.preventDefault();
 		setUserData({
 			...userData,
 			[event.target.name]: event.target.value,

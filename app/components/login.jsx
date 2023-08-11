@@ -38,7 +38,6 @@ const LogForm = () => {
 	};
 
 	const handleShowPassword = (event) => {
-		console.log(event.keyCode);
 		setShowPassword(!showPassword);
 	};
 

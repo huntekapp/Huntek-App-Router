@@ -122,7 +122,6 @@ const handleRating = (event) => {
 	});
 };
 
-	console.log(lang)
 	return (
 		<div>
 			<label htmlFor="languagess" className="ml-2 font-semibold">
