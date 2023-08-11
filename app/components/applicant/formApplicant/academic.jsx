@@ -72,7 +72,7 @@ const Academic = ({ userData, handleChange, inputAcademic }) => {
 				value={selectedOption}
 				options={selectOptions}
 				menuPlacement="auto"
-				placeholder="Selecciona una situación académica"
+				placeholder={userData.academic ? userData.academic : "Selecciona una situación académica"}
 				isDisabled={!inputAcademic}
 				isClearable={selectedOption !== null}
 				onChange={handleSelectChange}
