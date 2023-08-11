@@ -19,7 +19,7 @@ import CloudUploadOutlinedIcon from "@mui/icons-material/CloudUploadOutlined";
 import SailingIcon from "@mui/icons-material/Sailing";
 import TranslateIcon from "@mui/icons-material/Translate";
 import FlagIcon from "@mui/icons-material/Flag";
-import Studies from "../formApplicant/studies";
+import University from "../formApplicant/university";
 import Career from "../formApplicant/career";
 import OptionsCity from "../formApplicant/optionsCity";
 import Genres from "../formApplicant/genres";
@@ -51,16 +51,16 @@ const ProfileExt = () => {
   const [userData, setUserData] = useState({
     mail: "",
     phone: "",
-    birthdate: "",
     genre: "",
-    country: "",
-    city: "",
+    birthdate: "",
+		country: "",
+		academic: "",
+    university: "",
+		city: "",
     reubication: "",
     languages: "",
     profession: "",
-    studies: "",
-    university: "",
-    degree: "",
+    career: "",
     hobbies: "",
     years_xp: "",
     income: "",
@@ -72,18 +72,18 @@ const ProfileExt = () => {
     if (resumeInfo && resumeInfo.resume) {
       const resumeJson = JSON.parse(resumeInfo.resume);
       setUserData({
-        mail: "",
+        mail: resumeJson.mail || "",
         phone: resumeJson.phone || "",
-        birthdate: resumeJson.birthdate || "",
         genre: resumeJson.genre || "",
-        country: "",
+        birthdate: resumeJson.birthdate || "",
+				country: resumeJson.country || "",
+				academic: resumeJson.academic || "",
+        university: resumeJson.university || "",
         city: resumeJson.city || "",
         reubication: resumeJson.reubication || "",
         languages: resumeJson.languages || "",
         profession: resumeJson.profession || "",
-        studies: "",
-        university: resumeJson.university || "",
-        degree: "",
+        career: resumeJson.career || "",
         hobbies: resumeJson.hobbies || "",
         years_xp: resumeJson.years_xp || "",
         income: resumeJson.income || "",
@@ -93,17 +93,17 @@ const ProfileExt = () => {
     }
   }, [resumeInfo]);
 
-console.log(userData)
-console.log(initialResumeJson);
+console.log("USERDATA", userData)
+console.log("RESUMEJSON", initialResumeJson);
 
 	const [inputPhotoUpload, setInputPhotoUpload] = useState(false);
 	const handleInputPhotoUpload = () => {
 		setInputPhotoUpload(!inputPhotoUpload);
 	};
 	
-	const [inputStudies, setInputStudies] = useState(false);
-	const handleInputStudies = () => {
-		setInputStudies(!inputStudies);
+	const [inputUniversity, setInputUniversity] = useState(false);
+	const handleInputUniversity = () => {
+		setInputUniversity(!inputUniversity);
 	};
 
 	const [inputCareer, setInputCareer] = useState(false);
@@ -273,7 +273,7 @@ console.log(initialResumeJson);
 					<div className="flex justify-between items-center">
 						<label htmlFor="modalTelefono" className="w-full flex flex-row justify-between items-center cursor-pointer">
 							<span>
-								<PhoneIcon /> Número de Celular
+								<PhoneIcon /> Número de celular
 							</span>
 							<NavigateNextOutlinedIcon />
 						</label>
@@ -329,7 +329,7 @@ console.log(initialResumeJson);
 					<div className="flex justify-between items-center">
 						<label htmlFor="modalEdad" className="w-full flex flex-row justify-between items-center cursor-pointer">
 							<span>
-								<EscalatorWarningIcon /> Fecha de Nacimiento
+								<EscalatorWarningIcon /> Fecha de nacimiento
 							</span>
 							<NavigateNextOutlinedIcon />
 						</label>
@@ -359,7 +359,7 @@ console.log(initialResumeJson);
 							htmlFor="modalNacimiento"
 							className="w-full flex flex-row justify-between items-center cursor-pointer">
 							<span>
-								<FlagIcon /> Lugar de Nacimiento
+								<FlagIcon /> Lugar de nacimiento
 							</span>
 							<NavigateNextOutlinedIcon />
 						</label>
@@ -387,7 +387,7 @@ console.log(initialResumeJson);
 					<div className="flex justify-between items-center">
 						<label htmlFor="modalStatus" className="w-full flex flex-row justify-between items-center cursor-pointer">
 							<span>
-								<AbcIcon /> Situación Académica
+								<AbcIcon /> Situación académica
 							</span>
 							<NavigateNextOutlinedIcon />
 						</label>
@@ -415,21 +415,21 @@ console.log(initialResumeJson);
 					<div className="flex justify-between items-center">
 						<label htmlFor="modalUniv" className="w-full flex flex-row justify-between items-center cursor-pointer">
 							<span>
-								<AccountBalanceSharpIcon /> Institución de Estudios
+								<AccountBalanceSharpIcon /> Institución de estudios
 							</span>
 							<NavigateNextOutlinedIcon />
 						</label>
 						<input type="checkbox" id="modalUniv" className="modal-toggle" />
 						<div className="modal">
 							<div className="modal-box bg-sec flex flex-col">
-								<Studies handleChange={handleChange} userData={userData} inputStudies={inputStudies} />
+								<University handleChange={handleChange} userData={userData} inputUniversity={inputUniversity} />
 								<div className="modal-action">
 									<button
 										className={`w-fit px-2 py-1 ${
-											inputStudies ? "bg-red-500" : "bg-pri"
+											inputUniversity ? "bg-red-500" : "bg-pri"
 										} text-sec rounded-lg  hover:text-pri hover:bg-pri-100`}
-										onClick={handleInputStudies}>
-										{inputStudies ? "Guardar" : "Editar"}
+										onClick={handleInputUniversity}>
+										{inputUniversity ? "Guardar" : "Editar"}
 									</button>
 									<label
 										htmlFor="modalUniv"
