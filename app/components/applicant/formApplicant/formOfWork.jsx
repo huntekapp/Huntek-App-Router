@@ -75,7 +75,7 @@ const FormOfWork = ({ userData, handleChange, inputFormOfWork }) => {
 				value={selectedOption}
 				options={selectOptions}
 				menuPlacement="auto"
-				placeholder="Selecciona una respuesta"
+				placeholder={userData.form_of_work ? userData.form_of_work : "Selecciona una respuesta"}
 				isDisabled={!inputFormOfWork}
 				isClearable={selectedOption !== null}
 				onChange={handleSelectChange}
