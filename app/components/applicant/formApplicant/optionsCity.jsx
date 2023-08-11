@@ -156,7 +156,7 @@ const OptionsCity = ({ userData, handleChange, inputCity }) => {
 				value={selectedOption}
 				options={selectOptions}
 				menuPlacement="auto"
-				placeholder="Selecciona una ciudad"
+				placeholder={userData.city ? userData.city : "Selecciona una ciudad"}
 				isDisabled={!inputCity}
 				isClearable={selectedOption !== null}
 				onChange={handleSelectChange}
