@@ -38,7 +38,7 @@ const customStyles = {
 	}),
 };
 
-const Languagess = ({ userData, handleChange, inputLanguages }) => {
+const Languages = ({ userData, handleChange, inputLanguages }) => {
 	const options = [
 		"Alemán",
 		"Bengalí",
@@ -203,4 +203,4 @@ const handleRating = (event) => {
 	);
 };
 
-export default Languagess;
+export default Languages;
