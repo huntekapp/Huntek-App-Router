@@ -73,7 +73,7 @@ const Genres = ({ userData, handleChange, inputGenre }) => {
 				value={userData.genre}
 				options={selectOptions}
 				menuPlacement="auto"
-				placeholder={userData ? userData.genre : "Selecciona un género"}
+				placeholder={userData.genre ? userData.genre : "Selecciona un género"}
 				isDisabled={!inputGenre}
 				isClearable={selectedOption !== null}
 				onChange={handleSelectChange}
