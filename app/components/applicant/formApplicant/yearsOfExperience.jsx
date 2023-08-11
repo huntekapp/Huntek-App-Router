@@ -75,7 +75,7 @@ const Experience = ({ userData, handleChange, inputExperience }) => {
 				value={selectedOption}
 				options={selectOptions}
 				menuPlacement="auto"
-				placeholder="Selecciona una respuesta"
+				placeholder={userData.years_xp ? userData.years_xp : "Selecciona una respuesta"}
 				isDisabled={!inputExperience}
 				isClearable={selectedOption !== null}
 				onChange={handleSelectChange}
