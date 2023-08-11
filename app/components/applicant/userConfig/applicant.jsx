@@ -16,7 +16,7 @@ import OptionsCity from "../formApplicant/optionsCity";
 import Phone from "../formApplicant/phone";
 import Birthdate from "../formApplicant/birthdate";
 import Academic from "../formApplicant/academic";
-import Studies from "../formApplicant/studies";
+import University from "../formApplicant/university";
 import Career from "../formApplicant/career";
 import Languages from "../formApplicant/language";
 import Hobbies from "../formApplicant/hobbies";
@@ -271,7 +271,7 @@ const ApplicantConfig = () => {
 								<Academic userData={userData} handleChange={handleChange} inputAcademic={true} />
 							</article>
 							<article className="w-11/12">
-								<Studies userData={userData} handleChange={handleChange} inputStudies={true} />
+								<University userData={userData} handleChange={handleChange} inputUniversity={true} />
 							</article>
 							<article className="w-11/12">
 								<Career userData={userData} handleChange={handleChange} inputCareer={true} />

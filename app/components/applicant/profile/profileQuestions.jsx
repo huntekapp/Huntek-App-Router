@@ -5,7 +5,7 @@ import Options from "../formApplicant/country";
 import OptionsCity from "../formApplicant/optionsCity";
 import Languages from "../formApplicant/language";
 import Profession from "../formApplicant/professions";
-import Studies from "../formApplicant/studies";
+import Studies from "../formApplicant/university";
 import Carreer from "../formApplicant/career";
 import Hobbies from "../formApplicant/hobbies";
 import LastQuestions from "../formApplicant/formOfWork";
