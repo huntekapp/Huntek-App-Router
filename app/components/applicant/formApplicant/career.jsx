@@ -40,7 +40,7 @@ const customStyles = {
 
 const Career = ({ userData, handleChange, inputCareer }) => {
 	const options = [
-		"Administración De Empresas",
+		"Administración de Empresas",
 		"Administración Pública",
 		"Antropología",
 		"Arqueología",
@@ -216,7 +216,7 @@ const Career = ({ userData, handleChange, inputCareer }) => {
 				value={selectedOption}
 				options={selectOptions}
 				menuPlacement="auto"
-				placeholder="Selecciona una carrera"
+				placeholder={userData.career ? userData.career : "Selecciona una carrera"}
 				isDisabled={!inputCareer || userData.academic === "Sin estudios"}
 				isClearable={selectedOption !== null}
 				onChange={handleSelectChange}
