@@ -267,7 +267,7 @@ const Country = ({ userData, handleChange, inputCountry }) => {
 				value={selectedOption}
 				options={selectOptions}
 				menuPlacement="auto"
-				placeholder={userData ? userData.country : "Selecciona un país"}
+				placeholder={userData.country ? userData.country : "Selecciona un país"}
 				isDisabled={!inputCountry}
 				isClearable={selectedOption !== null}
 				onChange={handleSelectChange}
