@@ -7,9 +7,9 @@ import { AlertSuccess, AlertError } from "../../alertsforrequest";
 import { useGetInfoUserQuery } from "@/app/globalstore/services/applicant/user-info/useInfoUser";
 import { usePostNewFilesMutation } from "@/app/globalstore/services/applicant/user-files/useNewFiles";
 import { usePostResumeMutation } from "@/app/globalstore/services/applicant/user-profile/useResume";
-import { useGetFilesQuery } from "@/app/globalstore/services/applicant/user-files/useFiles";
 import CloudUploadOutlinedIcon from "@mui/icons-material/CloudUploadOutlined";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
+import CloseIcon from "@mui/icons-material/Close";
 import Genres from "../formApplicant/genres";
 import Country from "../formApplicant/country";
 import OptionsCity from "../formApplicant/optionsCity";
@@ -31,22 +31,28 @@ import { useEffect } from "react";
 const ApplicantConfig = () => {
 	const [postResume] = usePostResumeMutation();
 	const [postNewFiles] = usePostNewFilesMutation();
+
 	const [cvFile, setCvFile] = useState(null);
+
 	const [profilePictureFile, setProfilePictureFile] = useState(null);
+	const [profilePicFileName, setProfilePicFileName] = useState(false);
+
 	const [errorCatched, setErrorCatched] = useState(null);
 	const [successReq, setSuccessReq] = useState(null);
 	const { data: userInfo, isLoading } = useGetInfoUserQuery();
 	const firstName = userInfo?.first_name.split(" ")[0];
 	const lastName = userInfo?.last_name.split(" ")[0];
-	const { data: filesInfo, refetch } = useGetFilesQuery(userInfo?.id);
 	const router = useRouter();
 
 	const handleCvChange = (event) => {
 		setCvFile(event.target.files[0]);
+		console.log(cvFile)
 	};
 
 	const handleProfilePictureChange = (event) => {
 		setProfilePictureFile(event.target.files[0]);
+		console.log(profilePicFileName)
+		setProfilePicFileName(event.target.files[0].name);
 	};
 
 	// const handleUpload = async () => {
@@ -85,14 +91,13 @@ const ApplicantConfig = () => {
 		languages: [],
 		profession: [],
 		university: "",
-    career: "",
+		career: "",
 		hobbies: [],
 		years_xp: "",
 		income: "",
 		form_of_work: "",
-		availability: "",		
+		availability: "",
 	});
-
 
 	const [progress, setProgress] = useState(0);
 
@@ -120,18 +125,18 @@ const ApplicantConfig = () => {
 		formData.append("profile_picture", profilePictureFile);
 		setErrorCatched(null);
 		setSuccessReq(null);
-	
+
 		try {
 			// Subir archivos
 			const uploadResponse = await postNewFiles({ user_id: userInfo?.id, data: formData }).unwrap();
 			console.log("Archivos subidos con éxito:", uploadResponse);
-	
+
 			// Guardar cambios
 			const resumeResponse = await postResume(userData).unwrap();
 			console.log("Cambios guardados:", resumeResponse);
-	
+
 			setSuccessReq("Archivos subidos y cambios guardados. Redireccionando...");
-	
+
 			setTimeout(() => {
 				router.push("/applicant/home");
 			}, 2000);
@@ -203,14 +208,10 @@ const ApplicantConfig = () => {
 							<article className="w-full flex flex-col justify-around items-center">
 								<div className="w-32 h-32 border-4 border-pri rounded-full relative">
 									<Image
-										src={
-											filesInfo === undefined || filesInfo[1]?.url === undefined
-												? "/images/defaultPhoto.png"
-												: `${filesInfo[1].url}`
-										}
+										src={"/images/defaultPhoto.png"}
 										alt="profileImg"
 										fill={true}
-										className="rounded-full object-cover absolute"
+										className="rounded-full object-contain absolute"
 									/>
 									<label className="w-8 h-8 bg-pri text-sec rounded-full shadow-lg grid place-content-center absolute left-[87px] top-[87px] cursor-pointer hover:bg-sec hover:text-pri">
 										<CloudUploadOutlinedIcon />
@@ -220,6 +221,14 @@ const ApplicantConfig = () => {
 								<label className="text-lg font-medium" htmlFor="file_input">
 									Foto de perfil
 								</label>
+								{profilePicFileName && (
+									<span className="">
+										{profilePicFileName}
+										<button onClick={() => {setProfilePictureFile(null), setProfilePicFileName(false)}}>
+											<CloseIcon style={{ fontSize: "medium" }}/>
+										</button>
+									</span>
+								)}
 							</article>
 							<article className="h-1/4 flex flex-col justify-center items-center">
 								<label className="w-fit h-16 px-4 flex flex-col justify-center items-center bg-pri text-sec rounded-lg shadow-lg cursor-pointer hover:bg-sec hover:text-pri">
@@ -402,13 +411,11 @@ const ApplicantConfig = () => {
 								</button>
 							</article>
 						</section>
-						</form>
-						{errorCatched && (
-							<AlertError alertTitle={"Error!"} alertBody={errorCatched} setErrorCatched={setErrorCatched} />
-						)}
-						{successReq && (
-							<AlertSuccess alertTitle={"Success!"} alertBody={successReq} setSuccessReq={setSuccessReq} />
-						)}
+					</form>
+					{errorCatched && (
+						<AlertError alertTitle={"Error!"} alertBody={errorCatched} setErrorCatched={setErrorCatched} />
+					)}
+					{successReq && <AlertSuccess alertTitle={"Success!"} alertBody={successReq} setSuccessReq={setSuccessReq} />}
 				</article>
 			)}
 		</section>

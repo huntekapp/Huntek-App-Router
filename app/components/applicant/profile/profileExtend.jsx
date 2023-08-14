@@ -648,7 +648,7 @@ console.log("RESUMEJSON", initialResumeJson);
 						<input type="checkbox" id="modalAreasInteres" className="modal-toggle" />
 						<div className="modal">
 							<div className="modal-box bg-sec">
-								<Profession userData={userData} inputProf={inputProf} />
+								<Profession handleChange={handleChange} userData={userData} inputProf={inputProf} />
 								<div className="modal-action">
 									<button
 										className={`w-fit px-2 py-1 ${

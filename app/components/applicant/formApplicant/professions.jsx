@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Select from "react-select";
 import NotListedLocationOutlinedIcon from "@mui/icons-material/NotListedLocationOutlined";
+import { usePathname } from "next/navigation";
 
 const customStyles = {
 	control: (provided, state) => ({
@@ -61,19 +62,21 @@ const Profession = ({ userData, handleChange, inputProf }) => {
 
 	const [selectedOption, setSelectedOption] = useState([]);
 
-	// useEffect(() => {
-	// 	const prof = selectedOption.map((opt) => opt.value);
-	// 	handleChange({
-	// 		target: {
-	// 			name: "profession",
-	// 			value: selectedOption ? prof : "",
-	// 		},
-	// 	});
-	// }, [selectedOption]);
+	useEffect(() => {
+		const prof = selectedOption.map((opt) => opt.value);
+		handleChange({
+			target: {
+				name: "profession",
+				value: selectedOption ? prof : "",
+			},
+		});
+	}, [selectedOption]);
 
 	const handleSelectChange = (selectedOption) => {
 		setSelectedOption(selectedOption);
 	};
+
+	const pathname = usePathname()
 
 	return (
 		<div>
@@ -102,6 +105,11 @@ const Profession = ({ userData, handleChange, inputProf }) => {
 				onChange={handleSelectChange}
 				styles={customStyles}
 			/>
+			{!pathname.includes("userconfig") && userData.profession ? userData.profession.map((profession) => {
+				return (
+					<div className="mt-1 ml-1 text-gray-500/80 text-base">{profession}</div>
+				)
+			}): ""}
 		</div>
 	);
 };
