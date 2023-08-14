@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Select from "react-select";
 import NotListedLocationOutlinedIcon from "@mui/icons-material/NotListedLocationOutlined";
+import { usePathname } from "next/navigation";
 
 const customStyles = {
 	control: (provided, state) => ({
@@ -70,6 +71,8 @@ const Hobbies = ({ userData, handleChange, inputHobbies }) => {
 		setSelectedOption(selectedOption);
 	};
 
+	const pathname = usePathname()
+
 	return (
 		<div>
 			<label htmlFor="hobbies" className="ml-2 font-semibold">
@@ -97,7 +100,7 @@ const Hobbies = ({ userData, handleChange, inputHobbies }) => {
 				onChange={handleSelectChange}
 				styles={customStyles}
 			/>
-			{userData.hobbies ? userData.hobbies.map((hobbie) => {
+			{!pathname.includes("userconfig") && userData.hobbies ? userData.hobbies.map((hobbie) => {
 				return (
 					<div className="mt-1 ml-1 text-gray-500/80 text-base">{hobbie}</div>
 				)

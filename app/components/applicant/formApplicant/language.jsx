@@ -124,7 +124,6 @@ const Languages = ({ userData, handleChange, inputLanguages }) => {
 	};
 
 	const pathname = usePathname()
-	console.log(pathname)
 	
 	return (
 		<div>
