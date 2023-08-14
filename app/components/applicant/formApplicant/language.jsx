@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Select from "react-select";
 import NotListedLocationOutlinedIcon from "@mui/icons-material/NotListedLocationOutlined";
+import { usePathname } from "next/navigation";
 
 const customStyles = {
 	control: (provided, state) => ({
@@ -121,6 +122,9 @@ const Languages = ({ userData, handleChange, inputLanguages }) => {
 			},
 		});
 	};
+
+	const pathname = usePathname()
+	console.log(pathname)
 	
 	return (
 		<div>
@@ -149,7 +153,7 @@ const Languages = ({ userData, handleChange, inputLanguages }) => {
 				onChange={handleSelectChange}
 				styles={customStyles}
 			/>
-			{userData.languages ? userData.languages.map((lang) => {
+			{!pathname.includes("userconfig") && userData.languages ? userData.languages.map((lang) => {
 				return (
 					<div className="mt-1 ml-1 text-gray-500/80 text-base">{lang.split(":")[0]} {lang.split(":")[1]}</div>
 				)
