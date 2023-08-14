@@ -143,7 +143,7 @@ const Languages = ({ userData, handleChange, inputLanguages }) => {
 				value={selectedOption}
 				options={selectOptions}
 				menuPlacement="auto"
-				placeholder={userData.languages.length ? "Tus idiomas son" : "Selecciona un idioma"}
+				placeholder={userData.languages.length ? "Has seleccionado" : "Selecciona un idioma"}
 				isDisabled={!inputLanguages}
 				isClearable={selectedOption !== null}
 				onChange={handleSelectChange}

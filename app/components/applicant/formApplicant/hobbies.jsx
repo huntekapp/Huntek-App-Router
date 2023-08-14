@@ -91,12 +91,17 @@ const Hobbies = ({ userData, handleChange, inputHobbies }) => {
 				value={selectedOption}
 				options={selectOptions}
 				menuPlacement="auto"
-				placeholder="Selecciona un hobbie"
+				placeholder={userData.hobbies.length ? "Has seleccionado" : "Selecciona un hobbie"}
 				isDisabled={!inputHobbies}
 				isClearable={selectedOption !== null}
 				onChange={handleSelectChange}
 				styles={customStyles}
 			/>
+			{userData.hobbies ? userData.hobbies.map((hobbie) => {
+				return (
+					<div className="mt-1 ml-1 text-gray-500/80 text-base">{hobbie}</div>
+				)
+			}): ""}
 		</div>
 	);
 };
