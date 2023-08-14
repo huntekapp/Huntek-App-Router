@@ -202,7 +202,16 @@ select:-webkit-autofill:focus {
   background-image: linear-gradient(90deg, #53b1a4, #046255);
 }
 .premium-grad {
-  background-image: linear-gradient(90deg, #fdff8b, #fbff02);
+  background-image: linear-gradient(
+	to right,
+	#dec074 0,
+       	#ffdc85 22%, 
+	#f6e27a 45%,
+	#f6f2c0 50%,
+	#f6e27a 55%,
+	#ffdc85 78%,
+	#dec074 100%
+	);
 }
 
 ::-webkit-scrollbar {

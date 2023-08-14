@@ -33,6 +33,7 @@ const ApplicantConfig = () => {
 	const [postNewFiles] = usePostNewFilesMutation();
 
 	const [cvFile, setCvFile] = useState(null);
+	const [cvFileName, setCvFileName] = useState(false);
 
 	const [profilePictureFile, setProfilePictureFile] = useState(null);
 	const [profilePicFileName, setProfilePicFileName] = useState(false);
@@ -46,37 +47,14 @@ const ApplicantConfig = () => {
 
 	const handleCvChange = (event) => {
 		setCvFile(event.target.files[0]);
-		console.log(cvFile)
+		setCvFileName(event.target.files[0].name);
+		event.target.value = null;
 	};
-
 	const handleProfilePictureChange = (event) => {
-		setProfilePictureFile(event.target.files[0]);
-		console.log(profilePicFileName)
-		setProfilePicFileName(event.target.files[0].name);
-	};
-
-	// const handleUpload = async () => {
-	// 	const formData = new FormData();
-	// 	formData.append("cv", cvFile);
-	// 	formData.append("profile_picture", profilePictureFile);
-	// 	setErrorCatched(null);
-	// 	setSuccessReq(null);
-	// 	try {
-	// 		const response = await postNewFiles({ user_id: userInfo?.id, data: formData }).unwrap();
-	// 		setSuccessReq("Archivos subidos con éxito!");
-	// 		console.log(response)
-	// 		refetch();
-	// 	} catch (error) {
-	// 		if (error.status === "FETCH_ERROR") {
-	// 			return setErrorCatched("No se ha podido establecer conexión con el servidor.");
-	// 		}
-	// 		if (error.data?.detail[0].msg) {
-	// 			return setErrorCatched(error.data.detail[0].msg);
-	// 		}
-	// 		setErrorCatched(error.data?.detail);
-	// 	}
-	// };
-
+    setProfilePictureFile(event.target.files[0]);
+    setProfilePicFileName(event.target.files[0].name);
+    event.target.value = null;
+};
 	const [activate, setActivate] = useState(true);
 
 	const [userData, setUserData] = useState({
@@ -101,16 +79,6 @@ const ApplicantConfig = () => {
 
 	const [progress, setProgress] = useState(0);
 
-	// useEffect(() => {
-	// 	let count = 0;
-	// 	const props = Object.keys(userData);
-	// 	const ans = [];
-	// 	props.forEach((propName) => {
-	// 		userData[propName].length && ans.push(userData[propName])
-	// 	})
-	// 	setProgress(16 * count);
-	// }, [userData]);
-
 	const handleChange = (event) => {
 		setUserData({
 			...userData,
@@ -129,11 +97,9 @@ const ApplicantConfig = () => {
 		try {
 			// Subir archivos
 			const uploadResponse = await postNewFiles({ user_id: userInfo?.id, data: formData }).unwrap();
-			console.log("Archivos subidos con éxito:", uploadResponse);
 
 			// Guardar cambios
 			const resumeResponse = await postResume(userData).unwrap();
-			console.log("Cambios guardados:", resumeResponse);
 
 			setSuccessReq("Archivos subidos y cambios guardados. Redireccionando...");
 
@@ -224,7 +190,7 @@ const ApplicantConfig = () => {
 								{profilePicFileName && (
 									<span className="">
 										{profilePicFileName}
-										<button onClick={() => {setProfilePictureFile(null), setProfilePicFileName(false)}}>
+										<button onClick={() => {setProfilePictureFile(null); setProfilePicFileName(false)}}>
 											<CloseIcon style={{ fontSize: "medium" }}/>
 										</button>
 									</span>
@@ -239,6 +205,14 @@ const ApplicantConfig = () => {
 								<label className="text-lg font-medium" htmlFor="file_input">
 									Currículum
 								</label>
+								{cvFileName && (
+									<span className="">
+										{cvFileName}
+										<button onClick={() => {setCvFile(null); setCvFileName(false)}}>
+											<CloseIcon style={{ fontSize: "medium" }}/>
+										</button>
+									</span>
+								)}
 							</article>
 							<a
 								href="#Q2"
