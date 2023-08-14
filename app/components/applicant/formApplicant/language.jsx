@@ -59,18 +59,37 @@ const Languages = ({ userData, handleChange, inputLanguages }) => {
 	const selectOptions = options.map((languages) => ({ value: languages, label: languages }));
 
 	const [selectedOption, setSelectedOption] = useState([]);
-const [lang, setLang] = useState([]);
+	const [lang, setLang] = useState([]);
 
-useEffect(() => {
-	if (!selectedOption.length) {
-		setLang([]);
-		handleChange({
-			target: {
-				name: "languages",
-				value: selectedOption ? lang.map((opt) => `${opt.language}:${opt.rating}`) : "",
-			},
-		});
-	} else {
+	useEffect(() => {
+		if (!selectedOption.length) {
+			setLang([]);
+			handleChange({
+				target: {
+					name: "languages",
+					value: selectedOption ? lang.map((opt) => `${opt.language}:${opt.rating}`) : "",
+				},
+			});
+		} else {
+			const selectValues = selectedOption.map((option) => option.value);
+			const newLang = lang.filter((opt) => selectValues.includes(opt.language));
+			selectValues.forEach((value) => {
+				if (!newLang.some((opt) => opt.language === value)) {
+					newLang.push({ language: value, rating: "" });
+				}
+			});
+			setLang(newLang);
+			handleChange({
+				target: {
+					name: "languages",
+					value: newLang.map((opt) => `${opt.language}:${opt.rating}`),
+				},
+			});
+		}
+	}, [selectedOption]);
+
+	const handleSelectChange = (selectedOption) => {
+		setSelectedOption(selectedOption);
 		const selectValues = selectedOption.map((option) => option.value);
 		const newLang = lang.filter((opt) => selectValues.includes(opt.language));
 		selectValues.forEach((value) => {
@@ -85,43 +104,24 @@ useEffect(() => {
 				value: newLang.map((opt) => `${opt.language}:${opt.rating}`),
 			},
 		});
-	}
-}, [selectedOption]);
+	};
 
-const handleSelectChange = (selectedOption) => {
-	setSelectedOption(selectedOption);
-	const selectValues = selectedOption.map((option) => option.value);
-	const newLang = lang.filter((opt) => selectValues.includes(opt.language));
-	selectValues.forEach((value) => {
-		if (!newLang.some((opt) => opt.language === value)) {
-			newLang.push({ language: value, rating: "" });
+	const handleRating = (event) => {
+		const { name, value } = event.target;
+		const newLang = [...lang];
+		const index = newLang.findIndex((opt) => opt.language === name);
+		if (index !== -1) {
+			newLang[index] = { ...newLang[index], rating: value };
 		}
-	});
-	setLang(newLang);
-	handleChange({
-		target: {
-			name: "languages",
-			value: newLang.map((opt) => `${opt.language}:${opt.rating}`),
-		},
-	});
-};
-
-const handleRating = (event) => {
-	const { name, value } = event.target;
-	const newLang = [...lang];
-	const index = newLang.findIndex((opt) => opt.language === name);
-	if (index !== -1) {
-		newLang[index] = { ...newLang[index], rating: value };
-	}
-	setLang(newLang);
-	handleChange({
-		target: {
-			name: "languages",
-			value: newLang.map((opt) => `${opt.language}:${opt.rating}`),
-		},
-	});
-};
-
+		setLang(newLang);
+		handleChange({
+			target: {
+				name: "languages",
+				value: newLang.map((opt) => `${opt.language}:${opt.rating}`),
+			},
+		});
+	};
+	
 	return (
 		<div>
 			<label htmlFor="languagess" className="ml-2 font-semibold">
@@ -143,62 +143,66 @@ const handleRating = (event) => {
 				value={selectedOption}
 				options={selectOptions}
 				menuPlacement="auto"
-				placeholder="Selecciona un idioma"
+				placeholder={userData.languages ? "Tus idiomas son" : "Selecciona un idioma"}
 				isDisabled={!inputLanguages}
 				isClearable={selectedOption !== null}
 				onChange={handleSelectChange}
 				styles={customStyles}
 			/>
+			{userData.languages ? userData.languages.map((lang) => {
+				return (
+					<div className="mt-1 ml-1 text-gray-500/80 text-base">{lang.split(":")[0]} {lang.split(":")[1]}</div>
+				)
+			}): ""}
 			{lang.length ? (
-    <div className="w-full max-h-[80px] px-4 bg-pri-100 carousel-vertical">
-        {lang.map(({ language, rating }, index) => (
-            <div key={index} className="w-full h-8 flex flex-row justify-between items-center">
-                <p>{language}</p>
-                <div className="flex">
-                    {rating}
-                    <span className="rating">
-                        <input type="radio" name={language} value={""} className="hidden" checked={rating === ""} />
-                        <input
-                            type="radio"
-                            name={language}
-                            value={"Básico"}
-                            className="mask mask-star bg-pri hover:scale-110"
-                            checked={rating === "Básico"}
-                            onChange={handleRating}
-                        />
-                        <input
-                            type="radio"
-                            name={language}
-                            value={"Intermedio"}
-                            className="mask mask-star bg-pri hover:scale-110"
-                            checked={rating === "Intermedio"}
-                            onChange={handleRating}
-                        />
-                        <input
-                            type="radio"
-                            name={language}
-                            value={"Avanzado"}
-                            className="mask mask-star bg-pri hover:scale-110"
-                            checked={rating === "Avanzado"}
-                            onChange={handleRating}
-                        />
-                        <input
-                            type="radio"
-                            name={language}
-                            value={"Nativo"}
-                            className="mask mask-star bg-pri hover:scale-110"
-                            checked={rating === "Nativo"}
-                            onChange={handleRating}
-                        />
-                    </span>
-                </div>
-            </div>
-        ))}
-    </div>
-) : (
-    ""
-)}
-
+				<div className="w-full max-h-[80px] px-4 bg-pri-100 carousel-vertical">
+					{lang.map(({ language, rating }, index) => (
+						<div key={index} className="w-full h-8 flex flex-row justify-between items-center">
+							<p>{language}</p>
+							<div className="flex">
+								{rating}
+								<span className="rating">
+									<input type="radio" name={language} value={""} className="hidden" checked={rating === ""} />
+									<input
+										type="radio"
+										name={language}
+										value={"Básico"}
+										className="mask mask-star bg-pri hover:scale-110"
+										checked={rating === "Básico"}
+										onChange={handleRating}
+									/>
+									<input
+										type="radio"
+										name={language}
+										value={"Intermedio"}
+										className="mask mask-star bg-pri hover:scale-110"
+										checked={rating === "Intermedio"}
+										onChange={handleRating}
+									/>
+									<input
+										type="radio"
+										name={language}
+										value={"Avanzado"}
+										className="mask mask-star bg-pri hover:scale-110"
+										checked={rating === "Avanzado"}
+										onChange={handleRating}
+									/>
+									<input
+										type="radio"
+										name={language}
+										value={"Nativo"}
+										className="mask mask-star bg-pri hover:scale-110"
+										checked={rating === "Nativo"}
+										onChange={handleRating}
+									/>
+								</span>
+							</div>
+						</div>
+					))}
+				</div>
+			) : (
+				""
+			)}
 		</div>
 	);
 };
