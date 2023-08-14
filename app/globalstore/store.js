@@ -15,7 +15,8 @@ import { interviewsDB } from "./services/applicant/user-info/useInterviews";
 import { infoUserDB } from "./services/applicant/user-info/useInfoUser";
 import { newFilesDB } from "./services/applicant/user-files/useNewFiles";
 import { filesUserDB } from "./services/applicant/user-files/useFiles";
-import { deleteFilesDB } from "./services/applicant/user-files/useDeleteFiles";
+import { deletePicDB } from "./services/applicant/user-files/useDeletepic";
+import { deleteCVDB } from "./services/applicant/user-files/useDeleteFiles";
 import { editFilesDB } from "./services/applicant/user-files/useEditFiles";
 import { resumeDB } from "./services/applicant/user-profile/useResume";
 import { infoResumeDB } from "./services/applicant/user-profile/useGetResume";
@@ -38,7 +39,8 @@ export const store = configureStore({
     [infoUserDB.reducerPath]: infoUserDB.reducer,
     [newFilesDB.reducerPath]: newFilesDB.reducer,
     [filesUserDB.reducerPath]: filesUserDB.reducer,
-    [deleteFilesDB.reducerPath]: deleteFilesDB.reducer,
+    [deleteCVDB.reducerPath]: deleteCVDB.reducer,
+    [deletePicDB.reducerPath]: deletePicDB.reducer,
     [editFilesDB.reducerPath]: editFilesDB.reducer,
     [resumeDB.reducerPath]: resumeDB.reducer,
     [infoResumeDB.reducerPath]: infoResumeDB.reducer,
@@ -60,7 +62,8 @@ export const store = configureStore({
       infoUserDB.middleware,
       newFilesDB.middleware,
       filesUserDB.middleware,
-      deleteFilesDB.middleware,
+      deleteCVDB.middleware,
+      deletePicDB.middleware,
       editFilesDB.middleware,
       resumeDB.middleware,
       infoResumeDB.middleware,

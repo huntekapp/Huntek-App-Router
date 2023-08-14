@@ -1,16 +1,16 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const deleteFilesDB = createApi({
-  reducerPath: "deleteFilesDB",
+export const deleteCVDB = createApi({
+  reducerPath: "deleteCVDB",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://dev.api.app.huntek.com/api/v1/files",
+    baseUrl: "https://dev.api.app.huntek.com/api/v1/userfiles/cv",
   }),
   endpoints: (builder) => ({
-    deleteFiles: builder.mutation({
+    deleteCV: builder.mutation({
       query: (user_id) => `/${user_id}`,
       method: "DELETE",
     }),
   }),
 });
 
-export const { useDeleteFilesMutation } = deleteFilesDB;
+export const { useDeleteCVMutation } = deleteCVDB;

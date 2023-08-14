@@ -38,8 +38,11 @@ import Country from "../formApplicant/country";
 import Academic from "../formApplicant/academic";
 import { useGetInfoUserQuery } from "../../../globalstore/services/applicant/user-info/useInfoUser";
 import { useGetResumeQuery } from "@/app/globalstore/services/applicant/user-profile/useGetResume";
+import { useGetFilesQuery } from "@/app/globalstore/services/applicant/user-files/useFiles";
 const ProfileExt = () => {
 	const { data, isLoading } = useGetInfoUserQuery();
+  const { data: filesInfo } = useGetFilesQuery(data?.id);
+
 	console.log(data)
 	const { data: resumeInfo } = useGetResumeQuery();
   let initialResumeJson = {};
@@ -204,13 +207,25 @@ console.log("RESUMEJSON", initialResumeJson);
 				<article className="w-11/12 flex flex-col justify-center items-center">
 					<div></div>
 					<div className="w-36 h-36 border-4 border-pri rounded-full shadow-lg relative">
-						<Image
-							src={"/images/defaultPhoto.png"}
-							alt="avatar"
-							fill={true}
-							loading={"eager"}
-							className="absolute object-cover rounded-full"
-						/>
+					{filesInfo && filesInfo[0]?.profile_picture_url ? (
+                <Image
+                  src={filesInfo[0]?.profile_picture_url}
+                  alt="avatar"
+                  fill={true}
+                  loading={"lazy"}
+                  placeholder="empty"
+                  blurDataURL="/images/defaultPhoto.png"
+                  className="rounded-full object-cover absolute"
+                />
+              ) : (
+                <Image
+                src={"/images/defaultPhoto.png"}
+                alt="avatar"
+                fill={true}
+                loading={"eager"}
+                className="rounded-full object-cover absolute"
+                />
+              )}
 						<div className="flex justify-between items-center">
 							<label
 								htmlFor="modalPhotoUpload"

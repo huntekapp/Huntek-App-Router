@@ -11,15 +11,15 @@ import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutl
 import KeyboardDoubleArrowRightOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowRightOutlined";
 import { useGetInfoUserQuery } from "../../../globalstore/services/applicant/user-info/useInfoUser";
 
-const Profile = ({ user, closeProfile, setCloseProfile }) => {
+const Profile = ({ filesInfo, closeProfile, setCloseProfile }) => {
 	const router = useRouter();
 
-	const { data, isLoading } = useGetInfoUserQuery();
 	const [selectedPlan, setSelectedPlan] = useState(null);
 
 	const handleSelectedPlan = (plan) => {
 		setSelectedPlan(plan);
 	};
+	const { data, isLoading } = useGetInfoUserQuery();
 
 	if (isLoading) {
 		return (
@@ -47,13 +47,25 @@ const Profile = ({ user, closeProfile, setCloseProfile }) => {
 				<article className="w-full h-2/6 p-2 flex flex-col justify-center items-center">
 					<div className="w-24 h-24 radial-progress" style={{ "--value": 70, "--size": "12rem", "--thickness": "2px" }}>
 						<div className="w-20 h-20 grid place-content-center relative">
-							<Image
-								src={user.image}
-								alt="avatar"
-								fill={true}
-								loading={"eager"}
-								className="rounded-full object-cover absolute"
-							/>
+						{filesInfo && filesInfo[0]?.profile_picture_url ? (
+                <Image
+                  src={filesInfo[0]?.profile_picture_url}
+                  alt="avatar"
+                  fill={true}
+                  loading={"lazy"}
+                  placeholder="empty"
+                  blurDataURL="/images/defaultPhoto.png"
+                  className="rounded-full object-cover absolute"
+                />
+              ) : (
+                <Image
+                src={"/images/defaultPhoto.png"}
+                alt="avatar"
+                fill={true}
+                loading={"eager"}
+                className="rounded-full object-cover absolute"
+                />
+              )}
 						</div>
 					</div>
 					<div className="flex flex-row items-center">

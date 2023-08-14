@@ -49,26 +49,27 @@ const ApplicantConfig = () => {
 		setProfilePictureFile(event.target.files[0]);
 	};
 
-	const handleUpload = async () => {
-		const formData = new FormData();
-		formData.append("cv", cvFile);
-		formData.append("profile_picture", profilePictureFile);
-		setErrorCatched(null);
-		setSuccessReq(null);
-		try {
-			const response = await postNewFiles({ user_id: userInfo?.id, data: formData }).unwrap();
-			setSuccessReq("Archivos subidos con éxito!");
-			refetch();
-		} catch (error) {
-			if (error.status === "FETCH_ERROR") {
-				return setErrorCatched("No se ha podido establecer conexión con el servidor.");
-			}
-			if (error.data?.detail[0].msg) {
-				return setErrorCatched(error.data.detail[0].msg);
-			}
-			setErrorCatched(error.data?.detail);
-		}
-	};
+	// const handleUpload = async () => {
+	// 	const formData = new FormData();
+	// 	formData.append("cv", cvFile);
+	// 	formData.append("profile_picture", profilePictureFile);
+	// 	setErrorCatched(null);
+	// 	setSuccessReq(null);
+	// 	try {
+	// 		const response = await postNewFiles({ user_id: userInfo?.id, data: formData }).unwrap();
+	// 		setSuccessReq("Archivos subidos con éxito!");
+	// 		console.log(response)
+	// 		refetch();
+	// 	} catch (error) {
+	// 		if (error.status === "FETCH_ERROR") {
+	// 			return setErrorCatched("No se ha podido establecer conexión con el servidor.");
+	// 		}
+	// 		if (error.data?.detail[0].msg) {
+	// 			return setErrorCatched(error.data.detail[0].msg);
+	// 		}
+	// 		setErrorCatched(error.data?.detail);
+	// 	}
+	// };
 
 	const [activate, setActivate] = useState(true);
 
@@ -114,25 +115,36 @@ const ApplicantConfig = () => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
+		const formData = new FormData();
+		formData.append("cv", cvFile);
+		formData.append("profile_picture", profilePictureFile);
 		setErrorCatched(null);
 		setSuccessReq(null);
+	
 		try {
-			const response = await postResume(userData).unwrap();
-			setSuccessReq("Cambios guardados! \nRedireccionando...");
+			// Subir archivos
+			const uploadResponse = await postNewFiles({ user_id: userInfo?.id, data: formData }).unwrap();
+			console.log("Archivos subidos con éxito:", uploadResponse);
+	
+			// Guardar cambios
+			const resumeResponse = await postResume(userData).unwrap();
+			console.log("Cambios guardados:", resumeResponse);
+	
+			setSuccessReq("Archivos subidos y cambios guardados. Redireccionando...");
+	
 			setTimeout(() => {
 				router.push("/applicant/home");
 			}, 2000);
 		} catch (error) {
 			if (error.status === "FETCH_ERROR") {
-				return setErrorCatched("No se ha podido establecer conexión con el servidor.");
+				setErrorCatched("No se ha podido establecer conexión con el servidor.");
+			} else if (error.data?.detail[0].msg) {
+				setErrorCatched(error.data.detail[0].msg);
+			} else {
+				setErrorCatched(error.data?.detail);
 			}
-			if (error.data?.detail[0].msg) {
-				return setErrorCatched(error.data.detail[0].msg);
-			}
-			setErrorCatched(error.data?.detail);
 		}
 	};
-
 	if (isLoading) {
 		return (
 			<div className="container">
@@ -222,7 +234,7 @@ const ApplicantConfig = () => {
 							<a
 								href="#Q2"
 								onClick={() => {
-									handleUpload, setProgress(16.6);
+									setProgress(16.6);
 								}}
 								className="w-fit mb-[5%] px-2 py-1 bg-pri-200 text-pri rounded-lg shadow-lg hover:bg-pri hover:text-sec">
 								Siguiente

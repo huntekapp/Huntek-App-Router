@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const newFilesDB = createApi({
   reducerPath: "newFilesDB",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://dev.api.app.huntek.com/api/v1/files",
+    baseUrl: "https://dev.api.app.huntek.com/api/v1/userfiles",
   }),
   endpoints: (builder) => ({
     postNewFiles: builder.mutation({
