@@ -43,7 +43,6 @@ const ProfileExt = () => {
 	const { data, isLoading } = useGetInfoUserQuery();
   const { data: filesInfo } = useGetFilesQuery(data?.id);
 
-	console.log(data)
 	const { data: resumeInfo } = useGetResumeQuery();
   let initialResumeJson = {};
 
@@ -223,7 +222,7 @@ console.log("RESUMEJSON", initialResumeJson);
                 alt="avatar"
                 fill={true}
                 loading={"eager"}
-                className="rounded-full object-cover absolute"
+                className="rounded-full object-contain absolute"
                 />
               )}
 						<div className="flex justify-between items-center">
