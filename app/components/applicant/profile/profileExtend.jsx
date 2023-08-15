@@ -41,68 +41,68 @@ import { useGetResumeQuery } from "@/app/globalstore/services/applicant/user-pro
 import { useGetFilesQuery } from "@/app/globalstore/services/applicant/user-files/useFiles";
 const ProfileExt = () => {
 	const { data, isLoading } = useGetInfoUserQuery();
-  const { data: filesInfo } = useGetFilesQuery(data?.id);
+	const { data: filesInfo } = useGetFilesQuery(data?.id);
 
 	const { data: resumeInfo } = useGetResumeQuery();
-  let initialResumeJson = {};
+	let initialResumeJson = {};
 
-  if (resumeInfo && resumeInfo.resume) {
-    initialResumeJson = JSON.parse(resumeInfo.resume);
-  }
+	if (resumeInfo && resumeInfo.resume) {
+		initialResumeJson = JSON.parse(resumeInfo.resume);
+	}
 
-  const [userData, setUserData] = useState({
-    mail: "",
-    phone: "",
-    genre: "",
-    birthdate: "",
+	const [userData, setUserData] = useState({
+		mail: "",
+		phone: "",
+		genre: "",
+		birthdate: "",
 		country: "",
 		academic: "",
-    university: "",
+		university: "",
 		city: "",
-    reubication: "",
-    languages: "",
-    profession: "",
-    career: "",
-    hobbies: "",
-    years_xp: "",
-    income: "",
-    form_of_work: "",
-    availability: "",
-  });
+		reubication: "",
+		languages: "",
+		profession: "",
+		career: "",
+		hobbies: "",
+		years_xp: "",
+		income: "",
+		form_of_work: "",
+		availability: "",
+	});
 
-  useEffect(() => {
-    if (resumeInfo && resumeInfo.resume) {
-      const resumeJson = JSON.parse(resumeInfo.resume);
-      setUserData({
-        mail: resumeJson.mail || "",
-        phone: resumeJson.phone || "",
-        genre: resumeJson.genre || "",
-        birthdate: resumeJson.birthdate || "",
+	useEffect(() => {
+		if (resumeInfo && resumeInfo.resume) {
+			const resumeJson = JSON.parse(resumeInfo.resume);
+			setUserData({
+				mail: resumeJson.mail || "",
+				phone: resumeJson.phone || "",
+				genre: resumeJson.genre || "",
+				birthdate: resumeJson.birthdate || "",
 				country: resumeJson.country || "",
 				academic: resumeJson.academic || "",
-        university: resumeJson.university || "",
-        city: resumeJson.city || "",
-        reubication: resumeJson.reubication || "",
-        languages: resumeJson.languages || "",
-        profession: resumeJson.profession || "",
-        career: resumeJson.career || "",
-        hobbies: resumeJson.hobbies || "",
-        years_xp: resumeJson.years_xp || "",
-        income: resumeJson.income || "",
-        form_of_work: resumeJson.form_of_work || "",
-        availability: resumeJson.availability || "",
-      });
-    }
-  }, [resumeInfo]);
+				university: resumeJson.university || "",
+				city: resumeJson.city || "",
+				reubication: resumeJson.reubication || "",
+				languages: resumeJson.languages || "",
+				profession: resumeJson.profession || "",
+				career: resumeJson.career || "",
+				hobbies: resumeJson.hobbies || "",
+				years_xp: resumeJson.years_xp || "",
+				income: resumeJson.income || "",
+				form_of_work: resumeJson.form_of_work || "",
+				availability: resumeJson.availability || "",
+			});
+		}
+	}, [resumeInfo]);
 
-console.log("USERDATA", userData)
-console.log("RESUMEJSON", initialResumeJson);
+	console.log("USERDATA", userData);
+	console.log("RESUMEJSON", initialResumeJson);
 
 	const [inputPhotoUpload, setInputPhotoUpload] = useState(false);
 	const handleInputPhotoUpload = () => {
 		setInputPhotoUpload(!inputPhotoUpload);
 	};
-	
+
 	const [inputUniversity, setInputUniversity] = useState(false);
 	const handleInputUniversity = () => {
 		setInputUniversity(!inputUniversity);
@@ -201,30 +201,29 @@ console.log("RESUMEJSON", initialResumeJson);
 	}
 
 	return (
-		<main className="w-full h-[90%] flex flex-col lg:flex-row justify-around items-center">
-			<section className="w-full lg:w-1/3 h-2/5 lg:h-5/6 flex flex-col justify-around items-center">
-				<article className="w-11/12 flex flex-col justify-center items-center">
-					<div></div>
+		<main className="w-full h-[90%] flex flex-col lg:flex-row justify-between items-center">
+			<section className="w-full lg:w-1/3 h-1/2 lg:h-5/6 flex flex-col justify-between items-center">
+				<article className="w-11/12 flex flex-col justify-center items-center mt-3">
 					<div className="w-36 h-36 border-4 border-pri rounded-full shadow-lg relative">
-					{filesInfo && filesInfo[0]?.profile_picture_url ? (
-                <Image
-                  src={filesInfo[0]?.profile_picture_url}
-                  alt="avatar"
-                  fill={true}
-                  loading={"lazy"}
-                  placeholder="empty"
-                  blurDataURL="/images/defaultPhoto.png"
-                  className="rounded-full object-cover absolute"
-                />
-              ) : (
-                <Image
-                src={"/images/defaultPhoto.png"}
-                alt="avatar"
-                fill={true}
-                loading={"eager"}
-                className="rounded-full object-contain absolute"
-                />
-              )}
+						{filesInfo && filesInfo[0]?.profile_picture_url ? (
+							<Image
+								src={filesInfo[0]?.profile_picture_url}
+								alt="avatar"
+								fill={true}
+								loading={"eager"}
+								placeholder="empty"
+								blurDataURL="/images/defaultPhoto.png"
+								className="rounded-full object-contain absolute"
+							/>
+						) : (
+							<Image
+								src={"/images/defaultPhoto.png"}
+								alt="avatar"
+								fill={true}
+								loading={"eager"}
+								className="rounded-full object-contain absolute"
+							/>
+						)}
 						<div className="flex justify-between items-center">
 							<label
 								htmlFor="modalPhotoUpload"
@@ -249,39 +248,39 @@ console.log("RESUMEJSON", initialResumeJson);
 							</div>
 						</div>
 					</div>
-					<h2 className="my-2 text-2xl lg:text-3xl text-black text-center font-bold line-clamp-2">
+					<h2 className="mt-2 text-2xl lg:text-3xl text-black text-center font-bold line-clamp-2">
 						{data?.first_name} {data?.last_name}
 					</h2>
+					<p className="text-md text-gray-500">{`${userData.mail}`}</p>
 				</article>
 				<article className="flex flex-col justify-start items-center">
-					<h2 className="w-fit px-1 mx-1 py-1 text-2xl lg:text-2xl text-sec bg-pri rounded-md text-center">
+					<h2 className="w-fit px-1 mx-4 py-1 text-xl lg:text-2xl text-sec bg-pri rounded-md text-center">
 						{userData.career ? userData.career : "Datos incompletos"}
 					</h2>
-					<p className="text-md text-gray-500 mt-2">{`${userData.mail}`}</p>
 					<p className="text-sm text-gray-500 mt-2">{`Ubicación actual ${userData.city}`}</p>
 				</article>
+				<article className="w-full flex flex-row justify-center lg:hidden">
+					<a
+						href="#personal"
+						className={`w-fit px-2 py-1 ${
+							active === "p" ? "bg-pri text-sec" : "bg-pri-100 text-pri"
+						} rounded-tl-lg rounded-bl-lg`}
+						onClick={() => setActive("p")}>
+						Personal
+					</a>
+					<a
+						href="#laboral"
+						className={`w-fit px-2 py-1 ${
+							active === "l" ? "bg-pri text-sec" : "bg-pri-100 text-pri"
+						} rounded-tr-lg rounded-br-lg`}
+						onClick={() => setActive("l")}>
+						Laboral
+					</a>
+				</article>
 			</section>
-			<article className="w-full flex flex-row justify-center lg:hidden absolute top-[46%]">
-				<a
-					href="#personal"
-					className={`w-fit px-2 py-1 ${
-						active === "p" ? "bg-pri text-sec" : "bg-pri-100 text-pri"
-					} rounded-tl-lg rounded-bl-lg`}
-					onClick={() => setActive("p")}>
-					Personal
-				</a>
-				<a
-					href="#laboral"
-					className={`w-fit px-2 py-1 ${
-						active === "l" ? "bg-pri text-sec" : "bg-pri-100 text-pri"
-					} rounded-tr-lg rounded-br-lg`}
-					onClick={() => setActive("l")}>
-					Laboral
-				</a>
-			</article>
-			<section className="w-full lg:w-2/3 h-3/5 lg:h-5/6 text-pri text-lg font-light flex flew-row carousel lg:grid lg:grid-cols-2 lg:gap-10">
+			<section className="w-full lg:w-2/3 h-1/2 lg:h-5/6 text-pri text-lg font-light flex flew-row items-center carousel lg:grid lg:grid-cols-2 lg:gap-10">
 				<article id="personal" className="w-11/12 h-[90%] px-6 carousel-item lg:h-full flex flex-col justify-between">
-					<h3 className="w-full text-transparent lg:text-pri text-2xl lg:text-3xl text-center font-semibold">
+					<h3 className="w-full hidden lg:flex lg:justify-center lg:text-pri text-2xl lg:text-3xl text-center font-semibold">
 						Lo esencial
 					</h3>
 					<div className="flex justify-between items-center">
@@ -514,7 +513,7 @@ console.log("RESUMEJSON", initialResumeJson);
 					</div>
 				</article>
 				<article id="laboral" className="w-11/12 h-[90%] px-6 carousel-item lg:h-full flex flex-col justify-between">
-					<h3 className="w-full text-transparent lg:text-pri text-2xl lg:text-3xl text-center font-semibold">
+					<h3 className="w-full hidden lg:flex lg:justify-center lg:text-pri text-2xl lg:text-3xl text-center font-semibold">
 						Lo que importa
 					</h3>
 					<div className="flex justify-between items-center">
