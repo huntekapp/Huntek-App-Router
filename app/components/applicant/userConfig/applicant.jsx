@@ -77,6 +77,18 @@ const ApplicantConfig = () => {
 		availability: "",
 	});
 
+	useEffect(() => {
+		window.addEventListener("beforeunload", (event) => {
+			if (userData.phone.length || userData.academic.length || userData.birthdate.length || userData.genre.length || userData.country.length || userData.city.length || userData.reubication.length || userData.languages.length || userData.profession.length || userData.university.length || userData.career.length || userData.hobbies.length || userData.years_xp.length || userData.income.length || userData.form_of_work.length || userData.availability.length) {
+				event.preventDefault()
+				event.returnValue = ""
+			}
+		})
+		return window.removeEventListener("beforeunload", (event) => {
+			event.preventDefault()
+		})
+	})
+
 	const [progress, setProgress] = useState(0);
 
 	const handleChange = (event) => {
