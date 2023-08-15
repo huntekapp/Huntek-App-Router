@@ -127,7 +127,7 @@ const EmailCode = () => {
 						Asegúrate de ingresar correctamente el código.
 					</p>
 				</article>
-				<form className="w-full h-80 flex flex-col justify-evenly items-center">
+				<form className="w-full h-72 flex flex-col justify-evenly items-center">
 					<article className="w-full flex flex-col justify-between items-center">
 						<div className="w-11/12 flex flex-row justify-evenly items-center">
 							{[0, 1, 2, 3, 4, 5].map((index) => (
@@ -146,12 +146,6 @@ const EmailCode = () => {
 								/>
 							))}
 						</div>
-						<p className="mt-4 text-center text-sm">
-							No has recibido el código?{" "}
-							<button onClick={handleSubmitResend} className="hover:underline">
-								Enviar de nuevo
-							</button>
-						</p>
 					</article>
 					<button
 						onClick={handleSubmitVerify}
@@ -160,11 +154,15 @@ const EmailCode = () => {
 						Verificar
 					</button>
 				</form>
-				{errorCatched && (
-					<AlertError alertTitle={"Error!"} alertBody={errorCatched} setErrorCatched={setErrorCatched} />
-				)}
-				{successReq && <AlertSuccess alertTitle={"Success!"} alertBody={successReq} setSuccessReq={setSuccessReq} />}
+				<p className="text-center text-sm">
+					No has recibido el código?{" "}
+					<button onClick={handleSubmitResend} className="hover:underline">
+						Enviar de nuevo
+					</button>
+				</p>
 			</section>
+			{errorCatched && <AlertError alertTitle={"Error!"} alertBody={errorCatched} setErrorCatched={setErrorCatched} />}
+			{successReq && <AlertSuccess alertTitle={"Success!"} alertBody={successReq} setSuccessReq={setSuccessReq} />}
 		</main>
 	);
 };
