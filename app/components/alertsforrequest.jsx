@@ -1,6 +1,6 @@
 export const AlertSuccess = ({alertTitle, alertBody, setSuccessReq}) => {
 	return (
-		<div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded absolute top-4 w-11/12 md:w-fit expandable flex flex-row justify-between items-center" role="alert">
+		<div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded absolute top-4 w-11/12 md:w-fit expandable flex flex-row justify-between items-center z-50" role="alert">
 			<strong className="font-bold sm:text-sm mr-1">{alertTitle}</strong>
 			<span className="block sm:inline sm:text-sm">{alertBody}</span>
 			<span onClick={() => setSuccessReq(null)}>
@@ -19,7 +19,7 @@ export const AlertSuccess = ({alertTitle, alertBody, setSuccessReq}) => {
 
 export const AlertError = ({alertTitle, alertBody, setErrorCatched}) => {
 	return (
-		<div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded absolute top-4 w-11/12 md:w-fit expandable flex flex-row justify-between items-center" role="alert">
+		<div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded absolute top-4 w-11/12 md:w-fit expandable flex flex-row justify-between items-center z-50" role="alert">
 			<strong className="font-bold sm:text-sm mr-1">{alertTitle}</strong>
 			<span className="block sm:inline sm:text-sm">{alertBody}</span>
 			<span onClick={() => setErrorCatched(null)}>
