@@ -2,7 +2,7 @@
 import { useState } from "react";
 import EastIcon from "@mui/icons-material/East";
 import Options from "../formApplicant/country";
-import OptionsCity from "../formApplicant/optionsCity";
+import OptionsCity from "../formApplicant/city";
 import Languages from "../formApplicant/language";
 import Profession from "../formApplicant/professions";
 import Studies from "../formApplicant/university";
