@@ -1,5 +1,6 @@
-import { useState } from "react";
 import Select from "react-select";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import NotListedLocationOutlinedIcon from "@mui/icons-material/NotListedLocationOutlined";
 
 const customStyles = {
@@ -14,9 +15,9 @@ const customStyles = {
 		},
 		cursor: "pointer",
 	}),
-	singleValue: (provided) => ({
+	singleValue: (provided, state) => ({
 		...provided,
-		color: "#046255",
+		color: state.isDisabled ? "#888" : "#046255",
 	}),
 	menu: (provided) => ({
 		...provided,
@@ -27,15 +28,16 @@ const customStyles = {
 		height: "35px",
 		textAlign: "left",
 		backgroundColor: state.isSelected ? "#046255" : "#e3eeec",
-		color: state.isSelected ? "#fff" : "#333",
+		color: state.isSelected ? "#fff" : "#000",
 		"&:hover": {
 			backgroundColor: "#c7dcd9",
+			color: "#000",
 		},
 		cursor: "pointer",
 	}),
 };
 
-const Country = ({ userData, handleChange, inputCountry }) => {
+const Country = ({ userData, handleChange, inputCountry, setOpen }) => {
 	const options = [
 		"Afganistán",
 		"Albania",
@@ -233,9 +235,15 @@ const Country = ({ userData, handleChange, inputCountry }) => {
 		"Zimbabue",
 	];
 
+	const [selectedOption, setSelectedOption] = useState(null);
 	const selectOptions = options.map((country) => ({ value: country, label: country }));
 
-	const [selectedOption, setSelectedOption] = useState(null);
+	const path = usePathname();
+	useEffect(() => {
+		if (path === "/applicant/profileExtend") {
+			setSelectedOption({ value: userData.country, label: userData.country });
+		}
+	}, [userData]);
 
 	const handleSelectChange = (selectedOption) => {
 		setSelectedOption(selectedOption);
@@ -248,8 +256,8 @@ const Country = ({ userData, handleChange, inputCountry }) => {
 	};
 
 	return (
-		<div className="w-full flex flex-col">
-			<label htmlFor="country" className="ml-2 mb-2 font-semibold">
+		<div className="w-full">
+			<label htmlFor="country" className="ml-2 font-semibold">
 				¿En qué país naciste?
 				<span className="dropdown dropdown-hover font-normal">
 					<div tabIndex={0}>
@@ -267,10 +275,12 @@ const Country = ({ userData, handleChange, inputCountry }) => {
 				value={selectedOption}
 				options={selectOptions}
 				menuPlacement="auto"
-				placeholder={userData.country ? userData.country : "Selecciona un país"}
+				placeholder="Selecciona un país"
 				isDisabled={!inputCountry}
 				isClearable={selectedOption !== null}
 				onChange={handleSelectChange}
+				onMenuOpen={() => path === "/applicant/profileExtend" && setOpen(true)}
+				onMenuClose={() => path === "/applicant/profileExtend" && setOpen(false)}
 				styles={customStyles}
 			/>
 		</div>

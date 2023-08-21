@@ -1,5 +1,6 @@
-import { useState } from "react";
 import Select from "react-select";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import NotListedLocationOutlinedIcon from "@mui/icons-material/NotListedLocationOutlined";
 
 const customStyles = {
@@ -14,9 +15,9 @@ const customStyles = {
 		},
 		cursor: "pointer",
 	}),
-	singleValue: (provided) => ({
+	singleValue: (provided, state) => ({
 		...provided,
-		color: "#046255",
+		color: state.isDisabled ? "#888" : "#046255",
 	}),
 	menu: (provided) => ({
 		...provided,
@@ -27,36 +28,40 @@ const customStyles = {
 		height: "35px",
 		textAlign: "left",
 		backgroundColor: state.isSelected ? "#046255" : "#e3eeec",
-		color: state.isSelected ? "#fff" : "#333",
+		color: state.isSelected ? "#fff" : "#000",
 		"&:hover": {
 			backgroundColor: "#c7dcd9",
+			color: "#000",
 		},
 		cursor: "pointer",
-		whiteSpace: "nowrap",
-		overflow: "hidden",
-		textOverflow: "ellipsis",
 	}),
 };
 
-const Reubication = ({ userData, handleChange, inputReubication }) => {
+const Reubication = ({ userData, handleChange, inputReubication, setOpen }) => {
 	const options = ["Sí, podría reubicarme", "No, no podría reubicarme"];
 
+	const [selectedOption, setSelectedOption] = useState(null);
 	const selectOptions = options.map((reubication) => ({ value: reubication, label: reubication }));
 
-	const [selectedOption, setSelectedOption] = useState(null);
+	const path = usePathname();
+	useEffect(() => {
+		if (path === "/applicant/profileExtend") {
+			setSelectedOption({ value: userData.reubication, label: userData.reubication });
+		}
+	}, [userData]);
 
 	const handleSelectChange = (selectedOption) => {
 		setSelectedOption(selectedOption);
 		handleChange({
 			target: {
 				name: "reubication",
-				value: selectedOption ? selectedOption.value : "",
+				value: selectedOption.value,
 			},
 		});
 	};
 
 	return (
-		<div className="w-full mb-2">
+		<div className="w-full">
 			<label htmlFor="reubication" className="ml-2 font-semibold">
 				¿Podrías reubicarte en otra ciudad?
 				<span className="dropdown dropdown-hover font-normal">
@@ -75,9 +80,11 @@ const Reubication = ({ userData, handleChange, inputReubication }) => {
 				value={selectedOption}
 				options={selectOptions}
 				menuPlacement="auto"
-				placeholder={userData.reubication ? userData.reubication : "Selecciona una respuesta"}
+				placeholder="Selecciona una respuesta"
 				isDisabled={!inputReubication}
 				isClearable={selectedOption !== null}
+				onMenuOpen={() => path === "/applicant/profileExtend" && setOpen(true)}
+				onMenuClose={() => path === "/applicant/profileExtend" && setOpen(false)}
 				onChange={handleSelectChange}
 				styles={customStyles}
 			/>

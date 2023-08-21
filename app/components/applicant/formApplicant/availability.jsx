@@ -1,5 +1,6 @@
-import { useState } from "react";
 import Select from "react-select";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import NotListedLocationOutlinedIcon from "@mui/icons-material/NotListedLocationOutlined";
 
 const customStyles = {
@@ -14,9 +15,9 @@ const customStyles = {
 		},
 		cursor: "pointer",
 	}),
-	singleValue: (provided) => ({
+	singleValue: (provided, state) => ({
 		...provided,
-		color: "#046255",
+		color: state.isDisabled ? "#888" : "#046255",
 	}),
 	menu: (provided) => ({
 		...provided,
@@ -27,23 +28,27 @@ const customStyles = {
 		height: "35px",
 		textAlign: "left",
 		backgroundColor: state.isSelected ? "#046255" : "#e3eeec",
-		color: state.isSelected ? "#fff" : "#333",
+		color: state.isSelected ? "#fff" : "#000",
 		"&:hover": {
 			backgroundColor: "#c7dcd9",
+			color: "#000",
 		},
 		cursor: "pointer",
-		whiteSpace: "nowrap",
-		overflow: "hidden",
-		textOverflow: "ellipsis",
 	}),
 };
 
-const Availability = ({ userData, handleChange, inputAvailability }) => {
+const Availability = ({ userData, handleChange, inputAvailability, setOpen }) => {
 	const options = ["Full time", "Part time"];
 
+	const [selectedOption, setSelectedOption] = useState(null);
 	const selectOptions = options.map((availability) => ({ value: availability, label: availability }));
 
-	const [selectedOption, setSelectedOption] = useState(null);
+	const path = usePathname();
+	useEffect(() => {
+		if (path === "/applicant/profileExtend") {
+			setSelectedOption({ value: userData.availability, label: userData.availability });
+		}
+	}, [userData]);
 
 	const handleSelectChange = (selectedOption) => {
 		setSelectedOption(selectedOption);
@@ -56,7 +61,7 @@ const Availability = ({ userData, handleChange, inputAvailability }) => {
 	};
 
 	return (
-		<div className="w-full mb-2">
+		<div className="w-full">
 			<label htmlFor="availability" className="mr-2 font-semibold">
 				¿Qué disponibilidad tienes?
 				<span className="dropdown dropdown-hover font-normal">
@@ -75,10 +80,12 @@ const Availability = ({ userData, handleChange, inputAvailability }) => {
 				value={selectedOption}
 				options={selectOptions}
 				menuPlacement="auto"
-				placeholder={userData.availability ? userData.availability : "Selecciona una respuesta"}
+				placeholder="Selecciona una respuesta"
 				isDisabled={!inputAvailability}
 				isClearable={selectedOption !== null}
 				onChange={handleSelectChange}
+				onMenuOpen={() => path === "/applicant/profileExtend" && setOpen(true)}
+				onMenuClose={() => path === "/applicant/profileExtend" && setOpen(false)}
 				styles={customStyles}
 			/>
 		</div>

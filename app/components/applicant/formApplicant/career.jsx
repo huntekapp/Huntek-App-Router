@@ -1,5 +1,6 @@
-import { useState } from "react";
 import Select from "react-select";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import NotListedLocationOutlinedIcon from "@mui/icons-material/NotListedLocationOutlined";
 
 const customStyles = {
@@ -14,9 +15,9 @@ const customStyles = {
 		},
 		cursor: "pointer",
 	}),
-	singleValue: (provided) => ({
+	singleValue: (provided, state) => ({
 		...provided,
-		color: "#046255",
+		color: state.isDisabled ? "#888" : "#046255",
 	}),
 	menu: (provided) => ({
 		...provided,
@@ -27,9 +28,10 @@ const customStyles = {
 		height: "35px",
 		textAlign: "left",
 		backgroundColor: state.isSelected ? "#046255" : "#e3eeec",
-		color: state.isSelected ? "#fff" : "#333",
+		color: state.isSelected ? "#fff" : "#000",
 		"&:hover": {
 			backgroundColor: "#c7dcd9",
+			color: "#000",
 		},
 		cursor: "pointer",
 		whiteSpace: "nowrap",
@@ -38,7 +40,7 @@ const customStyles = {
 	}),
 };
 
-const Career = ({ userData, handleChange, inputCareer }) => {
+const Career = ({ userData, handleChange, inputCareer, setOpen }) => {
 	const options = [
 		"Administración de Empresas",
 		"Administración Pública",
@@ -182,9 +184,15 @@ const Career = ({ userData, handleChange, inputCareer }) => {
 		"Zoología",
 	];
 
+	const [selectedOption, setSelectedOption] = useState(null);
 	const selectOptions = options.map((career) => ({ value: career, label: career }));
 
-	const [selectedOption, setSelectedOption] = useState(null);
+	const path = usePathname();
+	useEffect(() => {
+		if (path === "/applicant/profileExtend") {
+			setSelectedOption({ value: userData.career, label: userData.career });
+		}
+	}, [userData]);
 
 	const handleSelectChange = (selectedOption) => {
 		setSelectedOption(selectedOption);
@@ -197,7 +205,7 @@ const Career = ({ userData, handleChange, inputCareer }) => {
 	};
 
 	return (
-		<div className="w-full mb-2">
+		<div className="w-full">
 			<label htmlFor="career" className="ml-2 font-semibold">
 				{userData.academic === "Egresado" ? "¿Qué carrera estudiaste" : "¿Qué carrera estudias?"}
 				<span className="dropdown dropdown-hover font-normal">
@@ -216,10 +224,12 @@ const Career = ({ userData, handleChange, inputCareer }) => {
 				value={selectedOption}
 				options={selectOptions}
 				menuPlacement="auto"
-				placeholder={userData.career ? userData.career : "Selecciona una carrera"}
+				placeholder="Selecciona una carrera"
 				isDisabled={!inputCareer || userData.academic === "Sin estudios"}
 				isClearable={selectedOption !== null}
 				onChange={handleSelectChange}
+				onMenuOpen={() => path === "/applicant/profileExtend" && setOpen(true)}
+				onMenuClose={() => path === "/applicant/profileExtend" && setOpen(false)}
 				styles={customStyles}
 			/>
 		</div>

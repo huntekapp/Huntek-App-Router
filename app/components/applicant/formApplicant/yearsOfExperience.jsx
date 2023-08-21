@@ -1,5 +1,6 @@
-import { useState } from "react";
 import Select from "react-select";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import NotListedLocationOutlinedIcon from "@mui/icons-material/NotListedLocationOutlined";
 
 const customStyles = {
@@ -14,9 +15,9 @@ const customStyles = {
 		},
 		cursor: "pointer",
 	}),
-	singleValue: (provided) => ({
+	singleValue: (provided, state) => ({
 		...provided,
-		color: "#046255",
+		color: state.isDisabled ? "#888" : "#046255",
 	}),
 	menu: (provided) => ({
 		...provided,
@@ -27,23 +28,27 @@ const customStyles = {
 		height: "35px",
 		textAlign: "left",
 		backgroundColor: state.isSelected ? "#046255" : "#e3eeec",
-		color: state.isSelected ? "#fff" : "#333",
+		color: state.isSelected ? "#fff" : "#000",
 		"&:hover": {
 			backgroundColor: "#c7dcd9",
+			color: "#000",
 		},
 		cursor: "pointer",
-		whiteSpace: "nowrap",
-		overflow: "hidden",
-		textOverflow: "ellipsis",
 	}),
 };
 
-const Experience = ({ userData, handleChange, inputExperience }) => {
+const Experience = ({ userData, handleChange, inputExperience, setOpen }) => {
 	const options = ["0", "1-4 años", "4-6 años", "6-9 años", "10-15 años"];
 
+	const [selectedOption, setSelectedOption] = useState(null);
 	const selectOptions = options.map((years_xp) => ({ value: years_xp, label: years_xp }));
 
-	const [selectedOption, setSelectedOption] = useState(null);
+	const path = usePathname();
+	useEffect(() => {
+		if (path === "/applicant/profileExtend") {
+			setSelectedOption({ value: userData.years_xp, label: userData.years_xp });
+		}
+	}, [userData]);
 
 	const handleSelectChange = (selectedOption) => {
 		setSelectedOption(selectedOption);
@@ -56,7 +61,7 @@ const Experience = ({ userData, handleChange, inputExperience }) => {
 	};
 
 	return (
-		<div>
+		<div className="w-full">
 			<label htmlFor="years_xp" className="ml-2 font-semibold">
 				¿Cuántos años de experiencia tienes?
 				<span className="dropdown dropdown-hover font-normal">
@@ -75,10 +80,12 @@ const Experience = ({ userData, handleChange, inputExperience }) => {
 				value={selectedOption}
 				options={selectOptions}
 				menuPlacement="auto"
-				placeholder={userData.years_xp ? userData.years_xp : "Selecciona una respuesta"}
+				placeholder="Selecciona una respuesta"
 				isDisabled={!inputExperience}
 				isClearable={selectedOption !== null}
 				onChange={handleSelectChange}
+				onMenuOpen={() => path === "/applicant/profileExtend" && setOpen(true)}
+				onMenuClose={() => path === "/applicant/profileExtend" && setOpen(false)}
 				styles={customStyles}
 			/>
 		</div>

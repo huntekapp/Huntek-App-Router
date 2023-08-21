@@ -2,7 +2,7 @@ import NotListedLocationOutlinedIcon from "@mui/icons-material/NotListedLocation
 
 const Income = ({ userData, handleChange, inputIncome }) => {
 	return (
-		<div className="w-full mb-2">
+		<div className="w-full">
 			<label htmlFor="income" className="mr-2 font-semibold">
 				¿Cuál es tu sueldo deseado?
 			</label>
@@ -22,7 +22,7 @@ const Income = ({ userData, handleChange, inputIncome }) => {
 				placeholder="Ingese sueldo deseado (MXN)"
 				disabled={!inputIncome}
 				onChange={(event) => handleChange(event)}
-				className="w-full px-3 py-1 text-pri bg-sec border border-[#ccc] rounded-[4px] focus:outline-none focus:bg-pri-100 focus:border-pri hover:border-pri"
+				className="w-full px-3 py-1 text-pri bg-sec border border-[#ccc] rounded-[4px] focus:outline-none focus:bg-pri-100 focus:border-pri hover:border-pri disabled:text-[#888] disabled:hover:border-[#ccc]"
 			/>
 		</div>
 	);

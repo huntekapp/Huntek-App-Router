@@ -1,5 +1,6 @@
-import { useState } from "react";
 import Select from "react-select";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import NotListedLocationOutlinedIcon from "@mui/icons-material/NotListedLocationOutlined";
 
 const customStyles = {
@@ -14,9 +15,9 @@ const customStyles = {
 		},
 		cursor: "pointer",
 	}),
-	singleValue: (provided) => ({
+	singleValue: (provided, state) => ({
 		...provided,
-		color: "#046255",
+		color: state.isDisabled ? "#888" : "#046255",
 	}),
 	menu: (provided) => ({
 		...provided,
@@ -27,36 +28,40 @@ const customStyles = {
 		height: "35px",
 		textAlign: "left",
 		backgroundColor: state.isSelected ? "#046255" : "#e3eeec",
-		color: state.isSelected ? "#fff" : "#333",
+		color: state.isSelected ? "#fff" : "#000",
 		"&:hover": {
 			backgroundColor: "#c7dcd9",
+			color: "#000",
 		},
 		cursor: "pointer",
-		whiteSpace: "nowrap",
-		overflow: "hidden",
-		textOverflow: "ellipsis",
 	}),
 };
 
-const FormOfWork = ({ userData, handleChange, inputFormOfWork }) => {
+const FormOfWork = ({ userData, handleChange, inputFormOfWork, setOpen }) => {
 	const options = ["Presencial", "Híbrido", "Remoto"];
 
+	const [selectedOption, setSelectedOption] = useState(null);
 	const selectOptions = options.map((form_of_work) => ({ value: form_of_work, label: form_of_work }));
 
-	const [selectedOption, setSelectedOption] = useState(null);
+	const path = usePathname();
+	useEffect(() => {
+		if (path === "/applicant/profileExtend") {
+			setSelectedOption({ value: userData.form_of_work, label: userData.form_of_work });
+		}
+	}, [userData]);
 
 	const handleSelectChange = (selectedOption) => {
 		setSelectedOption(selectedOption);
 		handleChange({
 			target: {
 				name: "form_of_work",
-				value: selectedOption ? selectedOption.value : "",
+				value: selectedOption.value,
 			},
 		});
 	};
 
 	return (
-		<div className="w-full mb-2">
+		<div className="w-full">
 			<label htmlFor="form_of_work" className="mr-2 font-semibold">
 				¿Qué forma de trabajo prefieres?
 				<span className="dropdown dropdown-hover font-normal">
@@ -75,10 +80,12 @@ const FormOfWork = ({ userData, handleChange, inputFormOfWork }) => {
 				value={selectedOption}
 				options={selectOptions}
 				menuPlacement="auto"
-				placeholder={userData.form_of_work ? userData.form_of_work : "Selecciona una respuesta"}
+				placeholder="Selecciona una respuesta"
 				isDisabled={!inputFormOfWork}
 				isClearable={selectedOption !== null}
 				onChange={handleSelectChange}
+				onMenuOpen={() => path === "/applicant/profileExtend" && setOpen(true)}
+				onMenuClose={() => path === "/applicant/profileExtend" && setOpen(false)}
 				styles={customStyles}
 			/>
 		</div>

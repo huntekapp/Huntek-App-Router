@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
 import Select from "react-select";
-import NotListedLocationOutlinedIcon from "@mui/icons-material/NotListedLocationOutlined";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import NotListedLocationOutlinedIcon from "@mui/icons-material/NotListedLocationOutlined";
 
 const customStyles = {
 	control: (provided, state) => ({
@@ -39,7 +39,7 @@ const customStyles = {
 	}),
 };
 
-const Hobbies = ({ userData, handleChange, inputHobbies }) => {
+const Hobbies = ({ userData, handleChange, inputHobbies, setOpen }) => {
 	const options = [
 		"Baile",
 		"Cine",
@@ -53,28 +53,33 @@ const Hobbies = ({ userData, handleChange, inputHobbies }) => {
 		"Viajar",
 	];
 
+	const [selectedOption, setSelectedOption] = useState([]);
 	const selectOptions = options.map((hobbies) => ({ value: hobbies, label: hobbies }));
 
-	const [selectedOption, setSelectedOption] = useState([]);
-
+	const path = usePathname();
 	useEffect(() => {
-		const hob = selectedOption.map((opt) => opt.value);
-		handleChange({
-			target: {
-				name: "hobbies",
-				value: selectedOption ? hob : "",
-			},
-		});
-	}, [selectedOption]);
+		if (path === "/applicant/profileExtend") {
+			const oldData = [];
+			userData.hobbies.length &&
+				userData.hobbies.map((hob) => {
+					oldData.push({ value: hob, label: hob });
+				});
+			setSelectedOption(oldData);
+		}
+	}, [userData]);
 
 	const handleSelectChange = (selectedOption) => {
 		setSelectedOption(selectedOption);
+		handleChange({
+			target: {
+				name: "hobbies",
+				value: selectedOption.map((opt) => opt.value),
+			},
+		});
 	};
 
-	const pathname = usePathname()
-
 	return (
-		<div>
+		<div className="w-full">
 			<label htmlFor="hobbies" className="ml-2 font-semibold">
 				¿Cuáles son tus hobbies?
 				<span className="dropdown dropdown-hover font-normal">
@@ -94,17 +99,14 @@ const Hobbies = ({ userData, handleChange, inputHobbies }) => {
 				value={selectedOption}
 				options={selectOptions}
 				menuPlacement="auto"
-				placeholder={userData.hobbies.length ? "Has seleccionado" : "Selecciona un hobbie"}
+				placeholder="Selecciona un hobbie"
 				isDisabled={!inputHobbies}
 				isClearable={selectedOption !== null}
 				onChange={handleSelectChange}
+				onMenuOpen={() => path === "/applicant/profileExtend" && setOpen(true)}
+				onMenuClose={() => path === "/applicant/profileExtend" && setOpen(false)}
 				styles={customStyles}
 			/>
-			{!pathname.includes("userconfig") && userData.hobbies ? userData.hobbies.map((hobbie) => {
-				return (
-					<div className="mt-1 ml-1 text-gray-500/80 text-base">{hobbie}</div>
-				)
-			}): ""}
 		</div>
 	);
 };

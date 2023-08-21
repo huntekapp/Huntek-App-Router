@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
 import Select from "react-select";
-import NotListedLocationOutlinedIcon from "@mui/icons-material/NotListedLocationOutlined";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import NotListedLocationOutlinedIcon from "@mui/icons-material/NotListedLocationOutlined";
 
 const customStyles = {
 	control: (provided, state) => ({
@@ -39,7 +39,7 @@ const customStyles = {
 	}),
 };
 
-const Profession = ({ userData, handleChange, inputProf }) => {
+const Profession = ({ userData, handleChange, inputProf, setOpen }) => {
 	const options = [
 		"Servicios legales",
 		"Comercial",
@@ -58,28 +58,33 @@ const Profession = ({ userData, handleChange, inputProf }) => {
 		"Otras",
 	];
 
+	const [selectedOption, setSelectedOption] = useState([]);
 	const selectOptions = options.map((profession) => ({ value: profession, label: profession }));
 
-	const [selectedOption, setSelectedOption] = useState([]);
-
+	const path = usePathname();
 	useEffect(() => {
-		const prof = selectedOption.map((opt) => opt.value);
-		handleChange({
-			target: {
-				name: "profession",
-				value: selectedOption ? prof : "",
-			},
-		});
-	}, [selectedOption]);
+		if (path === "/applicant/profileExtend") {
+			const oldData = [];
+			userData.profession.length &&
+				userData.profession.map((prof) => {
+					oldData.push({ value: prof, label: prof });
+				});
+			setSelectedOption(oldData);
+		}
+	}, [userData]);
 
 	const handleSelectChange = (selectedOption) => {
 		setSelectedOption(selectedOption);
+		handleChange({
+			target: {
+				name: "profession",
+				value: selectedOption.map((opt) => opt.value),
+			},
+		});
 	};
 
-	const pathname = usePathname()
-
 	return (
-		<div>
+		<div className="w-full">
 			<label htmlFor="profession" className="ml-2 font-semibold">
 				¿En qué área te gustaría trabajar?
 				<span className="dropdown dropdown-hover font-normal">
@@ -103,13 +108,10 @@ const Profession = ({ userData, handleChange, inputProf }) => {
 				isDisabled={!inputProf}
 				isClearable={selectedOption !== null}
 				onChange={handleSelectChange}
+				onMenuOpen={() => path === "/applicant/profileExtend" && setOpen(true)}
+				onMenuClose={() => path === "/applicant/profileExtend" && setOpen(false)}
 				styles={customStyles}
 			/>
-			{!pathname.includes("userconfig") && userData.profession ? userData.profession.map((profession) => {
-				return (
-					<div className="mt-1 ml-1 text-gray-500/80 text-base">{profession}</div>
-				)
-			}): ""}
 		</div>
 	);
 };

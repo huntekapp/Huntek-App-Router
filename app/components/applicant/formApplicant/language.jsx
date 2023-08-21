@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
 import Select from "react-select";
-import NotListedLocationOutlinedIcon from "@mui/icons-material/NotListedLocationOutlined";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import NotListedLocationOutlinedIcon from "@mui/icons-material/NotListedLocationOutlined";
 
 const customStyles = {
 	control: (provided, state) => ({
@@ -39,9 +39,10 @@ const customStyles = {
 	}),
 };
 
-const Languages = ({ userData, handleChange, inputLanguages }) => {
+const Languages = ({ userData, handleChange, inputLanguages, setOpen }) => {
 	const options = [
 		"Alemán",
+		"Árabe",
 		"Bengalí",
 		"Chino (Mandarín)",
 		"Coreano",
@@ -54,40 +55,29 @@ const Languages = ({ userData, handleChange, inputLanguages }) => {
 		"Panyabí",
 		"Portugués",
 		"Ruso",
-		"Árabe",
 	];
 
+	const [selectedOption, setSelectedOption] = useState([]);
 	const selectOptions = options.map((languages) => ({ value: languages, label: languages }));
 
-	const [selectedOption, setSelectedOption] = useState([]);
 	const [lang, setLang] = useState([]);
 
+	const path = usePathname();
 	useEffect(() => {
-		if (!selectedOption.length) {
-			setLang([]);
-			handleChange({
-				target: {
-					name: "languages",
-					value: selectedOption ? lang.map((opt) => `${opt.language}:${opt.rating}`) : "",
-				},
-			});
-		} else {
-			const selectValues = selectedOption.map((option) => option.value);
-			const newLang = lang.filter((opt) => selectValues.includes(opt.language));
-			selectValues.forEach((value) => {
-				if (!newLang.some((opt) => opt.language === value)) {
-					newLang.push({ language: value, rating: "" });
-				}
-			});
-			setLang(newLang);
-			handleChange({
-				target: {
-					name: "languages",
-					value: newLang.map((opt) => `${opt.language}:${opt.rating}`),
-				},
-			});
+		if (path === "/applicant/profileExtend") {
+			const oldData = [];
+			const oldLang = [];
+			userData.languages.length &&
+				userData.languages.map((lang) => {
+					const name = lang.split(":")[0];
+					const level = lang.split(":")[1];
+					oldData.push({ value: name, label: name });
+					oldLang.push({ language: name, rating: level });
+				});
+			setSelectedOption(oldData);
+			setLang(oldLang);
 		}
-	}, [selectedOption]);
+	}, [userData]);
 
 	const handleSelectChange = (selectedOption) => {
 		setSelectedOption(selectedOption);
@@ -123,10 +113,8 @@ const Languages = ({ userData, handleChange, inputLanguages }) => {
 		});
 	};
 
-	const pathname = usePathname()
-	
 	return (
-		<div>
+		<div className="w-full">
 			<label htmlFor="languagess" className="ml-2 font-semibold">
 				¿Qué idiomas hablas?
 				<span className="dropdown dropdown-hover font-normal">
@@ -146,19 +134,19 @@ const Languages = ({ userData, handleChange, inputLanguages }) => {
 				value={selectedOption}
 				options={selectOptions}
 				menuPlacement="auto"
-				placeholder={userData.languages.length ? "Has seleccionado" : "Selecciona un idioma"}
+				placeholder="Selecciona un idioma"
 				isDisabled={!inputLanguages}
 				isClearable={selectedOption !== null}
 				onChange={handleSelectChange}
+				onMenuOpen={() => path === "/applicant/profileExtend" && setOpen(true)}
+				onMenuClose={() => path === "/applicant/profileExtend" && setOpen(false)}
 				styles={customStyles}
 			/>
-			{!pathname.includes("userconfig") && userData.languages ? userData.languages.map((lang) => {
-				return (
-					<div className="mt-1 ml-1 text-gray-500/80 text-base">{lang.split(":")[0]} {lang.split(":")[1]}</div>
-				)
-			}): ""}
 			{lang.length ? (
-				<div className="w-full max-h-[80px] px-4 bg-pri-100 carousel-vertical">
+				<div
+					className={`w-full ${
+						path === "/applicant/profileExtend" ? "max-h-[450px]" : "max-h-[80px]"
+					} px-4 bg-pri-100 carousel-vertical`}>
 					{lang.map(({ language, rating }, index) => (
 						<div key={index} className="w-full h-8 flex flex-row justify-between items-center">
 							<p>{language}</p>

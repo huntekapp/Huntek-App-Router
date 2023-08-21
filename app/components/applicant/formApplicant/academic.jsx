@@ -1,5 +1,6 @@
-import { useState } from "react";
 import Select from "react-select";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import NotListedLocationOutlinedIcon from "@mui/icons-material/NotListedLocationOutlined";
 
 const customStyles = {
@@ -14,9 +15,9 @@ const customStyles = {
 		},
 		cursor: "pointer",
 	}),
-	singleValue: (provided) => ({
+	singleValue: (provided, state) => ({
 		...provided,
-		color: "#046255",
+		color: state.isDisabled ? "#888" : "#046255",
 	}),
 	menu: (provided) => ({
 		...provided,
@@ -27,20 +28,27 @@ const customStyles = {
 		height: "35px",
 		textAlign: "left",
 		backgroundColor: state.isSelected ? "#046255" : "#e3eeec",
-		color: state.isSelected ? "#fff" : "#333",
+		color: state.isSelected ? "#fff" : "#000",
 		"&:hover": {
 			backgroundColor: "#c7dcd9",
+			color: "#000",
 		},
 		cursor: "pointer",
 	}),
 };
 
-const Academic = ({ userData, handleChange, inputAcademic }) => {
+const Academic = ({ userData, handleChange, inputAcademic, setOpen }) => {
 	const options = ["Estudiante", "Egresado", "Sin estudios"];
 
+	const [selectedOption, setSelectedOption] = useState(null);
 	const selectOptions = options.map((academic) => ({ value: academic, label: academic }));
 
-	const [selectedOption, setSelectedOption] = useState(null);
+	const path = usePathname();
+	useEffect(() => {
+		if (path === "/applicant/profileExtend") {
+			setSelectedOption({ value: userData.academic, label: userData.academic });
+		}
+	}, [userData]);
 
 	const handleSelectChange = (selectedOption) => {
 		setSelectedOption(selectedOption);
@@ -53,7 +61,7 @@ const Academic = ({ userData, handleChange, inputAcademic }) => {
 	};
 
 	return (
-		<div className="w-full text-pri">
+		<div className="w-full">
 			<label htmlFor="studies" className="ml-2 font-semibold">
 				¿Cuál es tu situación académica?
 				<span className="dropdown dropdown-hover font-normal">
@@ -72,10 +80,12 @@ const Academic = ({ userData, handleChange, inputAcademic }) => {
 				value={selectedOption}
 				options={selectOptions}
 				menuPlacement="auto"
-				placeholder={userData.academic ? userData.academic : "Selecciona una situación académica"}
+				placeholder="Selecciona una situación académica"
 				isDisabled={!inputAcademic}
 				isClearable={selectedOption !== null}
 				onChange={handleSelectChange}
+				onMenuOpen={() => path === "/applicant/profileExtend" && setOpen(true)}
+				onMenuClose={() => path === "/applicant/profileExtend" && setOpen(false)}
 				styles={customStyles}
 			/>
 		</div>
