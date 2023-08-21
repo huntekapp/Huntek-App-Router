@@ -12,7 +12,7 @@ import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUpload
 import CloseIcon from "@mui/icons-material/Close";
 import Genres from "../formApplicant/genres";
 import Country from "../formApplicant/country";
-import OptionsCity from "../formApplicant/optionsCity";
+import OptionsCity from "../formApplicant/city";
 import Phone from "../formApplicant/phone";
 import Birthdate from "../formApplicant/birthdate";
 import Academic from "../formApplicant/academic";
@@ -51,10 +51,10 @@ const ApplicantConfig = () => {
 		event.target.value = null;
 	};
 	const handleProfilePictureChange = (event) => {
-    setProfilePictureFile(event.target.files[0]);
-    setProfilePicFileName(event.target.files[0].name);
-    event.target.value = null;
-};
+		setProfilePictureFile(event.target.files[0]);
+		setProfilePicFileName(event.target.files[0].name);
+		event.target.value = null;
+	};
 	const [activate, setActivate] = useState(true);
 
 	const [userData, setUserData] = useState({
@@ -79,15 +79,32 @@ const ApplicantConfig = () => {
 
 	useEffect(() => {
 		window.addEventListener("beforeunload", (event) => {
-			if (userData.phone.length || userData.academic.length || userData.birthdate.length || userData.genre.length || userData.country.length || userData.city.length || userData.reubication.length || userData.languages.length || userData.profession.length || userData.university.length || userData.career.length || userData.hobbies.length || userData.years_xp.length || userData.income.length || userData.form_of_work.length || userData.availability.length) {
-				event.preventDefault()
-				event.returnValue = ""
+			if (
+				userData.phone.length ||
+				userData.academic.length ||
+				userData.birthdate.length ||
+				userData.genre.length ||
+				userData.country.length ||
+				userData.city.length ||
+				userData.reubication.length ||
+				userData.languages.length ||
+				userData.profession.length ||
+				userData.university.length ||
+				userData.career.length ||
+				userData.hobbies.length ||
+				userData.years_xp.length ||
+				userData.income.length ||
+				userData.form_of_work.length ||
+				userData.availability.length
+			) {
+				event.preventDefault();
+				event.returnValue = "";
 			}
-		})
+		});
 		return window.removeEventListener("beforeunload", (event) => {
-			event.preventDefault()
-		})
-	})
+			event.preventDefault();
+		});
+	});
 
 	const [progress, setProgress] = useState(0);
 
@@ -202,8 +219,12 @@ const ApplicantConfig = () => {
 								{profilePicFileName && (
 									<span className="">
 										{profilePicFileName}
-										<button onClick={() => {setProfilePictureFile(null); setProfilePicFileName(false)}}>
-											<CloseIcon style={{ fontSize: "medium" }}/>
+										<button
+											onClick={() => {
+												setProfilePictureFile(null);
+												setProfilePicFileName(false);
+											}}>
+											<CloseIcon style={{ fontSize: "medium" }} />
 										</button>
 									</span>
 								)}
@@ -220,8 +241,12 @@ const ApplicantConfig = () => {
 								{cvFileName && (
 									<span className="">
 										{cvFileName}
-										<button onClick={() => {setCvFile(null); setCvFileName(false)}}>
-											<CloseIcon style={{ fontSize: "medium" }}/>
+										<button
+											onClick={() => {
+												setCvFile(null);
+												setCvFileName(false);
+											}}>
+											<CloseIcon style={{ fontSize: "medium" }} />
 										</button>
 									</span>
 								)}
