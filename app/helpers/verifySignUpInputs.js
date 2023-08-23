@@ -33,23 +33,23 @@ export default function verifySignUpInputs(input) {
   
     // --------------------------- last_name -------------------------------
   
-    if (onlySpaces.test(input.last_name)) {
+    if (onlySpaces.test(input?.last_name)) {
       return "Debes escribir tu apellido."
     }
   
-    if (firstCharacterIsSpace.test(input.last_name)) {
+    if (firstCharacterIsSpace.test(input?.last_name)) {
       return "El primer caracter de tu apellido es un espacio."
     }
   
-    if (twoOrMoreSpaces.test(input.last_name)) {
+    if (twoOrMoreSpaces.test(input?.last_name)) {
       return "No puedes poner dos o más espacios en tu apellido."
     }
   
-    if (rareCharacters.test(input.last_name)) {
+    if (rareCharacters.test(input?.last_name)) {
       return "Tu apellido tiene caracteres inválidos."
     }
   
-    if (input.last_name.length < 2) {
+    if (input?.last_name?.length < 2) {
       return "Tu apellido debe tener más de dos letras."
     }
   
@@ -81,23 +81,23 @@ export default function verifySignUpInputs(input) {
 
     // --------------------------- company_name ------------------------------
   
-    if (onlySpaces.test(input.company_name)) {
+    if (onlySpaces.test(input.first_name)) {
       return "Debes escribir el nombre de tu empresa."
     }
   
-    if (firstCharacterIsSpace.test(input.company_name)) {
+    if (firstCharacterIsSpace.test(input.first_name)) {
       return "El primer caracter del nombre es un espacio."
     }
   
-    if (twoOrMoreSpaces.test(input.company_name)) {
+    if (twoOrMoreSpaces.test(input.first_name)) {
       return "No puedes poner dos o más espacios en el nombre."
     }
   
-    if (rareCharacters.test(input.company_name)) {
+    if (rareCharacters.test(input.first_name)) {
       return "El nombre de tu empresa tiene caracteres inválidos."
     }
   
-    if (input.company_name.length < 2) {
+    if (input.first_name.length < 2) {
       return "El nombre de tu empresa debe tener más de dos letras."
     }
   

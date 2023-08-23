@@ -23,7 +23,7 @@ const CompanyForm = () => {
 		password: "",
 		role_name: "company",
 	});
-
+console.log(input)
 	const handleChange = (event) => {
 		event.preventDefault();
 		setInput({
@@ -68,13 +68,13 @@ const CompanyForm = () => {
 	return (
 		<section className="w-11/12 max-w-md h-5/6 lg:max-h-[375px] font-medium text-sec flex flex-col justify-evenly items-center">
 			<form onSubmit={handleSubmit} className="w-full lg:h-full flex flex-col justify-evenly gap-2">
-				<label className="mb-2" htmlFor="company_name">
+				<label className="mb-2" htmlFor="first_name">
 					Nombre de la empresa
 					<input
 						type="text"
-						name="company_name"
-						id="company_name"
-						value={input.company_name}
+						name="first_name"
+						id="first_name"
+						value={input.first_name}
 						className="w-full px-3 bg-transparent outline-none border-b"
 						placeholder="Mercedes-AMG PETRONAS Formula One Team"
 						onChange={handleChange}

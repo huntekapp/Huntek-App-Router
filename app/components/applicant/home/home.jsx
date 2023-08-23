@@ -51,7 +51,7 @@ const Home = () => {
 			<article className="w-full h-[15%] px-4 flex flex-col justify-center">
 				<p className="text-xl">¡Hola!</p>
 				<p className="text-3xl font-medium">
-					{data?.first_name.split(" ")[0]} {data?.last_name.split(" ")[0]}
+					{data?.first_name.split(" ")[0]} {data?.last_name && data?.last_name.split(" ")[0]}
 				</p>
 			</article>
 			<Postulations />
