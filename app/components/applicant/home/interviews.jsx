@@ -36,6 +36,7 @@ const Interviews = () => {
 						if (index === 0 || index === 1) {
 							return (
 								<article
+									key={index}
 									className={`${
 										index === 1 && "hidden md:flex md:flex-row"
 									} flex flex-row w-full h-20 px-4 bg-sec text-xs xs:text-sm text-pri border rounded-xl shadow-md justify-between items-center`}>
