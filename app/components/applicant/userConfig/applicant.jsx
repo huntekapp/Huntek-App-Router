@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -37,6 +36,7 @@ const ApplicantConfig = () => {
 
 	const [profilePictureFile, setProfilePictureFile] = useState(null);
 	const [profilePicFileName, setProfilePicFileName] = useState(false);
+	const [profilePicture, setProfilePicture] = useState("");
 
 	const [errorCatched, setErrorCatched] = useState(null);
 	const [successReq, setSuccessReq] = useState(null);
@@ -51,8 +51,16 @@ const ApplicantConfig = () => {
 		event.target.value = null;
 	};
 	const handleProfilePictureChange = (event) => {
-		setProfilePictureFile(event.target.files[0]);
-		setProfilePicFileName(event.target.files[0].name);
+		const file = event.target.files[0];
+		setProfilePictureFile(file);
+		setProfilePicFileName(file.name);
+		if (file) {
+			const reader = new FileReader();
+			reader.onload = (event) => {
+				setProfilePicture(event.target.result);
+			};
+			reader.readAsDataURL(file);
+		}
 		event.target.value = null;
 	};
 	const [activate, setActivate] = useState(true);
@@ -203,7 +211,7 @@ const ApplicantConfig = () => {
 							<article className="w-full flex flex-col justify-around items-center">
 								<div className="w-32 h-32 border-4 border-pri rounded-full relative">
 									<Image
-										src={"/images/defaultPhoto.png"}
+										src={profilePicture ? profilePicture : "/images/defaultPhoto.png"}
 										alt="profileImg"
 										fill={true}
 										className="rounded-full object-contain absolute"
@@ -223,6 +231,7 @@ const ApplicantConfig = () => {
 											onClick={() => {
 												setProfilePictureFile(null);
 												setProfilePicFileName(false);
+												setProfilePicture("");
 											}}>
 											<CloseIcon style={{ fontSize: "medium" }} />
 										</button>
