@@ -68,14 +68,16 @@ const LogForm = () => {
 
 	if (isLoading || isSuccess) {
 		return (
-			<div className={`container ${isSuccess ? "success" : ""}`}>
+			<div className={`w-1/3 ${isSuccess && "success"}`}>
 				<div className="loader"></div>
 			</div>
 		);
 	}
 
 	return (
-		<section className="w-11/12 max-w-md h-3/5 max-h-[400px] font-medium text-sec flex flex-col justify-around items-center">
+		<section
+			id="form"
+			className="w-11/12 max-w-md h-3/5 max-h-[400px] font-medium text-sec flex flex-col justify-around items-center">
 			<form onSubmit={handleSubmit} className="w-full h-1/2 lg:h-3/5 flex flex-col justify-between">
 				<label htmlFor="email">
 					E-mail
