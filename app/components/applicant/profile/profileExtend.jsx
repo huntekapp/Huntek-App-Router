@@ -105,67 +105,12 @@ const ProfileExt = () => {
 
 	const [allow, setAllow] = useState(false);
 	const [open, setOpen] = useState(false);
-	const [inputPhone, setInputPhone] = useState(false);
-
-	const [inputReubication, setInputReubication] = useState(false);
-	const handleInputReubication = () => {
-		setInputReubication(!inputReubication);
-	};
-
-	const [inputProf, setInputProf] = useState(false);
-	const handleInputProf = () => {
-		setInputProf(!inputProf);
-	};
-
-	const [inputExperience, setInputExperience] = useState(false);
-	const handleInputExperience = () => {
-		setInputExperience(!inputExperience);
-	};
-
-	const [inputIncome, setInputIncome] = useState(false);
-	const handleInputIncome = () => {
-		setInputIncome(!inputIncome);
-	};
-
-	const [inputAvailability, setInputAvailability] = useState(false);
-	const handleInputAvailability = () => {
-		setInputAvailability(!inputAvailability);
-	};
-
-	const [inputFormOfWork, setInputFormOfWork] = useState(false);
-	const handleInputFormOfWork = () => {
-		setInputFormOfWork(!inputFormOfWork);
-	};
-
-	const [inputLanguages, setInputLanguages] = useState(false);
-	const handleInputLanguages = () => {
-		setInputLanguages(!inputLanguages);
-	};
-
-	const [inputHobbies, setInputHobbies] = useState(false);
-	const handleInputHobbies = () => {
-		setInputHobbies(!inputHobbies);
-	};
-
-	const [inputCountry, setInputCountry] = useState(false);
-	const handleInputCountry = () => {
-		setInputCountry(!inputCountry);
-	};
-
-	const [inputAcademic, setInputAcademic] = useState(false);
-	const handleInputAcademic = () => {
-		setInputAcademic(!inputAcademic);
-	};
 
 	const [newValue, setNewValue] = useState({
 		property_name: "",
 		new_value: "",
 	});
 
-	console.log(userData);
-	console.log(initialResumeJson);
-
-	console.log(newValue);
 	const handleChange = (event) => {
 		setUserData({
 			...userData,
