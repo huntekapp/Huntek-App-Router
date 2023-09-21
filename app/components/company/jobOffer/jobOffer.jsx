@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import {useState} from "react";
+import { useState } from "react";
 import CloudUploadOutlinedIcon from "@mui/icons-material/CloudUploadOutlined";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import JobCareer from "../../company/jobOffer/formJobOffer/jobcareer";
@@ -87,7 +87,7 @@ const JobOffer = () => {
 			determinant: false,
 		},
 	});
-	console.log(jobProps);
+
 	const [progress, setProgress] = useState(0);
 
 	const handleChange = (event) => {
