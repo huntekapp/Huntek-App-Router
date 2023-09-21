@@ -49,14 +49,30 @@ const Home = () => {
 	return (
 		<main className="w-full h-homecontent text-pri flex flex-col justify-around items-left">
 			<article className="w-full h-[15%] px-4 flex flex-col justify-center">
-				<p className="text-xl">¡Hola!</p>
-				<p className="text-3xl font-medium">
+				<p className="text-xl text-center">¡Hola!</p>
+				<p className="text-3xl font-medium text-center">
 					{data?.first_name.split(" ")[0]} {data?.last_name && data?.last_name.split(" ")[0]}
 				</p>
 			</article>
-			<Postulations />
+			<article className="w-full h-[80%] flex flex-row justify-center items-center">
+				<div className="w-[95%] h-full bg-pri-200 rounded-3xl flex flex-col justify-evenly items-center">
+					<p className="text-3xl text-center">
+						Bienvenido a <b>Huntek</b>!
+					</p>
+					<p className="text-xl text-center">Muchas gracias por sumarte</p>
+					<p className="text-lg text-center">
+						Actualmente nos encontramos en proceso crecimiento por lo que no estan disponibles las funcionalidades
+						basicas pero te avisaremos cuando todo este listo
+					</p>
+					<p>
+						Por el momento te pedimos que completes tu perfil al 100% asi podes matchear mejor con las vacantes que
+						busques
+					</p>
+				</div>
+			</article>
+			{/* <Postulations />
 			<Messages />
-			<Interviews />
+			<Interviews /> */}
 		</main>
 	);
 };

@@ -9,38 +9,38 @@ import SmsFailedIcon from "@mui/icons-material/SmsFailed";
 
 const Messages = () => {
 	const chats = [
-		{
-			id: 1,
-			name: "Nico Front",
-			image: "/images/pexels-monstera-5384445.jpg",
-			enterprise: "Huntek",
-			time: "17:00",
-			msg: "2",
-		},
-		{
-			id: 2,
-			name: "Agus Cabral",
-			image: "/images/pexels-monstera-5384445.jpg",
-			enterprise: "Huntek",
-			time: "16:54",
-			msg: "1",
-		},
-		{
-			id: 3,
-			name: "Fran Vazquez",
-			image: "/images/pexels-monstera-5384445.jpg",
-			enterprise: "Huntek",
-			time: "12:20",
-			msg: "2",
-		},
-		{
-			id: 4,
-			name: "Mati Gigena",
-			image: "/images/pexels-monstera-5384445.jpg",
-			enterprise: "Huntek",
-			time: "11:01",
-			msg: "5",
-		},
+		// {
+		// 	id: 1,
+		// 	name: "Nico Front",
+		// 	image: "/images/pexels-monstera-5384445.jpg",
+		// 	enterprise: "Huntek",
+		// 	time: "17:00",
+		// 	msg: "2",
+		// },
+		// {
+		// 	id: 2,
+		// 	name: "Agus Cabral",
+		// 	image: "/images/pexels-monstera-5384445.jpg",
+		// 	enterprise: "Huntek",
+		// 	time: "16:54",
+		// 	msg: "1",
+		// },
+		// {
+		// 	id: 3,
+		// 	name: "Fran Vazquez",
+		// 	image: "/images/pexels-monstera-5384445.jpg",
+		// 	enterprise: "Huntek",
+		// 	time: "12:20",
+		// 	msg: "2",
+		// },
+		// {
+		// 	id: 4,
+		// 	name: "Mati Gigena",
+		// 	image: "/images/pexels-monstera-5384445.jpg",
+		// 	enterprise: "Huntek",
+		// 	time: "11:01",
+		// 	msg: "5",
+		// },
 	];
 
 	const [getChats, { isLoading }] = useGetChatsMutation();
@@ -91,10 +91,10 @@ const Messages = () => {
 						);
 					})
 				) : (
-					<div className="w-full h-full px-4 lightcentergrad-tb flex flex-col justify-center gap-2 items-center">
-						{/* <InfoAlert alertBody={"En esta sección verás tus chats con empresas"} /> */}
-						<SmsFailedIcon className="" />
-						<p className="text-center">¡Aquí se encontrarán tus mensajes mas recientes!</p>
+					<div className="w-full h-full px-4 lightcentergrad-tb flex flex-col justify-center items-center gap-2 relative">
+						<InfoAlert alertBody={"En esta sección verás tus chats con empresas"} />
+						<SmsFailedIcon className="absolute top-[35%]" />
+						<p className="text-base absolute bottom-[35%]">Aún no tienes mensajes recientes...</p>
 					</div>
 				)}
 			</div>
