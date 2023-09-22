@@ -8,7 +8,7 @@ export async function middleware(request) {
   const protectedPaths = ["/applicant/home", "/applicant/swipe", "/applicant/profileExtend", "/applicant/postulations", "/applicant/messages", "/applicant/interviews", "/applicant/subscriptions", "/applicant/userconfig"];
   if (protectedPaths.some((path) => request.nextUrl.pathname.startsWith(path))) {
     if (jwt?.value === undefined) {
-      return NextResponse.redirect(new URL("/login", request.url));
+      return NextResponse.redirect(new URL("/", request.url));
     }
     const expirationDate = new Date();
     expirationDate.setDate(expirationDate.getDate() + 7);
@@ -25,11 +25,11 @@ export async function middleware(request) {
       });
       return response;
     } catch (error) {
-      return NextResponse.redirect(new URL("login", request.url));
+      return NextResponse.redirect(new URL("/applicant/home", request.url));
     }
   }
 
-  const publicPaths = ["/login", "/signup", "/emailvalidate", "/forgotpass"];
+  const publicPaths = ["/signup", "/emailvalidate", "/forgotpass"];
   if (publicPaths.some((path) => request.nextUrl.pathname.startsWith(path))) {
     if (jwt?.value !== undefined) {
       try {
