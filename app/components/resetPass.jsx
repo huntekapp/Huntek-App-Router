@@ -57,7 +57,7 @@ const ResetPass = () => {
 	return (
 		<section className="w-full h-full text-pri flex flex-col items-center justify-center">
 			<Link
-				href="/login"
+				href="/"
 				className="m-4 p-1 grid place-content-center rounded-full text-sec hover:text-pri hover:bg-pri-200 hover:scale-110 duration-150 absolute top-0 left-0">
 				<ArrowBackOutlinedIcon className="w-6 h-6" />
 			</Link>

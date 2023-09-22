@@ -134,7 +134,7 @@ const NewPass = () => {
 						<div className="text-center">
 							<p className="text-sm opacity-100">Click aquí para iniciar sesión</p>
 							<Link
-								href="/login"
+								href="/"
 								className="m-4 p-1 grid place-content-center rounded-lg bg-pri text-sec hover:bg-pri-200 hover:text-pri hover:scale-110 duration-150">
 								Login
 							</Link>

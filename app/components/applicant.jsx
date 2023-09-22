@@ -146,7 +146,7 @@ const ApplicantForm = () => {
 			<article>
 				<p className="cursor-default lg:mt-4">
 					Ya tienes cuenta?{" "}
-					<Link href="/login" className="hover:underline">
+					<Link href="/" className="hover:underline">
 						Iniciar sesión
 					</Link>
 				</p>

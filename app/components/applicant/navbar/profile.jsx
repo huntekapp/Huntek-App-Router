@@ -47,25 +47,25 @@ const Profile = ({ filesInfo, closeProfile, setCloseProfile }) => {
 				<article className="w-full h-2/6 p-2 flex flex-col justify-center items-center">
 					<div className="w-24 h-24 radial-progress" style={{ "--value": 70, "--size": "12rem", "--thickness": "2px" }}>
 						<div className="w-20 h-20 grid place-content-center relative">
-						{filesInfo && filesInfo[0]?.profile_picture_url ? (
-                <Image
-                  src={filesInfo[0]?.profile_picture_url}
-                  alt="avatar"
-                  fill={true}
-                  loading={"lazy"}
-                  placeholder="empty"
-                  blurDataURL="/images/defaultPhoto.png"
-                  className="rounded-full object-cover absolute"
-                />
-              ) : (
-                <Image
-                src={"/images/defaultPhoto.png"}
-                alt="avatar"
-                fill={true}
-                loading={"eager"}
-                className="rounded-full object-cover absolute"
-                />
-              )}
+							{filesInfo && filesInfo[0]?.profile_picture_url ? (
+								<Image
+									src={filesInfo[0]?.profile_picture_url}
+									alt="avatar"
+									fill={true}
+									loading={"lazy"}
+									placeholder="empty"
+									blurDataURL="/images/defaultPhoto.png"
+									className="rounded-full object-cover absolute"
+								/>
+							) : (
+								<Image
+									src={"/images/defaultPhoto.png"}
+									alt="avatar"
+									fill={true}
+									loading={"eager"}
+									className="rounded-full object-cover absolute"
+								/>
+							)}
 						</div>
 					</div>
 					<div className="flex flex-row items-center">
@@ -105,7 +105,7 @@ const Profile = ({ filesInfo, closeProfile, setCloseProfile }) => {
 							onClick={() => {
 								document.cookie = "kTnKETkt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 								document.cookie = "AiOiJKV1Q=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-								router.push("/login");
+								router.push("/");
 							}}>
 							Cerrar sesión
 						</button>

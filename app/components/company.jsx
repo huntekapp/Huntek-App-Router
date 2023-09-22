@@ -23,7 +23,7 @@ const CompanyForm = () => {
 		password: "",
 		role_name: "company",
 	});
-console.log(input)
+	console.log(input);
 	const handleChange = (event) => {
 		event.preventDefault();
 		setInput({
@@ -132,7 +132,7 @@ console.log(input)
 			<article>
 				<p className="cursor-default lg:mt-4">
 					Ya tienes cuenta?{" "}
-					<Link href="/login" className="hover:underline">
+					<Link href="/" className="hover:underline">
 						Iniciar sesión
 					</Link>
 				</p>

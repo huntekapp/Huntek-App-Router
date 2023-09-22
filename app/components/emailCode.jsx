@@ -107,7 +107,7 @@ const EmailCode = () => {
 
 	return (
 		<main className="w-full h-full flex flex-col justify-evenly items-center">
-			<Link href="/login">
+			<Link href="/">
 				<Image
 					src={"/utils/back.svg"}
 					height={1}

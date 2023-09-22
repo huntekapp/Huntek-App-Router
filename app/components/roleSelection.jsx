@@ -4,7 +4,7 @@ import Image from "next/image";
 const RoleSelection = () => {
 	return (
 		<section className="w-full max-w-md h-full text-sec text-center flex flex-col justify-evenly items-center">
-			<Link href="/login">
+			<Link href="/">
 				<Image
 					src={"/utils/back.svg"}
 					height={1}
