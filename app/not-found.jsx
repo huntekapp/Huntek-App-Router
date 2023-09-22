@@ -8,12 +8,12 @@ const Error404 = () => {
 				</div>
 				<div className="w-full md:w-7/12 text-center md:text-left p-4">
 					<div className="text-6xl font-medium">404</div>
-					<div className="text-xl md:text-3xl font-medium mb-4">Ups. La URL requerida no se encontró.</div>
+					<div className="text-xl md:text-3xl font-medium mb-4">Ups, la URL requerida no se encontró.</div>
 					<div className="text-lg mb-8">
 						Puede ser que hayas ingresado incorrectamente la dirección o que la página se haya movido.
 					</div>
 					<a href="/applicant/home" className="border border-white rounded p-4">
-						Home
+						Atras
 					</a>
 				</div>
 			</div>
