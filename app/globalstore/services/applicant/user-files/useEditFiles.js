@@ -7,8 +7,11 @@ export const editFilesDB = createApi({
   }),
   endpoints: (builder) => ({
     editFiles: builder.mutation({
-      query: (user_id) => `/${user_id}`,
-      method: "PUT",
+      query: ({ user_id, data }) => ({
+        url: `/${user_id}`,
+        method: "PUT",
+        body: data
+      }),
     }),
   }),
 });

@@ -16,7 +16,7 @@ import HourglassTopRoundedIcon from "@mui/icons-material/HourglassTopRounded";
 import PhonelinkRoundedIcon from "@mui/icons-material/PhonelinkRounded";
 import NavigateNextOutlinedIcon from "@mui/icons-material/NavigateNextOutlined";
 import CloudUploadOutlinedIcon from "@mui/icons-material/CloudUploadOutlined";
-import SailingIcon from "@mui/icons-material/Sailing";
+import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 import TranslateIcon from "@mui/icons-material/Translate";
 import FlagIcon from "@mui/icons-material/Flag";
 import University from "../formApplicant/university";
@@ -40,11 +40,14 @@ import { useGetInfoUserQuery } from "../../../globalstore/services/applicant/use
 import { useGetResumeQuery } from "@/app/globalstore/services/applicant/user-profile/useGetResume";
 import { useGetFilesQuery } from "@/app/globalstore/services/applicant/user-files/useFiles";
 import { usePutResumeMutation } from "@/app/globalstore/services/applicant/user-profile/useEditResume";
+import { useEditFilesMutation } from "@/app/globalstore/services/applicant/user-files/useEditFiles";
 
 const ProfileExt = () => {
 	const { data, isLoading } = useGetInfoUserQuery();
-	const { data: filesInfo } = useGetFilesQuery(data?.id);
-	const [putResume, { isSuccess }] = usePutResumeMutation();
+	const [putResume] = usePutResumeMutation();
+	const [editFiles] = useEditFilesMutation();
+
+	const { data: filesInfo, refetch } = useGetFilesQuery(data?.id);
 
 	const { data: resumeInfo } = useGetResumeQuery();
 	let initialResumeJson = {};
@@ -98,17 +101,19 @@ const ProfileExt = () => {
 		}
 	}, [resumeInfo]);
 
-	const [inputPhotoUpload, setInputPhotoUpload] = useState(false);
-	const handleInputPhotoUpload = () => {
-		setInputPhotoUpload(!inputPhotoUpload);
-	};
-
 	const [allow, setAllow] = useState(false);
 	const [open, setOpen] = useState(false);
+	const [updated, setUpdated] = useState("");
+	const [active, setActive] = useState("p");
 
 	const [newValue, setNewValue] = useState({
 		property_name: "",
 		new_value: "",
+	});
+
+	const [newFile, setNewFile] = useState({
+		cv: "",
+		profile_picture: "",
 	});
 
 	const handleChange = (event) => {
@@ -122,7 +127,19 @@ const ProfileExt = () => {
 		});
 	};
 
-	const [updated, setUpdated] = useState("");
+	const handleUpdPhoto = async () => {
+		const formData = new FormData();
+		formData.append("cv", newFile.cv);
+		formData.append("profile_picture", newFile.profile_picture);
+		try {
+			const response = await editFiles({ user_id: data?.id, data: formData }).unwrap();
+			refetch();
+			setUpdated("Actualización exitosa");
+			setAllow(false);
+		} catch (error) {
+			setUpdated("Error en la actualización");
+		}
+	};
 
 	const handlePut = async () => {
 		try {
@@ -133,8 +150,6 @@ const ProfileExt = () => {
 			setUpdated("Error en la actualización");
 		}
 	};
-
-	const [active, setActive] = useState("p");
 
 	if (isLoading) {
 		return (
@@ -177,16 +192,43 @@ const ProfileExt = () => {
 							<input type="checkbox" id="modalPhotoUpload" className="modal-toggle" />
 							<div className="modal">
 								<div className="modal-box bg-sec">
-									<PhotoUpload handleID={data?.id} />
+									<PhotoUpload handleID={data?.id} allow={allow} setNewFile={setNewFile} newFile={newFile} />
 									<div className="modal-action">
-										<button
-											className="btn bg-pri text-sec focus:text-pri focus:bg-pri-100"
-											onClick={handleInputPhotoUpload}>
-											{inputPhotoUpload === true ? "Guardar" : "Editar"}
-										</button>
-										<label htmlFor="modalPhotoUpload" className="btn">
-											Cerrar
-										</label>
+										<div className="w-full flex justify-between">
+											<p>{updated}</p>
+											{allow ? (
+												<div className="w-[50%] flex justify-end gap-5">
+													<button
+														className="w-fit px-2 py-1 bg-pri text-sec rounded-lg hover:scale-105 hover:bg-pri-800 active:scale-90 duration-100"
+														onClick={handleUpdPhoto}>
+														Guardar
+													</button>
+													<button
+														className="w-fit px-2 py-1 bg-red-500 text-sec rounded-lg hover:scale-105 hover:bg-red-400 active:scale-90 duration-100"
+														onClick={() => {
+															setAllow(false);
+														}}>
+														Cancelar
+													</button>
+												</div>
+											) : (
+												<div className="w-[50%] flex justify-end gap-5">
+													<button
+														className="w-fit px-2 py-1 bg-pri-200 text-pri rounded-lg hover:scale-105 hover:bg-pri-300 active:scale-90 duration-100"
+														onClick={() => {
+															setAllow(true);
+															setUpdated("");
+														}}>
+														Editar
+													</button>
+													<label
+														htmlFor="modalPhotoUpload"
+														className="w-fit px-2 py-1 bg-red-500 text-sec rounded-lg hover:scale-105 hover:bg-red-400 active:scale-90 duration-100 cursor-pointer">
+														Cerrar
+													</label>
+												</div>
+											)}
+										</div>
 									</div>
 								</div>
 							</div>
@@ -1061,7 +1103,7 @@ const ProfileExt = () => {
 					<div className="flex justify-between items-center">
 						<label htmlFor="modalHobbies" className="w-full flex flex-row justify-between items-center cursor-pointer">
 							<span>
-								<SailingIcon /> Hobbies
+								<StarBorderOutlinedIcon /> Aptitudes
 							</span>
 							<NavigateNextOutlinedIcon />
 						</label>

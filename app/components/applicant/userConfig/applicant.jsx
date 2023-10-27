@@ -50,6 +50,7 @@ const ApplicantConfig = () => {
 		setCvFileName(event.target.files[0].name);
 		event.target.value = null;
 	};
+
 	const handleProfilePictureChange = (event) => {
 		const file = event.target.files[0];
 		setProfilePictureFile(file);
@@ -63,6 +64,7 @@ const ApplicantConfig = () => {
 		}
 		event.target.value = null;
 	};
+
 	const [activate, setActivate] = useState(true);
 
 	const [userData, setUserData] = useState({
@@ -135,6 +137,7 @@ const ApplicantConfig = () => {
 		setErrorCatched(null);
 		setSuccessReq(null);
 
+		console.log(formData);
 		try {
 			// Subir archivos
 			const uploadResponse = await postNewFiles({ user_id: userInfo?.id, data: formData }).unwrap();
