@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useEffect } from "react";
 import { AlertSuccess, AlertError } from "../../alertsforrequest";
 import { useGetInfoUserQuery } from "@/app/globalstore/services/applicant/user-info/useInfoUser";
 import { usePostNewFilesMutation } from "@/app/globalstore/services/applicant/user-files/useNewFiles";
@@ -18,14 +19,13 @@ import Academic from "../formApplicant/academic";
 import University from "../formApplicant/university";
 import Career from "../formApplicant/career";
 import Languages from "../formApplicant/language";
-import Hobbies from "../formApplicant/hobbies";
+import Skills from "../formApplicant/skills";
 import Reubication from "../formApplicant/reubication";
 import Profession from "../formApplicant/professions";
 import Experience from "../formApplicant/yearsOfExperience";
 import Income from "../formApplicant/income";
 import FormOfWork from "../formApplicant/formOfWork";
 import Availability from "../formApplicant/availability";
-import { useEffect } from "react";
 
 const ApplicantConfig = () => {
 	const [postResume] = usePostResumeMutation();
@@ -85,7 +85,11 @@ const ApplicantConfig = () => {
 		availability: "",
 	});
 
+	const [width, setWidth] = useState(null);
+
 	useEffect(() => {
+		setWidth(window.innerWidth);
+
 		window.addEventListener("beforeunload", (event) => {
 			if (
 				userData.phone.length ||
@@ -174,18 +178,13 @@ const ApplicantConfig = () => {
 							<h2 className="text-lg sm:text-xl text-pri-500">Gracias por unirte a Huntek!</h2>
 						</div>
 					</div>
-					<div className="w-full h-1/2 lg:h-4/5 flex flex-col justify-evenly items-center">
-						<div>
-							<p>A continuacón tendrás que responder</p>
-							<p>varias preguntas</p>
-						</div>
-						<p>Tómate un tiempo</p>
-						<div>
-							<p>Mientras más preguntas hayas completado</p>
-							<p>mejor posicionado estará tu perfil!</p>
+					<div className="w-full h-1/3 lg:h-1/2 flex flex-col justify-evenly items-center">
+						<div className="w-full h-[60px] flex flex-col justify-between items-center">
+							<p>Para comenzar! Tómate un tiempo y</p>
+							<p>contestá la siguientes preguntas</p>
 						</div>
 						<button
-							className="w-fit px-2 py-1 bg-pri-100 text-pri rounded-lg hover:bg-sec"
+							className="w-fit px-2 py-1 bg-pri-100 text-pri rounded-lg hover:bg-sec hover:scale-110"
 							onClick={() => {
 								setActivate(!activate);
 								setUserData({
@@ -203,10 +202,10 @@ const ApplicantConfig = () => {
 						<progress className="w-full h-full progress" value={progress} max="100"></progress>
 						<p className="absolute">{`${progress}%`}</p>
 					</div>
-					<form onSubmit={handleSubmit} className="w-full h-[90%] carousel lg:gap-4 text-pri">
+					<form onSubmit={handleSubmit} className="w-full h-[90%] carousel lg:overflow-hidden lg:gap-4 text-pri">
 						<section
 							id="Q1"
-							className="carousel-item w-full lg:w-1/2 h-full bg-sec rounded-xl flex flex-col justify-between items-center">
+							className="carousel-item w-[99%] lg:w-[49%] h-full mx-1 lg:mx-0 bg-sec rounded-xl flex flex-col justify-between items-center">
 							<h2 className="mt-[5%] text-xl font-medium">Información importante</h2>
 							<article className="w-full flex flex-col justify-around items-center">
 								<div className="w-32 h-32 border-4 border-pri rounded-full relative">
@@ -265,13 +264,13 @@ const ApplicantConfig = () => {
 								onClick={() => {
 									setProgress(16.6);
 								}}
-								className="w-fit mb-[5%] px-2 py-1 bg-pri-200 text-pri rounded-lg shadow-lg hover:bg-pri hover:text-sec">
+								className="w-fit mb-[5%] px-2 py-1 bg-pri-200 text-pri rounded-lg shadow-lg hover:bg-pri hover:text-sec lg:invisible">
 								Siguiente
 							</a>
 						</section>
 						<section
 							id="Q2"
-							className="carousel-item w-full lg:w-1/2 h-full bg-sec rounded-xl flex flex-col justify-between items-center">
+							className="carousel-item w-[99%] lg:w-[49%] h-full mx-1 lg:mx-0 bg-sec rounded-xl flex flex-col justify-between items-center">
 							<p className="mt-[5%] text-xl font-medium">Información personal</p>
 							<article className="w-11/12">
 								<Phone userData={userData} handleChange={handleChange} inputPhone={true} />
@@ -291,11 +290,11 @@ const ApplicantConfig = () => {
 									onClick={() => {
 										setProgress(0);
 									}}
-									className="w-fit px-2 py-1 bg-pri-200 text-pri rounded-lg shadow-lg hover:bg-pri hover:text-sec">
+									className="w-fit px-2 py-1 bg-pri-200 text-pri rounded-lg shadow-lg hover:bg-pri hover:text-sec lg:hidden">
 									Anterior
 								</a>
 								<a
-									href="#Q3"
+									href={width > 1024 ? "#Q4" : "#Q3"}
 									onClick={() => {
 										setProgress(33.3);
 									}}
@@ -306,7 +305,7 @@ const ApplicantConfig = () => {
 						</section>
 						<section
 							id="Q3"
-							className="carousel-item w-full lg:w-1/2 h-full bg-sec rounded-xl flex flex-col justify-between items-center">
+							className="carousel-item w-[99%] lg:w-[49%] h-full mx-1 lg:mx-0 bg-sec rounded-xl flex flex-col justify-between items-center">
 							<p className="mt-[5%] text-xl font-medium">Información académica</p>
 							<article className="w-11/12">
 								<Academic userData={userData} handleChange={handleChange} inputAcademic={true} />
@@ -319,7 +318,7 @@ const ApplicantConfig = () => {
 							</article>
 							<article className="mb-[5%] flex flex-row gap-4">
 								<a
-									href="#Q2"
+									href={width > 1024 ? "#Q1" : "#Q2"}
 									onClick={() => {
 										setProgress(16.6);
 									}}
@@ -331,14 +330,14 @@ const ApplicantConfig = () => {
 									onClick={() => {
 										setProgress(50);
 									}}
-									className="w-fit px-2 py-1 bg-pri-200 text-pri rounded-lg shadow-lg hover:bg-pri hover:text-sec">
+									className="w-fit px-2 py-1 bg-pri-200 text-pri rounded-lg shadow-lg hover:bg-pri hover:text-sec lg:hidden">
 									Siguiente
 								</a>
 							</article>
 						</section>
 						<section
 							id="Q4"
-							className="carousel-item w-full lg:w-1/2 h-full bg-sec rounded-xl flex flex-col justify-between items-center">
+							className="carousel-item w-[99%] lg:w-[49%] h-full mx-1 lg:mx-0 bg-sec rounded-xl flex flex-col justify-between items-center">
 							<p className="mt-[5%] text-xl font-medium">Información adicional</p>
 							<article className="w-11/12">
 								<OptionsCity userData={userData} handleChange={handleChange} inputCity={true} />
@@ -347,7 +346,7 @@ const ApplicantConfig = () => {
 								<Languages userData={userData} handleChange={handleChange} inputLanguages={true} />
 							</article>
 							<article className="w-11/12">
-								<Hobbies userData={userData} handleChange={handleChange} inputHobbies={true} />
+								<Skills userData={userData} handleChange={handleChange} inputSkills={true} />
 							</article>
 							<article className="mb-[5%] flex flex-row gap-4">
 								<a
@@ -355,11 +354,11 @@ const ApplicantConfig = () => {
 									onClick={() => {
 										setProgress(33.3);
 									}}
-									className="w-fit px-2 py-1 bg-pri-200 text-pri rounded-lg shadow-lg hover:bg-pri hover:text-sec">
+									className="w-fit px-2 py-1 bg-pri-200 text-pri rounded-lg shadow-lg hover:bg-pri hover:text-sec lg:hidden">
 									Anterior
 								</a>
 								<a
-									href="#Q5"
+									href={width > 1024 ? "#Q6" : "#Q5"}
 									onClick={() => {
 										setProgress(66.6);
 									}}
@@ -370,7 +369,7 @@ const ApplicantConfig = () => {
 						</section>
 						<section
 							id="Q5"
-							className="carousel-item w-full lg:w-1/2 h-full bg-sec rounded-xl flex flex-col justify-between items-center">
+							className="carousel-item w-[99%] lg:w-[49%] h-full mx-1 lg:mx-0 bg-sec rounded-xl flex flex-col justify-between items-center">
 							<p className="mt-[5%] text-xl font-medium">Información adicional</p>
 							<article className="w-11/12">
 								<Reubication userData={userData} handleChange={handleChange} inputReubication={true} />
@@ -383,7 +382,7 @@ const ApplicantConfig = () => {
 							</article>
 							<article className="mb-[5%] flex flex-row gap-4">
 								<a
-									href="#Q4"
+									href={width > 1024 ? "#Q3" : "#Q4"}
 									onClick={() => {
 										setProgress(50);
 									}}
@@ -395,14 +394,14 @@ const ApplicantConfig = () => {
 									onClick={() => {
 										setProgress(83.3);
 									}}
-									className="w-fit px-2 py-1 bg-pri-200 text-pri rounded-lg shadow-lg hover:bg-pri hover:text-sec">
+									className="w-fit px-2 py-1 bg-pri-200 text-pri rounded-lg shadow-lg hover:bg-pri hover:text-sec lg:hidden">
 									Siguiente
 								</a>
 							</article>
 						</section>
 						<section
 							id="Q6"
-							className="carousel-item w-full lg:w-1/2 h-full bg-sec rounded-xl flex flex-col justify-between items-center">
+							className="carousel-item w-[99%] lg:w-[49%] h-full mx-1 lg:mx-0 bg-sec rounded-xl flex flex-col justify-between items-center">
 							<p className="mt-[5%] text-xl font-medium">Información adicional</p>
 							<article className="w-11/12">
 								<Income userData={userData} handleChange={handleChange} inputIncome={true} />
@@ -419,7 +418,7 @@ const ApplicantConfig = () => {
 									onClick={() => {
 										setProgress(66.6);
 									}}
-									className="w-fit px-2 py-1 bg-pri-200 text-pri rounded-lg shadow-lg hover:bg-pri hover:text-sec">
+									className="w-fit px-2 py-1 bg-pri-200 text-pri rounded-lg shadow-lg hover:bg-pri hover:text-sec lg:hidden">
 									Anterior
 								</a>
 								<button

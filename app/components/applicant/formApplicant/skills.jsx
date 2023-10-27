@@ -39,30 +39,67 @@ const customStyles = {
 	}),
 };
 
-const Hobbies = ({ userData, handleChange, inputHobbies, setOpen }) => {
+const Skills = ({ userData, handleChange, inputSkills, setOpen }) => {
 	const options = [
-		"Baile",
-		"Cine",
-		"Cocina",
-		"Deportes",
-		"Fotografía",
-		"Lectura",
-		"Musica",
-		"Naturaleza",
-		"Pintura",
-		"Viajar",
+		"Adaptabilidad",
+		"Altruismo",
+		"Amabilidad",
+		"Ambición",
+		"Asertividad",
+		"Autoconfianza",
+		"Autodisciplina",
+		"Autocontrol",
+		"Bondad",
+		"Colaboración",
+		"Comunicación",
+		"Confianza",
+		"Creatividad",
+		"Crítico",
+		"Decisión",
+		"Detallista",
+		"Dedicación",
+		"Empatía",
+		"Escucha activa",
+		"Ética",
+		"Flexibilidad",
+		"Gestión de conflictos",
+		"Gestión de crisis",
+		"Gestión de proyectos",
+		"Gestión del tiempo",
+		"Honestidad",
+		"Iniciativa",
+		"Innovación",
+		"Inteligencia",
+		"Liderazgo",
+		"Motivación",
+		"Negociación",
+		"Orientación al cliente",
+		"Orientación al detalle",
+		"Perseverancia",
+		"Puntualidad",
+		"Planificación",
+		"Positividad",
+		"Proactividad",
+		"Rendimiento",
+		"Resiliencia",
+		"Respeto",
+		"Resolución de conflictos",
+		"Sensatez",
+		"Solidaridad",
+		"Toma de decisiones",
+		"Trabajo en equipo",
 	];
 
 	const [selectedOption, setSelectedOption] = useState([]);
-	const selectOptions = options.map((hobbies) => ({ value: hobbies, label: hobbies }));
+	const selectOptions = options.map((skills) => ({ value: skills, label: skills }));
 
 	const path = usePathname();
 	useEffect(() => {
 		if (path === "/applicant/profileExtend") {
 			const oldData = [];
 			userData.hobbies.length &&
-				userData.hobbies.map((hob) => {
-					oldData.push({ value: hob, label: hob });
+				userData.hobbies.map((ski) => {
+					oldData.push({ value: ski, label: ski });
 				});
 			setSelectedOption(oldData);
 		}
@@ -80,8 +117,8 @@ const Hobbies = ({ userData, handleChange, inputHobbies, setOpen }) => {
 
 	return (
 		<div className="w-full">
-			<label htmlFor="hobbies" className="ml-2 font-semibold">
-				¿Cuáles son tus hobbies?
+			<label htmlFor="skills" className="ml-2 font-semibold">
+				¿Cuáles son tus aptitudes?
 				<span className="dropdown dropdown-hover font-normal">
 					<div tabIndex={0}>
 						<NotListedLocationOutlinedIcon className="pb-1" />
@@ -99,8 +136,8 @@ const Hobbies = ({ userData, handleChange, inputHobbies, setOpen }) => {
 				value={selectedOption}
 				options={selectOptions}
 				menuPlacement="auto"
-				placeholder="Selecciona un hobbie"
-				isDisabled={!inputHobbies}
+				placeholder="Selecciona tus aptitudes"
+				isDisabled={!inputSkills}
 				isClearable={selectedOption !== null}
 				onChange={handleSelectChange}
 				onMenuOpen={() => path === "/applicant/profileExtend" && setOpen(true)}
@@ -110,4 +147,4 @@ const Hobbies = ({ userData, handleChange, inputHobbies, setOpen }) => {
 		</div>
 	);
 };
-export default Hobbies;
+export default Skills;

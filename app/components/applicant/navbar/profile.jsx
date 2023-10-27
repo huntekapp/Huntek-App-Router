@@ -78,8 +78,8 @@ const Profile = ({ filesInfo, closeProfile, setCloseProfile }) => {
 					</div>
 					<p className="text-xs font-normal cursor-default">{data?.email}</p>
 				</article>
-				<article className="w-full h-4/6 p-2 text-base flex flex-col justify-evenly items-center">
-					<div className="w-11/12 h-1/6 flex flex-row justify-center gap-2 items-center">
+				{/* <article className="w-full h-4/6 p-2 text-base flex flex-col justify-evenly items-center"> */}
+				{/* <div className="w-11/12 h-1/6 flex flex-row justify-center gap-2 items-center">
 						<p className="w-fit px-2 py-1 bg-pri text-sec rounded-lg">Mi plan</p>
 						<KeyboardDoubleArrowRightOutlinedIcon />
 						<p className="font-semibold">{selectedPlan ? selectedPlan : "Básico"}</p>
@@ -98,20 +98,20 @@ const Profile = ({ filesInfo, closeProfile, setCloseProfile }) => {
 								<ArrowForwardIosOutlinedIcon className="p-1" />
 							</a>
 						</section>
-					</div>
-					<div className="w-full h-1/6 text-pri-500 flex flex-col justify-evenly items-center">
-						<button
-							className="text-red-700 hover:opacity-70"
-							onClick={() => {
-								document.cookie = "kTnKETkt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-								document.cookie = "AiOiJKV1Q=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-								router.push("/");
-							}}>
-							Cerrar sesión
-						</button>
-						Copyright © 2023 Huntek App
-					</div>
-				</article>
+					</div> */}
+				<div className="w-full h-1/6 text-pri-500 flex flex-col justify-evenly items-center">
+					<button
+						className="text-red-700 hover:opacity-70"
+						onClick={() => {
+							document.cookie = "kTnKETkt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+							document.cookie = "AiOiJKV1Q=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+							router.push("/");
+						}}>
+						Cerrar sesión
+					</button>
+					Copyright © 2023 Huntek App
+				</div>
+				{/* </article> */}
 			</section>
 		</main>
 	);

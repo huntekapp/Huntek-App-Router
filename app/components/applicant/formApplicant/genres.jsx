@@ -38,7 +38,19 @@ const customStyles = {
 };
 
 const Genres = ({ userData, handleChange, inputGenre, setOpen }) => {
-	const options = ["Hombre", "Mujer", "Otro"];
+	const options = [
+		"Hombre",
+		"Mujer",
+		"No binario",
+		"Género fluido",
+		"Transgénero",
+		"Género queer",
+		"Género agénero",
+		"Género andrógino",
+		"Bigénero",
+		"Género neutro",
+		"Dos espíritus",
+	];
 
 	const [selectedOption, setSelectedOption] = useState("");
 	const selectOptions = options.map((genre) => ({ value: genre, label: genre }));

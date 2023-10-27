@@ -33,7 +33,7 @@ import Availability from "../formApplicant/availability";
 import FormOfWork from "../formApplicant/formOfWork";
 import PhotoUpload from "../formApplicant/photoUpload";
 import Languages from "../formApplicant/language";
-import Hobbies from "../formApplicant/hobbies";
+import Hobbies from "../formApplicant/skills";
 import Country from "../formApplicant/country";
 import Academic from "../formApplicant/academic";
 import { useGetInfoUserQuery } from "../../../globalstore/services/applicant/user-info/useInfoUser";

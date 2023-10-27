@@ -16,18 +16,18 @@ const RoleSelection = () => {
 			</Link>
 			<article className="w-11/12">
 				<p className="m-2 text-xl font-bold">¡Bienvenido/a a Huntek!</p>
-				<p className="m-2">Te ofrecemos la opción de elegir entre dos perfiles:</p>
 			</article>
 			<article className="w-11/12 h-2/3 flex flex-col justify-evenly items-center">
+				<p className="m-2">Selecciona tu tipo de perfil</p>
 				<div className="max-w-md grid grid-cols-2 place-items-center">
 					<div className="w-11/12 h-full p-6 border shadow-lg border-sec text-pri bg-pri-100 rounded-lg">
-						<p className="m-2">Candidato en busca de trabajo</p>
+						<p className="m-2">Estoy en busca de trabajo</p>
 						<button className="mx-auto my-4 px-2 py-1 text-lg font-normal hover:bg-pri hover:scale-110 transition duration-300 bg-pri shadow-md text-sec rounded-lg">
 							<Link href="/signup/applicant">Candidato</Link>
 						</button>
 					</div>
 					<div className="w-11/12 h-full p-6 border border-white shadow-lg text-pri-100 bg-trasnparent rounded-lg">
-						<p className="m-2">Empresa en busca de talento</p>
+						<p className="m-2">Estoy en busca de talentos</p>
 						<button className="mx-auto my-4 px-2 py-1 text-lg font-normal hover:scale-110 transition duration-300 hover:bg-pri-100  bg-pri-100 shadow-md text-pri rounded-lg">
 							<Link href="/signup/company">Empresa</Link>
 						</button>

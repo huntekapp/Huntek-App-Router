@@ -7,7 +7,7 @@ import Languages from "../formApplicant/language";
 import Profession from "../formApplicant/professions";
 import Studies from "../formApplicant/university";
 import Carreer from "../formApplicant/career";
-import Hobbies from "../formApplicant/hobbies";
+import Hobbies from "../formApplicant/skills";
 import LastQuestions from "../formApplicant/formOfWork";
 import FirstQuestions from "../formApplicant/firstquestions";
 

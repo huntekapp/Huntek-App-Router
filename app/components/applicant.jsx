@@ -67,7 +67,7 @@ const ApplicantForm = () => {
 	};
 
 	return (
-		<section className="w-11/12 max-w-md h-5/6 lg:max-h-[375px] font-medium text-sec flex flex-col justify-evenly items-center">
+		<section className="w-10/12 max-w-md h-5/6 lg:max-h-[375px] font-medium text-sec flex flex-col justify-evenly items-center">
 			<form onSubmit={handleSubmit} className="w-full lg:h-full flex flex-col justify-evenly gap-2">
 				<label className="mb-2" htmlFor="first_name">
 					Nombre

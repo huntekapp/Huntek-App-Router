@@ -3,14 +3,35 @@ import Postulations from "./postulations";
 import Messages from "./messages";
 import Interviews from "./interviews";
 import { useGetInfoUserQuery } from "@/app/globalstore/services/applicant/user-info/useInfoUser";
+import { gsap } from "gsap";
+import { useEffect, useRef } from "react";
+import { useState } from "react";
+
+const welcome = () => {
+	gsap.from("#name", 0.5, { y: -1000, opacity: 0 });
+	gsap.from("#welcome", 0.5, { y: 1000, opacity: 0 }, "+=0.5");
+};
 
 const Home = () => {
 	const { data, isLoading } = useGetInfoUserQuery();
+	const numberRef = useRef(null);
+	const num = 75;
+
+	useEffect(() => {
+		welcome();
+
+		const numberElement = numberRef.current;
+		gsap.to(numberElement, {
+			duration: 5, // Duración de la animación en segundos
+			innerText: `${num}`, // Valor final al que deseas animar
+			ease: "power1.out", // Función de ease (puedes cambiarla según tus preferencias)
+		});
+	}, []);
 
 	if (isLoading) {
 		return (
 			<main className="w-full h-homecontent px-4 flex flex-col justify-around items-center">
-				<section className="w-full h-[15%] flex flex-col justify-center items-start animate-pulse">
+				{/* <section className="w-full h-[15%] flex flex-col justify-center items-start animate-pulse">
 					<article className="w-24 h-6 mb-2 bg-slate-400 rounded-lg"></article>
 					<article className="w-36 h-8 bg-slate-400 rounded-lg"></article>
 				</section>
@@ -41,33 +62,39 @@ const Home = () => {
 						<div className="w-full bg-slate-400 rounded-lg"></div>
 						<div className="w-full bg-slate-400 rounded-lg hidden md:flex"></div>
 					</article>
-				</section>
+				</section> */}
 			</main>
 		);
 	}
 
 	return (
-		<main className="w-full h-homecontent text-pri flex flex-col justify-around items-left">
-			<article className="w-full h-[15%] px-4 flex flex-col justify-center">
+		<main className="w-full h-homecontent text-pri flex flex-col justify-around items-left overflow-hidden">
+			<article id="name" className="w-full h-[15%] px-4 flex flex-col justify-center">
 				<p className="text-xl text-center">¡Hola!</p>
 				<p className="text-3xl font-medium text-center">
 					{data?.first_name.split(" ")[0]} {data?.last_name && data?.last_name.split(" ")[0]}
 				</p>
 			</article>
-			<article className="w-full h-[80%] flex flex-row justify-center items-center">
-				<div className="w-[95%] h-full bg-pri-200 rounded-3xl flex flex-col justify-evenly items-center">
-					<p className="text-3xl text-center">
-						Bienvenido a <b>Huntek</b>!
+			<article id="welcome" className="w-full h-[80%] flex flex-row justify-center items-center">
+				<div className="w-[95%] h-full p-10 darkrightgrad text-white rounded-3xl flex flex-col justify-evenly items-center">
+					<div>
+						<h1 className="text-2xl lg:text-3xl text-center">
+							Bienvenido a <b>Huntek</b>!
+						</h1>
+						<h2 className="text-lg lg:text-xl text-center">¡Gracias por ser un pionero!</h2>
+					</div>
+					<p className="text-base lg:text-lg text-center">
+						Aunque nuestra aplicación está tomando forma, estamos decididos a hacerla grandiosa.
 					</p>
-					<p className="text-xl text-center">Muchas gracias por sumarte</p>
-					<p className="text-lg text-center">
-						Actualmente nos encontramos en proceso crecimiento por lo que no estan disponibles las funcionalidades
-						basicas pero te avisaremos cuando todo este listo
-					</p>
-					<p>
-						Por el momento te pedimos que completes tu perfil al 100% asi podes matchear mejor con las vacantes que
-						busques
-					</p>
+					<p className="text-base lg:text-lg text-center">Prepárate para una experiencia única...</p>
+					<p className="text-base lg:text-lg text-center">¡¡Tu apoyo nos impulsa a seguir adelante!!</p>
+					{/* <div
+						id="radial"
+						ref={numberRef}
+						className="radial-progress"
+						style={{ "--value": num, "--size": "10rem", "--thickness": "10px" }}>
+						{`${num}%`}
+					</div> */}
 				</div>
 			</article>
 			{/* <Postulations />
