@@ -227,6 +227,10 @@ select:-webkit-autofill:focus {
   background: gray;
 }
 
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
 
 @property --progress-value {
   syntax: "<integer>";

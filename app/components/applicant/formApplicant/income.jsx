@@ -4,7 +4,7 @@ const Income = ({ userData, handleChange, inputIncome }) => {
 	return (
 		<div className="w-full">
 			<label htmlFor="income" className="mr-2 font-semibold">
-				¿Cuál es tu sueldo deseado?
+				¿Cuál es tu sueldo anual deseado bruto? {"(MXN)"}
 			</label>
 			<span className="dropdown dropdown-hover font-normal">
 				<div tabIndex={0}>

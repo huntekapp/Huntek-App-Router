@@ -2,30 +2,20 @@
 import Postulations from "./postulations";
 import Messages from "./messages";
 import Interviews from "./interviews";
-import { useGetInfoUserQuery } from "@/app/globalstore/services/applicant/user-info/useInfoUser";
 import { gsap } from "gsap";
-import { useEffect, useRef } from "react";
-import { useState } from "react";
+import { useEffect } from "react";
+import { useGetInfoUserQuery } from "@/app/globalstore/services/applicant/user-info/useInfoUser";
 
 const welcome = () => {
 	gsap.from("#name", 0.5, { y: -1000, opacity: 0 });
-	gsap.from("#welcome", 0.5, { y: 1000, opacity: 0 }, "+=0.5");
+	gsap.from("#welcome", 0.5, { opacity: 0 }, "+=0.5");
 };
 
 const Home = () => {
 	const { data, isLoading } = useGetInfoUserQuery();
-	const numberRef = useRef(null);
-	const num = 75;
 
 	useEffect(() => {
 		welcome();
-
-		const numberElement = numberRef.current;
-		gsap.to(numberElement, {
-			duration: 5, // Duración de la animación en segundos
-			innerText: `${num}`, // Valor final al que deseas animar
-			ease: "power1.out", // Función de ease (puedes cambiarla según tus preferencias)
-		});
 	}, []);
 
 	if (isLoading) {
@@ -88,13 +78,6 @@ const Home = () => {
 					</p>
 					<p className="text-base lg:text-lg text-center">Prepárate para una experiencia única...</p>
 					<p className="text-base lg:text-lg text-center">¡¡Tu apoyo nos impulsa a seguir adelante!!</p>
-					{/* <div
-						id="radial"
-						ref={numberRef}
-						className="radial-progress"
-						style={{ "--value": num, "--size": "10rem", "--thickness": "10px" }}>
-						{`${num}%`}
-					</div> */}
 				</div>
 			</article>
 			{/* <Postulations />
