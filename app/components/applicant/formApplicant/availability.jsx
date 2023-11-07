@@ -87,6 +87,7 @@ const Availability = ({ userData, handleChange, inputAvailability, setOpen }) =>
 				onMenuOpen={() => path === "/applicant/profileExtend" && setOpen(true)}
 				onMenuClose={() => path === "/applicant/profileExtend" && setOpen(false)}
 				styles={customStyles}
+				required
 			/>
 		</div>
 	);

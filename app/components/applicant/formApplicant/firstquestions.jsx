@@ -1,5 +1,5 @@
 import Image from "next/image";
-const FirstQuestions = ({userData, handleChange}) => {
+const FirstQuestions = ({ userData, handleChange }) => {
 	return (
 		<>
 			<label className="ml-2 font-semibold">
@@ -29,7 +29,7 @@ const FirstQuestions = ({userData, handleChange}) => {
 				</div>
 				<input id="dropzone-file" type="file" className="hidden" />
 			</label>
-			
+
 			<div className="w-full mb-2">
 				<label htmlFor="mail" className="ml-2 font-semibold">
 					¿Cuál es tu email?
@@ -53,6 +53,7 @@ const FirstQuestions = ({userData, handleChange}) => {
 					value={userData.mail}
 					onChange={(event) => handleChange(event)}
 					className="w-full px-2 py-1 bg-pri-100 text-gray-400 rounded-md focus:outline-none"
+					required
 				/>
 			</div>
 		</>

@@ -21,6 +21,7 @@ import { editFilesDB } from "./services/applicant/user-files/useEditFiles";
 import { resumeDB } from "./services/applicant/user-profile/useResume";
 import { infoResumeDB } from "./services/applicant/user-profile/useGetResume";
 import { editResumeDB } from "./services/applicant/user-profile/useEditResume";
+import { getUsersDB } from "./services/admin/useGetUsers";
 
 export const store = configureStore({
   reducer: {
@@ -45,6 +46,7 @@ export const store = configureStore({
     [resumeDB.reducerPath]: resumeDB.reducer,
     [infoResumeDB.reducerPath]: infoResumeDB.reducer,
     [editResumeDB.reducerPath]: editResumeDB.reducer,
+    [getUsersDB.reducerPath]: getUsersDB.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat([
@@ -68,6 +70,7 @@ export const store = configureStore({
       resumeDB.middleware,
       infoResumeDB.middleware,
       editResumeDB.middleware,
+      getUsersDB.middleware
     ]),
 });
 setupListeners(store.dispatch);

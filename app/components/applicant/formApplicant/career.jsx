@@ -231,6 +231,7 @@ const Career = ({ userData, handleChange, inputCareer, setOpen }) => {
 				onMenuOpen={() => path === "/applicant/profileExtend" && setOpen(true)}
 				onMenuClose={() => path === "/applicant/profileExtend" && setOpen(false)}
 				styles={customStyles}
+				required
 			/>
 		</div>
 	);

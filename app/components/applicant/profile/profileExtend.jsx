@@ -133,11 +133,13 @@ const ProfileExt = () => {
 		formData.append("profile_picture", newFile.profile_picture);
 		try {
 			const response = await editFiles({ user_id: data?.id, data: formData }).unwrap();
+			console.log(response);
 			refetch();
 			setUpdated("Actualización exitosa");
 			setAllow(false);
 		} catch (error) {
-			setUpdated("Error en la actualización");
+			console.log(error);
+			error.menssage ? setUpdated(error.menssage) : setUpdated("Error en la actualización");
 		}
 	};
 

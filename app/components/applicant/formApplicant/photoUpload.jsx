@@ -53,7 +53,14 @@ const PhotoUpload = ({ handleID, allow, setNewFile, newFile }) => {
 						/>
 						<label className="w-8 h-8 bg-pri text-sec rounded-full shadow-lg grid place-content-center absolute right-[5px] bottom-[5px] cursor-pointer hover:bg-sec hover:text-pri">
 							<CloudUploadOutlinedIcon />
-							<input type="file" name="profile_picture" className="hidden" onChange={handleChange} />
+							<input
+								type="file"
+								accept=".jpeg, .jpg, .png, .gif"
+								name="profile_picture"
+								className="hidden"
+								onChange={handleChange}
+								required
+							/>
 						</label>
 					</div>
 				</label>

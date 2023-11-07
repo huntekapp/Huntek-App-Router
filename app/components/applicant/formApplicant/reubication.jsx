@@ -87,6 +87,7 @@ const Reubication = ({ userData, handleChange, inputReubication, setOpen }) => {
 				onMenuClose={() => path === "/applicant/profileExtend" && setOpen(false)}
 				onChange={handleSelectChange}
 				styles={customStyles}
+				required
 			/>
 		</div>
 	);
